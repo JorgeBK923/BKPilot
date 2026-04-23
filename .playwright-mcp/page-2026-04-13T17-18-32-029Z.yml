@@ -1,0 +1,688 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - button "Voltar" [ref=e7]:
+        - img
+        - text: Voltar
+      - generic [ref=e8]:
+        - heading "Gestão de Usuários" [level=1] [ref=e9]
+        - paragraph [ref=e10]: Gerencie usuários, permissões e configurações do sistema
+    - generic [ref=e14]:
+      - tablist [ref=e15]:
+        - tab "Usuários" [active] [selected] [ref=e16]
+        - tab "Permissões" [ref=e17]
+        - tab "Personas" [ref=e18]
+      - tabpanel "Usuários" [ref=e35]:
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - generic [ref=e38]:
+              - textbox "Buscar usuários..." [ref=e39]
+              - generic [ref=e40]:
+                - generic [ref=e41]: Todos
+                - combobox [ref=e42]:
+                  - img
+                  - img
+            - button "Novo Usuário" [ref=e43]:
+              - img
+              - text: Novo Usuário
+          - table [ref=e47]:
+            - rowgroup [ref=e48]:
+              - row "ID Usuário Email Status Tipo Grupo Criado em Último Login Regras Ações" [ref=e49]:
+                - columnheader "ID" [ref=e50]
+                - columnheader "Usuário" [ref=e51]
+                - columnheader "Email" [ref=e52]
+                - columnheader "Status" [ref=e53]
+                - columnheader "Tipo" [ref=e54]
+                - columnheader "Grupo" [ref=e55]
+                - columnheader "Criado em" [ref=e56]
+                - columnheader "Último Login" [ref=e57]
+                - columnheader "Regras" [ref=e58]
+                - columnheader "Ações" [ref=e59]
+            - rowgroup [ref=e60]:
+              - row "98 Test QA Auto 001 @testqa_auto_001 testqa_auto_001@teste.com.br Ativo Usuário Sem grupo 06/04/2026 Nunca 0 regras" [ref=e61]:
+                - cell "98" [ref=e62]
+                - cell "Test QA Auto 001 @testqa_auto_001" [ref=e63]:
+                  - generic [ref=e65]:
+                    - paragraph [ref=e66]: Test QA Auto 001
+                    - paragraph [ref=e67]: "@testqa_auto_001"
+                - cell "testqa_auto_001@teste.com.br" [ref=e68]
+                - cell "Ativo" [ref=e69]:
+                  - generic [ref=e70]: Ativo
+                - cell "Usuário" [ref=e71]:
+                  - generic [ref=e73]: Usuário
+                - cell "Sem grupo" [ref=e74]
+                - cell "06/04/2026" [ref=e75]
+                - cell "Nunca" [ref=e76]
+                - cell "0 regras" [ref=e77]:
+                  - generic [ref=e78]: 0 regras
+                - cell [ref=e79]:
+                  - generic [ref=e80]:
+                    - button [ref=e81]:
+                      - img
+                    - button [ref=e82]:
+                      - img
+                    - button [ref=e83]:
+                      - img
+                    - button [ref=e84]:
+                      - img
+              - row "90 Teste QA Minimo @testeqa002 testqa002@teste.com.br Ativo Usuário Sem grupo 25/03/2026 Nunca 0 regras" [ref=e85]:
+                - cell "90" [ref=e86]
+                - cell "Teste QA Minimo @testeqa002" [ref=e87]:
+                  - generic [ref=e89]:
+                    - paragraph [ref=e90]: Teste QA Minimo
+                    - paragraph [ref=e91]: "@testeqa002"
+                - cell "testqa002@teste.com.br" [ref=e92]
+                - cell "Ativo" [ref=e93]:
+                  - generic [ref=e94]: Ativo
+                - cell "Usuário" [ref=e95]:
+                  - generic [ref=e97]: Usuário
+                - cell "Sem grupo" [ref=e98]
+                - cell "25/03/2026" [ref=e99]
+                - cell "Nunca" [ref=e100]
+                - cell "0 regras" [ref=e101]:
+                  - generic [ref=e102]: 0 regras
+                - cell [ref=e103]:
+                  - generic [ref=e104]:
+                    - button [ref=e105]:
+                      - img
+                    - button [ref=e106]:
+                      - img
+                    - button [ref=e107]:
+                      - img
+                    - button [ref=e108]:
+                      - img
+              - row "89 Teste QA Automacao @testeqa001 testqa001@teste.com.br Ativo Usuário AdminTeste 25/03/2026 Nunca 0 regras" [ref=e109]:
+                - cell "89" [ref=e110]
+                - cell "Teste QA Automacao @testeqa001" [ref=e111]:
+                  - generic [ref=e113]:
+                    - paragraph [ref=e114]: Teste QA Automacao
+                    - paragraph [ref=e115]: "@testeqa001"
+                - cell "testqa001@teste.com.br" [ref=e116]
+                - cell "Ativo" [ref=e117]:
+                  - generic [ref=e118]: Ativo
+                - cell "Usuário" [ref=e119]:
+                  - generic [ref=e121]: Usuário
+                - cell "AdminTeste" [ref=e122]:
+                  - generic [ref=e123]: AdminTeste
+                - cell "25/03/2026" [ref=e124]
+                - cell "Nunca" [ref=e125]
+                - cell "0 regras" [ref=e126]:
+                  - generic [ref=e127]: 0 regras
+                - cell [ref=e128]:
+                  - generic [ref=e129]:
+                    - button [ref=e130]:
+                      - img
+                    - button [ref=e131]:
+                      - img
+                    - button [ref=e132]:
+                      - img
+                    - button [ref=e133]:
+                      - img
+              - row "86 ttttttt @ttttt tttt@tttt.com.br Ativo Usuário AdminTeste 24/03/2026 Nunca 0 regras" [ref=e134]:
+                - cell "86" [ref=e135]
+                - cell "ttttttt @ttttt" [ref=e136]:
+                  - generic [ref=e138]:
+                    - paragraph [ref=e139]: ttttttt
+                    - paragraph [ref=e140]: "@ttttt"
+                - cell "tttt@tttt.com.br" [ref=e141]
+                - cell "Ativo" [ref=e142]:
+                  - generic [ref=e143]: Ativo
+                - cell "Usuário" [ref=e144]:
+                  - generic [ref=e146]: Usuário
+                - cell "AdminTeste" [ref=e147]:
+                  - generic [ref=e148]: AdminTeste
+                - cell "24/03/2026" [ref=e149]
+                - cell "Nunca" [ref=e150]
+                - cell "0 regras" [ref=e151]:
+                  - generic [ref=e152]: 0 regras
+                - cell [ref=e153]:
+                  - generic [ref=e154]:
+                    - button [ref=e155]:
+                      - img
+                    - button [ref=e156]:
+                      - img
+                    - button [ref=e157]:
+                      - img
+                    - button [ref=e158]:
+                      - img
+              - row "82 @Testef Testehj@testse.com.br Ativo Usuário Sem grupo 04/03/2026 Nunca 0 regras" [ref=e159]:
+                - cell "82" [ref=e160]
+                - cell "@Testef" [ref=e161]:
+                  - generic [ref=e163]:
+                    - paragraph
+                    - paragraph [ref=e164]: "@Testef"
+                - cell "Testehj@testse.com.br" [ref=e165]
+                - cell "Ativo" [ref=e166]:
+                  - generic [ref=e167]: Ativo
+                - cell "Usuário" [ref=e168]:
+                  - generic [ref=e170]: Usuário
+                - cell "Sem grupo" [ref=e171]
+                - cell "04/03/2026" [ref=e172]
+                - cell "Nunca" [ref=e173]
+                - cell "0 regras" [ref=e174]:
+                  - generic [ref=e175]: 0 regras
+                - cell [ref=e176]:
+                  - generic [ref=e177]:
+                    - button [ref=e178]:
+                      - img
+                    - button [ref=e179]:
+                      - img
+                    - button [ref=e180]:
+                      - img
+                    - button [ref=e181]:
+                      - img
+              - row "81 @Testte30 Testes@etrstse.com.br Inativo Admin Sem grupo 04/03/2026 04/03/2026 1 regra" [ref=e182]:
+                - cell "81" [ref=e183]
+                - cell "@Testte30" [ref=e184]:
+                  - generic [ref=e186]:
+                    - paragraph
+                    - paragraph [ref=e187]: "@Testte30"
+                - cell "Testes@etrstse.com.br" [ref=e188]
+                - cell "Inativo" [ref=e189]:
+                  - generic [ref=e190]: Inativo
+                - cell "Admin" [ref=e191]:
+                  - generic [ref=e193]:
+                    - img
+                    - text: Admin
+                - cell "Sem grupo" [ref=e194]
+                - cell "04/03/2026" [ref=e195]
+                - cell "04/03/2026" [ref=e196]
+                - cell "1 regra" [ref=e197]:
+                  - generic [ref=e198]: 1 regra
+                - cell [ref=e199]:
+                  - generic [ref=e200]:
+                    - button [ref=e201]:
+                      - img
+                    - button [ref=e202]:
+                      - img
+                    - button [ref=e203]:
+                      - img
+                    - button [ref=e204]:
+                      - img
+              - row "80 testes rr @Teste28 Testes@testet.com.br Inativo Usuário Sem grupo 04/03/2026 Nunca 0 regras" [ref=e205]:
+                - cell "80" [ref=e206]
+                - cell "testes rr @Teste28" [ref=e207]:
+                  - generic [ref=e209]:
+                    - paragraph [ref=e210]: testes rr
+                    - paragraph [ref=e211]: "@Teste28"
+                - cell "Testes@testet.com.br" [ref=e212]
+                - cell "Inativo" [ref=e213]:
+                  - generic [ref=e214]: Inativo
+                - cell "Usuário" [ref=e215]:
+                  - generic [ref=e217]: Usuário
+                - cell "Sem grupo" [ref=e218]
+                - cell "04/03/2026" [ref=e219]
+                - cell "Nunca" [ref=e220]
+                - cell "0 regras" [ref=e221]:
+                  - generic [ref=e222]: 0 regras
+                - cell [ref=e223]:
+                  - generic [ref=e224]:
+                    - button [ref=e225]:
+                      - img
+                    - button [ref=e226]:
+                      - img
+                    - button [ref=e227]:
+                      - img
+                    - button [ref=e228]:
+                      - img
+              - row "79 Testes ok @Testes25 Testet25ests@teste.com.br Inativo Usuário Sem grupo 04/03/2026 Nunca 0 regras" [ref=e229]:
+                - cell "79" [ref=e230]
+                - cell "Testes ok @Testes25" [ref=e231]:
+                  - generic [ref=e233]:
+                    - paragraph [ref=e234]: Testes ok
+                    - paragraph [ref=e235]: "@Testes25"
+                - cell "Testet25ests@teste.com.br" [ref=e236]
+                - cell "Inativo" [ref=e237]:
+                  - generic [ref=e238]: Inativo
+                - cell "Usuário" [ref=e239]:
+                  - generic [ref=e241]: Usuário
+                - cell "Sem grupo" [ref=e242]
+                - cell "04/03/2026" [ref=e243]
+                - cell "Nunca" [ref=e244]
+                - cell "0 regras" [ref=e245]:
+                  - generic [ref=e246]: 0 regras
+                - cell [ref=e247]:
+                  - generic [ref=e248]:
+                    - button [ref=e249]:
+                      - img
+                    - button [ref=e250]:
+                      - img
+                    - button [ref=e251]:
+                      - img
+                    - button [ref=e252]:
+                      - img
+              - row "78 @Testestega Testetests@teste.com.br Inativo Usuário Sem grupo 04/03/2026 Nunca 0 regras" [ref=e253]:
+                - cell "78" [ref=e254]
+                - cell "@Testestega" [ref=e255]:
+                  - generic [ref=e257]:
+                    - paragraph
+                    - paragraph [ref=e258]: "@Testestega"
+                - cell "Testetests@teste.com.br" [ref=e259]
+                - cell "Inativo" [ref=e260]:
+                  - generic [ref=e261]: Inativo
+                - cell "Usuário" [ref=e262]:
+                  - generic [ref=e264]: Usuário
+                - cell "Sem grupo" [ref=e265]
+                - cell "04/03/2026" [ref=e266]
+                - cell "Nunca" [ref=e267]
+                - cell "0 regras" [ref=e268]:
+                  - generic [ref=e269]: 0 regras
+                - cell [ref=e270]:
+                  - generic [ref=e271]:
+                    - button [ref=e272]:
+                      - img
+                    - button [ref=e273]:
+                      - img
+                    - button [ref=e274]:
+                      - img
+                    - button [ref=e275]:
+                      - img
+              - row "77 @Diogo Diogo@teste.com.br Inativo Usuário Sem grupo 04/03/2026 Nunca 0 regras" [ref=e276]:
+                - cell "77" [ref=e277]
+                - cell "@Diogo" [ref=e278]:
+                  - generic [ref=e280]:
+                    - paragraph
+                    - paragraph [ref=e281]: "@Diogo"
+                - cell "Diogo@teste.com.br" [ref=e282]
+                - cell "Inativo" [ref=e283]:
+                  - generic [ref=e284]: Inativo
+                - cell "Usuário" [ref=e285]:
+                  - generic [ref=e287]: Usuário
+                - cell "Sem grupo" [ref=e288]
+                - cell "04/03/2026" [ref=e289]
+                - cell "Nunca" [ref=e290]
+                - cell "0 regras" [ref=e291]:
+                  - generic [ref=e292]: 0 regras
+                - cell [ref=e293]:
+                  - generic [ref=e294]:
+                    - button [ref=e295]:
+                      - img
+                    - button [ref=e296]:
+                      - img
+                    - button [ref=e297]:
+                      - img
+                    - button [ref=e298]:
+                      - img
+              - row "76 Rodrigo testes @Rodrigo Rodrigo.teste@use.com.br Inativo Usuário Sem grupo 04/03/2026 Nunca 0 regras" [ref=e299]:
+                - cell "76" [ref=e300]
+                - cell "Rodrigo testes @Rodrigo" [ref=e301]:
+                  - generic [ref=e303]:
+                    - paragraph [ref=e304]: Rodrigo testes
+                    - paragraph [ref=e305]: "@Rodrigo"
+                - cell "Rodrigo.teste@use.com.br" [ref=e306]
+                - cell "Inativo" [ref=e307]:
+                  - generic [ref=e308]: Inativo
+                - cell "Usuário" [ref=e309]:
+                  - generic [ref=e311]: Usuário
+                - cell "Sem grupo" [ref=e312]
+                - cell "04/03/2026" [ref=e313]
+                - cell "Nunca" [ref=e314]
+                - cell "0 regras" [ref=e315]:
+                  - generic [ref=e316]: 0 regras
+                - cell [ref=e317]:
+                  - generic [ref=e318]:
+                    - button [ref=e319]:
+                      - img
+                    - button [ref=e320]:
+                      - img
+                    - button [ref=e321]:
+                      - img
+                    - button [ref=e322]:
+                      - img
+              - row "75 usuarioY Teste @usuarioY usuarioY@teste.com Inativo Usuário AdminTeste 04/03/2026 Nunca 1 regra" [ref=e323]:
+                - cell "75" [ref=e324]
+                - cell "usuarioY Teste @usuarioY" [ref=e325]:
+                  - generic [ref=e327]:
+                    - paragraph [ref=e328]: usuarioY Teste
+                    - paragraph [ref=e329]: "@usuarioY"
+                - cell "usuarioY@teste.com" [ref=e330]
+                - cell "Inativo" [ref=e331]:
+                  - generic [ref=e332]: Inativo
+                - cell "Usuário" [ref=e333]:
+                  - generic [ref=e335]: Usuário
+                - cell "AdminTeste" [ref=e336]:
+                  - generic [ref=e337]: AdminTeste
+                - cell "04/03/2026" [ref=e338]
+                - cell "Nunca" [ref=e339]
+                - cell "1 regra" [ref=e340]:
+                  - generic [ref=e341]: 1 regra
+                - cell [ref=e342]:
+                  - generic [ref=e343]:
+                    - button [ref=e344]:
+                      - img
+                    - button [ref=e345]:
+                      - img
+                    - button [ref=e346]:
+                      - img
+                    - button [ref=e347]:
+                      - img
+              - row "74 controle de acesso @Controle controle@teste.com Ativo Usuário AdminTeste 03/03/2026 09/04/2026 1 regra" [ref=e348]:
+                - cell "74" [ref=e349]
+                - cell "controle de acesso @Controle" [ref=e350]:
+                  - generic [ref=e352]:
+                    - paragraph [ref=e353]: controle de acesso
+                    - paragraph [ref=e354]: "@Controle"
+                - cell "controle@teste.com" [ref=e355]
+                - cell "Ativo" [ref=e356]:
+                  - generic [ref=e357]: Ativo
+                - cell "Usuário" [ref=e358]:
+                  - generic [ref=e360]: Usuário
+                - cell "AdminTeste" [ref=e361]:
+                  - generic [ref=e362]: AdminTeste
+                - cell "03/03/2026" [ref=e363]
+                - cell "09/04/2026" [ref=e364]
+                - cell "1 regra" [ref=e365]:
+                  - generic [ref=e366]: 1 regra
+                - cell [ref=e367]:
+                  - generic [ref=e368]:
+                    - button [ref=e369]:
+                      - img
+                    - button [ref=e370]:
+                      - img
+                    - button [ref=e371]:
+                      - img
+                    - button [ref=e372]:
+                      - img
+              - row "73 Rodrigo @Inativotestes Testes@testes.com.br Ativo Usuário GrupoGeral 02/03/2026 03/03/2026 0 regras" [ref=e373]:
+                - cell "73" [ref=e374]
+                - cell "Rodrigo @Inativotestes" [ref=e375]:
+                  - generic [ref=e377]:
+                    - paragraph [ref=e378]: Rodrigo
+                    - paragraph [ref=e379]: "@Inativotestes"
+                - cell "Testes@testes.com.br" [ref=e380]
+                - cell "Ativo" [ref=e381]:
+                  - generic [ref=e382]: Ativo
+                - cell "Usuário" [ref=e383]:
+                  - generic [ref=e385]: Usuário
+                - cell "GrupoGeral" [ref=e386]:
+                  - generic [ref=e387]: GrupoGeral
+                - cell "02/03/2026" [ref=e388]
+                - cell "03/03/2026" [ref=e389]
+                - cell "0 regras" [ref=e390]:
+                  - generic [ref=e391]: 0 regras
+                - cell [ref=e392]:
+                  - generic [ref=e393]:
+                    - button [ref=e394]:
+                      - img
+                    - button [ref=e395]:
+                      - img
+                    - button [ref=e396]:
+                      - img
+                    - button [ref=e397]:
+                      - img
+              - row "72 Testes tstew tewtew @TestesBugs Testes@hjsdf.com.br Inativo Usuário Sem grupo 02/03/2026 Nunca 0 regras" [ref=e398]:
+                - cell "72" [ref=e399]
+                - cell "Testes tstew tewtew @TestesBugs" [ref=e400]:
+                  - generic [ref=e402]:
+                    - paragraph [ref=e403]: Testes tstew tewtew
+                    - paragraph [ref=e404]: "@TestesBugs"
+                - cell "Testes@hjsdf.com.br" [ref=e405]
+                - cell "Inativo" [ref=e406]:
+                  - generic [ref=e407]: Inativo
+                - cell "Usuário" [ref=e408]:
+                  - generic [ref=e410]: Usuário
+                - cell "Sem grupo" [ref=e411]
+                - cell "02/03/2026" [ref=e412]
+                - cell "Nunca" [ref=e413]
+                - cell "0 regras" [ref=e414]:
+                  - generic [ref=e415]: 0 regras
+                - cell [ref=e416]:
+                  - generic [ref=e417]:
+                    - button [ref=e418]:
+                      - img
+                    - button [ref=e419]:
+                      - img
+                    - button [ref=e420]:
+                      - img
+                    - button [ref=e421]:
+                      - img
+              - row "71 Teste Teste @TesteBug Teste@teste2.com.br Inativo Usuário Sem grupo 02/03/2026 Nunca 0 regras" [ref=e422]:
+                - cell "71" [ref=e423]
+                - cell "Teste Teste @TesteBug" [ref=e424]:
+                  - generic [ref=e426]:
+                    - paragraph [ref=e427]: Teste Teste
+                    - paragraph [ref=e428]: "@TesteBug"
+                - cell "Teste@teste2.com.br" [ref=e429]
+                - cell "Inativo" [ref=e430]:
+                  - generic [ref=e431]: Inativo
+                - cell "Usuário" [ref=e432]:
+                  - generic [ref=e434]: Usuário
+                - cell "Sem grupo" [ref=e435]
+                - cell "02/03/2026" [ref=e436]
+                - cell "Nunca" [ref=e437]
+                - cell "0 regras" [ref=e438]:
+                  - generic [ref=e439]: 0 regras
+                - cell [ref=e440]:
+                  - generic [ref=e441]:
+                    - button [ref=e442]:
+                      - img
+                    - button [ref=e443]:
+                      - img
+                    - button [ref=e444]:
+                      - img
+                    - button [ref=e445]:
+                      - img
+              - row "70 Teste testes teste @Teste26 Teste@teste.com.br Inativo Usuário Sem grupo 02/03/2026 Nunca 0 regras" [ref=e446]:
+                - cell "70" [ref=e447]
+                - cell "Teste testes teste @Teste26" [ref=e448]:
+                  - generic [ref=e450]:
+                    - paragraph [ref=e451]: Teste testes teste
+                    - paragraph [ref=e452]: "@Teste26"
+                - cell "Teste@teste.com.br" [ref=e453]
+                - cell "Inativo" [ref=e454]:
+                  - generic [ref=e455]: Inativo
+                - cell "Usuário" [ref=e456]:
+                  - generic [ref=e458]: Usuário
+                - cell "Sem grupo" [ref=e459]
+                - cell "02/03/2026" [ref=e460]
+                - cell "Nunca" [ref=e461]
+                - cell "0 regras" [ref=e462]:
+                  - generic [ref=e463]: 0 regras
+                - cell [ref=e464]:
+                  - generic [ref=e465]:
+                    - button [ref=e466]:
+                      - img
+                    - button [ref=e467]:
+                      - img
+                    - button [ref=e468]:
+                      - img
+                    - button [ref=e469]:
+                      - img
+              - row "66 User Inativo @userinativo user@inativo.com.br Inativo Usuário AdminTeste 26/02/2026 Nunca 0 regras" [ref=e470]:
+                - cell "66" [ref=e471]
+                - cell "User Inativo @userinativo" [ref=e472]:
+                  - generic [ref=e474]:
+                    - paragraph [ref=e475]: User Inativo
+                    - paragraph [ref=e476]: "@userinativo"
+                - cell "user@inativo.com.br" [ref=e477]
+                - cell "Inativo" [ref=e478]:
+                  - generic [ref=e479]: Inativo
+                - cell "Usuário" [ref=e480]:
+                  - generic [ref=e482]: Usuário
+                - cell "AdminTeste" [ref=e483]:
+                  - generic [ref=e484]: AdminTeste
+                - cell "26/02/2026" [ref=e485]
+                - cell "Nunca" [ref=e486]
+                - cell "0 regras" [ref=e487]:
+                  - generic [ref=e488]: 0 regras
+                - cell [ref=e489]:
+                  - generic [ref=e490]:
+                    - button [ref=e491]:
+                      - img
+                    - button [ref=e492]:
+                      - img
+                    - button [ref=e493]:
+                      - img
+                    - button [ref=e494]:
+                      - img
+              - row "64 Admin Teste 2 @adminteste2 admin2@teste.com.br Ativo Admin AdminTeste 26/02/2026 13/04/2026 1 regra" [ref=e495]:
+                - cell "64" [ref=e496]
+                - cell "Admin Teste 2 @adminteste2" [ref=e497]:
+                  - generic [ref=e499]:
+                    - paragraph [ref=e500]: Admin Teste 2
+                    - paragraph [ref=e501]: "@adminteste2"
+                - cell "admin2@teste.com.br" [ref=e502]
+                - cell "Ativo" [ref=e503]:
+                  - generic [ref=e504]: Ativo
+                - cell "Admin" [ref=e505]:
+                  - generic [ref=e507]:
+                    - img
+                    - text: Admin
+                - cell "AdminTeste" [ref=e508]:
+                  - generic [ref=e509]: AdminTeste
+                - cell "26/02/2026" [ref=e510]
+                - cell "13/04/2026" [ref=e511]
+                - cell "1 regra" [ref=e512]:
+                  - generic [ref=e513]: 1 regra
+                - cell [ref=e514]:
+                  - generic [ref=e515]:
+                    - button [ref=e516]:
+                      - img
+                    - button [ref=e517]:
+                      - img
+                    - button [ref=e518]:
+                      - img
+                    - button [ref=e519]:
+                      - img
+              - row "63 User Teste 2 @userteste2 user2@teste.com.br Ativo Usuário AdminTeste 26/02/2026 09/04/2026 1 regra" [ref=e520]:
+                - cell "63" [ref=e521]
+                - cell "User Teste 2 @userteste2" [ref=e522]:
+                  - generic [ref=e524]:
+                    - paragraph [ref=e525]: User Teste 2
+                    - paragraph [ref=e526]: "@userteste2"
+                - cell "user2@teste.com.br" [ref=e527]
+                - cell "Ativo" [ref=e528]:
+                  - generic [ref=e529]: Ativo
+                - cell "Usuário" [ref=e530]:
+                  - generic [ref=e532]: Usuário
+                - cell "AdminTeste" [ref=e533]:
+                  - generic [ref=e534]: AdminTeste
+                - cell "26/02/2026" [ref=e535]
+                - cell "09/04/2026" [ref=e536]
+                - cell "1 regra" [ref=e537]:
+                  - generic [ref=e538]: 1 regra
+                - cell [ref=e539]:
+                  - generic [ref=e540]:
+                    - button [ref=e541]:
+                      - img
+                    - button [ref=e542]:
+                      - img
+                    - button [ref=e543]:
+                      - img
+                    - button [ref=e544]:
+                      - img
+              - row "58 User Teste @userteste user@teste.com.br Inativo Usuário AdminTeste 20/02/2026 09/04/2026 1 regra" [ref=e545]:
+                - cell "58" [ref=e546]
+                - cell "User Teste @userteste" [ref=e547]:
+                  - generic [ref=e549]:
+                    - paragraph [ref=e550]: User Teste
+                    - paragraph [ref=e551]: "@userteste"
+                - cell "user@teste.com.br" [ref=e552]
+                - cell "Inativo" [ref=e553]:
+                  - generic [ref=e554]: Inativo
+                - cell "Usuário" [ref=e555]:
+                  - generic [ref=e557]: Usuário
+                - cell "AdminTeste" [ref=e558]:
+                  - generic [ref=e559]: AdminTeste
+                - cell "20/02/2026" [ref=e560]
+                - cell "09/04/2026" [ref=e561]
+                - cell "1 regra" [ref=e562]:
+                  - generic [ref=e563]: 1 regra
+                - cell [ref=e564]:
+                  - generic [ref=e565]:
+                    - button [ref=e566]:
+                      - img
+                    - button [ref=e567]:
+                      - img
+                    - button [ref=e568]:
+                      - img
+                    - button [ref=e569]:
+                      - img
+              - row "56 Admin Teste @adminteste admin@teste.com.br Ativo Admin AdminTeste 19/02/2026 17/03/2026 1 regra" [ref=e570]:
+                - cell "56" [ref=e571]
+                - cell "Admin Teste @adminteste" [ref=e572]:
+                  - generic [ref=e574]:
+                    - paragraph [ref=e575]: Admin Teste
+                    - paragraph [ref=e576]: "@adminteste"
+                - cell "admin@teste.com.br" [ref=e577]
+                - cell "Ativo" [ref=e578]:
+                  - generic [ref=e579]: Ativo
+                - cell "Admin" [ref=e580]:
+                  - generic [ref=e582]:
+                    - img
+                    - text: Admin
+                - cell "AdminTeste" [ref=e583]:
+                  - generic [ref=e584]: AdminTeste
+                - cell "19/02/2026" [ref=e585]
+                - cell "17/03/2026" [ref=e586]
+                - cell "1 regra" [ref=e587]:
+                  - generic [ref=e588]: 1 regra
+                - cell [ref=e589]:
+                  - generic [ref=e590]:
+                    - button [ref=e591]:
+                      - img
+                    - button [ref=e592]:
+                      - img
+                    - button [ref=e593]:
+                      - img
+                    - button [ref=e594]:
+                      - img
+              - row "43 GrAzul @grazul ti@gralha-azul.ind.br Ativo Admin GrupoGeral 15/01/2026 19/01/2026 1 regra" [ref=e595]:
+                - cell "43" [ref=e596]
+                - cell "GrAzul @grazul" [ref=e597]:
+                  - generic [ref=e599]:
+                    - paragraph [ref=e600]: GrAzul
+                    - paragraph [ref=e601]: "@grazul"
+                - cell "ti@gralha-azul.ind.br" [ref=e602]
+                - cell "Ativo" [ref=e603]:
+                  - generic [ref=e604]: Ativo
+                - cell "Admin" [ref=e605]:
+                  - generic [ref=e607]:
+                    - img
+                    - text: Admin
+                - cell "GrupoGeral" [ref=e608]:
+                  - generic [ref=e609]: GrupoGeral
+                - cell "15/01/2026" [ref=e610]
+                - cell "19/01/2026" [ref=e611]
+                - cell "1 regra" [ref=e612]:
+                  - generic [ref=e613]: 1 regra
+                - cell [ref=e614]:
+                  - generic [ref=e615]:
+                    - button [ref=e616]:
+                      - img
+                    - button [ref=e617]:
+                      - img
+                    - button [ref=e618]:
+                      - img
+                    - button [ref=e619]:
+                      - img
+              - row "42 Admin Gralha @admingralha admingralha@tegasistemas.com.br Ativo Admin AdminTeste 15/01/2026 13/04/2026 1 regra" [ref=e620]:
+                - cell "42" [ref=e621]
+                - cell "Admin Gralha @admingralha" [ref=e622]:
+                  - generic [ref=e624]:
+                    - paragraph [ref=e625]: Admin Gralha
+                    - paragraph [ref=e626]: "@admingralha"
+                - cell "admingralha@tegasistemas.com.br" [ref=e627]
+                - cell "Ativo" [ref=e628]:
+                  - generic [ref=e629]: Ativo
+                - cell "Admin" [ref=e630]:
+                  - generic [ref=e632]:
+                    - img
+                    - text: Admin
+                - cell "AdminTeste" [ref=e633]:
+                  - generic [ref=e634]: AdminTeste
+                - cell "15/01/2026" [ref=e635]
+                - cell "13/04/2026" [ref=e636]
+                - cell "1 regra" [ref=e637]:
+                  - generic [ref=e638]: 1 regra
+                - cell [ref=e639]:
+                  - generic [ref=e640]:
+                    - button [ref=e641]:
+                      - img
+                    - button [ref=e642]:
+                      - img
+                    - button [ref=e643]:
+                      - img
+                    - button [ref=e644]:
+                      - img

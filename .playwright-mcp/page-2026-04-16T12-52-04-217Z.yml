@@ -1,0 +1,143 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - button:
+                    - img
+              - generic:
+                - button:
+                  - img
+                  - text: Nova Conversa
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Conversas
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Gráficos
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Dashboards
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Relatórios
+                  - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button:
+                            - img
+                            - text: Criar Relatório
+                          - generic:
+                            - generic:
+                              - img
+                              - generic: hhh
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - generic:
+                      - generic: A
+                    - generic:
+                      - paragraph: Admin Teste 2
+                      - paragraph: admin2@teste.com.br
+                    - generic:
+                      - generic:
+                        - img
+                        - text: Admin
+                      - img
+        - generic:
+          - generic:
+            - button:
+              - img
+            - generic:
+              - generic:
+                - heading [level=1]: hhh
+                - button:
+                  - img
+                - button:
+                  - img
+            - generic:
+              - button:
+                - img
+                - generic: Estilo
+              - button [expanded]:
+                - text: Ações
+                - img
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                  - generic: Assistente
+              - generic:
+                - generic:
+                  - img
+                  - paragraph: Descreva o relatório desejado
+                  - paragraph: "Ex: \"Relatório de faturamento por estado e representante ordenado do maior para o menor\""
+                  - paragraph: A IA gera SQL, extrai dados e renderiza automaticamente.
+              - generic:
+                - generic:
+                  - textbox:
+                    - /placeholder: Descreva o relatório que deseja gerar…
+                  - button [disabled]:
+                    - img
+            - generic:
+              - generic:
+                - button:
+                  - img
+                - img
+                - generic: Preview
+              - generic:
+                - generic:
+                  - img
+                  - paragraph: Nenhum relatório gerado
+                  - paragraph: Use o chat para gerar seu primeiro relatório
+      - contentinfo:
+        - generic:
+          - generic: "Dados atualizados em: Sem informação"
+          - generic: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic: v1.8.0
+  - menu "Ações" [active] [ref=e808]:
+    - menuitem "Exportar PDF" [disabled]:
+      - img
+      - text: Exportar PDF
+    - menuitem "Imprimir (PDF)" [disabled]:
+      - img
+      - text: Imprimir (PDF)
+    - separator [ref=e809]
+    - menuitem "Criar cópia" [ref=e810]:
+      - img
+      - text: Criar cópia
+    - menuitem "Histórico de versões" [ref=e811]:
+      - img
+      - text: Histórico de versões
+    - menuitem "Limpar cache" [ref=e812]:
+      - img
+      - text: Limpar cache
+    - separator [ref=e813]
+    - menuitem "Excluir" [ref=e814]:
+      - img
+      - text: Excluir

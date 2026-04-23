@@ -1,0 +1,499 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - button:
+                - img
+                - text: Voltar
+              - generic:
+                - generic:
+                  - img
+                - generic:
+                  - heading [level=1]: Dicionário de Dados
+                  - paragraph: Visualize as tabelas e colunas que você tem permissão para acessar
+            - generic:
+              - generic:
+                - img
+                - text: 1 databases
+              - generic:
+                - img
+                - text: 5 tabelas
+              - generic:
+                - img
+                - text: 130 colunas
+      - generic:
+        - generic:
+          - generic:
+            - img
+            - textbox:
+              - /placeholder: Buscar tabelas ou colunas...
+          - generic:
+            - button:
+              - img
+            - button:
+              - img
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - img
+              - generic:
+                - heading [level=2]: gold_gralha
+                - paragraph: 5 tabelas
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic: vw_estoque_jcla
+                  - generic:
+                    - img
+                - generic:
+                  - paragraph: "Esta tabela contem informacoes de estoque de produtos, incluindo entradas, saidas e saldo, organizadas por local de estoque, deposito, produto e suas classificacoes. Principais fontes de dados: Estoque Movimentacao de estoque Cadastro de Produto Local de estoque Deposito Familia e grupo de produto Situacao do produto Regras de inclusao: Considera movimentacoes de entrada e saida de produtos Inclui produtos ativos e inativos (com data de inativacao) Agrupamentos e chaves principais: Local de estoque Deposito Codigo do produto Familia e grupo de produto Situacao do produto Observacoes adicionais: Contem metricas de quantidade (entrada, saida e saldo) Inclui diversos indicadores de tipificacao do produto (acabado, materia-prima, consumo, ferramenta, volume, etc.) Ideal para analises de saldo de estoque, giro de produtos, controle logistico e classificacao de inventario"
+                - generic:
+                  - generic:
+                    - img
+                    - generic: localestoqueid
+                    - generic: INTEGER
+                  - generic:
+                    - img
+                    - generic: localestoquedescricao
+                    - generic: STRING
+                  - generic:
+                    - img
+                    - generic: depositoid
+                    - generic: INTEGER
+                  - generic:
+                    - img
+                    - generic: depositodescricao
+                    - generic: STRING
+                  - generic:
+                    - img
+                    - generic: produtocodigo
+                    - generic: STRING
+                  - generic:
+                    - generic: +34 colunas
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic: vw_bifaturamento_base
+                  - generic:
+                    - img
+                - generic:
+                  - paragraph: "Esta tabela contem informacoes de faturamento e vendas, agregadas por cliente, representante, supervisor e produto. Principais fontes de dados: NF (notas fiscais de saida), Item, Pessoa, Grupo de produto, Familia de produto, Situacao do produto, Revestimento, Regiao, Grupo de pessoa, Cliente, Grupo de cliente, Tipo de cliente e tipo de comercio, Produto, Natureza de operacao, Regras de inclusao: Considera apenas notas de saida, Natureza de operacao marcada para sair no relatorio comercial, Exclui notas devolvidas ou canceladas. Agrupamentos e chaves principais: Codigo e razao social do cliente, Codigo e nome do representante, Codigo e nome do supervisor, Produto (descricao), Data de emissao da nota fiscal, Razao social da empresa, CFOP, Codigo e descricao do revestimento, Regiao Observacoes adicionais: A tabela contem informacoes de faturamento, valores, quantidades e metricas de produtos vendidos, Ideal para analises de vendas, ranking de produtos, faturamento por cliente, representante ou regiao"
+                - generic:
+                  - generic:
+                    - img
+                    - generic: bifaturamentogeracomissao
+                    - generic: INTEGER
+                  - generic:
+                    - img
+                    - generic: _extracted_at
+                    - generic: TIMESTAMP
+                  - generic:
+                    - img
+                    - generic: _processed_at
+                    - generic: TIMESTAMP
+                  - generic:
+                    - img
+                    - generic: data_processamento
+                    - generic: TIMESTAMP
+                  - generic:
+                    - img
+                    - generic: birepresentantenome
+                    - generic: STRING
+                  - generic:
+                    - generic: +47 colunas
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic: vw_produto_revestimento_jcla
+                  - generic:
+                    - img
+                - generic:
+                  - paragraph: "Esta tabela contem informacoes de produtos e seus respectivos revestimentos, incluindo classificacao por tipo de revestimento, codigos EAN e regras de liberacao para assistencia tecnica. Principais fontes de dados: Cadastro de Produto Cadastro de Revestimento Tipo de Revestimento Tabelas de codigos EAN (EAN, EAN-14 e variacoes) Regras de inclusao: Considera apenas produtos com relacionamento valido com revestimentos Pode conter registros historicos conforme periodo de liberacao Agrupamentos e chaves principais: Codigo do produto Codigo do revestimento Tipo de revestimento Codigo EAN / EAN-14 Observacoes adicionais: A tabela permite identificar quais revestimentos estao associados a cada produto Possui indicadores e periodos de liberacao para assistencia tecnica Ideal para analises de portfolio de produtos, rastreabilidade por EAN e regras comerciais/tecnicas de revestimento"
+                - generic:
+                  - generic:
+                    - img
+                    - generic: produtocodigo
+                    - generic: STRING
+                  - generic:
+                    - img
+                    - generic: produtodescricao
+                    - generic: STRING
+                  - generic:
+                    - img
+                    - generic: tiporevestimentoid
+                    - generic: INTEGER
+                  - generic:
+                    - img
+                    - generic: tiporevestimentodescricao
+                    - generic: STRING
+                  - generic:
+                    - img
+                    - generic: revestimentoid
+                    - generic: INTEGER
+                  - generic:
+                    - generic: +10 colunas
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic: vw_produtos_jcla
+                  - generic:
+                    - img
+                - generic:
+                  - paragraph: "Esta tabela contem informacoes de cadastro e classificacao comercial de produtos, incluindo familia, grupo, situacao e indicadores de tipificacao do produto. Principais fontes de dados: Cadastro de Produto Familia de produto Grupo de produto Situacao do produto Regras de inclusao: Considera produtos ativos e inativos Mantem historico basico por meio da data de inativacao Agrupamentos e chaves principais: Codigo do produto Familia do produto Grupo do produto Situacao do produto Observacoes adicionais: Possui indicadores de classificacao como produto acabado, volume e materia-prima Estrutura simplificada, voltada para analise cadastral e segmentacao de produtos Ideal para analises de mix de produtos, categorizacao comercial e filtros em relatorios analiticos"
+                - generic:
+                  - generic:
+                    - img
+                    - generic: produtocodigo
+                    - generic: STRING
+                  - generic:
+                    - img
+                    - generic: produtodescricao
+                    - generic: STRING
+                  - generic:
+                    - img
+                    - generic: familiaid
+                    - generic: INTEGER
+                  - generic:
+                    - img
+                    - generic: familiadescricao
+                    - generic: STRING
+                  - generic:
+                    - img
+                    - generic: grupoprodutoid
+                    - generic: INTEGER
+                  - generic:
+                    - generic: +11 colunas
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic: vw_revestimento_jcla
+                  - generic:
+                    - img
+                - generic:
+                  - paragraph: "Esta tabela contem informacoes de cadastro de revestimentos, incluindo regras de liberacao para venda e representantes e acessorios. Principais fontes de dados: Cadastro de Revestimentos Regras comerciais e operacionais Regras de inclusao: Considera todos os revestimentos cadastrados Pode conter registros tecnicos de controle de carga e processamento Agrupamentos e chaves principais: Codigo do revestimento Observacoes adicionais: Possui indicadores de liberacao para diferentes contextos comerciais (venda, representante, acessorios) Ideal para controle de regras comerciais, validacoes operacionais e auditoria de dados"
+                - generic:
+                  - generic:
+                    - img
+                    - generic: revestimentoid
+                    - generic: INTEGER
+                  - generic:
+                    - img
+                    - generic: revestimentodescricao
+                    - generic: STRING
+                  - generic:
+                    - img
+                    - generic: revestimentoliberadorepresentante
+                    - generic: INTEGER
+                  - generic:
+                    - img
+                    - generic: revestimentoliberadoacessorios
+                    - generic: INTEGER
+                  - generic:
+                    - img
+                    - generic: revestimentoliberadovenda
+                    - generic: INTEGER
+                  - generic:
+                    - generic: +3 colunas
+  - dialog "vw_estoque_jcla" [ref=e242]:
+    - generic [ref=e243]:
+      - generic [ref=e244]:
+        - img [ref=e246]
+        - generic [ref=e248]:
+          - heading "vw_estoque_jcla" [level=2] [ref=e249]
+          - paragraph [ref=e250]: gold_gralha.vw_estoque_jcla
+      - paragraph [ref=e252]: "Esta tabela contem informacoes de estoque de produtos, incluindo entradas, saidas e saldo, organizadas por local de estoque, deposito, produto e suas classificacoes. Principais fontes de dados: Estoque Movimentacao de estoque Cadastro de Produto Local de estoque Deposito Familia e grupo de produto Situacao do produto Regras de inclusao: Considera movimentacoes de entrada e saida de produtos Inclui produtos ativos e inativos (com data de inativacao) Agrupamentos e chaves principais: Local de estoque Deposito Codigo do produto Familia e grupo de produto Situacao do produto Observacoes adicionais: Contem metricas de quantidade (entrada, saida e saldo) Inclui diversos indicadores de tipificacao do produto (acabado, materia-prima, consumo, ferramenta, volume, etc.) Ideal para analises de saldo de estoque, giro de produtos, controle logistico e classificacao de inventario"
+      - generic [ref=e253]:
+        - generic [ref=e254]:
+          - img
+          - text: gold_gralha
+        - generic [ref=e255]:
+          - img
+          - text: 39 colunas
+    - generic [ref=e257]:
+      - tablist [ref=e258]:
+        - tab "Todas as Colunas" [active] [selected] [ref=e259]
+        - tab "Por Tipo" [ref=e260]
+      - tabpanel "Todas as Colunas" [ref=e261]:
+        - generic [ref=e262]:
+          - generic [ref=e264]:
+            - img [ref=e266]
+            - generic [ref=e268]:
+              - generic [ref=e269]:
+                - generic [ref=e270]: localestoqueid
+                - generic [ref=e271]: INTEGER
+              - paragraph [ref=e272]: Identificacao / Codigo do local de estoque (Nao realizar calculos com essa coluna) / INT
+          - generic [ref=e274]:
+            - img [ref=e276]
+            - generic [ref=e278]:
+              - generic [ref=e279]:
+                - generic [ref=e280]: localestoquedescricao
+                - generic [ref=e281]: STRING
+              - paragraph [ref=e282]: Identificacao / Descricao do local de estoque / VARCHAR
+          - generic [ref=e284]:
+            - img [ref=e286]
+            - generic [ref=e288]:
+              - generic [ref=e289]:
+                - generic [ref=e290]: depositoid
+                - generic [ref=e291]: INTEGER
+              - paragraph [ref=e292]: Identificacao / Codigo do deposito (Nao realizar calculos com essa coluna) / INT
+          - generic [ref=e294]:
+            - img [ref=e296]
+            - generic [ref=e298]:
+              - generic [ref=e299]:
+                - generic [ref=e300]: depositodescricao
+                - generic [ref=e301]: STRING
+              - paragraph [ref=e302]: Identificacao / Descricao do deposito / VARCHAR
+          - generic [ref=e304]:
+            - img [ref=e306]
+            - generic [ref=e308]:
+              - generic [ref=e309]:
+                - generic [ref=e310]: produtocodigo
+                - generic [ref=e311]: STRING
+              - paragraph [ref=e312]: Identificacao / Codigo interno do produto / VARCHAR
+          - generic [ref=e314]:
+            - img [ref=e316]
+            - generic [ref=e318]:
+              - generic [ref=e319]:
+                - generic [ref=e320]: produtodescricao
+                - generic [ref=e321]: STRING
+              - paragraph [ref=e322]: Identificacao / Nome ou descricao comercial do produto / VARCHAR
+          - generic [ref=e324]:
+            - img [ref=e326]
+            - generic [ref=e328]:
+              - generic [ref=e329]:
+                - generic [ref=e330]: medidavendaid
+                - generic [ref=e331]: INTEGER
+              - paragraph [ref=e332]: Identificacao / Codigo da unidade de medida de venda (Nao realizar calculos com essa coluna) / INT
+          - generic [ref=e334]:
+            - img [ref=e336]
+            - generic [ref=e338]:
+              - generic [ref=e339]:
+                - generic [ref=e340]: medidavendadescricao
+                - generic [ref=e341]: STRING
+              - paragraph [ref=e342]: Identificacao / Descricao da unidade de medida de venda / VARCHAR
+          - generic [ref=e344]:
+            - img [ref=e346]
+            - generic [ref=e348]:
+              - generic [ref=e349]:
+                - generic [ref=e350]: tiporevestimentoid
+                - generic [ref=e351]: INTEGER
+              - paragraph [ref=e352]: Identificacao / Codigo do tipo de revestimento (Nao realizar calculos com essa coluna) / INT
+          - generic [ref=e354]:
+            - img [ref=e356]
+            - generic [ref=e358]:
+              - generic [ref=e359]:
+                - generic [ref=e360]: tiporevestimentodescricao
+                - generic [ref=e361]: STRING
+              - paragraph [ref=e362]: Identificacao / Descricao do tipo de revestimento / VARCHAR
+          - generic [ref=e364]:
+            - img [ref=e366]
+            - generic [ref=e368]:
+              - generic [ref=e369]:
+                - generic [ref=e370]: revestimentoid
+                - generic [ref=e371]: INTEGER
+              - paragraph [ref=e372]: Identificacao / Codigo do revestimento (Nao realizar calculos com essa coluna) / INT
+          - generic [ref=e374]:
+            - img [ref=e376]
+            - generic [ref=e378]:
+              - generic [ref=e379]:
+                - generic [ref=e380]: revestimentodescricao
+                - generic [ref=e381]: STRING
+              - paragraph [ref=e382]: Identificacao / Nome ou descricao do revestimento / VARCHAR
+          - generic [ref=e384]:
+            - img [ref=e386]
+            - generic [ref=e388]:
+              - generic [ref=e389]:
+                - generic [ref=e390]: quantidadeentrada
+                - generic [ref=e391]: FLOAT
+              - paragraph [ref=e392]: Movimentacao / Quantidade de entrada em estoque / DECIMAL
+          - generic [ref=e394]:
+            - img [ref=e396]
+            - generic [ref=e398]:
+              - generic [ref=e399]:
+                - generic [ref=e400]: quantidadesaida
+                - generic [ref=e401]: FLOAT
+              - paragraph [ref=e402]: Movimentacao / Quantidade de saida do estoque / DECIMAL
+          - generic [ref=e404]:
+            - img [ref=e406]
+            - generic [ref=e408]:
+              - generic [ref=e409]:
+                - generic [ref=e410]: quantidadesaldo
+                - generic [ref=e411]: FLOAT
+              - paragraph [ref=e412]: Movimentacao / Quantidade de saldo em estoque / DECIMAL
+          - generic [ref=e414]:
+            - img [ref=e416]
+            - generic [ref=e418]:
+              - generic [ref=e419]:
+                - generic [ref=e420]: familiaid
+                - generic [ref=e421]: INTEGER
+              - paragraph [ref=e422]: Classificacao / Codigo da familia do produto (Nao realizar calculos com essa coluna) / INT
+          - generic [ref=e424]:
+            - img [ref=e426]
+            - generic [ref=e428]:
+              - generic [ref=e429]:
+                - generic [ref=e430]: familiadescricao
+                - generic [ref=e431]: STRING
+              - paragraph [ref=e432]: Classificacao / Descricao da familia do produto / VARCHAR
+          - generic [ref=e434]:
+            - img [ref=e436]
+            - generic [ref=e438]:
+              - generic [ref=e439]:
+                - generic [ref=e440]: grupoprodutoid
+                - generic [ref=e441]: INTEGER
+              - paragraph [ref=e442]: Classificacao / Codigo do grupo de produto (Nao realizar calculos com essa coluna) / INT
+          - generic [ref=e444]:
+            - img [ref=e446]
+            - generic [ref=e448]:
+              - generic [ref=e449]:
+                - generic [ref=e450]: grupoprodutodescricao
+                - generic [ref=e451]: STRING
+              - paragraph [ref=e452]: Classificacao / Descricao do grupo de produto / VARCHAR
+          - generic [ref=e454]:
+            - img [ref=e456]
+            - generic [ref=e458]:
+              - generic [ref=e459]:
+                - generic [ref=e460]: situacaoprodutoid
+                - generic [ref=e461]: INTEGER
+              - paragraph [ref=e462]: Classificacao / Codigo da situacao do produto (Nao realizar calculos com essa coluna) / INT
+          - generic [ref=e464]:
+            - img [ref=e466]
+            - generic [ref=e468]:
+              - generic [ref=e469]:
+                - generic [ref=e470]: situacaoprodutodescricao
+                - generic [ref=e471]: STRING
+              - paragraph [ref=e472]: Classificacao / Descricao da situacao do produto / VARCHAR
+          - generic [ref=e474]:
+            - img [ref=e476]
+            - generic [ref=e478]:
+              - generic [ref=e479]:
+                - generic [ref=e480]: datainativo
+                - generic [ref=e481]: DATE
+              - paragraph [ref=e482]: Data / Data de inativacao do produto / DATE
+          - generic [ref=e484]:
+            - img [ref=e486]
+            - generic [ref=e488]:
+              - generic [ref=e489]:
+                - generic [ref=e490]: produtoempenho
+                - generic [ref=e491]: INTEGER
+              - paragraph [ref=e492]: Controle / Indicador de produto empenhado (reservado) / SMALLINT
+          - generic [ref=e494]:
+            - img [ref=e496]
+            - generic [ref=e498]:
+              - generic [ref=e499]:
+                - generic [ref=e500]: codigoanvisa
+                - generic [ref=e501]: STRING
+              - paragraph [ref=e502]: Identificacao / Codigo de registro do produto na ANVISA / VARCHAR
+          - generic [ref=e504]:
+            - img [ref=e506]
+            - generic [ref=e508]:
+              - generic [ref=e509]:
+                - generic [ref=e510]: produtotipoacabado
+                - generic [ref=e511]: INTEGER
+              - paragraph [ref=e512]: Classificacao / Indicador de produto acabado / SMALLINT
+          - generic [ref=e514]:
+            - img [ref=e516]
+            - generic [ref=e518]:
+              - generic [ref=e519]:
+                - generic [ref=e520]: produtotipoblococorte
+                - generic [ref=e521]: INTEGER
+              - paragraph [ref=e522]: Classificacao / Indicador de produto do tipo bloco para corte / SMALLINT
+          - generic [ref=e524]:
+            - img [ref=e526]
+            - generic [ref=e528]:
+              - generic [ref=e529]:
+                - generic [ref=e530]: produtotipobordado
+                - generic [ref=e531]: STRING
+              - paragraph [ref=e532]: Classificacao / Descricao ou indicador de produto bordado / VARCHAR
+          - generic [ref=e534]:
+            - img [ref=e536]
+            - generic [ref=e538]:
+              - generic [ref=e539]:
+                - generic [ref=e540]: produtotipocombustivel
+                - generic [ref=e541]: INTEGER
+              - paragraph [ref=e542]: Classificacao / Indicador de produto do tipo combustivel / SMALLINT
+          - generic [ref=e544]:
+            - img [ref=e546]
+            - generic [ref=e548]:
+              - generic [ref=e549]:
+                - generic [ref=e550]: produtotipoferramenta
+                - generic [ref=e551]: INTEGER
+              - paragraph [ref=e552]: Classificacao / Indicador de produto do tipo ferramenta / SMALLINT
+          - generic [ref=e554]:
+            - img [ref=e556]
+            - generic [ref=e558]:
+              - generic [ref=e559]:
+                - generic [ref=e560]: produtotipoimobilizado
+                - generic [ref=e561]: INTEGER
+              - paragraph [ref=e562]: Classificacao / Indicador de produto do tipo imobilizado / SMALLINT
+          - generic [ref=e564]:
+            - img [ref=e566]
+            - generic [ref=e568]:
+              - generic [ref=e569]:
+                - generic [ref=e570]: produtotipomanutencao
+                - generic [ref=e571]: INTEGER
+              - paragraph [ref=e572]: Classificacao / Indicador de produto do tipo manutencao / SMALLINT
+          - generic [ref=e574]:
+            - img [ref=e576]
+            - generic [ref=e578]:
+              - generic [ref=e579]:
+                - generic [ref=e580]: produtotipomatconsumo
+                - generic [ref=e581]: INTEGER
+              - paragraph [ref=e582]: Classificacao / Indicador de produto do tipo material de consumo / SMALLINT
+          - generic [ref=e584]:
+            - img [ref=e586]
+            - generic [ref=e588]:
+              - generic [ref=e589]:
+                - generic [ref=e590]: produtotipomedadapar
+                - generic [ref=e591]: INTEGER
+              - paragraph [ref=e592]: Classificacao / Indicador de produto do tipo medida adaptada / SMALLINT
+          - generic [ref=e594]:
+            - img [ref=e596]
+            - generic [ref=e598]:
+              - generic [ref=e599]:
+                - generic [ref=e600]: produtotipomateriaprima
+                - generic [ref=e601]: INTEGER
+              - paragraph [ref=e602]: Classificacao / Indicador de produto do tipo materia-prima / SMALLINT
+          - generic [ref=e604]:
+            - img [ref=e606]
+            - generic [ref=e608]:
+              - generic [ref=e609]:
+                - generic [ref=e610]: produtotipopeca
+                - generic [ref=e611]: INTEGER
+              - paragraph [ref=e612]: Classificacao / Indicador de produto do tipo peca / SMALLINT
+          - generic [ref=e614]:
+            - img [ref=e616]
+            - generic [ref=e618]:
+              - generic [ref=e619]:
+                - generic [ref=e620]: produtotipovolume
+                - generic [ref=e621]: INTEGER
+              - paragraph [ref=e622]: Classificacao / Indicador de produto do tipo volume / SMALLINT
+          - generic [ref=e624]:
+            - img [ref=e626]
+            - generic [ref=e629]:
+              - generic [ref=e630]: _extracted_at
+              - generic [ref=e631]: TIMESTAMP
+          - generic [ref=e633]:
+            - img [ref=e635]
+            - generic [ref=e638]:
+              - generic [ref=e639]: _processed_at
+              - generic [ref=e640]: TIMESTAMP
+          - generic [ref=e642]:
+            - img [ref=e644]
+            - generic [ref=e647]:
+              - generic [ref=e648]: data_processamento
+              - generic [ref=e649]: TIMESTAMP
+    - button "Close" [ref=e650]:
+      - img [ref=e651]
+      - generic [ref=e654]: Close

@@ -1,0 +1,381 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - button:
+                    - img
+              - generic:
+                - button:
+                  - img
+                  - text: Nova Conversa
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Conversas
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Gráficos
+                  - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button:
+                            - img
+                            - text: Abrir galeria de gráficos
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                                - generic:
+                                  - heading [level=4]: "### Saldo de Estoque por Local O saldo total de e..."
+                                  - paragraph: Mapa de Calor · teste
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                                - generic:
+                                  - heading [level=4]: Faturamento dos 5 Maiores Clientes
+                                  - paragraph: Linhas · Teste
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Dashboards
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Relatórios
+                  - img
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - generic:
+                      - generic: A
+                    - generic:
+                      - paragraph: Admin Teste
+                      - paragraph: admin@teste.com.br
+                    - generic:
+                      - generic:
+                        - img
+                        - text: Admin
+                      - img
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - heading [level=1]: Galeria de Gráficos
+                    - paragraph: Gerencie e visualize todos os seus gráficos personalizados
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                  - textbox:
+                    - /placeholder: Buscar gráficos por nome, categoria ou tags...
+              - generic:
+                - button: Recarregar Dados
+                - combobox:
+                  - generic: Todas as Categorias
+                  - img
+                - combobox:
+                  - generic: Grande
+                  - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Total de Gráficos
+                      - paragraph: "2"
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Categorias
+                      - paragraph: "2"
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Tipos Diferentes
+                      - paragraph: "2"
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Gráficos Ativos
+                      - paragraph: "2"
+            - generic:
+              - generic:
+                - generic:
+                  - button:
+                    - img
+                  - button:
+                    - img
+                  - button:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: "### Saldo de Estoque por Local O saldo total de e..."
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - paragraph: Sem dados para exibir
+                - generic:
+                  - generic:
+                    - generic: Estoque
+              - generic:
+                - generic:
+                  - button:
+                    - img
+                  - button:
+                    - img
+                  - button:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: Faturamento dos 5 Maiores Clientes
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: Carregando gráfico...
+                - generic:
+                  - generic:
+                    - generic: Faturamento
+                    - generic: Clientes
+          - generic:
+            - generic:
+              - generic:
+                - button:
+                  - img
+                - heading [level=2]: Editar Gráfico
+                - generic: 9b810744-0f2b-42f8-8b4d-0cb21179dccb
+              - generic:
+                - button [active]: Cancelar
+                - button: Atualizar
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Nome do Gráfico
+                    - textbox: "- ALTERADO TESTE"
+                  - generic:
+                    - generic: Categoria
+                    - textbox: teste
+                  - generic:
+                    - generic: Tipo de Gráfico
+                    - combobox:
+                      - generic: Mapa de Calor
+                      - img
+                  - generic:
+                    - generic: Descrição (opcional)
+                    - textbox: teste11111
+                  - generic:
+                    - generic: Tags (opcional)
+                    - generic:
+                      - textbox:
+                        - /placeholder: Digite uma tag e pressione Enter
+                      - button [disabled]:
+                        - img
+                    - generic:
+                      - generic:
+                        - text: estoque
+                        - button:
+                          - img
+                  - generic:
+                    - generic:
+                      - img
+                      - text: Mapeamento de Eixos
+                    - generic:
+                      - generic: Eixo X (Labels)
+                      - combobox:
+                        - generic: localestoquedescricao
+                        - img
+                    - generic:
+                      - generic: Eixos Y (Valores) (1)
+                      - generic:
+                        - generic:
+                          - checkbox [checked]
+                          - generic: depositodescricao
+                        - generic:
+                          - checkbox
+                          - generic: saldo_estoque
+                  - generic: ✅ 105 registros em 1.18s
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Consulta SQL
+                    - generic:
+                      - button:
+                        - img
+                        - text: IA
+                      - button:
+                        - img
+                        - text: Preview
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - tablist:
+                            - tab [selected]:
+                              - img
+                              - text: SQL
+                            - tab:
+                              - img
+                              - text: Python
+                        - tabpanel:
+                          - generic:
+                            - generic:
+                              - code:
+                                - generic:
+                                  - textbox
+                                  - textbox
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: "1"
+                                      - generic:
+                                        - generic: "2"
+                                      - generic:
+                                        - generic: "3"
+                                      - generic:
+                                        - generic: "4"
+                                      - generic:
+                                        - generic: "5"
+                                      - generic:
+                                        - generic: "6"
+                                      - generic:
+                                        - generic: "7"
+                                      - generic:
+                                        - generic: "8"
+                                      - generic:
+                                        - generic: "9"
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: SELECT
+                                      - generic:
+                                        - generic: t.localestoquedescricao AS
+                                      - generic:
+                                        - generic: localestoquedescricao,
+                                      - generic:
+                                        - generic: t.depositodescricao AS depositodescricao,
+                                      - generic:
+                                        - generic: SUM(t.quantidadesaldo) AS saldo_estoque
+                                      - generic:
+                                        - generic: FROM
+                                      - generic:
+                                        - generic: gold_gralha.vw_estoque_jcla AS t
+                                      - generic:
+                                        - generic: GROUP BY
+                                      - generic:
+                                        - generic: t.localestoquedescricao,
+                                      - generic:
+                                        - generic: t.depositodescricao
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - tablist:
+                            - tab [selected]:
+                              - img
+                              - text: Gráfico
+                            - tab:
+                              - img
+                              - text: Dados (105)
+                          - generic:
+                            - generic: 105 registros • 1.18s
+                            - button:
+                              - img
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - paragraph: Sem dados para exibir
+                - generic:
+                  - generic:
+                    - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                          - generic: Assistente IA
+                        - generic:
+                          - button:
+                            - img
+                          - button:
+                            - img
+                      - generic:
+                        - generic:
+                          - generic: desfazer ultima alteracao
+                        - generic:
+                          - generic: "Para desfazer a última alteração e adequar o gráfico ao tipo 'heatmap', removi o LIMIT e o ORDER BY, que são mais comuns para gráficos de 'top N'. Adicionei a coluna 'depositodescricao' como um segundo eixo para que o heatmap possa exibir a relação entre o saldo de estoque por local e por depósito. O eixo Y foi atualizado para incluir 'depositodescricao'. 📝 Alterado: SQL, Eixos"
+                          - generic:
+                            - img
+                            - text: Aplicado
+                        - generic:
+                          - generic: undo
+                        - generic:
+                          - generic: Não consigo realizar a ação de 'desfazer' (undo) pois não mantenho um histórico das alterações anteriores. A consulta atual foi mantida.
+                      - generic:
+                        - generic:
+                          - textbox:
+                            - /placeholder: "Ex: Agrupar por mês, gráfico de pizza..."
+                          - button [disabled]:
+                            - img
+            - contentinfo:
+              - generic:
+                - generic: "Dados atualizados em: Sem informação"
+                - generic: © 2026 JCLA Analytics. Todos os direitos reservados.
+                - generic: v1.8.0
+      - contentinfo:
+        - generic:
+          - generic: "Dados atualizados em: Sem informação"
+          - generic: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic: v1.8.0
+  - alertdialog "Alterações não salvas" [ref=e1477]:
+    - generic [ref=e1478]:
+      - heading "Alterações não salvas" [level=2] [ref=e1479]
+      - paragraph [ref=e1480]: Você tem alterações não salvas. O que deseja fazer?
+    - button "Fechar" [ref=e1481]:
+      - img
+      - generic [ref=e1482]: Fechar
+    - generic [ref=e1483]:
+      - button "Cancelar" [ref=e1484]
+      - button "Descartar" [ref=e1485]
+      - button "Salvar e Sair" [ref=e1486]

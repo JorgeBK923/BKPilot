@@ -1,0 +1,54 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e2317]:
+        - img [ref=e2319]
+        - generic [ref=e2322]: Erro ao carregar logs de notificação
+  - generic [ref=e2067]:
+    - generic [ref=e2070]:
+      - button "Voltar" [ref=e2071]:
+        - img
+        - text: Voltar
+      - generic [ref=e2072]:
+        - heading "Auditoria do Sistema" [level=1] [ref=e2073]
+        - paragraph [ref=e2074]: Visualize e analise logs de auditoria de todas as operações do sistema
+    - generic [ref=e2076]:
+      - tablist [ref=e2077]:
+        - tab "Conversas" [ref=e2078]:
+          - img
+          - text: Conversas
+        - tab "Notificações" [active] [selected] [ref=e2079]:
+          - img
+          - text: Notificações
+      - tabpanel "Notificações" [ref=e2323]:
+        - generic [ref=e2325]:
+          - generic [ref=e2327]:
+            - generic [ref=e2328]:
+              - generic [ref=e2329]: Logs de Notificações
+              - generic [ref=e2330]: Histórico de envios de emails e mensagens WhatsApp agendadas
+            - button "Atualizar" [ref=e2331]:
+              - img
+              - text: Atualizar
+          - generic [ref=e2332]:
+            - generic [ref=e2333]:
+              - combobox [ref=e2334]:
+                - generic: Todos os tipos
+                - img
+              - combobox [ref=e2335]:
+                - generic: Todos os status
+                - img
+              - combobox [ref=e2336]:
+                - generic: "50"
+                - img
+            - table [ref=e2339]:
+              - rowgroup [ref=e2340]:
+                - row "Data/Hora Tipo Destinatário Dashboard Status" [ref=e2341]:
+                  - columnheader [ref=e2342]
+                  - columnheader "Data/Hora" [ref=e2343]
+                  - columnheader "Tipo" [ref=e2344]
+                  - columnheader "Destinatário" [ref=e2345]
+                  - columnheader "Dashboard" [ref=e2346]
+                  - columnheader "Status" [ref=e2347]
+              - rowgroup [ref=e2348]:
+                - row "Nenhum log de notificação encontrado" [ref=e2349]:
+                  - cell "Nenhum log de notificação encontrado" [ref=e2350]

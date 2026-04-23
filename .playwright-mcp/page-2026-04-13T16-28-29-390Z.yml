@@ -1,0 +1,220 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - button:
+                    - img
+              - generic:
+                - button:
+                  - img
+                  - text: Nova Conversa
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Conversas
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Gráficos
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Dashboards
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Relatórios
+                  - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button:
+                            - img
+                            - text: Criar Relatório
+                          - generic: Nenhum relatório criado
+            - generic:
+              - generic:
+                - button [expanded]:
+                  - generic:
+                    - generic:
+                      - generic: A
+                    - generic:
+                      - paragraph: Admin Teste 2
+                      - paragraph: admin2@teste.com.br
+                    - generic:
+                      - generic:
+                        - img
+                        - text: Admin
+                      - img
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - heading [level=1]: Galeria de Gráficos
+                    - paragraph: Gerencie e visualize todos os seus gráficos personalizados
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                  - textbox:
+                    - /placeholder: Buscar gráficos por nome, categoria ou tags...
+              - generic:
+                - button: Recarregar Dados
+                - combobox:
+                  - generic: Todas as Categorias
+                  - img
+                - combobox:
+                  - generic: Grande
+                  - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Total de Gráficos
+                      - paragraph: "4"
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Categorias
+                      - paragraph: "1"
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Tipos Diferentes
+                      - paragraph: "2"
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Gráficos Ativos
+                      - paragraph: "4"
+            - generic:
+              - generic:
+                - generic:
+                  - button:
+                    - img
+                  - button:
+                    - img
+                  - button:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: O conjunto de dados analisado compreende **50.000*...
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: Erro na query do gráfico
+                      - generic: Erro interno no acesso aos dados do gráfico
+                      - button:
+                        - img
+                        - text: Corrigir
+              - generic:
+                - generic:
+                  - button:
+                    - img
+                  - button:
+                    - img
+                  - button:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: Analise
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: Carregando gráfico...
+              - generic:
+                - generic:
+                  - button:
+                    - img
+                  - button:
+                    - img
+                  - button:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: Tega sistemas 2
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: Carregando gráfico...
+              - generic:
+                - generic:
+                  - button:
+                    - img
+                  - button:
+                    - img
+                  - button:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: "### Análise do Estoque Médio de Produtos por Loja ..."
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                      - generic: Carregando gráfico...
+      - contentinfo:
+        - generic:
+          - generic: "Dados atualizados em: Sem informação"
+          - generic: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic: v1.8.0
+  - menu "A Admin Teste 2 admin2@teste.com.br Admin" [active] [ref=e1986]:
+    - menuitem "Configurações" [ref=e1987]:
+      - img
+      - text: Configurações
+    - menuitem "Gestão de Usuários" [ref=e1988]:
+      - img
+      - text: Gestão de Usuários
+    - menuitem "Licenças" [ref=e1989]:
+      - img
+      - text: Licenças
+    - menuitem "Auditoria" [ref=e1990]:
+      - img
+      - text: Auditoria
+    - menuitem "Dicionário de Dados" [ref=e1991]:
+      - img
+      - text: Dicionário de Dados
+    - menuitem "Importação de Dados" [ref=e1992]:
+      - img
+      - text: Importação de Dados
+    - separator [ref=e1993]
+    - menuitem "Sair" [ref=e1994]:
+      - img
+      - text: Sair

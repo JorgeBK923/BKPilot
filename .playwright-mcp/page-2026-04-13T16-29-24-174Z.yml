@@ -1,0 +1,19 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e2106]:
+    - generic [ref=e2109]:
+      - button "Voltar" [ref=e2110]:
+        - img
+        - text: Voltar
+      - generic [ref=e2111]:
+        - heading "Gestão de Usuários" [level=1] [ref=e2112]
+        - paragraph [ref=e2113]: Gerencie usuários, permissões e configurações do sistema
+    - generic [ref=e2117]:
+      - tablist [ref=e2118]:
+        - tab "Usuários" [ref=e2119]
+        - tab "Permissões" [ref=e2120]
+        - tab "Personas" [selected] [ref=e2121]
+      - tabpanel "Personas" [ref=e2122]:
+        - generic [ref=e2123]:
+          - heading "Gestão de Acesso a Personas" [level=1] [ref=e2124]
+          - paragraph [ref=e2125]: Nenhuma persona disponível para esta licença.

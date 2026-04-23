@@ -1,0 +1,1418 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - button:
+                    - img
+              - generic:
+                - button:
+                  - img
+                  - text: Nova Conversa
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Conversas
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Gráficos
+                  - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button:
+                            - img
+                            - text: Abrir galeria de gráficos
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                                - generic:
+                                  - heading [level=4]: "### Saldo de Estoque por Local O saldo total de e..."
+                                  - paragraph: Mapa de Calor · teste
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                                - generic:
+                                  - heading [level=4]: Faturamento dos 5 Maiores Clientes
+                                  - paragraph: Linhas · Teste
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Dashboards
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Relatórios
+                  - img
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - generic:
+                      - generic: A
+                    - generic:
+                      - paragraph: Admin Teste
+                      - paragraph: admin@teste.com.br
+                    - generic:
+                      - generic:
+                        - img
+                        - text: Admin
+                      - img
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - heading [level=1]: Galeria de Gráficos
+                    - paragraph: Gerencie e visualize todos os seus gráficos personalizados
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                  - textbox:
+                    - /placeholder: Buscar gráficos por nome, categoria ou tags...
+              - generic:
+                - button: Recarregar Dados
+                - combobox:
+                  - generic: Todas as Categorias
+                  - img
+                - combobox:
+                  - generic: Grande
+                  - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Total de Gráficos
+                      - paragraph: "2"
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Categorias
+                      - paragraph: "2"
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Tipos Diferentes
+                      - paragraph: "2"
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - paragraph: Gráficos Ativos
+                      - paragraph: "2"
+            - generic:
+              - generic:
+                - generic:
+                  - button:
+                    - img
+                  - button:
+                    - img
+                  - button:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: "### Saldo de Estoque por Local O saldo total de e..."
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - paragraph: Sem dados para exibir
+                - generic:
+                  - generic:
+                    - generic: Estoque
+              - generic:
+                - generic:
+                  - button:
+                    - img
+                  - button:
+                    - img
+                  - button:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: Faturamento dos 5 Maiores Clientes
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - img
+                            - combobox:
+                              - generic: Todos (629)
+                              - img
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - img:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: MAGAZINE LUI...
+                                      - generic:
+                                        - generic: KOMFORTHOUSE...
+                                      - generic:
+                                        - generic: BENOIT ELETR...
+                                      - generic:
+                                        - generic: LOJAS COLOMB...
+                                      - generic:
+                                        - generic: MERCADOMOVEI...
+                                      - generic:
+                                        - generic: BOM PRECO MO...
+                                      - generic:
+                                        - generic: MOBLER INDUS...
+                                      - generic:
+                                        - generic: FABRICA DE M...
+                                      - generic:
+                                        - generic: EL MUNDO DEL...
+                                      - generic:
+                                        - generic: SOFA CAMPINA...
+                                      - generic:
+                                        - generic: ELAZA COMERC...
+                                      - generic:
+                                        - generic: PONTALTI IND...
+                                      - generic:
+                                        - generic: SHOW S.A.
+                                      - generic:
+                                        - generic: GRUPO TERRAC...
+                                      - generic:
+                                        - generic: CASA CHIQUE ...
+                                      - generic:
+                                        - generic: SMS MOVEIS L...
+                                      - generic:
+                                        - generic: MOVEIS ESPLA...
+                                      - generic:
+                                        - generic: SOFAS CHAPEC...
+                                      - generic:
+                                        - generic: OUTLET DO SO...
+                                      - generic:
+                                        - generic: CERAMICAS CA...
+                                      - generic:
+                                        - generic: IMPORTACIONE...
+                                      - generic:
+                                        - generic: COLISEU HOME...
+                                      - generic:
+                                        - generic: SAGEL LTDA
+                                      - generic:
+                                        - generic: OUTLET DO SO...
+                                      - generic:
+                                        - generic: RIO 7 COMERC...
+                                      - generic:
+                                        - generic: YURITI S. A.
+                                      - generic:
+                                        - generic: J.T.M.M CONC...
+                                      - generic:
+                                        - generic: HOGAR IDEAL ...
+                                      - generic:
+                                        - generic: VIDA NOVA ES...
+                                      - generic:
+                                        - generic: D PAMELA COM...
+                                      - generic:
+                                        - generic: CASA CHIQUE ...
+                                      - generic:
+                                        - generic: GUSTAVO BONF...
+                                      - generic:
+                                        - generic: LADIFAR S A
+                                      - generic:
+                                        - generic: L. DE F. LEI...
+                                      - generic:
+                                        - generic: CANAL E CIA ...
+                                      - generic:
+                                        - generic: REALY S A IM...
+                                      - generic:
+                                        - generic: ZIMMER DECOR...
+                                      - generic:
+                                        - generic: ATENEO MOVEI...
+                                      - generic:
+                                        - generic: ROYAL INTERI...
+                                      - generic:
+                                        - generic: SIDLAR PLANE...
+                                      - generic:
+                                        - generic: GRUPO JTM SA
+                                      - generic:
+                                        - generic: SOFA BONITO ...
+                                      - generic:
+                                        - generic: CASA MARQUES...
+                                      - generic:
+                                        - generic: JEFERSON RAF...
+                                      - generic:
+                                        - generic: ESTACION ORT...
+                                      - generic:
+                                        - generic: MOVEIS PONTA...
+                                      - generic:
+                                        - generic: VELOSANDIA M...
+                                      - generic:
+                                        - generic: BRASILDECOR ...
+                                      - generic:
+                                        - generic: NF ART CONCE...
+                                      - generic:
+                                        - generic: SOAVE ESTRAZ...
+                                      - generic:
+                                        - generic: JAIDE SERVEZ...
+                                      - generic:
+                                        - generic: TEMPLE MOVEI...
+                                      - generic:
+                                        - generic: SOAVE ESTRAZ...
+                                      - generic:
+                                        - generic: RUST DECOR M...
+                                      - generic:
+                                        - generic: L P POZENATO...
+                                      - generic:
+                                        - generic: L.R.M COMERC...
+                                      - generic:
+                                        - generic: ROYAL HOME C...
+                                      - generic:
+                                        - generic: ATMAN BRASIL...
+                                      - generic:
+                                        - generic: SONHARE COLC...
+                                      - generic:
+                                        - generic: TS COMERCIO ...
+                                      - generic:
+                                        - generic: REDE DREAMS ...
+                                      - generic:
+                                        - generic: VERA COMERCI...
+                                      - generic:
+                                        - generic: SOFA SAO CAR...
+                                      - generic:
+                                        - generic: RUST MOVEIS ...
+                                      - generic:
+                                        - generic: JR COMERCIO ...
+                                      - generic:
+                                        - generic: MACEDO CALAN...
+                                      - generic:
+                                        - generic: COLCHOTECH B...
+                                      - generic:
+                                        - generic: JENYFER VIEI...
+                                      - generic:
+                                        - generic: XV DE NOVEMB...
+                                      - generic:
+                                        - generic: SONHO DE CAS...
+                                      - generic:
+                                        - generic: CASA MAIS DE...
+                                      - generic:
+                                        - generic: CASA LUMI ES...
+                                      - generic:
+                                        - generic: DECORA CAMAR...
+                                      - generic:
+                                        - generic: IDECOR SHOP ...
+                                      - generic:
+                                        - generic: LINHA NOBRE ...
+                                      - generic:
+                                        - generic: EXPORT Y IMP...
+                                      - generic:
+                                        - generic: ALVES E XAVI...
+                                      - generic:
+                                        - generic: CONFORTOBOM ...
+                                      - generic:
+                                        - generic: MABIM HOME S...
+                                      - generic:
+                                        - generic: ANDREA DE BA...
+                                      - generic:
+                                        - generic: A CRUZEIRENS...
+                                      - generic:
+                                        - generic: MARIA DO CAR...
+                                      - generic:
+                                        - generic: +77 DESIGN E...
+                                      - generic:
+                                        - generic: VIERO MOVEIS...
+                                      - generic:
+                                        - generic: DF ESTOFADOS...
+                                      - generic:
+                                        - generic: JORGE P. DE ...
+                                      - generic:
+                                        - generic: IDEAL COLCHO...
+                                      - generic:
+                                        - generic: CRISTIANE AP...
+                                      - generic:
+                                        - generic: M. A. RECH D...
+                                      - generic:
+                                        - generic: J & A SOFA C...
+                                      - generic:
+                                        - generic: QUENIA COSTA...
+                                      - generic:
+                                        - generic: D. H. MOVEIS...
+                                      - generic:
+                                        - generic: GIC COMERCIA...
+                                      - generic:
+                                        - generic: HEVELIN LIEZ...
+                                      - generic:
+                                        - generic: CRISTIANO DE...
+                                      - generic:
+                                        - generic: RAMPANI MOVE...
+                                      - generic:
+                                        - generic: GALPAO DECOR...
+                                      - generic:
+                                        - generic: AMANA COMERC...
+                                      - generic:
+                                        - generic: BHD MOVEIS E...
+                                      - generic:
+                                        - generic: KERYGMA PERS...
+                                      - generic:
+                                        - generic: RITA DE CACI...
+                                      - generic:
+                                        - generic: PEROLA CENTE...
+                                      - generic:
+                                        - generic: MOVEIS EVIDE...
+                                      - generic:
+                                        - generic: ROSANGELA CO...
+                                      - generic:
+                                        - generic: ELIZABETH MA...
+                                      - generic:
+                                        - generic: LINEAR INTER...
+                                      - generic:
+                                        - generic: LUHAM DECOR ...
+                                      - generic:
+                                        - generic: BC MOVEIS LT...
+                                      - generic:
+                                        - generic: A. NUNES COM...
+                                      - generic:
+                                        - generic: A J L DULAR ...
+                                      - generic:
+                                        - generic: CASA NOBRE M...
+                                      - generic:
+                                        - generic: AMBIENTTE IN...
+                                      - generic:
+                                        - generic: SILVA E KOEH...
+                                      - generic:
+                                        - generic: RAFAEL FONTA...
+                                      - generic:
+                                        - generic: CASA NOSSA D...
+                                      - generic:
+                                        - generic: ATHENAS MOVE...
+                                      - generic:
+                                        - generic: RAFAEL MOVEI...
+                                      - generic:
+                                        - generic: CALDAS COMER...
+                                      - generic:
+                                        - generic: MAKEN ACESSO...
+                                      - generic:
+                                        - generic: COMERCIAL CO...
+                                      - generic:
+                                        - generic: MATHEUS ALVE...
+                                      - generic:
+                                        - generic: NEL MOVEIS E...
+                                      - generic:
+                                        - generic: PALOMA G SAN...
+                                      - generic:
+                                        - generic: PRISCILLA K ...
+                                      - generic:
+                                        - generic: ABRANTES INT...
+                                      - generic:
+                                        - generic: CANTO ALEMAO...
+                                      - generic:
+                                        - generic: MOZZELAR MOV...
+                                      - generic:
+                                        - generic: BM MOVEIS DE...
+                                      - generic:
+                                        - generic: FARIAS E KLE...
+                                      - generic:
+                                        - generic: MAXCARLO DEC...
+                                      - generic:
+                                        - generic: PAOLA MOVEIS...
+                                      - generic:
+                                        - generic: LOJA CURBANI...
+                                      - generic:
+                                        - generic: JETO PROJETO...
+                                      - generic:
+                                        - generic: VALERIA VIEI...
+                                      - generic:
+                                        - generic: BUILDCAP SOL...
+                                      - generic:
+                                        - generic: CLAUDIOMIRO ...
+                                      - generic:
+                                        - generic: A M ISIDORO ...
+                                      - generic:
+                                        - generic: MAGAZINE VIA...
+                                      - generic:
+                                        - generic: LIVE DESIGN ...
+                                      - generic:
+                                        - generic: 21.102.429 S...
+                                      - generic:
+                                        - generic: YAC TORRES M...
+                                      - generic:
+                                        - generic: SOLANGE APAR...
+                                      - generic:
+                                        - generic: CONEXAO MOVE...
+                                      - generic:
+                                        - generic: R S DE SOUZA...
+                                      - generic:
+                                        - generic: ABV DESIGN D...
+                                      - generic:
+                                        - generic: LUGUI MOVEIS...
+                                      - generic:
+                                        - generic: MOHAMAD MAHM...
+                                      - generic:
+                                        - generic: MAGAZINE MOV...
+                                      - generic:
+                                        - generic: LISIANE GRAC...
+                                      - generic:
+                                        - generic: A.M. COSTA C...
+                                      - generic:
+                                        - generic: M. A. S. DOS...
+                                      - generic:
+                                        - generic: DOMINGOS CAS...
+                                      - generic:
+                                        - generic: ANTONIO ENEA...
+                                      - generic:
+                                        - generic: MEZZERO DESI...
+                                      - generic:
+                                        - generic: LITORAL SUL ...
+                                      - generic:
+                                        - generic: COMERCIAL DE...
+                                      - generic:
+                                        - generic: D AGUIAR IND...
+                                      - generic:
+                                        - generic: RIKA JUAZEIR...
+                                      - generic:
+                                        - generic: AGUEDA DE FA...
+                                      - generic:
+                                        - generic: MAJENNY COME...
+                                      - generic:
+                                        - generic: ELLFAS DO BR...
+                                      - generic:
+                                        - generic: CHIARELO E N...
+                                      - generic:
+                                        - generic: LCA COLCHOES...
+                                      - generic:
+                                        - generic: MAJED MOVEIS...
+                                      - generic:
+                                        - generic: COMERCIAL WI...
+                                      - generic:
+                                        - generic: MONTE REMONT...
+                                      - generic:
+                                        - generic: E N BARCELOS...
+                                      - generic:
+                                        - generic: R. RIBEIRO C...
+                                      - generic:
+                                        - generic: FORMALAR MOV...
+                                      - generic:
+                                        - generic: JOSE ORLANDO...
+                                      - generic:
+                                        - generic: ALFE COMERCI...
+                                      - generic:
+                                        - generic: MOVEIS PONTA...
+                                      - generic:
+                                        - generic: ANA PAULA ME...
+                                      - generic:
+                                        - generic: INES MARIA P...
+                                      - generic:
+                                        - generic: OTTO DESIGN ...
+                                      - generic:
+                                        - generic: FAYEZ NAGIB ...
+                                      - generic:
+                                        - generic: DENISE DESIG...
+                                      - generic:
+                                        - generic: MARJORY COME...
+                                      - generic:
+                                        - generic: R.R ESTOFADO...
+                                      - generic:
+                                        - generic: SHOP MOVEIS ...
+                                      - generic:
+                                        - generic: IRMAOS MICHE...
+                                      - generic:
+                                        - generic: ANA ARLIR LU...
+                                      - generic:
+                                        - generic: RENOVO MOVEI...
+                                      - generic:
+                                        - generic: 47.908.759 A...
+                                      - generic:
+                                        - generic: FS COMERCIO ...
+                                      - generic:
+                                        - generic: WAGNER LUIZ ...
+                                      - generic:
+                                        - generic: LOTUS MOVEIS...
+                                      - generic:
+                                        - generic: MARKATI COME...
+                                      - generic:
+                                        - generic: V B MOVEIS E...
+                                      - generic:
+                                        - generic: LCA COLCHOES...
+                                      - generic:
+                                        - generic: VILAS BOAS V...
+                                      - generic:
+                                        - generic: WENDEL ANGEL...
+                                      - generic:
+                                        - generic: EDESIGN COME...
+                                      - generic:
+                                        - generic: AIO MOVEIS B...
+                                      - generic:
+                                        - generic: LA CASA DECO...
+                                      - generic:
+                                        - generic: ALISON D. S....
+                                      - generic:
+                                        - generic: AHMAD M.HAMO...
+                                      - generic:
+                                        - generic: SILVESTRE MO...
+                                      - generic:
+                                        - generic: IRMAOS CHUDZ...
+                                      - generic:
+                                        - generic: NEWDECOR MOV...
+                                      - generic:
+                                        - generic: RESIDENCE - ...
+                                      - generic:
+                                        - generic: STILLUS MOVE...
+                                      - generic:
+                                        - generic: NEW STORE CO...
+                                      - generic:
+                                        - generic: PELEGRINO MO...
+                                      - generic:
+                                        - generic: AUTENTIQUE D...
+                                      - generic:
+                                        - generic: ADEMIR NEVES...
+                                      - generic:
+                                        - generic: TARINI & CIA...
+                                      - generic:
+                                        - generic: MOVEIS ROSSI...
+                                      - generic:
+                                        - generic: SEIVA BRUTA ...
+                                      - generic:
+                                        - generic: SEVILLA DECO...
+                                      - generic:
+                                        - generic: ADRIANA VINH...
+                                      - generic:
+                                        - generic: ELARA DESIGN...
+                                      - generic:
+                                        - generic: BOM GOSTO CO...
+                                      - generic:
+                                        - generic: MERCANTIL BO...
+                                      - generic:
+                                        - generic: CASA FLAVIA ...
+                                      - generic:
+                                        - generic: EXCLUSIVE LT...
+                                      - generic:
+                                        - generic: MADRUGA E BA...
+                                      - generic:
+                                        - generic: SOFA HORTOLA...
+                                      - generic:
+                                        - generic: MK MOVEIS E ...
+                                      - generic:
+                                        - generic: MAYARA E CIB...
+                                      - generic:
+                                        - generic: GALPAO CERRA...
+                                      - generic:
+                                        - generic: SCARAMAL CIA...
+                                      - generic:
+                                        - generic: HP JOHN MOVE...
+                                      - generic:
+                                        - generic: SEBASTIAO FR...
+                                      - generic:
+                                        - generic: JOAO BATISTA...
+                                      - generic:
+                                        - generic: PRIME MOVEIS...
+                                      - generic:
+                                        - generic: 62.489.582 A...
+                                      - generic:
+                                        - generic: SANTO SOFA C...
+                                      - generic:
+                                        - generic: ARETHA ARAUJ...
+                                      - generic:
+                                        - generic: MARCON BARBE...
+                                      - generic:
+                                        - generic: MARIANA GABR...
+                                      - generic:
+                                        - generic: A. L. C. IND...
+                                      - generic:
+                                        - generic: RECICLAGEM T...
+                                      - generic:
+                                        - generic: LEANDRO RIBE...
+                                      - generic:
+                                        - generic: BEL AMBIENTE...
+                                      - generic:
+                                        - generic: MAURO APAREC...
+                                      - generic:
+                                        - generic: AED COLCHOES...
+                                      - generic:
+                                        - generic: MOVCEU COMER...
+                                      - generic:
+                                        - generic: SPACO LAR CO...
+                                      - generic:
+                                        - generic: SOFA LIMEIRA...
+                                      - generic:
+                                        - generic: DEBORA GONCA...
+                                      - generic:
+                                        - generic: J. ALWAN - C...
+                                      - generic:
+                                        - generic: PRIVILEGE MO...
+                                      - generic:
+                                        - generic: AZEVEDO SOAR...
+                                      - generic:
+                                        - generic: ANDRADE COME...
+                                      - generic:
+                                        - generic: GENKI KENKO ...
+                                      - generic:
+                                        - generic: GALPA MOVEIS...
+                                      - generic:
+                                        - generic: NEIVOR JOSE ...
+                                      - generic:
+                                        - generic: MOBILIARIO L...
+                                      - generic:
+                                        - generic: JOSE HENRIQU...
+                                      - generic:
+                                        - generic: BRASM7 COMER...
+                                      - generic:
+                                        - generic: R B CORAZZA ...
+                                      - generic:
+                                        - generic: CATIA MORAIS...
+                                      - generic:
+                                        - generic: FAGERFLEX CO...
+                                      - generic:
+                                        - generic: LIARCE LILHA...
+                                      - generic:
+                                        - generic: ISABELLA MOV...
+                                      - generic:
+                                        - generic: MOVEIS FRANK...
+                                      - generic:
+                                        - generic: GUSTAVO GONC...
+                                      - generic:
+                                        - generic: SATE CONCEIT...
+                                      - generic:
+                                        - generic: MONICA PRISC...
+                                      - generic:
+                                        - generic: ALY STUDIO D...
+                                      - generic:
+                                        - generic: LUCINEIA APA...
+                                      - generic:
+                                        - generic: COMERCIO DE ...
+                                      - generic:
+                                        - generic: ATACADAO DE ...
+                                      - generic:
+                                        - generic: PATRICIA T. ...
+                                      - generic:
+                                        - generic: IWANKO CIA L...
+                                      - generic:
+                                        - generic: ALEXANDRE DE...
+                                      - generic:
+                                        - generic: AMD COMERCIO...
+                                      - generic:
+                                        - generic: YES CENTER M...
+                                      - generic:
+                                        - generic: LEANDRO DA S...
+                                      - generic:
+                                        - generic: N BARBOSA OL...
+                                      - generic:
+                                        - generic: GUILHERME BE...
+                                      - generic:
+                                        - generic: JANETE SUHET...
+                                      - generic:
+                                        - generic: UNO VIALLE C...
+                                      - generic:
+                                        - generic: ROGERIO APAR...
+                                      - generic:
+                                        - generic: MARA CRISTIN...
+                                      - generic:
+                                        - generic: LOJA CAMPOS ...
+                                      - generic:
+                                        - generic: IBR COMERCIO...
+                                      - generic:
+                                        - generic: OLIPA ESTOFA...
+                                      - generic:
+                                        - generic: MARISTELA DO...
+                                      - generic:
+                                        - generic: ALECIO RISSA...
+                                      - generic:
+                                        - generic: ROSEMARI VAZ...
+                                      - generic:
+                                        - generic: IMPERIO COME...
+                                      - generic:
+                                        - generic: PRISCILA PER...
+                                      - generic:
+                                        - generic: MISAEL BARBO...
+                                      - generic:
+                                        - generic: RODRIGO SANT...
+                                      - generic:
+                                        - generic: IRENALDO GEN...
+                                      - generic:
+                                        - generic: PATRICIA CIA...
+                                      - generic:
+                                        - generic: GALPAO DO DE...
+                                      - generic:
+                                        - generic: POZENATO CRI...
+                                      - generic:
+                                        - generic: VLS MOVEIS L...
+                                      - generic:
+                                        - generic: ANDREIA CRIS...
+                                      - generic:
+                                        - generic: ANGELICA ARC...
+                                      - generic:
+                                        - generic: BRUNA RAFAEL...
+                                      - generic:
+                                        - generic: MMAN DECORAC...
+                                      - generic:
+                                        - generic: PRISCILA CRI...
+                                      - generic:
+                                        - generic: LUCAS RIBEIR...
+                                      - generic:
+                                        - generic: LUCAS ELIAS ...
+                                      - generic:
+                                        - generic: NATALY DE SO...
+                                      - generic:
+                                        - generic: MAIRYS FRANC...
+                                      - generic:
+                                        - generic: MACIEL FRANC...
+                                      - generic:
+                                        - generic: CESAR SAMPAI...
+                                      - generic:
+                                        - generic: LUIZ FELIPE ...
+                                      - generic:
+                                        - generic: ANA CLAUDIA ...
+                                      - generic:
+                                        - generic: DANIEL BATIS...
+                                      - generic:
+                                        - generic: MAURO SANCHE...
+                                      - generic:
+                                        - generic: OSMAIR BUENO...
+                                      - generic:
+                                        - generic: RYAN ARAUJO ...
+                                      - generic:
+                                        - generic: DAIANA DA SI...
+                                      - generic:
+                                        - generic: TAMIRES CRIS...
+                                      - generic:
+                                        - generic: BRASILAR MOV...
+                                      - generic:
+                                        - generic: VANDA MOVEIS...
+                                      - generic:
+                                        - generic: SERGIO DE CA...
+                                      - generic:
+                                        - generic: LUMALAR INDU...
+                                      - generic:
+                                        - generic: GISLAINE CRI...
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic: R$ 0
+                                      - generic:
+                                        - generic: R$ 5 mi
+                                      - generic:
+                                        - generic: R$ 10 mi
+                                      - generic:
+                                        - generic: R$ 15 mi
+                                      - generic:
+                                        - generic: R$ 20 mi
+                                  - generic:
+                                    - generic:
+                                      - generic: R$ 19.175.576,32
+                                      - generic: R$ 5.085.317,55
+                                      - generic: R$ 4.124.505,76
+                                      - generic: R$ 2.727.914,39
+                                      - generic: R$ 1.802.362,94
+                                      - generic: R$ 892.844,17
+                                      - generic: R$ 574.810,57
+                                      - generic: R$ 368.649,77
+                                      - generic: R$ 314.873,62
+                                      - generic: R$ 274.243,11
+                                      - generic: R$ 214.556,16
+                                      - generic: R$ 208.835,80
+                                      - generic: R$ 165.915,93
+                                      - generic: R$ 154.782,14
+                                      - generic: R$ 147.312,00
+                                      - generic: R$ 137.516,56
+                                      - generic: R$ 134.072,56
+                                      - generic: R$ 120.776,00
+                                      - generic: R$ 116.131,02
+                                      - generic: R$ 112.998,92
+                                      - generic: R$ 106.737,52
+                                      - generic: R$ 101.545,67
+                                      - generic: R$ 99.973,27
+                                      - generic: R$ 95.813,71
+                                      - generic: R$ 90.074,11
+                                      - generic: R$ 89.523,28
+                                      - generic: R$ 86.184,28
+                                      - generic: R$ 79.980,98
+                                      - generic: R$ 78.491,42
+                                      - generic: R$ 78.011,89
+                                      - generic: R$ 75.462,00
+                                      - generic: R$ 74.441,00
+                                      - generic: R$ 70.542,24
+                                      - generic: R$ 68.138,83
+                                      - generic: R$ 67.920,00
+                                      - generic: R$ 65.959,56
+                                      - generic: R$ 65.823,86
+                                      - generic: R$ 62.909,80
+                                      - generic: R$ 59.899,00
+                                      - generic: R$ 59.714,27
+                                      - generic: R$ 58.836,75
+                                      - generic: R$ 56.706,84
+                                      - generic: R$ 55.866,45
+                                      - generic: R$ 54.795,49
+                                      - generic: R$ 52.747,76
+                                      - generic: R$ 51.217,52
+                                      - generic: R$ 49.043,69
+                                      - generic: R$ 46.001,71
+                                      - generic: R$ 43.320,18
+                                      - generic: R$ 42.012,50
+                                      - generic: R$ 41.396,92
+                                      - generic: R$ 41.258,49
+                                      - generic: R$ 40.790,00
+                                      - generic: R$ 40.293,00
+                                      - generic: R$ 38.218,19
+                                      - generic: R$ 37.430,26
+                                      - generic: R$ 36.152,91
+                                      - generic: R$ 34.475,00
+                                      - generic: R$ 33.547,36
+                                      - generic: R$ 32.904,89
+                                      - generic: R$ 32.635,08
+                                      - generic: R$ 32.148,09
+                                      - generic: R$ 31.190,12
+                                      - generic: R$ 30.204,86
+                                      - generic: R$ 29.822,00
+                                      - generic: R$ 29.323,85
+                                      - generic: R$ 28.761,00
+                                      - generic: R$ 28.263,38
+                                      - generic: R$ 26.588,48
+                                      - generic: R$ 25.422,20
+                                      - generic: R$ 25.264,24
+                                      - generic: R$ 24.407,00
+                                      - generic: R$ 23.475,46
+                                      - generic: R$ 22.699,39
+                                      - generic: R$ 22.572,00
+                                      - generic: R$ 22.052,28
+                                      - generic: R$ 21.633,00
+                                      - generic: R$ 21.384,00
+                                      - generic: R$ 20.747,28
+                                      - generic: R$ 19.848,84
+                                      - generic: R$ 19.370,52
+                                      - generic: R$ 19.194,00
+                                      - generic: R$ 18.047,95
+                                      - generic: R$ 17.726,85
+                                      - generic: R$ 17.284,00
+                                      - generic: R$ 16.897,61
+                                      - generic: R$ 16.696,65
+                                      - generic: R$ 16.624,25
+                                      - generic: R$ 16.350,00
+                                      - generic: R$ 15.831,90
+                                      - generic: R$ 15.749,00
+                                      - generic: R$ 15.600,00
+                                      - generic: R$ 15.347,78
+                                      - generic: R$ 14.895,00
+                                      - generic: R$ 14.646,86
+                                      - generic: R$ 14.460,00
+                                      - generic: R$ 14.347,59
+                                      - generic: R$ 14.046,79
+                                      - generic: R$ 13.880,59
+                                      - generic: R$ 13.851,00
+                                      - generic: R$ 13.794,00
+                                      - generic: R$ 13.634,00
+                                      - generic: R$ 13.478,18
+                                      - generic: R$ 13.426,00
+                                      - generic: R$ 13.021,00
+                                      - generic: R$ 12.864,00
+                                      - generic: R$ 12.493,19
+                                      - generic: R$ 11.927,36
+                                      - generic: R$ 11.767,56
+                                      - generic: R$ 11.717,33
+                                      - generic: R$ 11.451,52
+                                      - generic: R$ 11.343,16
+                                      - generic: R$ 11.215,64
+                                      - generic: R$ 11.077,76
+                                      - generic: R$ 11.067,58
+                                      - generic: R$ 11.022,00
+                                      - generic: R$ 10.726,00
+                                      - generic: R$ 10.653,00
+                                      - generic: R$ 10.416,24
+                                      - generic: R$ 10.382,00
+                                      - generic: R$ 10.195,86
+                                      - generic: R$ 10.163,00
+                                      - generic: R$ 10.099,56
+                                      - generic: R$ 10.025,81
+                                      - generic: R$ 9.911,75
+                                      - generic: R$ 9.884,58
+                                      - generic: R$ 9.678,00
+                                      - generic: R$ 9.626,20
+                                      - generic: R$ 9.503,00
+                                      - generic: R$ 9.400,00
+                                      - generic: R$ 9.186,64
+                                      - generic: R$ 8.884,65
+                                      - generic: R$ 8.859,60
+                                      - generic: R$ 8.676,00
+                                      - generic: R$ 8.635,76
+                                      - generic: R$ 8.621,26
+                                      - generic: R$ 8.396,87
+                                      - generic: R$ 8.316,28
+                                      - generic: R$ 8.222,04
+                                      - generic: R$ 8.163,78
+                                      - generic: R$ 8.132,00
+                                      - generic: R$ 8.103,62
+                                      - generic: R$ 8.051,47
+                                      - generic: R$ 8.006,08
+                                      - generic: R$ 7.773,70
+                                      - generic: R$ 7.727,56
+                                      - generic: R$ 7.681,59
+                                      - generic: R$ 7.640,00
+                                      - generic: R$ 7.517,28
+                                      - generic: R$ 7.502,00
+                                      - generic: R$ 7.473,96
+                                      - generic: R$ 7.332,00
+                                      - generic: R$ 7.279,78
+                                      - generic: R$ 7.226,20
+                                      - generic: R$ 7.100,00
+                                      - generic: R$ 7.044,34
+                                      - generic: R$ 6.987,25
+                                      - generic: R$ 6.987,25
+                                      - generic: R$ 6.860,00
+                                      - generic: R$ 6.765,00
+                                      - generic: R$ 6.645,57
+                                      - generic: R$ 6.590,55
+                                      - generic: R$ 6.460,41
+                                      - generic: R$ 6.423,62
+                                      - generic: R$ 6.421,00
+                                      - generic: R$ 6.399,00
+                                      - generic: R$ 6.333,01
+                                      - generic: R$ 6.259,54
+                                      - generic: R$ 6.143,47
+                                      - generic: R$ 5.950,28
+                                      - generic: R$ 5.877,36
+                                      - generic: R$ 5.780,90
+                                      - generic: R$ 5.758,48
+                                      - generic: R$ 5.538,88
+                                      - generic: R$ 5.465,14
+                                      - generic: R$ 5.441,59
+                                      - generic: R$ 5.401,00
+                                      - generic: R$ 5.373,72
+                                      - generic: R$ 5.365,32
+                                      - generic: R$ 5.310,87
+                                      - generic: R$ 5.261,54
+                                      - generic: R$ 5.211,24
+                                      - generic: R$ 5.171,35
+                                      - generic: R$ 5.104,42
+                                      - generic: R$ 5.040,92
+                                      - generic: R$ 4.988,00
+                                      - generic: R$ 4.899,00
+                                      - generic: R$ 4.862,29
+                                      - generic: R$ 4.836,25
+                                      - generic: R$ 4.815,04
+                                      - generic: R$ 4.694,00
+                                      - generic: R$ 4.645,56
+                                      - generic: R$ 4.601,00
+                                      - generic: R$ 4.544,94
+                                      - generic: R$ 4.471,85
+                                      - generic: R$ 4.409,97
+                                      - generic: R$ 4.319,95
+                                      - generic: R$ 4.294,00
+                                      - generic: R$ 4.226,00
+                                      - generic: R$ 4.141,74
+                                      - generic: R$ 4.121,88
+                                      - generic: R$ 4.068,68
+                                      - generic: R$ 4.034,16
+                                      - generic: R$ 3.986,20
+                                      - generic: R$ 3.902,00
+                                      - generic: R$ 3.850,28
+                                      - generic: R$ 3.812,52
+                                      - generic: R$ 3.766,58
+                                      - generic: R$ 3.755,00
+                                      - generic: R$ 3.727,00
+                                      - generic: R$ 3.694,68
+                                      - generic: R$ 3.694,60
+                                      - generic: R$ 3.612,18
+                                      - generic: R$ 3.455,12
+                                      - generic: R$ 3.388,00
+                                      - generic: R$ 3.350,08
+                                      - generic: R$ 3.335,03
+                                      - generic: R$ 3.330,00
+                                      - generic: R$ 3.295,00
+                                      - generic: R$ 3.251,00
+                                      - generic: R$ 3.166,00
+                                      - generic: R$ 3.156,80
+                                      - generic: R$ 3.118,74
+                                      - generic: R$ 3.061,50
+                                      - generic: R$ 3.000,00
+                                      - generic: R$ 2.988,00
+                                      - generic: R$ 2.909,00
+                                      - generic: R$ 2.873,16
+                                      - generic: R$ 2.857,14
+                                      - generic: R$ 2.852,38
+                                      - generic: R$ 2.840,68
+                                      - generic: R$ 2.795,72
+                                      - generic: R$ 2.787,80
+                                      - generic: R$ 2.766,17
+                                      - generic: R$ 2.746,96
+                                      - generic: R$ 2.737,05
+                                      - generic: R$ 2.697,62
+                                      - generic: R$ 2.685,20
+                                      - generic: R$ 2.675,00
+                                      - generic: R$ 2.640,00
+                                      - generic: R$ 2.623,09
+                                      - generic: R$ 2.597,83
+                                      - generic: R$ 2.579,22
+                                      - generic: R$ 2.565,78
+                                      - generic: R$ 2.530,80
+                                      - generic: R$ 2.527,99
+                                      - generic: R$ 2.516,35
+                                      - generic: R$ 2.450,00
+                                      - generic: R$ 2.425,50
+                                      - generic: R$ 2.423,24
+                                      - generic: R$ 2.409,26
+                                      - generic: R$ 2.384,64
+                                      - generic: R$ 2.340,00
+                                      - generic: R$ 2.320,00
+                                      - generic: R$ 2.282,61
+                                      - generic: R$ 2.270,58
+                                      - generic: R$ 2.239,00
+                                      - generic: R$ 2.233,41
+                                      - generic: R$ 2.218,20
+                                      - generic: R$ 2.212,11
+                                      - generic: R$ 2.195,30
+                                      - generic: R$ 2.144,31
+                                      - generic: R$ 2.088,00
+                                      - generic: R$ 2.078,00
+                                      - generic: R$ 2.008,80
+                                      - generic: R$ 1.983,15
+                                      - generic: R$ 1.911,86
+                                      - generic: R$ 1.890,00
+                                      - generic: R$ 1.859,00
+                                      - generic: R$ 1.835,00
+                                      - generic: R$ 1.760,00
+                                      - generic: R$ 1.697,80
+                                      - generic: R$ 1.664,66
+                                      - generic: R$ 1.598,00
+                                      - generic: R$ 1.587,88
+                                      - generic: R$ 1.550,41
+                                      - generic: R$ 1.535,00
+                                      - generic: R$ 1.528,00
+                                      - generic: R$ 1.434,72
+                                      - generic: R$ 1.422,62
+                                      - generic: R$ 1.422,62
+                                      - generic: R$ 1.422,62
+                                      - generic: R$ 1.401,00
+                                      - generic: R$ 1.362,06
+                                      - generic: R$ 1.343,55
+                                      - generic: R$ 1.320,24
+                                      - generic: R$ 1.314,30
+                                      - generic: R$ 1.314,30
+                                      - generic: R$ 1.281,84
+                                      - generic: R$ 1.277,22
+                                      - generic: R$ 1.242,29
+                                      - generic: R$ 1.213,61
+                                      - generic: R$ 1.209,92
+                                      - generic: R$ 1.200,48
+                                      - generic: R$ 1.197,29
+                                      - generic: R$ 1.192,76
+                                      - generic: R$ 1.192,76
+                                      - generic: R$ 1.192,76
+                                      - generic: R$ 1.064,92
+                                      - generic: R$ 993,20
+                                      - generic: R$ 907,60
+                                      - generic: R$ 907,60
+                                      - generic: R$ 907,59
+                                      - generic: R$ 827,63
+                                      - generic: R$ 783,30
+                                      - generic: R$ 783,24
+                                      - generic: R$ 692,20
+                                      - generic: R$ 692,20
+                                      - generic: R$ 692,20
+                                      - generic: R$ 382,50
+                                      - generic: R$ 357,00
+                                      - generic: R$ 260,00
+                                      - generic: R$ 220,00
+                                      - generic: R$ 53,00
+                                      - generic: R$ 20,40
+                - generic:
+                  - generic:
+                    - generic: Faturamento
+                    - generic: Clientes
+      - contentinfo:
+        - generic:
+          - generic: "Dados atualizados em: Sem informação"
+          - generic: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic: v1.8.0
+  - dialog "Faturamento dos 5 Maiores Clientes" [ref=e234]:
+    - heading "Faturamento dos 5 Maiores Clientes" [level=2] [ref=e235]
+    - paragraph [ref=e236]: Gráfico de barras mostrando o faturamento dos 5 maiores clientes nos últimos 6 meses
+    - generic [ref=e237]:
+      - button "Close" [active] [ref=e238]:
+        - img [ref=e239]
+        - generic [ref=e241]: Close
+      - generic [ref=e242]:
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - img [ref=e245]
+            - generic [ref=e247]: Linhas
+            - generic [ref=e248]: Faturamento dos 5 Maiores Clientes
+          - generic [ref=e249]:
+            - button "Gráfico" [ref=e250]:
+              - img
+              - text: Gráfico
+            - button "Tabela" [ref=e251]:
+              - img
+              - text: Tabela
+        - paragraph [ref=e252]: Gráfico de barras mostrando o faturamento dos 5 maiores clientes nos últimos 6 meses
+        - generic [ref=e253]:
+          - generic [ref=e254]: "Categoria: Teste"
+          - generic [ref=e255]: •
+          - generic [ref=e256]: "Criado: 09/03/2026"
+          - generic [ref=e257]: •
+          - generic [ref=e258]:
+            - generic [ref=e259]: Faturamento
+            - generic [ref=e260]: Clientes
+      - generic [ref=e271]:
+        - generic [ref=e272]:
+          - generic [ref=e273]:
+            - img [ref=e274]
+            - textbox "Buscar nos dados..." [ref=e276]
+          - generic [ref=e277]:
+            - button "Exportar" [ref=e278]:
+              - img
+              - text: Exportar
+            - generic: 629 / 629 registros
+        - table [ref=e281]:
+          - rowgroup [ref=e282]:
+            - row "cliente faturamento saldo_estoque_produtos_vendidos" [ref=e283]:
+              - columnheader "cliente" [ref=e284]:
+                - button "cliente" [ref=e285]:
+                  - generic "cliente" [ref=e286]
+                  - img [ref=e288]
+              - columnheader "faturamento" [ref=e290]:
+                - button "faturamento" [ref=e291]:
+                  - generic "faturamento" [ref=e292]
+                  - img [ref=e294]
+              - columnheader "saldo_estoque_produtos_vendidos" [ref=e296]:
+                - button "saldo_estoque_produtos_vendidos" [ref=e297]:
+                  - generic "saldo_estoque_produtos_vendidos" [ref=e298]
+                  - img [ref=e300]
+          - rowgroup [ref=e302]:
+            - row "MAGAZINE LUIZA S/A R$ 19.175.576,32 112.565" [ref=e303]:
+              - cell "MAGAZINE LUIZA S/A" [ref=e304]
+              - cell "R$ 19.175.576,32" [ref=e305]
+              - cell "112.565" [ref=e306]
+            - row "LOJAS CEM S/A R$ 12.481.977,80 121.430,45" [ref=e307]:
+              - cell "LOJAS CEM S/A" [ref=e308]
+              - cell "R$ 12.481.977,80" [ref=e309]
+              - cell "121.430,45" [ref=e310]
+            - row "KOMFORTHOUSE SOFAS LTDA R$ 5.085.317,55 134.226,24" [ref=e311]:
+              - cell "KOMFORTHOUSE SOFAS LTDA" [ref=e312]
+              - cell "R$ 5.085.317,55" [ref=e313]
+              - cell "134.226,24" [ref=e314]
+            - row "DIVINO S/A R$ 4.436.719,08 538" [ref=e315]:
+              - cell "DIVINO S/A" [ref=e316]
+              - cell "R$ 4.436.719,08" [ref=e317]
+              - cell "538" [ref=e318]
+            - row "BENOIT ELETRODOMESTICOS LTDA R$ 4.124.505,76 227.434" [ref=e319]:
+              - cell "BENOIT ELETRODOMESTICOS LTDA" [ref=e320]
+              - cell "R$ 4.124.505,76" [ref=e321]
+              - cell "227.434" [ref=e322]
+            - row "EUGENIO RAULINO KOERICH S/A COMERCIO E INDUSTRIA R$ 3.863.887,46 111.546" [ref=e323]:
+              - cell "EUGENIO RAULINO KOERICH S/A COMERCIO E INDUSTRIA" [ref=e324]
+              - cell "R$ 3.863.887,46" [ref=e325]
+              - cell "111.546" [ref=e326]
+            - row "LOJAS COLOMBO SA COMERCIO DE UTILIDADES DOMESTICAS R$ 2.727.914,39 13.068" [ref=e327]:
+              - cell "LOJAS COLOMBO SA COMERCIO DE UTILIDADES DOMESTICAS" [ref=e328]
+              - cell "R$ 2.727.914,39" [ref=e329]
+              - cell "13.068" [ref=e330]
+            - row "SOLAR MOVEIS LTDA R$ 2.604.369,75 793" [ref=e331]:
+              - cell "SOLAR MOVEIS LTDA" [ref=e332]
+              - cell "R$ 2.604.369,75" [ref=e333]
+              - cell "793" [ref=e334]
+            - row "MERCADOMOVEIS LTDA R$ 1.802.362,94 13.276" [ref=e335]:
+              - cell "MERCADOMOVEIS LTDA" [ref=e336]
+              - cell "R$ 1.802.362,94" [ref=e337]
+              - cell "13.276" [ref=e338]
+            - row "PROLAR MOVEIS - EIRELI - EPP R$ 1.458.929,44 252.579,61" [ref=e339]:
+              - cell "PROLAR MOVEIS - EIRELI - EPP" [ref=e340]
+              - cell "R$ 1.458.929,44" [ref=e341]
+              - cell "252.579,61" [ref=e342]
+            - row "BOM PRECO MOVEIS ESTOFADOS IMIRIM LTDA R$ 892.844,17 559" [ref=e343]:
+              - cell "BOM PRECO MOVEIS ESTOFADOS IMIRIM LTDA" [ref=e344]
+              - cell "R$ 892.844,17" [ref=e345]
+              - cell "559" [ref=e346]
+            - row "SALDAO MERCATUDO LTDA R$ 718.560,56 3.389" [ref=e347]:
+              - cell "SALDAO MERCATUDO LTDA" [ref=e348]
+              - cell "R$ 718.560,56" [ref=e349]
+              - cell "3.389" [ref=e350]
+            - row "MOBLER INDUSTRIA E COMERCIO DE MOVEIS E ESTOFADO R$ 574.810,57 2.048.201,51" [ref=e351]:
+              - cell "MOBLER INDUSTRIA E COMERCIO DE MOVEIS E ESTOFADO" [ref=e352]
+              - cell "R$ 574.810,57" [ref=e353]
+              - cell "2.048.201,51" [ref=e354]
+            - row "NYR S.A. R$ 421.839,62 73" [ref=e355]:
+              - cell "NYR S.A." [ref=e356]
+              - cell "R$ 421.839,62" [ref=e357]
+              - cell "73" [ref=e358]
+            - row "FABRICA DE MUEBLES DECO HOME NAVARRO SPA R$ 368.649,77 86" [ref=e359]:
+              - cell "FABRICA DE MUEBLES DECO HOME NAVARRO SPA" [ref=e360]
+              - cell "R$ 368.649,77" [ref=e361]
+              - cell "86" [ref=e362]
+            - row "E. A. ALBUQUERQUE C. DA C. MESQUITA LTDA R$ 344.413,00 292" [ref=e363]:
+              - cell "E. A. ALBUQUERQUE C. DA C. MESQUITA LTDA" [ref=e364]
+              - cell "R$ 344.413,00" [ref=e365]
+              - cell "292" [ref=e366]
+            - row "EL MUNDO DEL MUEBLE SRL R$ 314.873,62 99" [ref=e367]:
+              - cell "EL MUNDO DEL MUEBLE SRL" [ref=e368]
+              - cell "R$ 314.873,62" [ref=e369]
+              - cell "99" [ref=e370]
+            - row "RA DESIGN MOVEIS LTDA R$ 286.949,72 1.637" [ref=e371]:
+              - cell "RA DESIGN MOVEIS LTDA" [ref=e372]
+              - cell "R$ 286.949,72" [ref=e373]
+              - cell "1.637" [ref=e374]
+            - row "SOFA CAMPINAS LTDA R$ 274.243,11 3.514" [ref=e375]:
+              - cell "SOFA CAMPINAS LTDA" [ref=e376]
+              - cell "R$ 274.243,11" [ref=e377]
+              - cell "3.514" [ref=e378]
+            - row "VALDAR MOVEIS LTDA R$ 263.499,49 119" [ref=e379]:
+              - cell "VALDAR MOVEIS LTDA" [ref=e380]
+              - cell "R$ 263.499,49" [ref=e381]
+              - cell "119" [ref=e382]
+            - row "ELAZA COMERCIAL VAREJISTA DE ELETRODOMES EIRELI R$ 214.556,16 195" [ref=e383]:
+              - cell "ELAZA COMERCIAL VAREJISTA DE ELETRODOMES EIRELI" [ref=e384]
+              - cell "R$ 214.556,16" [ref=e385]
+              - cell "195" [ref=e386]
+            - row "OUTLET DO SOFA JUNDIAI LTDA R$ 213.115,69 3.270" [ref=e387]:
+              - cell "OUTLET DO SOFA JUNDIAI LTDA" [ref=e388]
+              - cell "R$ 213.115,69" [ref=e389]
+              - cell "3.270" [ref=e390]
+            - row "PONTALTI INDUSTRIA E COMERCIO DE BIOMASSA LTDA R$ 208.835,80 -" [ref=e391]:
+              - cell "PONTALTI INDUSTRIA E COMERCIO DE BIOMASSA LTDA" [ref=e392]
+              - cell "R$ 208.835,80" [ref=e393]
+              - cell "-" [ref=e394]
+            - row "ACM COMERCIO DE MOVEIS EIRELI ME R$ 172.662,53 9.392,56" [ref=e395]:
+              - cell "ACM COMERCIO DE MOVEIS EIRELI ME" [ref=e396]
+              - cell "R$ 172.662,53" [ref=e397]
+              - cell "9.392,56" [ref=e398]
+            - row "SHOW S.A. R$ 165.915,93 8" [ref=e399]:
+              - cell "SHOW S.A." [ref=e400]
+              - cell "R$ 165.915,93" [ref=e401]
+              - cell "8" [ref=e402]
+            - row "OUTLET DOS ESTOFADOS LTDA. R$ 155.024,96 3.472" [ref=e403]:
+              - cell "OUTLET DOS ESTOFADOS LTDA." [ref=e404]
+              - cell "R$ 155.024,96" [ref=e405]
+              - cell "3.472" [ref=e406]
+            - row "GRUPO TERRACENTER S.R.L R$ 154.782,14 8" [ref=e407]:
+              - cell "GRUPO TERRACENTER S.R.L" [ref=e408]
+              - cell "R$ 154.782,14" [ref=e409]
+              - cell "8" [ref=e410]
+            - row "CASA AFECTO MOVEIS E DECORACOES LTDA R$ 154.003,40 1.155" [ref=e411]:
+              - cell "CASA AFECTO MOVEIS E DECORACOES LTDA" [ref=e412]
+              - cell "R$ 154.003,40" [ref=e413]
+              - cell "1.155" [ref=e414]
+            - row "CASA CHIQUE OUTLET MOVEIS E DECORACOES LTDA R$ 147.312,00 283" [ref=e415]:
+              - cell "CASA CHIQUE OUTLET MOVEIS E DECORACOES LTDA" [ref=e416]
+              - cell "R$ 147.312,00" [ref=e417]
+              - cell "283" [ref=e418]
+            - row "CLODOALDO IZAIAS SOAVE R$ 139.700,14 1.845" [ref=e419]:
+              - cell "CLODOALDO IZAIAS SOAVE" [ref=e420]
+              - cell "R$ 139.700,14" [ref=e421]
+              - cell "1.845" [ref=e422]
+            - row "SMS MOVEIS LTDA R$ 137.516,56 688" [ref=e423]:
+              - cell "SMS MOVEIS LTDA" [ref=e424]
+              - cell "R$ 137.516,56" [ref=e425]
+              - cell "688" [ref=e426]
+            - row "IMPORTADORA TV LAR LTDA R$ 135.112,00 37" [ref=e427]:
+              - cell "IMPORTADORA TV LAR LTDA" [ref=e428]
+              - cell "R$ 135.112,00" [ref=e429]
+              - cell "37" [ref=e430]
+            - row "MOVEIS ESPLANADA LTDA R$ 134.072,56 92" [ref=e431]:
+              - cell "MOVEIS ESPLANADA LTDA" [ref=e432]
+              - cell "R$ 134.072,56" [ref=e433]
+              - cell "92" [ref=e434]
+            - row "SOAVE & ESTRAZULAS COMERCIO DE MOVEIS ELETROD LTDA R$ 131.627,92 2.629" [ref=e435]:
+              - cell "SOAVE & ESTRAZULAS COMERCIO DE MOVEIS ELETROD LTDA" [ref=e436]
+              - cell "R$ 131.627,92" [ref=e437]
+              - cell "2.629" [ref=e438]
+            - row "SOFAS CHAPECO LTDA R$ 120.776,00 387" [ref=e439]:
+              - cell "SOFAS CHAPECO LTDA" [ref=e440]
+              - cell "R$ 120.776,00" [ref=e441]
+              - cell "387" [ref=e442]
+            - row "PANTANAL ESTOFADOS COMERCIO VAREJISTA DE MOVEIS LT R$ 120.038,41 26" [ref=e443]:
+              - cell "PANTANAL ESTOFADOS COMERCIO VAREJISTA DE MOVEIS LT" [ref=e444]
+              - cell "R$ 120.038,41" [ref=e445]
+              - cell "26" [ref=e446]
+            - row "OUTLET DO SOFA HORTOLANDIA LTDA R$ 116.131,02 2.810" [ref=e447]:
+              - cell "OUTLET DO SOFA HORTOLANDIA LTDA" [ref=e448]
+              - cell "R$ 116.131,02" [ref=e449]
+              - cell "2.810" [ref=e450]
+            - row "LOJAS UNILAR LTDA R$ 115.690,40 316" [ref=e451]:
+              - cell "LOJAS UNILAR LTDA" [ref=e452]
+              - cell "R$ 115.690,40" [ref=e453]
+              - cell "316" [ref=e454]
+            - row "CERAMICAS CASTRO S.A. R$ 112.998,92 25" [ref=e455]:
+              - cell "CERAMICAS CASTRO S.A." [ref=e456]
+              - cell "R$ 112.998,92" [ref=e457]
+              - cell "25" [ref=e458]
+            - row "WELAMAN S.A R$ 112.292,39 136" [ref=e459]:
+              - cell "WELAMAN S.A" [ref=e460]
+              - cell "R$ 112.292,39" [ref=e461]
+              - cell "136" [ref=e462]
+            - row "IMPORTACIONES JBARAH, C.A. R$ 106.737,52 89" [ref=e463]:
+              - cell "IMPORTACIONES JBARAH, C.A." [ref=e464]
+              - cell "R$ 106.737,52" [ref=e465]
+              - cell "89" [ref=e466]
+            - row "GALLERY FURNITURE LLC R$ 105.472,65 29" [ref=e467]:
+              - cell "GALLERY FURNITURE LLC" [ref=e468]
+              - cell "R$ 105.472,65" [ref=e469]
+              - cell "29" [ref=e470]
+            - row "COLISEU HOME STORE LTDA R$ 101.545,67 2.129,61" [ref=e471]:
+              - cell "COLISEU HOME STORE LTDA" [ref=e472]
+              - cell "R$ 101.545,67" [ref=e473]
+              - cell "2.129,61" [ref=e474]
+            - row "EXCELENCIA ESTOFADOS LTDA R$ 100.529,00 90" [ref=e475]:
+              - cell "EXCELENCIA ESTOFADOS LTDA" [ref=e476]
+              - cell "R$ 100.529,00" [ref=e477]
+              - cell "90" [ref=e478]
+            - row "SAGEL LTDA R$ 99.973,27 177" [ref=e479]:
+              - cell "SAGEL LTDA" [ref=e480]
+              - cell "R$ 99.973,27" [ref=e481]
+              - cell "177" [ref=e482]
+            - row "SOFA PIRACICABA LTDA R$ 97.109,68 3.039" [ref=e483]:
+              - cell "SOFA PIRACICABA LTDA" [ref=e484]
+              - cell "R$ 97.109,68" [ref=e485]
+              - cell "3.039" [ref=e486]
+            - row "OUTLET DO SOFA LIMEIRA LTDA R$ 95.813,71 2.760" [ref=e487]:
+              - cell "OUTLET DO SOFA LIMEIRA LTDA" [ref=e488]
+              - cell "R$ 95.813,71" [ref=e489]
+              - cell "2.760" [ref=e490]
+            - row "CASA ANAPOLIS HOUSE DECOR MOVEIS E COLCHOES LTDA R$ 91.188,39 34" [ref=e491]:
+              - cell "CASA ANAPOLIS HOUSE DECOR MOVEIS E COLCHOES LTDA" [ref=e492]
+              - cell "R$ 91.188,39" [ref=e493]
+              - cell "34" [ref=e494]
+            - row "RIO 7 COMERCIO DE MOVEIS LTDA R$ 90.074,11 19" [ref=e495]:
+              - cell "RIO 7 COMERCIO DE MOVEIS LTDA" [ref=e496]
+              - cell "R$ 90.074,11" [ref=e497]
+              - cell "19" [ref=e498]
+            - row "TIENDA AMIGA ER S.A R$ 89.814,66 28" [ref=e499]:
+              - cell "TIENDA AMIGA ER S.A" [ref=e500]
+              - cell "R$ 89.814,66" [ref=e501]
+              - cell "28" [ref=e502]
+        - generic [ref=e503]:
+          - generic [ref=e504]: Página 1 de 13(629 registros)
+          - generic [ref=e505]:
+            - button "Anterior" [disabled]:
+              - img
+              - text: Anterior
+            - button "Próxima" [ref=e506]:
+              - text: Próxima
+              - img
+  - generic: R$ 0

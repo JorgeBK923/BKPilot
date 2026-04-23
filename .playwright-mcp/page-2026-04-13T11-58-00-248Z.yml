@@ -1,0 +1,167 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e71]:
+    - generic [ref=e72]:
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - img "JCLA Logo" [ref=e79] [cursor=pointer]
+            - button [ref=e81]:
+              - img
+          - button "Nova Conversa" [ref=e83]:
+            - img
+            - text: Nova Conversa
+        - generic [ref=e84]:
+          - button "Conversas" [ref=e86]:
+            - generic [ref=e87]:
+              - img [ref=e88]
+              - generic [ref=e90]: Conversas
+            - img [ref=e91]
+          - generic [ref=e709]:
+            - button "Gráficos" [ref=e710]:
+              - generic [ref=e711]:
+                - img [ref=e712]
+                - generic [ref=e714]: Gráficos
+              - img [ref=e715]
+            - generic [ref=e1806]:
+              - button "Abrir galeria de gráficos" [active] [ref=e1807]:
+                - img
+                - text: Abrir galeria de gráficos
+              - generic [ref=e1808]:
+                - generic [ref=e1810] [cursor=pointer]:
+                  - img [ref=e1812]
+                  - generic [ref=e1814]:
+                    - heading "O conjunto de dados analisado compreende **50.000*..." [level=4] [ref=e1815]
+                    - paragraph [ref=e1816]: Barras · Geral
+                - generic [ref=e1818] [cursor=pointer]:
+                  - img [ref=e1820]
+                  - generic [ref=e1822]:
+                    - heading "Analise" [level=4] [ref=e1823]
+                    - paragraph [ref=e1824]: Barras · Geral
+                - generic [ref=e1826] [cursor=pointer]:
+                  - img [ref=e1828]
+                  - generic [ref=e1830]:
+                    - heading "Tega sistemas 2" [level=4] [ref=e1831]
+                    - paragraph [ref=e1832]: Linhas · Geral
+                - generic [ref=e1834] [cursor=pointer]:
+                  - img [ref=e1836]
+                  - generic [ref=e1838]:
+                    - heading "### Análise do Estoque Médio de Produtos por Loja ..." [level=4] [ref=e1839]
+                    - paragraph [ref=e1840]: Barras · Geral
+          - button "Dashboards" [ref=e718]:
+            - generic [ref=e719]:
+              - img [ref=e720]
+              - generic [ref=e722]: Dashboards
+            - img [ref=e723]
+          - button "Relatórios" [ref=e726]:
+            - generic [ref=e727]:
+              - img [ref=e728]
+              - generic [ref=e730]: Relatórios
+            - img [ref=e731]
+        - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e735]:
+          - generic [ref=e736]:
+            - generic [ref=e738]: A
+            - generic [ref=e739]:
+              - paragraph [ref=e740]: Admin Teste 2
+              - paragraph [ref=e741]: admin2@teste.com.br
+            - generic [ref=e742]:
+              - generic [ref=e743]:
+                - img
+                - text: Admin
+              - img
+      - generic [ref=e1841]:
+        - generic [ref=e1846]:
+          - heading "Galeria de Gráficos" [level=1] [ref=e1847]
+          - paragraph [ref=e1848]: Gerencie e visualize todos os seus gráficos personalizados
+        - generic [ref=e1849]:
+          - generic [ref=e1850]:
+            - generic [ref=e1852]:
+              - img [ref=e1853]
+              - textbox "Buscar gráficos por nome, categoria ou tags..." [ref=e1855]
+            - generic [ref=e1856]:
+              - button "Recarregar Dados" [ref=e1857]
+              - combobox [ref=e1858]:
+                - generic: Todas as Categorias
+                - img
+              - combobox [ref=e1859]:
+                - generic: Grande
+                - img
+          - generic [ref=e1860]:
+            - generic [ref=e1863]:
+              - img [ref=e1864]
+              - generic [ref=e1866]:
+                - paragraph [ref=e1867]: Total de Gráficos
+                - paragraph [ref=e1868]: "4"
+            - generic [ref=e1871]:
+              - img [ref=e1872]
+              - generic [ref=e1874]:
+                - paragraph [ref=e1875]: Categorias
+                - paragraph [ref=e1876]: "1"
+            - generic [ref=e1879]:
+              - img [ref=e1880]
+              - generic [ref=e1882]:
+                - paragraph [ref=e1883]: Tipos Diferentes
+                - paragraph [ref=e1884]: "2"
+            - generic [ref=e1887]:
+              - img [ref=e1888]
+              - generic [ref=e1890]:
+                - paragraph [ref=e1891]: Gráficos Ativos
+                - paragraph [ref=e1892]: "4"
+          - generic [ref=e1893]:
+            - generic [ref=e1894] [cursor=pointer]:
+              - generic [ref=e1895]:
+                - button [ref=e1896]:
+                  - img
+                - button [ref=e1897]:
+                  - img
+                - button [ref=e1898]:
+                  - img
+              - generic "O conjunto de dados analisado compreende **50.000*..." [ref=e1902]
+              - generic [ref=e1905]:
+                - img [ref=e1906]
+                - generic [ref=e1908]: Erro na query do gráfico
+                - generic [ref=e1909]: Erro interno no acesso aos dados do gráfico
+                - button "Corrigir" [ref=e1910]:
+                  - img
+                  - text: Corrigir
+            - generic [ref=e1911] [cursor=pointer]:
+              - generic [ref=e1912]:
+                - button [ref=e1913]:
+                  - img
+                - button [ref=e1914]:
+                  - img
+                - button [ref=e1915]:
+                  - img
+              - generic "Analise" [ref=e1919]
+              - generic [ref=e1922]:
+                - img [ref=e1923]
+                - generic [ref=e1925]: Carregando gráfico...
+            - generic [ref=e1926] [cursor=pointer]:
+              - generic [ref=e1927]:
+                - button [ref=e1928]:
+                  - img
+                - button [ref=e1929]:
+                  - img
+                - button [ref=e1930]:
+                  - img
+              - generic "Tega sistemas 2" [ref=e1934]
+              - generic [ref=e1937]:
+                - img [ref=e1938]
+                - generic [ref=e1940]: Carregando gráfico...
+            - generic [ref=e1941] [cursor=pointer]:
+              - generic [ref=e1942]:
+                - button [ref=e1943]:
+                  - img
+                - button [ref=e1944]:
+                  - img
+                - button [ref=e1945]:
+                  - img
+              - generic "### Análise do Estoque Médio de Produtos por Loja ..." [ref=e1949]
+              - generic [ref=e1952]:
+                - img [ref=e1953]
+                - generic [ref=e1955]: Carregando gráfico...
+    - contentinfo [ref=e1238]:
+      - generic [ref=e1239]:
+        - generic [ref=e1240]: "Dados atualizados em: Sem informação"
+        - generic [ref=e1241]: © 2026 JCLA Analytics. Todos os direitos reservados.
+        - generic [ref=e1242]: v1.8.0

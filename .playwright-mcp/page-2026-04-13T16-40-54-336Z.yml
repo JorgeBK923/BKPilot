@@ -1,0 +1,489 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e274]:
+    - generic [ref=e275]:
+      - generic [ref=e276]:
+        - img "JCLA Logo" [ref=e278]
+        - generic [ref=e279]:
+          - heading "Sugestões de Perguntas" [level=1] [ref=e280]
+          - paragraph [ref=e281]: Baseadas nas suas permissões de acesso
+      - button [ref=e283]:
+        - img
+    - generic [ref=e284]:
+      - generic [ref=e286]:
+        - generic [ref=e287]:
+          - img [ref=e289]
+          - heading "O que você gostaria de saber?" [level=2] [ref=e291]
+          - paragraph [ref=e292]: Selecione uma pergunta ou digite sua própria • 30 sugestões
+        - generic [ref=e293]:
+          - button [ref=e294]:
+            - img
+          - generic [ref=e296]:
+            - generic [ref=e300] [cursor=pointer]:
+              - generic [ref=e301]:
+                - img [ref=e303]
+                - generic [ref=e305]: Vendas
+              - generic [ref=e306]:
+                - paragraph [ref=e307]: Comparar a quantidade de produtos faturados de um produto específico no ano atual versus o ano anterior.
+                - paragraph [ref=e308]: Comparativo de quantidade vendida de produto ano a ano.
+              - generic [ref=e309]:
+                - generic [ref=e310]: Clique para perguntar
+                - img [ref=e311]
+            - generic [ref=e316] [cursor=pointer]:
+              - generic [ref=e317]:
+                - img [ref=e319]
+                - generic [ref=e321]: Produtos
+              - generic [ref=e322]:
+                - paragraph [ref=e323]: Listar os revestimentos liberados para assistência técnica.
+                - paragraph [ref=e324]: Revestimentos aptos para assistência.
+              - generic [ref=e325]:
+                - generic [ref=e326]: Clique para perguntar
+                - img [ref=e327]
+            - generic [ref=e332] [cursor=pointer]:
+              - generic [ref=e333]:
+                - img [ref=e335]
+                - generic [ref=e337]: Vendas
+              - generic [ref=e338]:
+                - paragraph [ref=e339]: Qual o ranking de representantes por valor de venda no último trimestre?
+                - paragraph [ref=e340]: Representantes com maior faturamento.
+              - generic [ref=e341]:
+                - generic [ref=e342]: Clique para perguntar
+                - img [ref=e343]
+            - generic [ref=e348] [cursor=pointer]:
+              - generic [ref=e349]:
+                - img [ref=e351]
+                - generic [ref=e353]: Vendas
+              - generic [ref=e354]:
+                - paragraph [ref=e355]: Qual o ranking de valor de vendas por representante por ano?
+                - paragraph [ref=e356]: Ranking de vendas por representante ao longo dos anos.
+              - generic [ref=e357]:
+                - generic [ref=e358]: Clique para perguntar
+                - img [ref=e359]
+            - generic [ref=e364] [cursor=pointer]:
+              - generic [ref=e365]:
+                - img [ref=e367]
+                - generic [ref=e369]: Financeiro
+              - generic [ref=e370]:
+                - paragraph [ref=e371]: Qual o valor total de descontos aplicados por empresa nos últimos 6 meses?
+                - paragraph [ref=e372]: Descontos totais por empresa.
+              - generic [ref=e373]:
+                - generic [ref=e374]: Clique para perguntar
+                - img [ref=e375]
+            - generic [ref=e380] [cursor=pointer]:
+              - generic [ref=e381]:
+                - img [ref=e383]
+                - generic [ref=e385]: Produtos
+              - generic [ref=e386]:
+                - paragraph [ref=e387]: Quais revestimentos estão liberados para venda?
+                - paragraph [ref=e388]: Revestimentos liberados para venda.
+              - generic [ref=e389]:
+                - generic [ref=e390]: Clique para perguntar
+                - img [ref=e391]
+            - generic [ref=e396] [cursor=pointer]:
+              - generic [ref=e397]:
+                - img [ref=e399]
+                - generic [ref=e401]: Estoque
+              - generic [ref=e402]:
+                - paragraph [ref=e403]: Qual o total de entradas e saídas de estoque para um produto em um depósito específico?
+                - paragraph [ref=e404]: Total de entradas e saídas de estoque por produto e depósito.
+              - generic [ref=e405]:
+                - generic [ref=e406]: Clique para perguntar
+                - img [ref=e407]
+            - generic [ref=e412] [cursor=pointer]:
+              - generic [ref=e413]:
+                - img [ref=e415]
+                - generic [ref=e417]: Estoque
+              - generic [ref=e418]:
+                - paragraph [ref=e419]: Qual o total de entrada e saída de estoque por depósito?
+                - paragraph [ref=e420]: Movimentação de estoque por depósito
+              - generic [ref=e421]:
+                - generic [ref=e422]: Clique para perguntar
+                - img [ref=e423]
+            - generic [ref=e428] [cursor=pointer]:
+              - generic [ref=e429]:
+                - img [ref=e431]
+                - generic [ref=e433]: Estoque
+              - generic [ref=e434]:
+                - paragraph [ref=e435]: Quais produtos têm o menor saldo em estoque atualmente?
+                - paragraph [ref=e436]: Produtos com menor estoque
+              - generic [ref=e437]:
+                - generic [ref=e438]: Clique para perguntar
+                - img [ref=e439]
+            - generic [ref=e444] [cursor=pointer]:
+              - generic [ref=e445]:
+                - img [ref=e447]
+                - generic [ref=e449]: Vendas
+              - generic [ref=e450]:
+                - paragraph [ref=e451]: Qual a tendência do valor bruto de vendas nos últimos 12 meses?
+                - paragraph [ref=e452]: Tendência de vendas brutas
+              - generic [ref=e453]:
+                - generic [ref=e454]: Clique para perguntar
+                - img [ref=e455]
+            - generic [ref=e460] [cursor=pointer]:
+              - generic [ref=e461]:
+                - img [ref=e463]
+                - generic [ref=e465]: Produtos
+              - generic [ref=e466]:
+                - paragraph [ref=e467]: Quantos revestimentos estão liberados para venda?
+                - paragraph [ref=e468]: Revestimentos liberados para venda
+              - generic [ref=e469]:
+                - generic [ref=e470]: Clique para perguntar
+                - img [ref=e471]
+            - generic [ref=e476] [cursor=pointer]:
+              - generic [ref=e477]:
+                - img [ref=e479]
+                - generic [ref=e481]: Produtos
+              - generic [ref=e482]:
+                - paragraph [ref=e483]: Quantos produtos estão inativos?
+                - paragraph [ref=e484]: Contagem de produtos inativos.
+              - generic [ref=e485]:
+                - generic [ref=e486]: Clique para perguntar
+                - img [ref=e487]
+            - generic [ref=e492] [cursor=pointer]:
+              - generic [ref=e493]:
+                - img [ref=e495]
+                - generic [ref=e497]: Vendas
+              - generic [ref=e498]:
+                - paragraph [ref=e499]: Qual o ranking de vendas por representante no último ano?
+                - paragraph [ref=e500]: Vendas por representante
+              - generic [ref=e501]:
+                - generic [ref=e502]: Clique para perguntar
+                - img [ref=e503]
+            - generic [ref=e508] [cursor=pointer]:
+              - generic [ref=e509]:
+                - img [ref=e511]
+                - generic [ref=e513]: Estoque
+              - generic [ref=e514]:
+                - paragraph [ref=e515]: Mostrar o saldo total de estoque por família de produto e local de estoque.
+                - paragraph [ref=e516]: Saldo de estoque por família e local.
+              - generic [ref=e517]:
+                - generic [ref=e518]: Clique para perguntar
+                - img [ref=e519]
+            - generic [ref=e524] [cursor=pointer]:
+              - generic [ref=e525]:
+                - img [ref=e527]
+                - generic [ref=e529]: Financeiro
+              - generic [ref=e530]:
+                - paragraph [ref=e531]: Qual a rentabilidade média por grupo de cliente?
+                - paragraph [ref=e532]: Rentabilidade média por grupo de cliente.
+              - generic [ref=e533]:
+                - generic [ref=e534]: Clique para perguntar
+                - img [ref=e535]
+            - generic [ref=e540] [cursor=pointer]:
+              - generic [ref=e541]:
+                - img [ref=e543]
+                - generic [ref=e545]: Financeiro
+              - generic [ref=e546]:
+                - paragraph [ref=e547]: Qual a rentabilidade média por grupo de cliente?
+                - paragraph [ref=e548]: Rentabilidade por grupo de cliente
+              - generic [ref=e549]:
+                - generic [ref=e550]: Clique para perguntar
+                - img [ref=e551]
+            - generic [ref=e556] [cursor=pointer]:
+              - generic [ref=e557]:
+                - img [ref=e559]
+                - generic [ref=e561]: Estoque
+              - generic [ref=e562]:
+                - paragraph [ref=e563]: Quais os produtos com maior saldo em estoque atualmente?
+                - paragraph [ref=e564]: Produtos com mais itens em estoque.
+              - generic [ref=e565]:
+                - generic [ref=e566]: Clique para perguntar
+                - img [ref=e567]
+            - generic [ref=e572] [cursor=pointer]:
+              - generic [ref=e573]:
+                - img [ref=e575]
+                - generic [ref=e577]: Financeiro
+              - generic [ref=e578]:
+                - paragraph [ref=e579]: Qual o valor total de descontos concedidos por supervisor no ano atual?
+                - paragraph [ref=e580]: Descontos por supervisor
+              - generic [ref=e581]:
+                - generic [ref=e582]: Clique para perguntar
+                - img [ref=e583]
+            - generic [ref=e588] [cursor=pointer]:
+              - generic [ref=e589]:
+                - img [ref=e591]
+                - generic [ref=e593]: Vendas
+              - generic [ref=e594]:
+                - paragraph [ref=e595]: Comparar a quantidade de produtos faturados neste trimestre com o trimestre anterior por produto.
+                - paragraph [ref=e596]: Comparativo de vendas por produto
+              - generic [ref=e597]:
+                - generic [ref=e598]: Clique para perguntar
+                - img [ref=e599]
+            - generic [ref=e604] [cursor=pointer]:
+              - generic [ref=e605]:
+                - img [ref=e607]
+                - generic [ref=e609]: Estoque
+              - generic [ref=e610]:
+                - paragraph [ref=e611]: Qual o saldo de estoque de um produto em um local de estoque específico?
+                - paragraph [ref=e612]: Saldo de estoque de um produto por local.
+              - generic [ref=e613]:
+                - generic [ref=e614]: Clique para perguntar
+                - img [ref=e615]
+            - generic [ref=e620] [cursor=pointer]:
+              - generic [ref=e621]:
+                - img [ref=e623]
+                - generic [ref=e625]: Financeiro
+              - generic [ref=e626]:
+                - paragraph [ref=e627]: Qual a rentabilidade média por grupo de produto no último semestre?
+                - paragraph [ref=e628]: Rentabilidade por categoria de produto.
+              - generic [ref=e629]:
+                - generic [ref=e630]: Clique para perguntar
+                - img [ref=e631]
+            - generic [ref=e636] [cursor=pointer]:
+              - generic [ref=e637]:
+                - img [ref=e639]
+                - generic [ref=e641]: Vendas
+              - generic [ref=e642]:
+                - paragraph [ref=e643]: Mostrar o valor bruto de vendas mensal para o ano atual.
+                - paragraph [ref=e644]: Tendência de vendas brutas por mês.
+              - generic [ref=e645]:
+                - generic [ref=e646]: Clique para perguntar
+                - img [ref=e647]
+            - generic [ref=e652] [cursor=pointer]:
+              - generic [ref=e653]:
+                - img [ref=e655]
+                - generic [ref=e657]: Produtos
+              - generic [ref=e658]:
+                - paragraph [ref=e659]: Quantos produtos inativos existem por família de produto?
+                - paragraph [ref=e660]: Produtos inativos por família
+              - generic [ref=e661]:
+                - generic [ref=e662]: Clique para perguntar
+                - img [ref=e663]
+            - generic [ref=e668] [cursor=pointer]:
+              - generic [ref=e669]:
+                - img [ref=e671]
+                - generic [ref=e673]: Financeiro
+              - generic [ref=e674]:
+                - paragraph [ref=e675]: Qual o valor total do frete por região no último trimestre?
+                - paragraph [ref=e676]: Valor total do frete por região em um período.
+              - generic [ref=e677]:
+                - generic [ref=e678]: Clique para perguntar
+                - img [ref=e679]
+            - generic [ref=e684] [cursor=pointer]:
+              - generic [ref=e685]:
+                - img [ref=e687]
+                - generic [ref=e689]: Vendas
+              - generic [ref=e690]:
+                - paragraph [ref=e691]: Mostrar a tendência do valor bruto de vendas por empresa nos últimos 6 meses.
+                - paragraph [ref=e692]: Tendência de vendas brutas por empresa ao longo do tempo.
+              - generic [ref=e693]:
+                - generic [ref=e694]: Clique para perguntar
+                - img [ref=e695]
+            - generic [ref=e700] [cursor=pointer]:
+              - generic [ref=e701]:
+                - img [ref=e703]
+                - generic [ref=e705]: Vendas
+              - generic [ref=e706]:
+                - paragraph [ref=e707]: Qual o ranking das cidades por metros quadrados vendidos no mês atual?
+                - paragraph [ref=e708]: Ranking de cidades por m² vendidos em um mês.
+              - generic [ref=e709]:
+                - generic [ref=e710]: Clique para perguntar
+                - img [ref=e711]
+            - generic [ref=e716] [cursor=pointer]:
+              - generic [ref=e717]:
+                - img [ref=e719]
+                - generic [ref=e721]: Vendas
+              - generic [ref=e722]:
+                - paragraph [ref=e723]: Quais os clientes que mais compraram em quantidade no ano atual?
+                - paragraph [ref=e724]: Clientes com maior volume de compras.
+              - generic [ref=e725]:
+                - generic [ref=e726]: Clique para perguntar
+                - img [ref=e727]
+            - generic [ref=e732] [cursor=pointer]:
+              - generic [ref=e733]:
+                - img [ref=e735]
+                - generic [ref=e737]: Estoque
+              - generic [ref=e738]:
+                - paragraph [ref=e739]: Comparar a quantidade de entrada e saída de estoque por depósito no último mês.
+                - paragraph [ref=e740]: Movimentação de estoque por depósito.
+              - generic [ref=e741]:
+                - generic [ref=e742]: Clique para perguntar
+                - img [ref=e743]
+            - generic [ref=e748] [cursor=pointer]:
+              - generic [ref=e749]:
+                - img [ref=e751]
+                - generic [ref=e753]: Vendas
+              - generic [ref=e754]:
+                - paragraph [ref=e755]: Ranking de vendas por metros quadrados por região no último semestre.
+                - paragraph [ref=e756]: Vendas por m² e região
+              - generic [ref=e757]:
+                - generic [ref=e758]: Clique para perguntar
+                - img [ref=e759]
+            - generic [ref=e764] [cursor=pointer]:
+              - generic [ref=e765]:
+                - img [ref=e767]
+                - generic [ref=e769]: Produtos
+              - generic [ref=e770]:
+                - paragraph [ref=e771]: Quantos produtos estão inativos atualmente?
+                - paragraph [ref=e772]: Contagem de produtos fora de linha.
+              - generic [ref=e773]:
+                - generic [ref=e774]: Clique para perguntar
+                - img [ref=e775]
+          - button [ref=e777]:
+            - img
+      - button "Pular e começar a conversar" [ref=e780]
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - img "JCLA Logo" [ref=e14] [cursor=pointer]
+            - button [ref=e16]:
+              - img
+          - button "Nova Conversa" [ref=e18]:
+            - img
+            - text: Nova Conversa
+        - generic [ref=e19]:
+          - button "Conversas" [ref=e21]:
+            - generic [ref=e22]:
+              - img [ref=e23]
+              - generic [ref=e25]: Conversas
+            - img [ref=e26]
+          - generic [ref=e28]:
+            - button "Gráficos" [ref=e29]:
+              - generic [ref=e30]:
+                - img [ref=e31]
+                - generic [ref=e33]: Gráficos
+              - img [ref=e34]
+            - generic [ref=e40]:
+              - button "Abrir galeria de gráficos" [ref=e41]:
+                - img
+                - text: Abrir galeria de gráficos
+              - generic [ref=e42]:
+                - generic [ref=e44] [cursor=pointer]:
+                  - img [ref=e46]
+                  - generic [ref=e48]:
+                    - heading "O conjunto de dados analisado compreende **50.000*..." [level=4] [ref=e49]
+                    - paragraph [ref=e50]: Barras · Geral
+                - generic [ref=e52] [cursor=pointer]:
+                  - img [ref=e54]
+                  - generic [ref=e56]:
+                    - heading "Analise" [level=4] [ref=e57]
+                    - paragraph [ref=e58]: Barras · Geral
+                - generic [ref=e60] [cursor=pointer]:
+                  - img [ref=e62]
+                  - generic [ref=e64]:
+                    - heading "Tega sistemas 2" [level=4] [ref=e65]
+                    - paragraph [ref=e66]: Linhas · Geral
+                - generic [ref=e68] [cursor=pointer]:
+                  - img [ref=e70]
+                  - generic [ref=e72]:
+                    - heading "### Análise do Estoque Médio de Produtos por Loja ..." [level=4] [ref=e73]
+                    - paragraph [ref=e74]: Barras · Geral
+          - button "Dashboards" [ref=e76]:
+            - generic [ref=e77]:
+              - img [ref=e78]
+              - generic [ref=e80]: Dashboards
+            - img [ref=e81]
+          - button "Relatórios" [ref=e84]:
+            - generic [ref=e85]:
+              - img [ref=e86]
+              - generic [ref=e88]: Relatórios
+            - img [ref=e89]
+        - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e93]:
+          - generic [ref=e94]:
+            - generic [ref=e96]: A
+            - generic [ref=e97]:
+              - paragraph [ref=e98]: Admin Teste 2
+              - paragraph [ref=e99]: admin2@teste.com.br
+            - generic [ref=e100]:
+              - generic [ref=e101]:
+                - img
+                - text: Admin
+              - img
+      - generic [ref=e102]:
+        - generic [ref=e107]:
+          - heading "Galeria de Gráficos" [level=1] [ref=e108]
+          - paragraph [ref=e109]: Gerencie e visualize todos os seus gráficos personalizados
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - generic [ref=e113]:
+              - img [ref=e114]
+              - textbox "Buscar gráficos por nome, categoria ou tags..." [ref=e116]
+            - generic [ref=e117]:
+              - button "Recarregar Dados" [ref=e118]
+              - combobox [ref=e119]:
+                - generic: Todas as Categorias
+                - img
+              - combobox [ref=e120]:
+                - generic: Grande
+                - img
+          - generic [ref=e121]:
+            - generic [ref=e124]:
+              - img [ref=e125]
+              - generic [ref=e127]:
+                - paragraph [ref=e128]: Total de Gráficos
+                - paragraph [ref=e129]: "4"
+            - generic [ref=e132]:
+              - img [ref=e133]
+              - generic [ref=e135]:
+                - paragraph [ref=e136]: Categorias
+                - paragraph [ref=e137]: "1"
+            - generic [ref=e140]:
+              - img [ref=e141]
+              - generic [ref=e143]:
+                - paragraph [ref=e144]: Tipos Diferentes
+                - paragraph [ref=e145]: "2"
+            - generic [ref=e148]:
+              - img [ref=e149]
+              - generic [ref=e151]:
+                - paragraph [ref=e152]: Gráficos Ativos
+                - paragraph [ref=e153]: "4"
+          - generic [ref=e154]:
+            - generic [ref=e155] [cursor=pointer]:
+              - generic [ref=e156]:
+                - button [ref=e157]:
+                  - img
+                - button [ref=e158]:
+                  - img
+                - button [ref=e159]:
+                  - img
+              - generic "O conjunto de dados analisado compreende **50.000*..." [ref=e163]
+              - generic [ref=e166]:
+                - img [ref=e167]
+                - generic [ref=e169]: Erro na query do gráfico
+                - generic [ref=e170]: Erro interno no acesso aos dados do gráfico
+                - button "Corrigir" [ref=e171]:
+                  - img
+                  - text: Corrigir
+            - generic [ref=e172] [cursor=pointer]:
+              - generic [ref=e173]:
+                - button [ref=e174]:
+                  - img
+                - button [ref=e175]:
+                  - img
+                - button [ref=e176]:
+                  - img
+              - generic "Analise" [ref=e180]
+              - generic [ref=e183]:
+                - img [ref=e184]
+                - generic [ref=e186]: Carregando gráfico...
+            - generic [ref=e187] [cursor=pointer]:
+              - generic [ref=e188]:
+                - button [ref=e189]:
+                  - img
+                - button [ref=e190]:
+                  - img
+                - button [ref=e191]:
+                  - img
+              - generic "Tega sistemas 2" [ref=e195]
+              - generic [ref=e198]:
+                - img [ref=e199]
+                - generic [ref=e201]: Carregando gráfico...
+            - generic [ref=e202] [cursor=pointer]:
+              - generic [ref=e203]:
+                - button [ref=e204]:
+                  - img
+                - button [ref=e205]:
+                  - img
+                - button [ref=e206]:
+                  - img
+              - generic "### Análise do Estoque Médio de Produtos por Loja ..." [ref=e210]
+              - generic [ref=e213]:
+                - img [ref=e214]
+                - generic [ref=e216]: Carregando gráfico...
+    - contentinfo [ref=e217]:
+      - generic [ref=e218]:
+        - generic [ref=e219]: "Dados atualizados em: Sem informação"
+        - generic [ref=e220]: © 2026 JCLA Analytics. Todos os direitos reservados.
+        - generic [ref=e221]: v1.8.0

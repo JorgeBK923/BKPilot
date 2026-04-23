@@ -1,0 +1,818 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - button:
+              - img
+              - text: Voltar
+            - generic:
+              - heading [level=1]: Gestão de Usuários
+              - paragraph: Gerencie usuários, permissões e configurações do sistema
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - tablist:
+                - tab [selected]: Usuários
+                - tab: Permissões
+                - tab: Personas
+              - tabpanel:
+                - generic:
+                  - generic:
+                    - generic:
+                      - textbox:
+                        - /placeholder: Buscar usuários...
+                      - generic:
+                        - generic: Todos
+                        - combobox:
+                          - img
+                          - img
+                    - button:
+                      - img
+                      - text: Novo Usuário
+                  - generic:
+                    - generic:
+                      - generic:
+                        - table:
+                          - rowgroup:
+                            - row:
+                              - columnheader: ID
+                              - columnheader: Usuário
+                              - columnheader: Email
+                              - columnheader: Status
+                              - columnheader: Tipo
+                              - columnheader: Grupo
+                              - columnheader: Criado em
+                              - columnheader: Último Login
+                              - columnheader: Regras
+                              - columnheader: Ações
+                          - rowgroup:
+                            - row:
+                              - cell: "98"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Test QA Auto 001
+                                    - paragraph: "@testqa_auto_001"
+                              - cell: testqa_auto_001@teste.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 06/04/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "90"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Teste QA Minimo
+                                    - paragraph: "@testeqa002"
+                              - cell: testqa002@teste.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 25/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "89"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Teste QA Automacao
+                                    - paragraph: "@testeqa001"
+                              - cell: testqa001@teste.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 25/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "86"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: ttttttt
+                                    - paragraph: "@ttttt"
+                              - cell: tttt@tttt.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 24/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "82"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: "@Testef"
+                              - cell: Testehj@testse.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 04/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "81"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: "@Testte30"
+                              - cell: Testes@etrstse.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - img
+                                    - text: Admin
+                              - cell: Sem grupo
+                              - cell: 04/03/2026
+                              - cell: 04/03/2026
+                              - cell:
+                                - generic: 1 regra
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "80"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: testes rr
+                                    - paragraph: "@Teste28"
+                              - cell: Testes@testet.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 04/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "79"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Testes ok
+                                    - paragraph: "@Testes25"
+                              - cell: Testet25ests@teste.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 04/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "78"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: "@Testestega"
+                              - cell: Testetests@teste.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 04/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "77"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: "@Diogo"
+                              - cell: Diogo@teste.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 04/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "76"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Rodrigo testes
+                                    - paragraph: "@Rodrigo"
+                              - cell: Rodrigo.teste@use.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 04/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "75"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: usuarioY Teste
+                                    - paragraph: "@usuarioY"
+                              - cell: usuarioY@teste.com
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 04/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 1 regra
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "74"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: controle de acesso
+                                    - paragraph: "@Controle"
+                              - cell: controle@teste.com
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 03/03/2026
+                              - cell: 09/04/2026
+                              - cell:
+                                - generic: 1 regra
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "73"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Rodrigo
+                                    - paragraph: "@Inativotestes"
+                              - cell: Testes@testes.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell:
+                                - generic: GrupoGeral
+                              - cell: 02/03/2026
+                              - cell: 03/03/2026
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "72"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Testes tstew tewtew
+                                    - paragraph: "@TestesBugs"
+                              - cell: Testes@hjsdf.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 02/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "71"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Teste Teste
+                                    - paragraph: "@TesteBug"
+                              - cell: Teste@teste2.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 02/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "70"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Teste testes teste
+                                    - paragraph: "@Teste26"
+                              - cell: Teste@teste.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell: Sem grupo
+                              - cell: 02/03/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "66"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: User Inativo
+                                    - paragraph: "@userinativo"
+                              - cell: user@inativo.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 26/02/2026
+                              - cell: Nunca
+                              - cell:
+                                - generic: 0 regras
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "64"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Admin Teste 2
+                                    - paragraph: "@adminteste2"
+                              - cell: admin2@teste.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - img
+                                    - text: Admin
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 26/02/2026
+                              - cell: 13/04/2026
+                              - cell:
+                                - generic: 1 regra
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "63"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: User Teste 2
+                                    - paragraph: "@userteste2"
+                              - cell: user2@teste.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 26/02/2026
+                              - cell: 09/04/2026
+                              - cell:
+                                - generic: 1 regra
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "58"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: User Teste
+                                    - paragraph: "@userteste"
+                              - cell: user@teste.com.br
+                              - cell:
+                                - generic: Inativo
+                              - cell:
+                                - generic:
+                                  - generic: Usuário
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 20/02/2026
+                              - cell: 09/04/2026
+                              - cell:
+                                - generic: 1 regra
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "56"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Admin Teste
+                                    - paragraph: "@adminteste"
+                              - cell: admin@teste.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - img
+                                    - text: Admin
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 19/02/2026
+                              - cell: 17/03/2026
+                              - cell:
+                                - generic: 1 regra
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "43"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: GrAzul
+                                    - paragraph: "@grazul"
+                              - cell: ti@gralha-azul.ind.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - img
+                                    - text: Admin
+                              - cell:
+                                - generic: GrupoGeral
+                              - cell: 15/01/2026
+                              - cell: 19/01/2026
+                              - cell:
+                                - generic: 1 regra
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                            - row:
+                              - cell: "42"
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - paragraph: Admin Gralha
+                                    - paragraph: "@admingralha"
+                              - cell: admingralha@tegasistemas.com.br
+                              - cell:
+                                - generic: Ativo
+                              - cell:
+                                - generic:
+                                  - generic:
+                                    - img
+                                    - text: Admin
+                              - cell:
+                                - generic: AdminTeste
+                              - cell: 15/01/2026
+                              - cell: 13/04/2026
+                              - cell:
+                                - generic: 1 regra
+                              - cell:
+                                - generic:
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+                                  - button:
+                                    - img
+  - dialog "Criar Novo Usuário" [ref=e637]:
+    - generic [ref=e638]:
+      - heading "Criar Novo Usuário" [level=2] [ref=e639]
+      - paragraph [ref=e640]: Preencha os dados para criar um novo usuário
+    - generic [ref=e641]:
+      - generic [ref=e642]:
+        - generic [ref=e643]:
+          - generic [ref=e644]: Nome de usuário *
+          - textbox "Nome de usuário *" [active] [ref=e645]:
+            - /placeholder: usuario123
+        - generic [ref=e646]:
+          - generic [ref=e647]: E-mail *
+          - textbox "E-mail *" [ref=e648]:
+            - /placeholder: usuario@empresa.com
+      - generic [ref=e649]:
+        - generic [ref=e650]: Nome completo *
+        - textbox "Nome completo *" [ref=e651]
+      - generic [ref=e653]:
+        - generic [ref=e654]: WhatsApp
+        - generic [ref=e655]:
+          - combobox [ref=e656]:
+            - generic:
+              - generic:
+                - generic: 🇧🇷
+                - generic: "+55"
+            - img
+          - textbox "(00) 00000-0000" [ref=e658]
+      - generic [ref=e659]:
+        - generic [ref=e660]:
+          - generic [ref=e661]: País
+          - combobox [ref=e662]:
+            - generic [ref=e663]: Brasil
+            - img
+        - generic [ref=e664]:
+          - generic [ref=e665]: Moeda
+          - combobox [ref=e666]:
+            - generic [ref=e667]: BRL - Real Brasileiro
+            - img
+      - generic [ref=e668]:
+        - generic [ref=e669]: Idioma
+        - combobox [ref=e670]:
+          - generic [ref=e671]: Português
+          - img
+        - paragraph [ref=e672]: Idioma sincronizado automaticamente com o país selecionado. Pode ser alterado manualmente.
+      - generic [ref=e673]:
+        - generic [ref=e674]: Grupo
+        - combobox "Grupo" [ref=e675]:
+          - generic [ref=e676]: Sem grupo
+          - img
+        - paragraph [ref=e677]: Atribuir Grupo
+      - generic [ref=e678]:
+        - generic [ref=e679]: Senha *
+        - generic [ref=e680]:
+          - textbox "Senha *" [ref=e681]
+          - button "Visualizar senha" [ref=e682]:
+            - img [ref=e683]
+        - paragraph [ref=e687]: A senha deve ter pelo menos 8 caracteres, 1 letra maiúscula, 1 minúscula, 1 número e 1 caractere especial
+      - generic [ref=e688]:
+        - generic [ref=e689]: Confirmar senha *
+        - generic [ref=e690]:
+          - textbox "Confirmar senha *" [ref=e691]
+          - button "Visualizar senha" [ref=e692]:
+            - img [ref=e693]
+      - generic [ref=e697]:
+        - generic [ref=e698]:
+          - switch "Usuário ativo" [checked] [ref=e699]
+          - generic [ref=e700]: Usuário ativo
+        - generic [ref=e701]:
+          - switch "Administrador" [ref=e702]
+          - generic [ref=e703]: Administrador
+    - generic [ref=e704]:
+      - button "Cancelar" [ref=e705]
+      - button "Criar Usuário" [ref=e706]
+    - button "Close" [ref=e707]:
+      - img
+      - generic [ref=e708]: Close

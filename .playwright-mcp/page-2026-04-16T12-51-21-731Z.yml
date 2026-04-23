@@ -1,0 +1,82 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e71]:
+    - generic [ref=e72]:
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - img "JCLA Logo" [ref=e79] [cursor=pointer]
+            - button [ref=e81]:
+              - img
+          - button "Nova Conversa" [ref=e83]:
+            - img
+            - text: Nova Conversa
+        - generic [ref=e84]:
+          - button "Conversas" [ref=e86]:
+            - generic [ref=e87]:
+              - img [ref=e88]
+              - generic [ref=e90]: Conversas
+            - img [ref=e91]
+          - button "Gráficos" [ref=e252]:
+            - generic [ref=e253]:
+              - img [ref=e254]
+              - generic [ref=e256]: Gráficos
+            - img [ref=e257]
+          - button "Dashboards" [ref=e260]:
+            - generic [ref=e261]:
+              - img [ref=e262]
+              - generic [ref=e264]: Dashboards
+            - img [ref=e265]
+          - generic [ref=e267]:
+            - button "Relatórios" [ref=e268]:
+              - generic [ref=e269]:
+                - img [ref=e270]
+                - generic [ref=e272]: Relatórios
+              - img [ref=e273]
+            - generic [ref=e639]:
+              - button "Criar Relatório" [ref=e640]:
+                - img
+                - text: Criar Relatório
+              - generic [ref=e646]:
+                - img [ref=e647]
+                - generic [ref=e649]: hhh
+        - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e277]:
+          - generic [ref=e278]:
+            - generic [ref=e280]: A
+            - generic [ref=e281]:
+              - paragraph [ref=e282]: Admin Teste 2
+              - paragraph [ref=e283]: admin2@teste.com.br
+            - generic [ref=e284]:
+              - generic [ref=e285]:
+                - img
+                - text: Admin
+              - img
+      - generic [ref=e650]:
+        - generic [ref=e651]:
+          - generic [ref=e652]:
+            - generic [ref=e653]:
+              - heading "Relatórios" [level=1] [ref=e654]
+              - paragraph [ref=e655]: Crie e gerencie relatórios com inteligência artificial
+            - button "Novo Relatório" [ref=e656]:
+              - img
+              - text: Novo Relatório
+          - generic [ref=e658]:
+            - img [ref=e659]
+            - textbox "Buscar relatórios..." [ref=e661]
+        - generic [ref=e664]:
+          - heading "Meus Relatórios (1)" [level=2] [ref=e665]
+          - generic [ref=e667] [cursor=pointer]:
+            - generic [ref=e668]:
+              - generic [ref=e670]:
+                - img [ref=e671]
+                - heading "hhh" [level=3] [ref=e673]
+              - button [ref=e674]:
+                - img
+            - generic [ref=e675]:
+              - generic [ref=e676]: 14 de abr. de 2026
+              - generic [ref=e677]: Rascunho
+    - contentinfo [ref=e630]:
+      - generic [ref=e631]:
+        - generic [ref=e632]: "Dados atualizados em: Sem informação"
+        - generic [ref=e633]: © 2026 JCLA Analytics. Todos os direitos reservados.
+        - generic [ref=e634]: v1.8.0

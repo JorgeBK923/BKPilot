@@ -1,0 +1,342 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - generic [ref=e11]:
+              - img "JCLA Logo" [ref=e14] [cursor=pointer]
+              - button [ref=e16]:
+                - img
+            - button "Nova Conversa" [ref=e18]:
+              - img
+              - text: Nova Conversa
+          - generic [ref=e19]:
+            - button "Conversas" [ref=e21]:
+              - generic [ref=e22]:
+                - img [ref=e23]
+                - generic [ref=e25]: Conversas
+              - img [ref=e26]
+            - generic [ref=e28]:
+              - button "Gráficos" [ref=e29]:
+                - generic [ref=e30]:
+                  - img [ref=e31]
+                  - generic [ref=e33]: Gráficos
+                - img [ref=e34]
+              - generic [ref=e40]:
+                - button "Abrir galeria de gráficos" [ref=e41]:
+                  - img
+                  - text: Abrir galeria de gráficos
+                - generic [ref=e42]:
+                  - generic [ref=e44] [cursor=pointer]:
+                    - img [ref=e46]
+                    - generic [ref=e48]:
+                      - heading "O conjunto de dados analisado compreende **50.000*..." [level=4] [ref=e49]
+                      - paragraph [ref=e50]: Barras · Geral
+                  - generic [ref=e52] [cursor=pointer]:
+                    - img [ref=e54]
+                    - generic [ref=e56]:
+                      - heading "Analise" [level=4] [ref=e57]
+                      - paragraph [ref=e58]: Barras · Geral
+                  - generic [ref=e60] [cursor=pointer]:
+                    - img [ref=e62]
+                    - generic [ref=e64]:
+                      - heading "Tega sistemas 2" [level=4] [ref=e65]
+                      - paragraph [ref=e66]: Linhas · Geral
+                  - generic [ref=e68] [cursor=pointer]:
+                    - img [ref=e70]
+                    - generic [ref=e72]:
+                      - heading "### Análise do Estoque Médio de Produtos por Loja ..." [level=4] [ref=e73]
+                      - paragraph [ref=e74]: Barras · Geral
+            - button "Dashboards" [ref=e76]:
+              - generic [ref=e77]:
+                - img [ref=e78]
+                - generic [ref=e80]: Dashboards
+              - img [ref=e81]
+            - button "Relatórios" [ref=e84]:
+              - generic [ref=e85]:
+                - img [ref=e86]
+                - generic [ref=e88]: Relatórios
+              - img [ref=e89]
+          - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e93]:
+            - generic [ref=e94]:
+              - generic [ref=e96]: A
+              - generic [ref=e97]:
+                - paragraph [ref=e98]: Admin Teste 2
+                - paragraph [ref=e99]: admin2@teste.com.br
+              - generic [ref=e100]:
+                - generic [ref=e101]:
+                  - img
+                  - text: Admin
+                - img
+        - generic [ref=e102]:
+          - generic [ref=e107]:
+            - heading "Galeria de Gráficos" [level=1] [ref=e108]
+            - paragraph [ref=e109]: Gerencie e visualize todos os seus gráficos personalizados
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - generic [ref=e113]:
+                - img [ref=e114]
+                - textbox "Buscar gráficos por nome, categoria ou tags..." [ref=e116]
+              - generic [ref=e117]:
+                - button "Recarregar Dados" [ref=e118]
+                - combobox [ref=e119]:
+                  - generic: Todas as Categorias
+                  - img
+                - combobox [ref=e120]:
+                  - generic: Grande
+                  - img
+            - generic [ref=e121]:
+              - generic [ref=e124]:
+                - img [ref=e125]
+                - generic [ref=e127]:
+                  - paragraph [ref=e128]: Total de Gráficos
+                  - paragraph [ref=e129]: "4"
+              - generic [ref=e132]:
+                - img [ref=e133]
+                - generic [ref=e135]:
+                  - paragraph [ref=e136]: Categorias
+                  - paragraph [ref=e137]: "1"
+              - generic [ref=e140]:
+                - img [ref=e141]
+                - generic [ref=e143]:
+                  - paragraph [ref=e144]: Tipos Diferentes
+                  - paragraph [ref=e145]: "2"
+              - generic [ref=e148]:
+                - img [ref=e149]
+                - generic [ref=e151]:
+                  - paragraph [ref=e152]: Gráficos Ativos
+                  - paragraph [ref=e153]: "4"
+            - generic [ref=e154]:
+              - generic [ref=e155] [cursor=pointer]:
+                - generic [ref=e156]:
+                  - button [ref=e157]:
+                    - img
+                  - button [ref=e158]:
+                    - img
+                  - button [ref=e159]:
+                    - img
+                - generic "O conjunto de dados analisado compreende **50.000*..." [ref=e163]
+                - generic [ref=e166]:
+                  - img [ref=e167]
+                  - generic [ref=e169]: Erro na query do gráfico
+                  - generic [ref=e170]: Erro interno no acesso aos dados do gráfico
+                  - button "Corrigir" [ref=e171]:
+                    - img
+                    - text: Corrigir
+              - generic [ref=e172] [cursor=pointer]:
+                - generic [ref=e173]:
+                  - button [ref=e174]:
+                    - img
+                  - button [ref=e175]:
+                    - img
+                  - button [ref=e176]:
+                    - img
+                - generic "Analise" [ref=e180]
+                - generic [ref=e622]:
+                  - generic [ref=e624]:
+                    - img [ref=e625]
+                    - combobox [ref=e627]:
+                      - generic: Todos (105)
+                      - img
+                  - generic [ref=e631]:
+                    - img [ref=e632]:
+                      - generic [ref=e636]:
+                        - generic [ref=e638]: "1"
+                        - generic [ref=e640]: "15"
+                        - generic [ref=e642]: "20"
+                        - generic [ref=e644]: "24"
+                        - generic [ref=e646]: "29"
+                        - generic [ref=e648]: "34"
+                        - generic [ref=e650]: "42"
+                        - generic [ref=e652]: "53"
+                        - generic [ref=e654]: "57"
+                        - generic [ref=e656]: "62"
+                        - generic [ref=e658]: "66"
+                        - generic [ref=e660]: "111"
+                        - generic [ref=e662]: "115"
+                        - generic [ref=e664]: "119"
+                        - generic [ref=e666]: "123"
+                        - generic [ref=e668]: "127"
+                        - generic [ref=e670]: "132"
+                        - generic [ref=e672]: "72"
+                        - generic [ref=e674]: "76"
+                        - generic [ref=e676]: "80"
+                        - generic [ref=e678]: "84"
+                        - generic [ref=e680]: "88"
+                        - generic [ref=e682]: "92"
+                        - generic [ref=e684]: "98"
+                        - generic [ref=e686]: "102"
+                        - generic [ref=e688]: "106"
+                        - generic [ref=e690]: "110"
+                      - generic [ref=e692]:
+                        - generic [ref=e694]: "-31.500.000"
+                        - generic [ref=e696]: "-21.000.000"
+                        - generic [ref=e698]: "-10.500.000"
+                        - generic [ref=e700]: "0"
+                        - generic [ref=e702]: 10.500.000
+                    - list [ref=e944]:
+                      - listitem [ref=e945]:
+                        - img [ref=e946]
+                        - text: estoque_medio_por_produto
+                      - listitem [ref=e948]:
+                        - img [ref=e949]
+                        - text: estoque_total
+              - generic [ref=e187] [cursor=pointer]:
+                - generic [ref=e188]:
+                  - button [ref=e189]:
+                    - img
+                  - button [ref=e190]:
+                    - img
+                  - button [ref=e191]:
+                    - img
+                - generic "Tega sistemas 2" [ref=e195]
+                - generic [ref=e952]:
+                  - generic [ref=e954]:
+                    - img [ref=e955]
+                    - combobox [ref=e957]:
+                      - generic: Todos (12)
+                      - img
+                  - img [ref=e962]:
+                    - generic [ref=e966]:
+                      - generic [ref=e968]: "1"
+                      - generic [ref=e970]: "2"
+                      - generic [ref=e972]: "3"
+                      - generic [ref=e974]: "4"
+                      - generic [ref=e976]: "5"
+                      - generic [ref=e978]: "6"
+                      - generic [ref=e980]: "7"
+                      - generic [ref=e982]: "8"
+                      - generic [ref=e984]: "9"
+                      - generic [ref=e986]: "10"
+                      - generic [ref=e988]: "11"
+                      - generic [ref=e990]: "12"
+                    - generic [ref=e992]:
+                      - generic [ref=e994]: R$ 0
+                      - generic [ref=e996]: R$ 6,5 mi
+                      - generic [ref=e998]: R$ 13 mi
+                      - generic [ref=e1000]: R$ 19,5 mi
+                      - generic [ref=e1002]: R$ 26 mi
+                    - generic [ref=e1022]:
+                      - generic [ref=e1023]: R$ 20.413.095,28
+                      - generic [ref=e1024]: R$ 23.960.608,94
+                      - generic [ref=e1025]: R$ 19.614.674,72
+                      - generic [ref=e1026]: R$ 19.664.455,92
+                      - generic [ref=e1027]: R$ 22.084.237,37
+                      - generic [ref=e1028]: R$ 21.404.902,33
+                      - generic [ref=e1029]: R$ 24.581.449,12
+                      - generic [ref=e1030]: R$ 22.112.302,53
+                      - generic [ref=e1031]: R$ 20.532.056,46
+                      - generic [ref=e1032]: R$ 23.476.533,58
+                      - generic [ref=e1033]: R$ 25.314.239,20
+                      - generic [ref=e1034]: R$ 21.659.066,31
+              - generic [ref=e202] [cursor=pointer]:
+                - generic [ref=e203]:
+                  - button [ref=e204]:
+                    - img
+                  - button [ref=e205]:
+                    - img
+                  - button [ref=e206]:
+                    - img
+                - generic "### Análise do Estoque Médio de Produtos por Loja ..." [ref=e210]
+                - generic [ref=e213]:
+                  - img [ref=e214]
+                  - generic [ref=e216]: Carregando gráfico...
+          - generic [ref=e1036]:
+            - generic [ref=e1037]:
+              - generic [ref=e1038]:
+                - button [ref=e1039]:
+                  - img
+                - heading "Editar Gráfico" [level=2] [ref=e1040]
+                - generic [ref=e1041]: ff98925b-3276-43da-a4fe-973d6b0e0697
+              - generic [ref=e1042]:
+                - button "Cancelar" [ref=e1043]
+                - button "Atualizar" [ref=e1044]
+            - generic [ref=e1045]:
+              - generic [ref=e1047]:
+                - generic [ref=e1048]:
+                  - generic [ref=e1049]: Nome do Gráfico
+                  - textbox "Nome do Gráfico" [ref=e1050]: Analise
+                - generic [ref=e1051]:
+                  - generic [ref=e1052]: Categoria
+                  - textbox "Categoria" [ref=e1053]: Geral
+                - generic [ref=e1054]:
+                  - generic [ref=e1055]: Tipo de Gráfico
+                  - combobox [ref=e1056]:
+                    - generic: Barras
+                    - img
+                - generic [ref=e1057]:
+                  - generic [ref=e1058]: Descrição (opcional)
+                  - textbox "Descrição (opcional)" [ref=e1059]: Teste QA descricao
+                - generic [ref=e1060]:
+                  - generic [ref=e1061]: Tags (opcional)
+                  - generic [ref=e1062]:
+                    - textbox "Digite uma tag e pressione Enter" [ref=e1063]
+                    - button [disabled]:
+                      - img
+              - generic [ref=e1064]:
+                - generic [ref=e1065]:
+                  - generic [ref=e1066]:
+                    - generic [ref=e1067]: Consulta SQL
+                    - generic [ref=e1068]:
+                      - button "IA" [ref=e1069]:
+                        - img
+                        - text: IA
+                      - button "Preview" [ref=e1070]:
+                        - img
+                        - text: Preview
+                  - generic [ref=e1073]:
+                    - tablist [ref=e1075]:
+                      - tab "SQL" [selected] [ref=e1076]:
+                        - img
+                        - text: SQL
+                      - tab "Python" [ref=e1077]:
+                        - img
+                        - text: Python
+                    - tabpanel "SQL" [ref=e1078]:
+                      - code [ref=e1081]:
+                        - generic [ref=e1082]:
+                          - textbox "Editor content" [ref=e1083]
+                          - textbox [ref=e1084]
+                          - generic [ref=e1123]: "1"
+                          - generic [ref=e1105]:
+                            - generic [ref=e1155]: SELECT t.localestoqueid AS loja_id, t.
+                            - generic [ref=e1157]: localestoquedescricao AS loja_descricao, AVG(t.
+                            - generic [ref=e1159]: quantidadesaldo) AS estoque_medio_por_produto,
+                            - generic [ref=e1161]: SUM(t.quantidadesaldo) AS estoque_total, COUNT
+                            - generic [ref=e1163]: (DISTINCT t.produtocodigo) AS
+                            - generic [ref=e1165]: quantidade_produtos FROM gold_gralha.
+                            - generic [ref=e1167]: vw_estoque_jcla AS t GROUP BY t.
+                            - generic [ref=e1169]: localestoqueid, t.localestoquedescricao
+                - generic [ref=e1170]:
+                  - generic "Arrastar para redimensionar" [ref=e1171]:
+                    - img [ref=e1172]
+                  - generic [ref=e1175]:
+                    - generic [ref=e1176]:
+                      - generic [ref=e1177]:
+                        - img [ref=e1178]
+                        - generic [ref=e1181]: Assistente IA
+                      - button [ref=e1217]:
+                        - img
+                    - generic [ref=e1182]:
+                      - generic [ref=e1219]: filtrar por ano 2024
+                      - generic [ref=e1221]: "Não foi possível aplicar o filtro por ano 2024. A tabela `vw_estoque_jcla` não possui uma coluna de data que represente a data do registro de estoque ou da movimentação de estoque para permitir esse tipo de filtro. A coluna `datainativo` refere-se à data de inativação do produto, não ao período do estoque."
+                    - generic [ref=e1214]:
+                      - 'textbox "Ex: Agrupar por mês, gráfico de pizza..." [ref=e1215]'
+                      - button [disabled]:
+                        - img
+            - contentinfo [ref=e1115]:
+              - generic [ref=e1116]:
+                - generic [ref=e1117]: "Dados atualizados em: Sem informação"
+                - generic [ref=e1118]: © 2026 JCLA Analytics. Todos os direitos reservados.
+                - generic [ref=e1119]: v1.8.0
+      - contentinfo [ref=e217]:
+        - generic [ref=e218]:
+          - generic [ref=e219]: "Dados atualizados em: Sem informação"
+          - generic [ref=e220]: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic [ref=e221]: v1.8.0
+  - generic [ref=e1035]: R$ 0
+  - generic [ref=e1120]:
+    - alert
+    - alert

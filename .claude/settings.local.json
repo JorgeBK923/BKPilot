@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_network_requests",
+      "Bash(rm -f resultado/latest)",
+      "Bash(ln -sf 2026-04-13_0854 resultado/latest)",
+      "Bash(pip install:*)",
+      "mcp__playwright__browser_navigate"
+    ]
+  }
+}

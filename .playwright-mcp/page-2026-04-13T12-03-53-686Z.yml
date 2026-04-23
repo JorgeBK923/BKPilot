@@ -1,0 +1,190 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T":
+      - list:
+        - listitem [ref=e7323]:
+          - img [ref=e7325]
+          - generic [ref=e7328]: 5 tabelas carregadas
+    - generic [ref=e7329]:
+      - generic [ref=e7332]:
+        - generic [ref=e7333]:
+          - button "Voltar" [ref=e7334]:
+            - img
+            - text: Voltar
+          - generic [ref=e7335]:
+            - img [ref=e7337]
+            - generic [ref=e7339]:
+              - heading "Dicionário de Dados" [level=1] [ref=e7340]
+              - paragraph [ref=e7341]: Visualize as tabelas e colunas que você tem permissão para acessar
+        - generic [ref=e7342]:
+          - generic [ref=e7343]:
+            - img
+            - text: 1 databases
+          - generic [ref=e7344]:
+            - img
+            - text: 5 tabelas
+          - generic [ref=e7345]:
+            - img
+            - text: 130 colunas
+      - generic [ref=e7347]:
+        - generic [ref=e7348]:
+          - img [ref=e7349]
+          - textbox "Buscar tabelas ou colunas..." [ref=e7351]
+        - generic [ref=e7352]:
+          - button [ref=e7353]:
+            - img
+          - button [ref=e7354]:
+            - img
+      - generic [ref=e7357]:
+        - generic [ref=e7358]:
+          - img [ref=e7360]
+          - generic [ref=e7362]:
+            - heading "gold_gralha" [level=2] [ref=e7363]
+            - paragraph [ref=e7364]: 5 tabelas
+        - generic [ref=e7365]:
+          - generic [ref=e7366] [cursor=pointer]:
+            - generic [ref=e7367]:
+              - generic [ref=e7368]:
+                - img [ref=e7369]
+                - generic [ref=e7371]: vw_estoque_jcla
+              - img [ref=e7373]
+            - paragraph [ref=e7376]: "Esta tabela contem informacoes de estoque de produtos, incluindo entradas, saidas e saldo, organizadas por local de estoque, deposito, produto e suas classificacoes. Principais fontes de dados: Estoque Movimentacao de estoque Cadastro de Produto Local de estoque Deposito Familia e grupo de produto Situacao do produto Regras de inclusao: Considera movimentacoes de entrada e saida de produtos Inclui produtos ativos e inativos (com data de inativacao) Agrupamentos e chaves principais: Local de estoque Deposito Codigo do produto Familia e grupo de produto Situacao do produto Observacoes adicionais: Contem metricas de quantidade (entrada, saida e saldo) Inclui diversos indicadores de tipificacao do produto (acabado, materia-prima, consumo, ferramenta, volume, etc.) Ideal para analises de saldo de estoque, giro de produtos, controle logistico e classificacao de inventario"
+            - generic [ref=e7377]:
+              - generic [ref=e7378]:
+                - img [ref=e7379]
+                - generic [ref=e7381]: localestoqueid
+                - generic [ref=e7382]: INTEGER
+              - generic [ref=e7383]:
+                - img [ref=e7384]
+                - generic [ref=e7386]: localestoquedescricao
+                - generic [ref=e7387]: STRING
+              - generic [ref=e7388]:
+                - img [ref=e7389]
+                - generic [ref=e7391]: depositoid
+                - generic [ref=e7392]: INTEGER
+              - generic [ref=e7393]:
+                - img [ref=e7394]
+                - generic [ref=e7396]: depositodescricao
+                - generic [ref=e7397]: STRING
+              - generic [ref=e7398]:
+                - img [ref=e7399]
+                - generic [ref=e7401]: produtocodigo
+                - generic [ref=e7402]: STRING
+              - generic [ref=e7404]: +34 colunas
+          - generic [ref=e7405] [cursor=pointer]:
+            - generic [ref=e7406]:
+              - generic [ref=e7407]:
+                - img [ref=e7408]
+                - generic [ref=e7410]: vw_bifaturamento_base
+              - img [ref=e7412]
+            - paragraph [ref=e7415]: "Esta tabela contem informacoes de faturamento e vendas, agregadas por cliente, representante, supervisor e produto. Principais fontes de dados: NF (notas fiscais de saida), Item, Pessoa, Grupo de produto, Familia de produto, Situacao do produto, Revestimento, Regiao, Grupo de pessoa, Cliente, Grupo de cliente, Tipo de cliente e tipo de comercio, Produto, Natureza de operacao, Regras de inclusao: Considera apenas notas de saida, Natureza de operacao marcada para sair no relatorio comercial, Exclui notas devolvidas ou canceladas. Agrupamentos e chaves principais: Codigo e razao social do cliente, Codigo e nome do representante, Codigo e nome do supervisor, Produto (descricao), Data de emissao da nota fiscal, Razao social da empresa, CFOP, Codigo e descricao do revestimento, Regiao Observacoes adicionais: A tabela contem informacoes de faturamento, valores, quantidades e metricas de produtos vendidos, Ideal para analises de vendas, ranking de produtos, faturamento por cliente, representante ou regiao"
+            - generic [ref=e7416]:
+              - generic [ref=e7417]:
+                - img [ref=e7418]
+                - generic [ref=e7420]: bifaturamentogeracomissao
+                - generic [ref=e7421]: INTEGER
+              - generic [ref=e7422]:
+                - img [ref=e7423]
+                - generic [ref=e7425]: _extracted_at
+                - generic [ref=e7426]: TIMESTAMP
+              - generic [ref=e7427]:
+                - img [ref=e7428]
+                - generic [ref=e7430]: _processed_at
+                - generic [ref=e7431]: TIMESTAMP
+              - generic [ref=e7432]:
+                - img [ref=e7433]
+                - generic [ref=e7435]: data_processamento
+                - generic [ref=e7436]: TIMESTAMP
+              - generic [ref=e7437]:
+                - img [ref=e7438]
+                - generic [ref=e7440]: birepresentantenome
+                - generic [ref=e7441]: STRING
+              - generic [ref=e7443]: +47 colunas
+          - generic [ref=e7444] [cursor=pointer]:
+            - generic [ref=e7445]:
+              - generic [ref=e7446]:
+                - img [ref=e7447]
+                - generic [ref=e7449]: vw_produto_revestimento_jcla
+              - img [ref=e7451]
+            - paragraph [ref=e7454]: "Esta tabela contem informacoes de produtos e seus respectivos revestimentos, incluindo classificacao por tipo de revestimento, codigos EAN e regras de liberacao para assistencia tecnica. Principais fontes de dados: Cadastro de Produto Cadastro de Revestimento Tipo de Revestimento Tabelas de codigos EAN (EAN, EAN-14 e variacoes) Regras de inclusao: Considera apenas produtos com relacionamento valido com revestimentos Pode conter registros historicos conforme periodo de liberacao Agrupamentos e chaves principais: Codigo do produto Codigo do revestimento Tipo de revestimento Codigo EAN / EAN-14 Observacoes adicionais: A tabela permite identificar quais revestimentos estao associados a cada produto Possui indicadores e periodos de liberacao para assistencia tecnica Ideal para analises de portfolio de produtos, rastreabilidade por EAN e regras comerciais/tecnicas de revestimento"
+            - generic [ref=e7455]:
+              - generic [ref=e7456]:
+                - img [ref=e7457]
+                - generic [ref=e7459]: produtocodigo
+                - generic [ref=e7460]: STRING
+              - generic [ref=e7461]:
+                - img [ref=e7462]
+                - generic [ref=e7464]: produtodescricao
+                - generic [ref=e7465]: STRING
+              - generic [ref=e7466]:
+                - img [ref=e7467]
+                - generic [ref=e7469]: tiporevestimentoid
+                - generic [ref=e7470]: INTEGER
+              - generic [ref=e7471]:
+                - img [ref=e7472]
+                - generic [ref=e7474]: tiporevestimentodescricao
+                - generic [ref=e7475]: STRING
+              - generic [ref=e7476]:
+                - img [ref=e7477]
+                - generic [ref=e7479]: revestimentoid
+                - generic [ref=e7480]: INTEGER
+              - generic [ref=e7482]: +10 colunas
+          - generic [ref=e7483] [cursor=pointer]:
+            - generic [ref=e7484]:
+              - generic [ref=e7485]:
+                - img [ref=e7486]
+                - generic [ref=e7488]: vw_produtos_jcla
+              - img [ref=e7490]
+            - paragraph [ref=e7493]: "Esta tabela contem informacoes de cadastro e classificacao comercial de produtos, incluindo familia, grupo, situacao e indicadores de tipificacao do produto. Principais fontes de dados: Cadastro de Produto Familia de produto Grupo de produto Situacao do produto Regras de inclusao: Considera produtos ativos e inativos Mantem historico basico por meio da data de inativacao Agrupamentos e chaves principais: Codigo do produto Familia do produto Grupo do produto Situacao do produto Observacoes adicionais: Possui indicadores de classificacao como produto acabado, volume e materia-prima Estrutura simplificada, voltada para analise cadastral e segmentacao de produtos Ideal para analises de mix de produtos, categorizacao comercial e filtros em relatorios analiticos"
+            - generic [ref=e7494]:
+              - generic [ref=e7495]:
+                - img [ref=e7496]
+                - generic [ref=e7498]: produtocodigo
+                - generic [ref=e7499]: STRING
+              - generic [ref=e7500]:
+                - img [ref=e7501]
+                - generic [ref=e7503]: produtodescricao
+                - generic [ref=e7504]: STRING
+              - generic [ref=e7505]:
+                - img [ref=e7506]
+                - generic [ref=e7508]: familiaid
+                - generic [ref=e7509]: INTEGER
+              - generic [ref=e7510]:
+                - img [ref=e7511]
+                - generic [ref=e7513]: familiadescricao
+                - generic [ref=e7514]: STRING
+              - generic [ref=e7515]:
+                - img [ref=e7516]
+                - generic [ref=e7518]: grupoprodutoid
+                - generic [ref=e7519]: INTEGER
+              - generic [ref=e7521]: +11 colunas
+          - generic [ref=e7522] [cursor=pointer]:
+            - generic [ref=e7523]:
+              - generic [ref=e7524]:
+                - img [ref=e7525]
+                - generic [ref=e7527]: vw_revestimento_jcla
+              - img [ref=e7529]
+            - paragraph [ref=e7532]: "Esta tabela contem informacoes de cadastro de revestimentos, incluindo regras de liberacao para venda e representantes e acessorios. Principais fontes de dados: Cadastro de Revestimentos Regras comerciais e operacionais Regras de inclusao: Considera todos os revestimentos cadastrados Pode conter registros tecnicos de controle de carga e processamento Agrupamentos e chaves principais: Codigo do revestimento Observacoes adicionais: Possui indicadores de liberacao para diferentes contextos comerciais (venda, representante, acessorios) Ideal para controle de regras comerciais, validacoes operacionais e auditoria de dados"
+            - generic [ref=e7533]:
+              - generic [ref=e7534]:
+                - img [ref=e7535]
+                - generic [ref=e7537]: revestimentoid
+                - generic [ref=e7538]: INTEGER
+              - generic [ref=e7539]:
+                - img [ref=e7540]
+                - generic [ref=e7542]: revestimentodescricao
+                - generic [ref=e7543]: STRING
+              - generic [ref=e7544]:
+                - img [ref=e7545]
+                - generic [ref=e7547]: revestimentoliberadorepresentante
+                - generic [ref=e7548]: INTEGER
+              - generic [ref=e7549]:
+                - img [ref=e7550]
+                - generic [ref=e7552]: revestimentoliberadoacessorios
+                - generic [ref=e7553]: INTEGER
+              - generic [ref=e7554]:
+                - img [ref=e7555]
+                - generic [ref=e7557]: revestimentoliberadovenda
+                - generic [ref=e7558]: INTEGER
+              - generic [ref=e7560]: +3 colunas
+  - generic [ref=e2415]: "-6.000.000"

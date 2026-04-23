@@ -1,0 +1,52 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e9]:
+          - paragraph [ref=e10]: Assistente inteligente para análise ERP
+          - paragraph [ref=e11]: Desenvolvido por JCLA — inteligência de negócios e análise avançada de dados para ERP.
+        - generic [ref=e12]:
+          - heading "Recursos Principais" [level=2] [ref=e13]
+          - generic [ref=e14]:
+            - generic [ref=e15]:
+              - img [ref=e17]
+              - generic [ref=e19]:
+                - heading "Chat Inteligente" [level=3] [ref=e20]
+                - paragraph [ref=e21]: Converse naturalmente com seus dados ERP
+            - generic [ref=e22]:
+              - img [ref=e24]
+              - generic [ref=e26]:
+                - heading "Análises Visuais" [level=3] [ref=e27]
+                - paragraph [ref=e28]: Gráficos e relatórios automáticos
+            - generic [ref=e29]:
+              - img [ref=e31]
+              - generic [ref=e33]:
+                - heading "Insights Instantâneos" [level=3] [ref=e34]
+                - paragraph [ref=e35]: Descobertas automáticas em seus dados
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: Entrar
+          - generic [ref=e40]: Entre com suas credenciais para acessar o sistema
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]: Usuário
+            - textbox "Usuário" [ref=e45]:
+              - /placeholder: Digite seu usuário
+          - generic [ref=e46]:
+            - generic [ref=e47]: Senha
+            - generic [ref=e48]:
+              - textbox "Senha" [ref=e49]:
+                - /placeholder: Digite sua senha
+              - button [ref=e50]:
+                - img [ref=e51]
+          - generic [ref=e53]:
+            - checkbox "Lembrar de mim" [ref=e54]
+            - checkbox
+            - generic [ref=e55] [cursor=pointer]: Lembrar de mim
+          - button "Entrar" [ref=e56]
+    - contentinfo [ref=e57]:
+      - generic [ref=e58]:
+        - generic [ref=e59]: "Dados atualizados em: Carregando..."
+        - generic [ref=e60]: © 2026 JCLA Analytics. Todos os direitos reservados.
+        - generic [ref=e61]: v1.8.0

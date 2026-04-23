@@ -1,0 +1,26 @@
+{
+  "name": "bugkillers-qa-agent",
+  "version": "1.0.0",
+  "description": "Sistema de automação de QA baseado em Claude Code + Playwright MCP. 16 comandos slash que cobrem o pipeline completo: exploração → cenários → execução → bugs → relatório + auditorias avulsas de acessibilidade, performance, API e usabilidade.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "canvas": "^3.2.3",
+    "chokidar": "^3.6.0",
+    "docx": "^9.6.1",
+    "dotenv": "^16.6.1",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.1",
+    "mammoth": "^1.12.0",
+    "nunjucks": "^3.2.4",
+    "pdfkit": "^0.18.0",
+    "playwright": "^1.59.1",
+    "xlsx": "^0.18.5"
+  }
+}

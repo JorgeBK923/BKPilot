@@ -1,0 +1,54 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - img "JCLA Logo" [ref=e11] [cursor=pointer]
+          - generic [ref=e12]:
+            - paragraph [ref=e13]: Assistente inteligente para análise ERP
+            - paragraph [ref=e14]: Desenvolvido por JCLA — inteligência de negócios e análise avançada de dados para ERP.
+        - generic [ref=e15]:
+          - heading "Recursos Principais" [level=2] [ref=e16]
+          - generic [ref=e17]:
+            - generic [ref=e18]:
+              - img [ref=e20]
+              - generic [ref=e22]:
+                - heading "Chat Inteligente" [level=3] [ref=e23]
+                - paragraph [ref=e24]: Converse naturalmente com seus dados ERP
+            - generic [ref=e25]:
+              - img [ref=e27]
+              - generic [ref=e29]:
+                - heading "Análises Visuais" [level=3] [ref=e30]
+                - paragraph [ref=e31]: Gráficos e relatórios automáticos
+            - generic [ref=e32]:
+              - img [ref=e34]
+              - generic [ref=e36]:
+                - heading "Insights Instantâneos" [level=3] [ref=e37]
+                - paragraph [ref=e38]: Descobertas automáticas em seus dados
+      - generic [ref=e39]:
+        - generic [ref=e41]:
+          - generic [ref=e42]: Entrar
+          - generic [ref=e43]: Entre com suas credenciais para acessar o sistema
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: Usuário
+            - textbox "Usuário" [ref=e48]:
+              - /placeholder: Digite seu usuário
+          - generic [ref=e49]:
+            - generic [ref=e50]: Senha
+            - generic [ref=e51]:
+              - textbox "Senha" [ref=e52]:
+                - /placeholder: Digite sua senha
+              - button [ref=e53]:
+                - img [ref=e54]
+          - generic [ref=e56]:
+            - checkbox "Lembrar de mim" [ref=e57]
+            - checkbox
+            - generic [ref=e58] [cursor=pointer]: Lembrar de mim
+          - button "Entrar" [ref=e59]
+    - contentinfo [ref=e60]:
+      - generic [ref=e61]:
+        - generic [ref=e62]: "Dados atualizados em: 20/03/2026, 15:02"
+        - generic [ref=e63]: © 2026 JCLA Analytics. Todos os direitos reservados.
+        - generic [ref=e64]: v1.8.0

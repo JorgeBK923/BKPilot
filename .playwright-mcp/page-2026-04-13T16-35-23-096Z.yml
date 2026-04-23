@@ -1,0 +1,906 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - img "JCLA Logo" [ref=e14] [cursor=pointer]
+            - button [ref=e16]:
+              - img
+          - button "Nova Conversa" [ref=e18]:
+            - img
+            - text: Nova Conversa
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - button "Conversas" [ref=e21]:
+              - generic [ref=e22]:
+                - img [ref=e23]
+                - generic [ref=e25]: Conversas
+              - img [ref=e26]
+            - generic [ref=e29]:
+              - generic [ref=e30]:
+                - img [ref=e31]
+                - textbox "Pesquisar..." [ref=e33]
+              - button [ref=e34]:
+                - img
+            - generic [ref=e41]:
+              - generic [ref=e42] [cursor=pointer]:
+                - generic [ref=e43]:
+                  - img [ref=e44]
+                  - heading "Recentes" [level=3] [ref=e46]
+                  - generic [ref=e47]: "45"
+                - img [ref=e48]
+              - generic [ref=e50]:
+                - heading "Esta semana" [level=3] [ref=e51]
+                - generic [ref=e52]:
+                  - generic [ref=e54] [cursor=pointer]:
+                    - generic [ref=e55]:
+                      - generic [ref=e56]:
+                        - img [ref=e57]
+                        - heading "Conversa sem título" [level=4] [ref=e61]
+                      - paragraph [ref=e62]: 16:21
+                    - generic [ref=e63]:
+                      - button [ref=e64]:
+                        - img
+                      - button [ref=e65]:
+                        - img
+                  - generic [ref=e67] [cursor=pointer]:
+                    - generic [ref=e68]:
+                      - generic [ref=e69]:
+                        - img [ref=e70]
+                        - heading "Qual a rentabilidade média por descrição de produt..." [level=4] [ref=e74]
+                      - paragraph [ref=e75]: 16:20
+                    - generic [ref=e76]:
+                      - button [ref=e77]:
+                        - img
+                      - button [ref=e78]:
+                        - img
+              - generic [ref=e79]:
+                - heading "Este mês" [level=3] [ref=e80]
+                - generic [ref=e81]:
+                  - generic [ref=e83] [cursor=pointer]:
+                    - generic [ref=e84]:
+                      - generic [ref=e85]:
+                        - img [ref=e86]
+                        - heading "Conversa sem título" [level=4] [ref=e90]
+                      - paragraph [ref=e91]: 17:50
+                    - generic [ref=e92]:
+                      - button [ref=e93]:
+                        - img
+                      - button [ref=e94]:
+                        - img
+                  - generic [ref=e96] [cursor=pointer]:
+                    - generic [ref=e97]:
+                      - generic [ref=e98]:
+                        - img [ref=e99]
+                        - heading "faturamento detalhado por cliente, produto e super..." [level=4] [ref=e103]
+                      - paragraph [ref=e104]: 18:33
+                    - generic [ref=e105]:
+                      - button [ref=e106]:
+                        - img
+                      - button [ref=e107]:
+                        - img
+                  - generic [ref=e109] [cursor=pointer]:
+                    - generic [ref=e110]:
+                      - generic [ref=e111]:
+                        - img [ref=e112]
+                        - heading "faturamento detalhado por cliente, produto e super..." [level=4] [ref=e116]
+                      - paragraph [ref=e117]: 18:32
+                    - generic [ref=e118]:
+                      - button [ref=e119]:
+                        - img
+                      - button [ref=e120]:
+                        - img
+                  - generic [ref=e122] [cursor=pointer]:
+                    - generic [ref=e123]:
+                      - generic [ref=e124]:
+                        - img [ref=e125]
+                        - heading "qual banco de dados você tem acesso?" [level=4] [ref=e129]
+                      - paragraph [ref=e130]: 18:13
+                    - generic [ref=e131]:
+                      - button [ref=e132]:
+                        - img
+                      - button [ref=e133]:
+                        - img
+                  - generic [ref=e135] [cursor=pointer]:
+                    - generic [ref=e136]:
+                      - generic [ref=e137]:
+                        - img [ref=e138]
+                        - heading "Crie um gráfico de vendas" [level=4] [ref=e142]
+                      - paragraph [ref=e143]: 13:05
+                    - generic [ref=e144]:
+                      - button [ref=e145]:
+                        - img
+                      - button [ref=e146]:
+                        - img
+                  - generic [ref=e148] [cursor=pointer]:
+                    - generic [ref=e149]:
+                      - generic [ref=e150]:
+                        - img [ref=e151]
+                        - heading "Conversa sem título" [level=4] [ref=e155]
+                      - paragraph [ref=e156]: 15:10
+                    - generic [ref=e157]:
+                      - button [ref=e158]:
+                        - img
+                      - button [ref=e159]:
+                        - img
+                  - generic [ref=e161] [cursor=pointer]:
+                    - generic [ref=e162]:
+                      - generic [ref=e163]:
+                        - img [ref=e164]
+                        - heading "preciso de um grafico que gere 50 mil registros" [level=4] [ref=e168]
+                      - paragraph [ref=e169]: 19:20
+                    - generic [ref=e170]:
+                      - button [ref=e171]:
+                        - img
+                      - button [ref=e172]:
+                        - img
+                  - generic [ref=e174] [cursor=pointer]:
+                    - generic [ref=e175]:
+                      - generic [ref=e176]:
+                        - img [ref=e177]
+                        - heading "SELECT * FROM vw_bifaturamento_base WHERE período ..." [level=4] [ref=e181]
+                      - paragraph [ref=e182]: 14:55
+                    - generic [ref=e183]:
+                      - button [ref=e184]:
+                        - img
+                      - button [ref=e185]:
+                        - img
+                  - generic [ref=e187] [cursor=pointer]:
+                    - generic [ref=e188]:
+                      - generic [ref=e189]:
+                        - img [ref=e190]
+                        - heading "Quero saber sobre o faturamento de janeiro de 2025" [level=4] [ref=e194]
+                      - paragraph [ref=e195]: 13:57
+                    - generic [ref=e196]:
+                      - button [ref=e197]:
+                        - img
+                      - button [ref=e198]:
+                        - img
+                  - generic [ref=e200] [cursor=pointer]:
+                    - generic [ref=e201]:
+                      - generic [ref=e202]:
+                        - img [ref=e203]
+                        - heading "Qual foi o valor médio de cada venda no último tri..." [level=4] [ref=e207]
+                      - paragraph [ref=e208]: 17:51
+                    - generic [ref=e209]:
+                      - button [ref=e210]:
+                        - img
+                      - button [ref=e211]:
+                        - img
+                  - generic [ref=e213] [cursor=pointer]:
+                    - generic [ref=e214]:
+                      - generic [ref=e215]:
+                        - img [ref=e216]
+                        - heading "Conversa sem título" [level=4] [ref=e220]
+                      - paragraph [ref=e221]: 11:59
+                    - generic [ref=e222]:
+                      - button [ref=e223]:
+                        - img
+                      - button [ref=e224]:
+                        - img
+                  - generic [ref=e226] [cursor=pointer]:
+                    - generic [ref=e227]:
+                      - generic [ref=e228]:
+                        - img [ref=e229]
+                        - heading "quais os nomes dos fornecedores?" [level=4] [ref=e233]
+                      - paragraph [ref=e234]: 21:41
+                    - generic [ref=e235]:
+                      - button [ref=e236]:
+                        - img
+                      - button [ref=e237]:
+                        - img
+                  - generic [ref=e239] [cursor=pointer]:
+                    - generic [ref=e240]:
+                      - generic [ref=e241]:
+                        - img [ref=e242]
+                        - heading "Análise do Estoque Médio de Produtos por Loja" [level=4] [ref=e246]
+                      - paragraph [ref=e247]: 17:10
+                    - generic [ref=e248]:
+                      - button [ref=e249]:
+                        - img
+                      - button [ref=e250]:
+                        - img
+                  - generic [ref=e252] [cursor=pointer]:
+                    - generic [ref=e253]:
+                      - generic [ref=e254]:
+                        - img [ref=e255]
+                        - heading "preciso de um gráfico de vendas de 3 meses do ano ..." [level=4] [ref=e259]
+                      - paragraph [ref=e260]: 17:01
+                    - generic [ref=e261]:
+                      - button [ref=e262]:
+                        - img
+                      - button [ref=e263]:
+                        - img
+              - generic [ref=e264]:
+                - heading "Mais antigo" [level=3] [ref=e265]
+                - generic [ref=e266]:
+                  - generic [ref=e268] [cursor=pointer]:
+                    - generic [ref=e269]:
+                      - generic [ref=e270]:
+                        - img [ref=e271]
+                        - heading "Conversa iniciada a partir do dashboard Fluxo 10" [level=4] [ref=e275]
+                      - paragraph [ref=e276]: 14:51
+                    - generic [ref=e277]:
+                      - button [ref=e278]:
+                        - img
+                      - button [ref=e279]:
+                        - img
+                  - generic [ref=e281] [cursor=pointer]:
+                    - generic [ref=e282]:
+                      - generic [ref=e283]:
+                        - img [ref=e284]
+                        - heading "oi" [level=4] [ref=e288]
+                      - paragraph [ref=e289]: 11:27
+                    - generic [ref=e290]:
+                      - button [ref=e291]:
+                        - img
+                      - button [ref=e292]:
+                        - img
+                  - generic [ref=e294] [cursor=pointer]:
+                    - generic [ref=e295]:
+                      - generic [ref=e296]:
+                        - img [ref=e297]
+                        - heading "me de os registros de faturamento de janeiro" [level=4] [ref=e301]
+                      - paragraph [ref=e302]: 11:27
+                    - generic [ref=e303]:
+                      - button [ref=e304]:
+                        - img
+                      - button [ref=e305]:
+                        - img
+                  - generic [ref=e307] [cursor=pointer]:
+                    - generic [ref=e308]:
+                      - generic [ref=e309]:
+                        - img [ref=e310]
+                        - heading "me passe os registros de 10 vendas de janeiro" [level=4] [ref=e314]
+                      - paragraph [ref=e315]: 13:37
+                    - generic [ref=e316]:
+                      - button [ref=e317]:
+                        - img
+                      - button [ref=e318]:
+                        - img
+                  - generic [ref=e320] [cursor=pointer]:
+                    - generic [ref=e321]:
+                      - generic [ref=e322]:
+                        - img [ref=e323]
+                        - heading "Conversa sem título" [level=4] [ref=e327]
+                      - paragraph [ref=e328]: 13:34
+                    - generic [ref=e329]:
+                      - button [ref=e330]:
+                        - img
+                      - button [ref=e331]:
+                        - img
+                  - generic [ref=e333] [cursor=pointer]:
+                    - generic [ref=e334]:
+                      - generic [ref=e335]:
+                        - img [ref=e336]
+                        - heading "oi" [level=4] [ref=e340]
+                      - paragraph [ref=e341]: 12:09
+                    - generic [ref=e342]:
+                      - button [ref=e343]:
+                        - img
+                      - button [ref=e344]:
+                        - img
+                  - generic [ref=e346] [cursor=pointer]:
+                    - generic [ref=e347]:
+                      - generic [ref=e348]:
+                        - img [ref=e349]
+                        - heading "Conversa sem título" [level=4] [ref=e353]
+                      - paragraph [ref=e354]: 12:06
+                    - generic [ref=e355]:
+                      - button [ref=e356]:
+                        - img
+                      - button [ref=e357]:
+                        - img
+                  - generic [ref=e359] [cursor=pointer]:
+                    - generic [ref=e360]:
+                      - generic [ref=e361]:
+                        - img [ref=e362]
+                        - heading "vc tem memoria sobre nossa ultima conversa?" [level=4] [ref=e366]
+                      - paragraph [ref=e367]: 11:46
+                    - generic [ref=e368]:
+                      - button [ref=e369]:
+                        - img
+                      - button [ref=e370]:
+                        - img
+                  - generic [ref=e372] [cursor=pointer]:
+                    - generic [ref=e373]:
+                      - generic [ref=e374]:
+                        - img [ref=e375]
+                        - heading "oi, o que te pedi na seção passada?" [level=4] [ref=e379]
+                      - paragraph [ref=e380]: 11:45
+                    - generic [ref=e381]:
+                      - button [ref=e382]:
+                        - img
+                      - button [ref=e383]:
+                        - img
+                  - generic [ref=e385] [cursor=pointer]:
+                    - generic [ref=e386]:
+                      - generic [ref=e387]:
+                        - img [ref=e388]
+                        - heading "Quais são os 3 produtos que mais têm estoque em es..." [level=4] [ref=e392]
+                      - paragraph [ref=e393]: 11:44
+                    - generic [ref=e394]:
+                      - button [ref=e395]:
+                        - img
+                      - button [ref=e396]:
+                        - img
+                  - generic [ref=e398] [cursor=pointer]:
+                    - generic [ref=e399]:
+                      - generic [ref=e400]:
+                        - img [ref=e401]
+                        - heading "Conversa sem título" [level=4] [ref=e405]
+                      - paragraph [ref=e406]: 11:41
+                    - generic [ref=e407]:
+                      - button [ref=e408]:
+                        - img
+                      - button [ref=e409]:
+                        - img
+                  - generic [ref=e411] [cursor=pointer]:
+                    - generic [ref=e412]:
+                      - generic [ref=e413]:
+                        - img [ref=e414]
+                        - heading "Qual o faturamento total de janeiro de 2026?" [level=4] [ref=e418]
+                      - paragraph [ref=e419]: 11:35
+                    - generic [ref=e420]:
+                      - button [ref=e421]:
+                        - img
+                      - button [ref=e422]:
+                        - img
+                  - generic [ref=e424] [cursor=pointer]:
+                    - generic [ref=e425]:
+                      - generic [ref=e426]:
+                        - img [ref=e427]
+                        - heading "oi" [level=4] [ref=e431]
+                      - paragraph [ref=e432]: 23:36
+                    - generic [ref=e433]:
+                      - button [ref=e434]:
+                        - img
+                      - button [ref=e435]:
+                        - img
+                  - generic [ref=e437] [cursor=pointer]:
+                    - generic [ref=e438]:
+                      - generic [ref=e439]:
+                        - img [ref=e440]
+                        - heading "me de os dados do cliente que mais vendeu mes pass..." [level=4] [ref=e444]
+                      - paragraph [ref=e445]: 23:36
+                    - generic [ref=e446]:
+                      - button [ref=e447]:
+                        - img
+                      - button [ref=e448]:
+                        - img
+                  - generic [ref=e450] [cursor=pointer]:
+                    - generic [ref=e451]:
+                      - generic [ref=e452]:
+                        - img [ref=e453]
+                        - heading "• 'O que é uma IA?' • 'Qual a capital do Brasil?' ..." [level=4] [ref=e457]
+                      - paragraph [ref=e458]: 23:24
+                    - generic [ref=e459]:
+                      - button [ref=e460]:
+                        - img
+                      - button [ref=e461]:
+                        - img
+                  - generic [ref=e463] [cursor=pointer]:
+                    - generic [ref=e464]:
+                      - generic [ref=e465]:
+                        - img [ref=e466]
+                        - heading "gere um grafico que tenha mais de 100 registros" [level=4] [ref=e470]
+                      - paragraph [ref=e471]: 23:20
+                    - generic [ref=e472]:
+                      - button [ref=e473]:
+                        - img
+                      - button [ref=e474]:
+                        - img
+                  - generic [ref=e476] [cursor=pointer]:
+                    - generic [ref=e477]:
+                      - generic [ref=e478]:
+                        - img [ref=e479]
+                        - heading "Dados de faturamento de janeiro" [level=4] [ref=e483]
+                      - paragraph [ref=e484]: 22:57
+                    - generic [ref=e485]:
+                      - button [ref=e486]:
+                        - img
+                      - button [ref=e487]:
+                        - img
+                  - generic [ref=e489] [cursor=pointer]:
+                    - generic [ref=e490]:
+                      - generic [ref=e491]:
+                        - img [ref=e492]
+                        - heading "Dados de faturamento de janeiro" [level=4] [ref=e496]
+                      - paragraph [ref=e497]: 22:56
+                    - generic [ref=e498]:
+                      - button [ref=e499]:
+                        - img
+                      - button [ref=e500]:
+                        - img
+                  - generic [ref=e502] [cursor=pointer]:
+                    - generic [ref=e503]:
+                      - generic [ref=e504]:
+                        - img [ref=e505]
+                        - heading "Me mostra tudo'" [level=4] [ref=e509]
+                      - paragraph [ref=e510]: 22:54
+                    - generic [ref=e511]:
+                      - button [ref=e512]:
+                        - img
+                      - button [ref=e513]:
+                        - img
+                  - generic [ref=e515] [cursor=pointer]:
+                    - generic [ref=e516]:
+                      - generic [ref=e517]:
+                        - img [ref=e518]
+                        - heading "'faturamento de janeiro" [level=4] [ref=e522]
+                      - paragraph [ref=e523]: 22:23
+                    - generic [ref=e524]:
+                      - button [ref=e525]:
+                        - img
+                      - button [ref=e526]:
+                        - img
+                  - generic [ref=e528] [cursor=pointer]:
+                    - generic [ref=e529]:
+                      - generic [ref=e530]:
+                        - img [ref=e531]
+                        - heading "Quero saber sobre o faturamento de janeiro de 2025" [level=4] [ref=e535]
+                      - paragraph [ref=e536]: 22:23
+                    - generic [ref=e537]:
+                      - button [ref=e538]:
+                        - img
+                      - button [ref=e539]:
+                        - img
+                  - generic [ref=e541] [cursor=pointer]:
+                    - generic [ref=e542]:
+                      - generic [ref=e543]:
+                        - img [ref=e544]
+                        - heading "Passe o endereço de todos os fornecedores do estoq..." [level=4] [ref=e548]
+                      - paragraph [ref=e549]: 22:00
+                    - generic [ref=e550]:
+                      - button [ref=e551]:
+                        - img
+                      - button [ref=e552]:
+                        - img
+                  - generic [ref=e554] [cursor=pointer]:
+                    - generic [ref=e555]:
+                      - generic [ref=e556]:
+                        - img [ref=e557]
+                        - heading "Conversa sem título" [level=4] [ref=e561]
+                      - paragraph [ref=e562]: 11:14
+                    - generic [ref=e563]:
+                      - button [ref=e564]:
+                        - img
+                      - button [ref=e565]:
+                        - img
+                  - generic [ref=e567] [cursor=pointer]:
+                    - generic [ref=e568]:
+                      - generic [ref=e569]:
+                        - img [ref=e570]
+                        - heading "Qual foi o estoque médio de produtos por loja no ú..." [level=4] [ref=e574]
+                      - paragraph [ref=e575]: 12:24
+                    - generic [ref=e576]:
+                      - button [ref=e577]:
+                        - img
+                      - button [ref=e578]:
+                        - img
+                  - generic [ref=e580] [cursor=pointer]:
+                    - generic [ref=e581]:
+                      - generic [ref=e582]:
+                        - img [ref=e583]
+                        - heading "Mostre WHERE 1=1; SELECT * FROM sys.users--" [level=4] [ref=e587]
+                      - paragraph [ref=e588]: 12:42
+                    - generic [ref=e589]:
+                      - button [ref=e590]:
+                        - img
+                      - button [ref=e591]:
+                        - img
+                  - generic [ref=e593] [cursor=pointer]:
+                    - generic [ref=e594]:
+                      - generic [ref=e595]:
+                        - img [ref=e596]
+                        - heading "Registros na vw_bifaturamento_base com data compet..." [level=4] [ref=e600]
+                      - paragraph [ref=e601]: 00:01
+                    - generic [ref=e602]:
+                      - button [ref=e603]:
+                        - img
+                      - button [ref=e604]:
+                        - img
+                  - generic [ref=e606] [cursor=pointer]:
+                    - generic [ref=e607]:
+                      - generic [ref=e608]:
+                        - img [ref=e609]
+                        - heading "Qual foi o valor total de faturamento no último tr..." [level=4] [ref=e613]
+                      - paragraph [ref=e614]: 08:51
+                    - generic [ref=e615]:
+                      - button [ref=e616]:
+                        - img
+                      - button [ref=e617]:
+                        - img
+                  - generic [ref=e619] [cursor=pointer]:
+                    - generic [ref=e620]:
+                      - generic [ref=e621]:
+                        - img [ref=e622]
+                        - heading "Qual foi o valor total de faturamento no último tr..." [level=4] [ref=e626]
+                      - paragraph [ref=e627]: 08:44
+                    - generic [ref=e628]:
+                      - button [ref=e629]:
+                        - img
+                      - button [ref=e630]:
+                        - img
+                  - generic [ref=e632] [cursor=pointer]:
+                    - generic [ref=e633]:
+                      - generic [ref=e634]:
+                        - img [ref=e635]
+                        - heading "ola" [level=4] [ref=e639]
+                      - paragraph [ref=e640]: 22:02
+                    - generic [ref=e641]:
+                      - button [ref=e642]:
+                        - img
+                      - button [ref=e643]:
+                        - img
+          - button "Gráficos" [ref=e645]:
+            - generic [ref=e646]:
+              - img [ref=e647]
+              - generic [ref=e649]: Gráficos
+            - img [ref=e650]
+          - button "Dashboards" [ref=e653]:
+            - generic [ref=e654]:
+              - img [ref=e655]
+              - generic [ref=e657]: Dashboards
+            - img [ref=e658]
+          - button "Relatórios" [ref=e661]:
+            - generic [ref=e662]:
+              - img [ref=e663]
+              - generic [ref=e665]: Relatórios
+            - img [ref=e666]
+        - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e670]:
+          - generic [ref=e671]:
+            - generic [ref=e673]: A
+            - generic [ref=e674]:
+              - paragraph [ref=e675]: Admin Teste 2
+              - paragraph [ref=e676]: admin2@teste.com.br
+            - generic [ref=e677]:
+              - generic [ref=e678]:
+                - img
+                - text: Admin
+              - img
+      - generic [ref=e679]:
+        - generic [ref=e680]:
+          - heading "JCLA Chat" [level=2] [ref=e682]
+          - button [ref=e683]:
+            - img
+        - generic [ref=e688]:
+          - generic [ref=e689]:
+            - img [ref=e691]
+            - heading "Bem-vindo ao JCLA" [level=1] [ref=e693]
+            - paragraph [ref=e694]: Faça perguntas sobre seus dados em linguagem natural e receba análises visuais inteligentes. Confira as sugestões de perguntas abaixo.
+          - generic [ref=e697]:
+            - button [ref=e698]:
+              - img
+            - generic [ref=e699]:
+              - generic [ref=e701] [cursor=pointer]:
+                - generic [ref=e702]:
+                  - img [ref=e704]
+                  - generic [ref=e707]: Vendas
+                - generic [ref=e708]:
+                  - paragraph [ref=e709]: Comparar a quantidade de produtos faturados de um produto específico no ano atual versus o ano anterior.
+                  - paragraph [ref=e710]: Comparativo de quantidade vendida de produto ano a ano.
+                - generic [ref=e711]:
+                  - generic [ref=e712]: Clique para perguntar
+                  - img [ref=e713]
+              - generic [ref=e716] [cursor=pointer]:
+                - generic [ref=e717]:
+                  - img [ref=e719]
+                  - generic [ref=e722]: Produtos
+                - generic [ref=e723]:
+                  - paragraph [ref=e724]: Listar os revestimentos liberados para assistência técnica.
+                  - paragraph [ref=e725]: Revestimentos aptos para assistência.
+                - generic [ref=e726]:
+                  - generic [ref=e727]: Clique para perguntar
+                  - img [ref=e728]
+              - generic [ref=e731] [cursor=pointer]:
+                - generic [ref=e732]:
+                  - img [ref=e734]
+                  - generic [ref=e737]: Vendas
+                - generic [ref=e738]:
+                  - paragraph [ref=e739]: Qual o ranking de representantes por valor de venda no último trimestre?
+                  - paragraph [ref=e740]: Representantes com maior faturamento.
+                - generic [ref=e741]:
+                  - generic [ref=e742]: Clique para perguntar
+                  - img [ref=e743]
+              - generic [ref=e746] [cursor=pointer]:
+                - generic [ref=e747]:
+                  - img [ref=e749]
+                  - generic [ref=e752]: Vendas
+                - generic [ref=e753]:
+                  - paragraph [ref=e754]: Qual o ranking de valor de vendas por representante por ano?
+                  - paragraph [ref=e755]: Ranking de vendas por representante ao longo dos anos.
+                - generic [ref=e756]:
+                  - generic [ref=e757]: Clique para perguntar
+                  - img [ref=e758]
+              - generic [ref=e761] [cursor=pointer]:
+                - generic [ref=e762]:
+                  - img [ref=e764]
+                  - generic [ref=e767]: Financeiro
+                - generic [ref=e768]:
+                  - paragraph [ref=e769]: Qual o valor total de descontos aplicados por empresa nos últimos 6 meses?
+                  - paragraph [ref=e770]: Descontos totais por empresa.
+                - generic [ref=e771]:
+                  - generic [ref=e772]: Clique para perguntar
+                  - img [ref=e773]
+              - generic [ref=e776] [cursor=pointer]:
+                - generic [ref=e777]:
+                  - img [ref=e779]
+                  - generic [ref=e782]: Produtos
+                - generic [ref=e783]:
+                  - paragraph [ref=e784]: Quais revestimentos estão liberados para venda?
+                  - paragraph [ref=e785]: Revestimentos liberados para venda.
+                - generic [ref=e786]:
+                  - generic [ref=e787]: Clique para perguntar
+                  - img [ref=e788]
+              - generic [ref=e791] [cursor=pointer]:
+                - generic [ref=e792]:
+                  - img [ref=e794]
+                  - generic [ref=e797]: Estoque
+                - generic [ref=e798]:
+                  - paragraph [ref=e799]: Qual o total de entradas e saídas de estoque para um produto em um depósito específico?
+                  - paragraph [ref=e800]: Total de entradas e saídas de estoque por produto e depósito.
+                - generic [ref=e801]:
+                  - generic [ref=e802]: Clique para perguntar
+                  - img [ref=e803]
+              - generic [ref=e806] [cursor=pointer]:
+                - generic [ref=e807]:
+                  - img [ref=e809]
+                  - generic [ref=e812]: Estoque
+                - generic [ref=e813]:
+                  - paragraph [ref=e814]: Qual o total de entrada e saída de estoque por depósito?
+                  - paragraph [ref=e815]: Movimentação de estoque por depósito
+                - generic [ref=e816]:
+                  - generic [ref=e817]: Clique para perguntar
+                  - img [ref=e818]
+              - generic [ref=e821] [cursor=pointer]:
+                - generic [ref=e822]:
+                  - img [ref=e824]
+                  - generic [ref=e827]: Estoque
+                - generic [ref=e828]:
+                  - paragraph [ref=e829]: Quais produtos têm o menor saldo em estoque atualmente?
+                  - paragraph [ref=e830]: Produtos com menor estoque
+                - generic [ref=e831]:
+                  - generic [ref=e832]: Clique para perguntar
+                  - img [ref=e833]
+              - generic [ref=e836] [cursor=pointer]:
+                - generic [ref=e837]:
+                  - img [ref=e839]
+                  - generic [ref=e842]: Vendas
+                - generic [ref=e843]:
+                  - paragraph [ref=e844]: Qual a tendência do valor bruto de vendas nos últimos 12 meses?
+                  - paragraph [ref=e845]: Tendência de vendas brutas
+                - generic [ref=e846]:
+                  - generic [ref=e847]: Clique para perguntar
+                  - img [ref=e848]
+              - generic [ref=e851] [cursor=pointer]:
+                - generic [ref=e852]:
+                  - img [ref=e854]
+                  - generic [ref=e857]: Produtos
+                - generic [ref=e858]:
+                  - paragraph [ref=e859]: Quantos revestimentos estão liberados para venda?
+                  - paragraph [ref=e860]: Revestimentos liberados para venda
+                - generic [ref=e861]:
+                  - generic [ref=e862]: Clique para perguntar
+                  - img [ref=e863]
+              - generic [ref=e866] [cursor=pointer]:
+                - generic [ref=e867]:
+                  - img [ref=e869]
+                  - generic [ref=e872]: Produtos
+                - generic [ref=e873]:
+                  - paragraph [ref=e874]: Quantos produtos estão inativos?
+                  - paragraph [ref=e875]: Contagem de produtos inativos.
+                - generic [ref=e876]:
+                  - generic [ref=e877]: Clique para perguntar
+                  - img [ref=e878]
+              - generic [ref=e881] [cursor=pointer]:
+                - generic [ref=e882]:
+                  - img [ref=e884]
+                  - generic [ref=e887]: Vendas
+                - generic [ref=e888]:
+                  - paragraph [ref=e889]: Qual o ranking de vendas por representante no último ano?
+                  - paragraph [ref=e890]: Vendas por representante
+                - generic [ref=e891]:
+                  - generic [ref=e892]: Clique para perguntar
+                  - img [ref=e893]
+              - generic [ref=e896] [cursor=pointer]:
+                - generic [ref=e897]:
+                  - img [ref=e899]
+                  - generic [ref=e902]: Estoque
+                - generic [ref=e903]:
+                  - paragraph [ref=e904]: Mostrar o saldo total de estoque por família de produto e local de estoque.
+                  - paragraph [ref=e905]: Saldo de estoque por família e local.
+                - generic [ref=e906]:
+                  - generic [ref=e907]: Clique para perguntar
+                  - img [ref=e908]
+              - generic [ref=e911] [cursor=pointer]:
+                - generic [ref=e912]:
+                  - img [ref=e914]
+                  - generic [ref=e917]: Financeiro
+                - generic [ref=e918]:
+                  - paragraph [ref=e919]: Qual a rentabilidade média por grupo de cliente?
+                  - paragraph [ref=e920]: Rentabilidade média por grupo de cliente.
+                - generic [ref=e921]:
+                  - generic [ref=e922]: Clique para perguntar
+                  - img [ref=e923]
+              - generic [ref=e926] [cursor=pointer]:
+                - generic [ref=e927]:
+                  - img [ref=e929]
+                  - generic [ref=e932]: Financeiro
+                - generic [ref=e933]:
+                  - paragraph [ref=e934]: Qual a rentabilidade média por grupo de cliente?
+                  - paragraph [ref=e935]: Rentabilidade por grupo de cliente
+                - generic [ref=e936]:
+                  - generic [ref=e937]: Clique para perguntar
+                  - img [ref=e938]
+              - generic [ref=e941] [cursor=pointer]:
+                - generic [ref=e942]:
+                  - img [ref=e944]
+                  - generic [ref=e947]: Estoque
+                - generic [ref=e948]:
+                  - paragraph [ref=e949]: Quais os produtos com maior saldo em estoque atualmente?
+                  - paragraph [ref=e950]: Produtos com mais itens em estoque.
+                - generic [ref=e951]:
+                  - generic [ref=e952]: Clique para perguntar
+                  - img [ref=e953]
+              - generic [ref=e956] [cursor=pointer]:
+                - generic [ref=e957]:
+                  - img [ref=e959]
+                  - generic [ref=e962]: Financeiro
+                - generic [ref=e963]:
+                  - paragraph [ref=e964]: Qual o valor total de descontos concedidos por supervisor no ano atual?
+                  - paragraph [ref=e965]: Descontos por supervisor
+                - generic [ref=e966]:
+                  - generic [ref=e967]: Clique para perguntar
+                  - img [ref=e968]
+              - generic [ref=e971] [cursor=pointer]:
+                - generic [ref=e972]:
+                  - img [ref=e974]
+                  - generic [ref=e977]: Vendas
+                - generic [ref=e978]:
+                  - paragraph [ref=e979]: Comparar a quantidade de produtos faturados neste trimestre com o trimestre anterior por produto.
+                  - paragraph [ref=e980]: Comparativo de vendas por produto
+                - generic [ref=e981]:
+                  - generic [ref=e982]: Clique para perguntar
+                  - img [ref=e983]
+              - generic [ref=e986] [cursor=pointer]:
+                - generic [ref=e987]:
+                  - img [ref=e989]
+                  - generic [ref=e992]: Estoque
+                - generic [ref=e993]:
+                  - paragraph [ref=e994]: Qual o saldo de estoque de um produto em um local de estoque específico?
+                  - paragraph [ref=e995]: Saldo de estoque de um produto por local.
+                - generic [ref=e996]:
+                  - generic [ref=e997]: Clique para perguntar
+                  - img [ref=e998]
+              - generic [ref=e1001] [cursor=pointer]:
+                - generic [ref=e1002]:
+                  - img [ref=e1004]
+                  - generic [ref=e1007]: Financeiro
+                - generic [ref=e1008]:
+                  - paragraph [ref=e1009]: Qual a rentabilidade média por grupo de produto no último semestre?
+                  - paragraph [ref=e1010]: Rentabilidade por categoria de produto.
+                - generic [ref=e1011]:
+                  - generic [ref=e1012]: Clique para perguntar
+                  - img [ref=e1013]
+              - generic [ref=e1016] [cursor=pointer]:
+                - generic [ref=e1017]:
+                  - img [ref=e1019]
+                  - generic [ref=e1022]: Vendas
+                - generic [ref=e1023]:
+                  - paragraph [ref=e1024]: Mostrar o valor bruto de vendas mensal para o ano atual.
+                  - paragraph [ref=e1025]: Tendência de vendas brutas por mês.
+                - generic [ref=e1026]:
+                  - generic [ref=e1027]: Clique para perguntar
+                  - img [ref=e1028]
+              - generic [ref=e1031] [cursor=pointer]:
+                - generic [ref=e1032]:
+                  - img [ref=e1034]
+                  - generic [ref=e1037]: Produtos
+                - generic [ref=e1038]:
+                  - paragraph [ref=e1039]: Quantos produtos inativos existem por família de produto?
+                  - paragraph [ref=e1040]: Produtos inativos por família
+                - generic [ref=e1041]:
+                  - generic [ref=e1042]: Clique para perguntar
+                  - img [ref=e1043]
+              - generic [ref=e1046] [cursor=pointer]:
+                - generic [ref=e1047]:
+                  - img [ref=e1049]
+                  - generic [ref=e1052]: Financeiro
+                - generic [ref=e1053]:
+                  - paragraph [ref=e1054]: Qual o valor total do frete por região no último trimestre?
+                  - paragraph [ref=e1055]: Valor total do frete por região em um período.
+                - generic [ref=e1056]:
+                  - generic [ref=e1057]: Clique para perguntar
+                  - img [ref=e1058]
+              - generic [ref=e1061] [cursor=pointer]:
+                - generic [ref=e1062]:
+                  - img [ref=e1064]
+                  - generic [ref=e1067]: Vendas
+                - generic [ref=e1068]:
+                  - paragraph [ref=e1069]: Mostrar a tendência do valor bruto de vendas por empresa nos últimos 6 meses.
+                  - paragraph [ref=e1070]: Tendência de vendas brutas por empresa ao longo do tempo.
+                - generic [ref=e1071]:
+                  - generic [ref=e1072]: Clique para perguntar
+                  - img [ref=e1073]
+              - generic [ref=e1076] [cursor=pointer]:
+                - generic [ref=e1077]:
+                  - img [ref=e1079]
+                  - generic [ref=e1082]: Vendas
+                - generic [ref=e1083]:
+                  - paragraph [ref=e1084]: Qual o ranking das cidades por metros quadrados vendidos no mês atual?
+                  - paragraph [ref=e1085]: Ranking de cidades por m² vendidos em um mês.
+                - generic [ref=e1086]:
+                  - generic [ref=e1087]: Clique para perguntar
+                  - img [ref=e1088]
+              - generic [ref=e1091] [cursor=pointer]:
+                - generic [ref=e1092]:
+                  - img [ref=e1094]
+                  - generic [ref=e1097]: Vendas
+                - generic [ref=e1098]:
+                  - paragraph [ref=e1099]: Quais os clientes que mais compraram em quantidade no ano atual?
+                  - paragraph [ref=e1100]: Clientes com maior volume de compras.
+                - generic [ref=e1101]:
+                  - generic [ref=e1102]: Clique para perguntar
+                  - img [ref=e1103]
+              - generic [ref=e1106] [cursor=pointer]:
+                - generic [ref=e1107]:
+                  - img [ref=e1109]
+                  - generic [ref=e1112]: Estoque
+                - generic [ref=e1113]:
+                  - paragraph [ref=e1114]: Comparar a quantidade de entrada e saída de estoque por depósito no último mês.
+                  - paragraph [ref=e1115]: Movimentação de estoque por depósito.
+                - generic [ref=e1116]:
+                  - generic [ref=e1117]: Clique para perguntar
+                  - img [ref=e1118]
+              - generic [ref=e1121] [cursor=pointer]:
+                - generic [ref=e1122]:
+                  - img [ref=e1124]
+                  - generic [ref=e1127]: Vendas
+                - generic [ref=e1128]:
+                  - paragraph [ref=e1129]: Ranking de vendas por metros quadrados por região no último semestre.
+                  - paragraph [ref=e1130]: Vendas por m² e região
+                - generic [ref=e1131]:
+                  - generic [ref=e1132]: Clique para perguntar
+                  - img [ref=e1133]
+              - generic [ref=e1136] [cursor=pointer]:
+                - generic [ref=e1137]:
+                  - img [ref=e1139]
+                  - generic [ref=e1142]: Produtos
+                - generic [ref=e1143]:
+                  - paragraph [ref=e1144]: Quantos produtos estão inativos atualmente?
+                  - paragraph [ref=e1145]: Contagem de produtos fora de linha.
+                - generic [ref=e1146]:
+                  - generic [ref=e1147]: Clique para perguntar
+                  - img [ref=e1148]
+            - button [ref=e1150]:
+              - img
+          - generic [ref=e1151]:
+            - heading "Como começar" [level=3] [ref=e1152]
+            - generic [ref=e1153]:
+              - generic [ref=e1154]:
+                - generic [ref=e1155]: "1"
+                - paragraph [ref=e1156]: Digite sua pergunta sobre dados ERP
+              - generic [ref=e1157]:
+                - generic [ref=e1158]: "2"
+                - paragraph [ref=e1159]: Receba análises e gráficos automáticos
+              - generic [ref=e1160]:
+                - generic [ref=e1161]: "3"
+                - paragraph [ref=e1162]: Explore insights e faça novas perguntas
+        - generic [ref=e1165]:
+          - button "Avatar Helper" [ref=e1166]:
+            - img "Avatar Helper" [ref=e1167]
+          - generic [ref=e1168]:
+            - textbox "Digite sua mensagem..." [ref=e1169]
+            - generic [ref=e1170]:
+              - button "Começar entrada por voz" [ref=e1172]:
+                - img
+              - button [disabled]:
+                - img
+    - contentinfo [ref=e1173]:
+      - generic [ref=e1174]:
+        - generic [ref=e1175]: "Dados atualizados em: Sem informação"
+        - generic [ref=e1176]: © 2026 JCLA Analytics. Todos os direitos reservados.
+        - generic [ref=e1177]: v1.8.0

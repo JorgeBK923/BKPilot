@@ -1,0 +1,189 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - button:
+                    - img
+              - generic:
+                - button:
+                  - img
+                  - text: Nova Conversa
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Conversas
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Gráficos
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Dashboards
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Relatórios
+                  - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button:
+                            - img
+                            - text: Criar Relatório
+                          - generic:
+                            - generic:
+                              - img
+                              - generic: hhh
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - generic:
+                      - generic: A
+                    - generic:
+                      - paragraph: Admin Teste 2
+                      - paragraph: admin2@teste.com.br
+                    - generic:
+                      - generic:
+                        - img
+                        - text: Admin
+                      - img
+        - generic:
+          - generic:
+            - button:
+              - img
+            - generic:
+              - generic:
+                - heading [level=1]: hhh
+                - button:
+                  - img
+                - button:
+                  - img
+            - generic:
+              - button:
+                - img
+                - generic: Estilo
+              - button:
+                - text: Ações
+                - img
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                  - generic: Assistente
+              - generic:
+                - generic:
+                  - img
+                  - paragraph: Descreva o relatório desejado
+                  - paragraph: "Ex: \"Relatório de faturamento por estado e representante ordenado do maior para o menor\""
+                  - paragraph: A IA gera SQL, extrai dados e renderiza automaticamente.
+              - generic:
+                - generic:
+                  - textbox:
+                    - /placeholder: Descreva o relatório que deseja gerar…
+                  - button [disabled]:
+                    - img
+            - generic:
+              - generic:
+                - button:
+                  - img
+                - img
+                - generic: Preview
+              - generic:
+                - generic:
+                  - img
+                  - paragraph: Nenhum relatório gerado
+                  - paragraph: Use o chat para gerar seu primeiro relatório
+      - contentinfo:
+        - generic:
+          - generic: "Dados atualizados em: Sem informação"
+          - generic: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic: v1.8.0
+  - dialog "Estilo do Relatório" [ref=e747]:
+    - generic [ref=e748]:
+      - heading "Estilo do Relatório" [level=2] [ref=e749]:
+        - img [ref=e750]
+        - text: Estilo do Relatório
+      - paragraph [ref=e753]: Configure tema, cores, fonte e layout da página
+    - generic [ref=e757]:
+      - generic [ref=e758]:
+        - generic [ref=e759]:
+          - generic [ref=e760]: Tema
+          - combobox [active] [ref=e761]:
+            - generic:
+              - generic: Corporativo
+              - generic: — Cabeçalhos azuis, visual profissional
+            - img
+        - generic [ref=e762]:
+          - generic [ref=e763]: Fonte
+          - combobox [ref=e764]:
+            - generic: Inter
+            - img
+      - generic [ref=e765]:
+        - generic [ref=e766]: Layout da Página
+        - generic [ref=e767]:
+          - generic [ref=e768]:
+            - generic [ref=e769]: Tamanho
+            - combobox [ref=e770]:
+              - generic: A4
+              - img
+          - generic [ref=e771]:
+            - generic [ref=e772]: Orientação
+            - combobox [ref=e773]:
+              - generic: Retrato
+              - img
+      - generic [ref=e774]:
+        - generic [ref=e775]: Cores
+        - generic [ref=e776]:
+          - generic [ref=e777]:
+            - generic [ref=e778]: Primária
+            - generic [ref=e779]:
+              - textbox [ref=e780] [cursor=pointer]: "#1e40af"
+              - textbox [ref=e781]: "#1e40af"
+          - generic [ref=e782]:
+            - generic [ref=e783]: Destaque
+            - generic [ref=e784]:
+              - textbox [ref=e785] [cursor=pointer]: "#3b82f6"
+              - textbox [ref=e786]: "#3b82f6"
+            - generic [ref=e787]:
+              - img [ref=e788]
+              - generic [ref=e790]: Baixo contraste (3.7:1)
+      - generic [ref=e791]:
+        - generic [ref=e792]: Opções
+        - generic [ref=e793]:
+          - generic [ref=e794]:
+            - generic [ref=e795]: Cabeçalho
+            - switch [checked] [ref=e796]
+          - generic [ref=e797]:
+            - generic [ref=e798]: Rodapé
+            - switch [checked] [ref=e799]
+          - generic [ref=e800]:
+            - generic [ref=e801]: Número de páginas
+            - switch [checked] [ref=e802]
+    - generic [ref=e803]:
+      - button "Cancelar" [ref=e804]
+      - button "Aplicar" [ref=e805]
+    - button "Close" [ref=e806]:
+      - img
+      - generic [ref=e807]: Close

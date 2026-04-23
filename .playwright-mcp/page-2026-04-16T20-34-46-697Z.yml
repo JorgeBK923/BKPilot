@@ -1,0 +1,360 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T":
+      - list:
+        - listitem [ref=e2261]:
+          - img [ref=e2263]
+          - generic [ref=e2266]: "Preview: 105 registros em 1.16s"
+        - listitem [ref=e2267]:
+          - img [ref=e2269]
+          - generic [ref=e2272]: Sugestão aplicada — executando preview...
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - generic [ref=e11]:
+              - img "JCLA Logo" [ref=e14] [cursor=pointer]
+              - button [ref=e16]:
+                - img
+            - button "Nova Conversa" [ref=e18]:
+              - img
+              - text: Nova Conversa
+          - generic [ref=e19]:
+            - button "Conversas" [ref=e21]:
+              - generic [ref=e22]:
+                - img [ref=e23]
+                - generic [ref=e25]: Conversas
+              - img [ref=e26]
+            - generic [ref=e183]:
+              - button "Gráficos" [ref=e184]:
+                - generic [ref=e185]:
+                  - img [ref=e186]
+                  - generic [ref=e188]: Gráficos
+                - img [ref=e189]
+              - generic [ref=e981]:
+                - button "Abrir galeria de gráficos" [ref=e982]:
+                  - img
+                  - text: Abrir galeria de gráficos
+                - generic [ref=e983]:
+                  - generic [ref=e985] [cursor=pointer]:
+                    - img [ref=e987]
+                    - generic [ref=e989]:
+                      - heading "O conjunto de dados analisado compreende **50.000*..." [level=4] [ref=e990]
+                      - paragraph [ref=e991]: Barras · Geral
+                  - generic [ref=e993] [cursor=pointer]:
+                    - img [ref=e995]
+                    - generic [ref=e997]:
+                      - heading "Analise" [level=4] [ref=e998]
+                      - paragraph [ref=e999]: Barras · Geral
+                  - generic [ref=e1001] [cursor=pointer]:
+                    - img [ref=e1003]
+                    - generic [ref=e1005]:
+                      - heading "Tega sistemas 2" [level=4] [ref=e1006]
+                      - paragraph [ref=e1007]: Linhas · Geral
+                  - generic [ref=e1009] [cursor=pointer]:
+                    - img [ref=e1011]
+                    - generic [ref=e1013]:
+                      - heading "### Análise do Estoque Médio de Produtos por Loja ..." [level=4] [ref=e1014]
+                      - paragraph [ref=e1015]: Barras · Geral
+            - button "Dashboards" [ref=e192]:
+              - generic [ref=e193]:
+                - img [ref=e194]
+                - generic [ref=e196]: Dashboards
+              - img [ref=e197]
+            - button "Relatórios" [ref=e200]:
+              - generic [ref=e201]:
+                - img [ref=e202]
+                - generic [ref=e204]: Relatórios
+              - img [ref=e205]
+          - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e209]:
+            - generic [ref=e210]:
+              - generic [ref=e212]: A
+              - generic [ref=e213]:
+                - paragraph [ref=e214]: Admin Teste 2
+                - paragraph [ref=e215]: admin2@teste.com.br
+              - generic [ref=e216]:
+                - generic [ref=e217]:
+                  - img
+                  - text: Admin
+                - img
+        - generic [ref=e1494]:
+          - generic [ref=e1499]:
+            - heading "Galeria de Gráficos" [level=1] [ref=e1500]
+            - paragraph [ref=e1501]: Gerencie e visualize todos os seus gráficos personalizados
+          - generic [ref=e1502]:
+            - generic [ref=e1503]:
+              - generic [ref=e1505]:
+                - img [ref=e1506]
+                - textbox "Buscar gráficos por nome, categoria ou tags..." [ref=e1508]
+              - generic [ref=e1509]:
+                - button "Recarregar Dados" [ref=e1510]
+                - combobox [ref=e1511]:
+                  - generic: Todas as Categorias
+                  - img
+                - combobox [ref=e1512]:
+                  - generic: Grande
+                  - img
+            - generic [ref=e1513]:
+              - generic [ref=e1516]:
+                - img [ref=e1517]
+                - generic [ref=e1519]:
+                  - paragraph [ref=e1520]: Total de Gráficos
+                  - paragraph [ref=e1521]: "4"
+              - generic [ref=e1524]:
+                - img [ref=e1525]
+                - generic [ref=e1527]:
+                  - paragraph [ref=e1528]: Categorias
+                  - paragraph [ref=e1529]: "1"
+              - generic [ref=e1532]:
+                - img [ref=e1533]
+                - generic [ref=e1535]:
+                  - paragraph [ref=e1536]: Tipos Diferentes
+                  - paragraph [ref=e1537]: "2"
+              - generic [ref=e1540]:
+                - img [ref=e1541]
+                - generic [ref=e1543]:
+                  - paragraph [ref=e1544]: Gráficos Ativos
+                  - paragraph [ref=e1545]: "4"
+            - generic [ref=e1546]:
+              - generic [ref=e1547] [cursor=pointer]:
+                - generic [ref=e1548]:
+                  - button [ref=e1549]:
+                    - img
+                  - button [ref=e1550]:
+                    - img
+                  - button [ref=e1551]:
+                    - img
+                - generic "O conjunto de dados analisado compreende **50.000*..." [ref=e1555]
+                - generic [ref=e1558]:
+                  - img [ref=e1559]
+                  - generic [ref=e1561]: Erro na query do gráfico
+                  - generic [ref=e1562]: Erro interno no acesso aos dados do gráfico
+                  - button "Corrigir" [ref=e1563]:
+                    - img
+                    - text: Corrigir
+              - generic [ref=e1564] [cursor=pointer]:
+                - generic [ref=e1565]:
+                  - button [ref=e1566]:
+                    - img
+                  - button [ref=e1567]:
+                    - img
+                  - button [ref=e1568]:
+                    - img
+                - generic "Analise" [ref=e1572]
+                - generic [ref=e1575]:
+                  - img [ref=e1576]
+                  - generic [ref=e1578]: Carregando gráfico...
+              - generic [ref=e1579] [cursor=pointer]:
+                - generic [ref=e1580]:
+                  - button [ref=e1581]:
+                    - img
+                  - button [ref=e1582]:
+                    - img
+                  - button [ref=e1583]:
+                    - img
+                - generic "Tega sistemas 2" [ref=e1587]
+                - generic [ref=e1590]:
+                  - img [ref=e1591]
+                  - generic [ref=e1593]: Carregando gráfico...
+              - generic [ref=e1594] [cursor=pointer]:
+                - generic [ref=e1595]:
+                  - button [ref=e1596]:
+                    - img
+                  - button [ref=e1597]:
+                    - img
+                  - button [ref=e1598]:
+                    - img
+                - generic "### Análise do Estoque Médio de Produtos por Loja ..." [ref=e1602]
+                - generic [ref=e1605]:
+                  - img [ref=e1606]
+                  - generic [ref=e1608]: Carregando gráfico...
+          - generic [ref=e1609]:
+            - generic [ref=e1610]:
+              - generic [ref=e1611]:
+                - button [ref=e1612]:
+                  - img
+                - heading "Editar Gráfico" [level=2] [ref=e1613]
+                - generic [ref=e1614]: ff98925b-3276-43da-a4fe-973d6b0e0697
+              - generic [ref=e1615]:
+                - button "Cancelar" [ref=e1616]
+                - button "Atualizar" [ref=e1617]
+            - generic [ref=e1618]:
+              - generic [ref=e1620]:
+                - generic [ref=e1621]:
+                  - generic [ref=e1622]: Nome do Gráfico
+                  - textbox "Nome do Gráfico" [ref=e1623]: Analise
+                - generic [ref=e1624]:
+                  - generic [ref=e1625]: Categoria
+                  - textbox "Categoria" [ref=e1626]: Geral
+                - generic [ref=e1627]:
+                  - generic [ref=e1628]: Tipo de Gráfico
+                  - combobox [ref=e1629]:
+                    - generic: Barras
+                    - img
+                - generic [ref=e1630]:
+                  - generic [ref=e1631]: Descrição (opcional)
+                  - textbox "Descrição (opcional)" [ref=e1632]: Teste QA descricao
+                - generic [ref=e1633]:
+                  - generic [ref=e1634]: Tags (opcional)
+                  - generic [ref=e1635]:
+                    - textbox "Digite uma tag e pressione Enter" [ref=e1636]
+                    - button [disabled]:
+                      - img
+                - generic [ref=e2273]:
+                  - generic [ref=e2274]:
+                    - img [ref=e2275]
+                    - text: Mapeamento de Eixos
+                  - generic [ref=e2277]:
+                    - generic [ref=e2278]: Eixo X (Labels)
+                    - combobox [ref=e2279]:
+                      - generic: loja_descricao
+                      - img
+                  - generic [ref=e2280]:
+                    - generic [ref=e2281]: Eixos Y (Valores) (3)
+                    - generic [ref=e2282]:
+                      - generic [ref=e2283] [cursor=pointer]:
+                        - checkbox "loja_id" [ref=e2284]
+                        - generic [ref=e2285]: loja_id
+                      - generic [ref=e2286] [cursor=pointer]:
+                        - checkbox "estoque_medio_por_produto" [checked] [ref=e2287]
+                        - generic [ref=e2288]: estoque_medio_por_produto
+                      - generic [ref=e2289] [cursor=pointer]:
+                        - checkbox "estoque_total" [checked] [ref=e2290]
+                        - generic [ref=e2291]: estoque_total
+                      - generic [ref=e2292] [cursor=pointer]:
+                        - checkbox "quantidade_produtos" [checked] [ref=e2293]
+                        - generic [ref=e2294]: quantidade_produtos
+                - generic [ref=e2295]: ✅ 105 registros em 1.16s
+              - generic [ref=e1637]:
+                - generic [ref=e1638]:
+                  - generic [ref=e1639]:
+                    - generic [ref=e1640]: Consulta SQL + Python
+                    - generic [ref=e1641]:
+                      - button "IA" [ref=e1642]:
+                        - img
+                        - text: IA
+                      - button "Preview" [ref=e1643]:
+                        - img
+                        - text: Preview
+                  - generic [ref=e1646]:
+                    - tablist [ref=e1648]:
+                      - tab "SQL" [selected] [ref=e1649]:
+                        - img
+                        - text: SQL
+                      - tab "Python ativo" [ref=e2296]:
+                        - img
+                        - text: Python
+                        - generic [ref=e2297]: ativo
+                    - tabpanel "SQL" [ref=e1651]:
+                      - code [ref=e2172]:
+                        - generic [ref=e2173]:
+                          - textbox "Editor content" [ref=e2174]
+                          - textbox [ref=e2175]
+                          - generic [ref=e2190]: "1"
+                          - generic [ref=e2184]:
+                            - generic [ref=e2222]: SELECT t.localestoqueid AS loja_id, t.
+                            - generic [ref=e2224]: localestoquedescricao AS loja_descricao, AVG(t.
+                            - generic [ref=e2226]: quantidadesaldo) AS estoque_medio_por_produto,
+                            - generic [ref=e2228]: SUM(t.quantidadesaldo) AS estoque_total, COUNT
+                            - generic [ref=e2230]: (DISTINCT t.produtocodigo) AS
+                            - generic [ref=e2232]: quantidade_produtos FROM gold_gralha.
+                            - generic [ref=e2234]: vw_estoque_jcla AS t GROUP BY t.
+                            - generic [ref=e2236]: localestoqueid, t.localestoquedescricao
+                  - generic [ref=e2298]:
+                    - generic [ref=e2301]:
+                      - tablist [ref=e2302]:
+                        - tab "Gráfico" [selected] [ref=e2303]:
+                          - img
+                          - text: Gráfico
+                        - tab "Dados (105)" [ref=e2304]:
+                          - img
+                          - text: Dados (105)
+                      - generic [ref=e2305]:
+                        - generic [ref=e2306]: 105 registros • 1.16s
+                        - button [ref=e2307]:
+                          - img
+                    - generic [ref=e2311]:
+                      - generic [ref=e2313]:
+                        - img [ref=e2314]
+                        - combobox [ref=e2316]:
+                          - generic: Todos (105)
+                          - img
+                      - generic [ref=e2320]:
+                        - img [ref=e2321]:
+                          - generic [ref=e2325]:
+                            - generic [ref=e2327]: "1"
+                            - generic [ref=e2329]: "15"
+                            - generic [ref=e2331]: "20"
+                            - generic [ref=e2333]: "24"
+                            - generic [ref=e2335]: "29"
+                            - generic [ref=e2337]: "34"
+                            - generic [ref=e2339]: "42"
+                            - generic [ref=e2341]: "53"
+                            - generic [ref=e2343]: "57"
+                            - generic [ref=e2345]: "62"
+                            - generic [ref=e2347]: "66"
+                            - generic [ref=e2349]: "111"
+                            - generic [ref=e2351]: "115"
+                            - generic [ref=e2353]: "119"
+                            - generic [ref=e2355]: "123"
+                            - generic [ref=e2357]: "127"
+                            - generic [ref=e2359]: "132"
+                            - generic [ref=e2361]: "72"
+                            - generic [ref=e2363]: "76"
+                            - generic [ref=e2365]: "80"
+                            - generic [ref=e2367]: "84"
+                            - generic [ref=e2369]: "88"
+                            - generic [ref=e2371]: "92"
+                            - generic [ref=e2373]: "98"
+                            - generic [ref=e2375]: "102"
+                            - generic [ref=e2377]: "106"
+                            - generic [ref=e2379]: "110"
+                          - generic [ref=e2381]:
+                            - generic [ref=e2383]: "-31.500.000"
+                            - generic [ref=e2385]: "-10.500.000"
+                            - generic [ref=e2387]: 10.500.000
+                        - list [ref=e2641]:
+                          - listitem [ref=e2642]:
+                            - img [ref=e2643]
+                            - text: estoque_medio_por_produto
+                          - listitem [ref=e2645]:
+                            - img [ref=e2646]
+                            - text: estoque_total
+                - generic [ref=e2120]:
+                  - generic "Arrastar para redimensionar" [ref=e2121]:
+                    - img [ref=e2122]
+                  - generic [ref=e2125]:
+                    - generic [ref=e2126]:
+                      - generic [ref=e2127]:
+                        - img [ref=e2128]
+                        - generic [ref=e2131]: Assistente IA
+                      - generic [ref=e2238]:
+                        - button [ref=e2648]:
+                          - img
+                        - button [ref=e2239]:
+                          - img
+                    - generic [ref=e2132]:
+                      - generic [ref=e2241]: Quero fazer em Python
+                      - generic [ref=e2246]:
+                        - generic [ref=e2247]: "A consulta SQL fornecida está sintaticamente correta e foi mantida. Para atender ao seu pedido de \"fazer em Python\", adicionei um passo de pós-processamento em Python que ordena os resultados pelo 'estoque_total' em ordem decrescente. Isso ajudará a visualizar as lojas com maior estoque total primeiro. 📝 Alterado: Python, Eixos"
+                        - generic [ref=e2649]:
+                          - img
+                          - text: Aplicado
+                    - generic [ref=e2168]:
+                      - 'textbox "Ex: Agrupar por mês, gráfico de pizza..." [ref=e2169]'
+                      - button [disabled]:
+                        - img
+            - contentinfo [ref=e1688]:
+              - generic [ref=e1689]:
+                - generic [ref=e1690]: "Dados atualizados em: Sem informação"
+                - generic [ref=e1691]: © 2026 JCLA Analytics. Todos os direitos reservados.
+                - generic [ref=e1692]: v1.8.0
+      - contentinfo [ref=e562]:
+        - generic [ref=e563]:
+          - generic [ref=e564]: "Dados atualizados em: Sem informação"
+          - generic [ref=e565]: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic [ref=e566]: v1.8.0
+  - generic [ref=e1457]: "-31.500.000"
+  - generic [ref=e1493]:
+    - alert
+    - alert

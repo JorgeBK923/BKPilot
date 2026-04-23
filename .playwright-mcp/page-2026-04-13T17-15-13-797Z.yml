@@ -1,0 +1,37 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - button "Voltar" [ref=e7]:
+        - img
+        - text: Voltar
+      - generic [ref=e8]:
+        - heading "Importação de Dados" [level=1] [ref=e9]
+        - paragraph [ref=e10]: Importe arquivos CSV ou Excel para a base de dados
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - img [ref=e67]
+          - generic [ref=e15]: Upload
+        - generic [ref=e17]:
+          - generic [ref=e18]: "2"
+          - generic [ref=e19]: Tabela Destino
+        - generic [ref=e21]:
+          - generic [ref=e22]: "3"
+          - generic [ref=e23]: Mapeamento
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - generic [ref=e71]: Tabela Destino
+          - generic [ref=e72]: Defina o nome da tabela onde os dados serão importados
+        - generic [ref=e74]:
+          - textbox "nome_da_tabela" [active] [ref=e75]
+          - button "Validar" [disabled]:
+            - img
+            - text: Validar
+      - generic [ref=e38]:
+        - button "Anterior" [ref=e76]:
+          - img
+          - text: Anterior
+        - button "Próximo" [disabled]:
+          - text: Próximo
+          - img

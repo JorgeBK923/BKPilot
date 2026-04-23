@@ -1,0 +1,208 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - img "JCLA Logo" [ref=e14] [cursor=pointer]
+            - button [ref=e16]:
+              - img
+          - button "Nova Conversa" [ref=e18]:
+            - img
+            - text: Nova Conversa
+        - generic [ref=e19]:
+          - button "Conversas" [ref=e21]:
+            - generic [ref=e22]:
+              - img [ref=e23]
+              - generic [ref=e25]: Conversas
+            - img [ref=e26]
+          - generic [ref=e28]:
+            - button "Gráficos" [ref=e29]:
+              - generic [ref=e30]:
+                - img [ref=e31]
+                - generic [ref=e33]: Gráficos
+              - img [ref=e34]
+            - generic [ref=e40]:
+              - button "Abrir galeria de gráficos" [ref=e41]:
+                - img
+                - text: Abrir galeria de gráficos
+              - generic [ref=e42]:
+                - generic [ref=e44] [cursor=pointer]:
+                  - img [ref=e46]
+                  - generic [ref=e48]:
+                    - heading "O conjunto de dados analisado compreende **50.000*..." [level=4] [ref=e49]
+                    - paragraph [ref=e50]: Barras · Geral
+                - generic [ref=e52] [cursor=pointer]:
+                  - img [ref=e54]
+                  - generic [ref=e56]:
+                    - heading "Analise" [level=4] [ref=e57]
+                    - paragraph [ref=e58]: Barras · Geral
+                - generic [ref=e60] [cursor=pointer]:
+                  - img [ref=e62]
+                  - generic [ref=e64]:
+                    - heading "Tega sistemas 2" [level=4] [ref=e65]
+                    - paragraph [ref=e66]: Linhas · Geral
+                - generic [ref=e68] [cursor=pointer]:
+                  - img [ref=e70]
+                  - generic [ref=e72]:
+                    - heading "### Análise do Estoque Médio de Produtos por Loja ..." [level=4] [ref=e73]
+                    - paragraph [ref=e74]: Barras · Geral
+          - button "Dashboards" [ref=e76]:
+            - generic [ref=e77]:
+              - img [ref=e78]
+              - generic [ref=e80]: Dashboards
+            - img [ref=e81]
+          - button "Relatórios" [ref=e84]:
+            - generic [ref=e85]:
+              - img [ref=e86]
+              - generic [ref=e88]: Relatórios
+            - img [ref=e89]
+        - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e93]:
+          - generic [ref=e94]:
+            - generic [ref=e96]: A
+            - generic [ref=e97]:
+              - paragraph [ref=e98]: Admin Teste 2
+              - paragraph [ref=e99]: admin2@teste.com.br
+            - generic [ref=e100]:
+              - generic [ref=e101]:
+                - img
+                - text: Admin
+              - img
+      - generic [ref=e102]:
+        - generic [ref=e107]:
+          - heading "Galeria de Gráficos" [level=1] [ref=e108]
+          - paragraph [ref=e109]: Gerencie e visualize todos os seus gráficos personalizados
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - generic [ref=e113]:
+              - img [ref=e114]
+              - textbox "Buscar gráficos por nome, categoria ou tags..." [ref=e116]
+            - generic [ref=e117]:
+              - button "Recarregar Dados" [ref=e118]
+              - combobox [ref=e119]:
+                - generic: Todas as Categorias
+                - img
+              - combobox [ref=e120]:
+                - generic: Grande
+                - img
+          - generic [ref=e121]:
+            - generic [ref=e124]:
+              - img [ref=e125]
+              - generic [ref=e127]:
+                - paragraph [ref=e128]: Total de Gráficos
+                - paragraph [ref=e129]: "4"
+            - generic [ref=e132]:
+              - img [ref=e133]
+              - generic [ref=e135]:
+                - paragraph [ref=e136]: Categorias
+                - paragraph [ref=e137]: "1"
+            - generic [ref=e140]:
+              - img [ref=e141]
+              - generic [ref=e143]:
+                - paragraph [ref=e144]: Tipos Diferentes
+                - paragraph [ref=e145]: "2"
+            - generic [ref=e148]:
+              - img [ref=e149]
+              - generic [ref=e151]:
+                - paragraph [ref=e152]: Gráficos Ativos
+                - paragraph [ref=e153]: "4"
+          - generic [ref=e154]:
+            - generic [ref=e155] [cursor=pointer]:
+              - generic [ref=e156]:
+                - button [ref=e157]:
+                  - img
+                - button [ref=e158]:
+                  - img
+                - button [ref=e159]:
+                  - img
+              - generic "O conjunto de dados analisado compreende **50.000*..." [ref=e163]
+              - generic [ref=e166]:
+                - img [ref=e167]
+                - generic [ref=e169]: Erro na query do gráfico
+                - generic [ref=e170]: Erro interno no acesso aos dados do gráfico
+                - button "Corrigir" [ref=e171]:
+                  - img
+                  - text: Corrigir
+            - generic [ref=e172] [cursor=pointer]:
+              - generic [ref=e173]:
+                - button [ref=e174]:
+                  - img
+                - button [ref=e175]:
+                  - img
+                - button [ref=e176]:
+                  - img
+              - generic "Analise" [ref=e180]
+              - generic [ref=e183]:
+                - img [ref=e184]
+                - generic [ref=e186]: Carregando gráfico...
+            - generic [ref=e187] [cursor=pointer]:
+              - generic [ref=e188]:
+                - button [ref=e189]:
+                  - img
+                - button [ref=e190]:
+                  - img
+                - button [ref=e191]:
+                  - img
+              - generic "Tega sistemas 2" [ref=e195]
+              - generic [ref=e198]:
+                - img [ref=e199]
+                - generic [ref=e201]: Carregando gráfico...
+            - generic [ref=e202] [cursor=pointer]:
+              - generic [ref=e203]:
+                - button [ref=e204]:
+                  - img
+                - button [ref=e205]:
+                  - img
+                - button [ref=e206]:
+                  - img
+              - generic "### Análise do Estoque Médio de Produtos por Loja ..." [ref=e210]
+              - generic [ref=e213]:
+                - img [ref=e214]
+                - generic [ref=e216]: Carregando gráfico...
+    - contentinfo [ref=e217]:
+      - generic [ref=e218]:
+        - generic [ref=e219]: "Dados atualizados em: Sem informação"
+        - generic [ref=e220]: © 2026 JCLA Analytics. Todos os direitos reservados.
+        - generic [ref=e221]: v1.8.0
+    - generic [ref=e223]:
+      - generic [ref=e224]:
+        - generic [ref=e225]:
+          - img "JCLA Logo" [ref=e227] [cursor=pointer]
+          - generic [ref=e228]:
+            - heading "Bem-vindo!" [level=1] [ref=e229]
+            - paragraph [ref=e230]: Vamos começar com uma breve apresentação
+        - button [ref=e231]:
+          - img
+      - generic [ref=e232]:
+        - generic [ref=e234]:
+          - generic [ref=e235]: 1 de 4
+          - generic [ref=e236]: 25%
+        - generic [ref=e240]:
+          - generic [ref=e241]:
+            - img [ref=e243]
+            - generic [ref=e245]:
+              - heading "Chat Inteligente com JCLA" [level=2] [ref=e246]
+              - paragraph [ref=e247]: Faça perguntas sobre seus dados em linguagem natural e receba respostas instantâneas com análises visuais.
+          - generic [ref=e248]:
+            - generic [ref=e249]:
+              - img [ref=e251]
+              - paragraph [ref=e253]: Linguagem Natural
+            - generic [ref=e254]:
+              - img [ref=e256]
+              - paragraph [ref=e258]: Respostas Inteligentes
+            - generic [ref=e259]:
+              - img [ref=e261]
+              - paragraph [ref=e263]: Contexto Preservado
+        - generic [ref=e265]:
+          - button "Anterior" [disabled]:
+            - img
+            - generic: Anterior
+          - generic [ref=e266]:
+            - button [ref=e267]
+            - button [ref=e268]
+            - button [ref=e269]
+            - button [ref=e270]
+          - button "Próximo" [ref=e271]:
+            - generic [ref=e272]: Próximo
+            - img

@@ -1,0 +1,61 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e39]:
+        - img [ref=e41]
+        - generic [ref=e44]: Arquivo processado com sucesso!
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - button "Voltar" [ref=e7]:
+        - img
+        - text: Voltar
+      - generic [ref=e8]:
+        - heading "Importação de Dados" [level=1] [ref=e9]
+        - paragraph [ref=e10]: Importe arquivos CSV ou Excel para a base de dados
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: "1"
+          - generic [ref=e15]: Upload
+        - generic [ref=e17]:
+          - generic [ref=e18]: "2"
+          - generic [ref=e19]: Tabela Destino
+        - generic [ref=e21]:
+          - generic [ref=e22]: "3"
+          - generic [ref=e23]: Mapeamento
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - img [ref=e45]
+            - text: Arquivo Processado
+          - generic [ref=e28]: qa_test_import.csv
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]:
+              - generic [ref=e47]: 2 linhas
+              - generic [ref=e48]: 3 colunas
+            - button "Remover Arquivo" [ref=e49]:
+              - img
+              - text: Remover Arquivo
+          - table [ref=e51]:
+            - rowgroup [ref=e52]:
+              - row "nome email cargo" [ref=e53]:
+                - columnheader "nome" [ref=e54]
+                - columnheader "email" [ref=e55]
+                - columnheader "cargo" [ref=e56]
+            - rowgroup [ref=e57]:
+              - row "QA_TEST_User1 qa1@test.com Tester" [ref=e58]:
+                - cell "QA_TEST_User1" [ref=e59]
+                - cell "qa1@test.com" [ref=e60]
+                - cell "Tester" [ref=e61]
+              - row "QA_TEST_User2 qa2@test.com Analyst" [ref=e62]:
+                - cell "QA_TEST_User2" [ref=e63]
+                - cell "qa2@test.com" [ref=e64]
+                - cell "Analyst" [ref=e65]
+      - generic [ref=e38]:
+        - button "Anterior" [disabled]:
+          - img
+          - text: Anterior
+        - button "Próximo" [ref=e66]:
+          - text: Próximo
+          - img

@@ -1,0 +1,126 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - button:
+                    - img
+              - generic:
+                - button:
+                  - img
+                  - text: Nova Conversa
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Conversas
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Gráficos
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Dashboards
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Relatórios
+                  - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button:
+                            - img
+                            - text: Criar Relatório
+                          - generic:
+                            - generic:
+                              - img
+                              - generic: hhh
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - generic:
+                      - generic: A
+                    - generic:
+                      - paragraph: Admin Teste 2
+                      - paragraph: admin2@teste.com.br
+                    - generic:
+                      - generic:
+                        - img
+                        - text: Admin
+                      - img
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - heading [level=1]: Relatórios
+                - paragraph: Crie e gerencie relatórios com inteligência artificial
+              - button:
+                - img
+                - text: Novo Relatório
+            - generic:
+              - generic:
+                - img
+                - textbox:
+                  - /placeholder: Buscar relatórios...
+          - generic:
+            - generic:
+              - generic:
+                - heading [level=2]: Meus Relatórios (1)
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                          - heading [level=3]: hhh
+                      - button:
+                        - img
+                    - generic:
+                      - generic: 14 de abr. de 2026
+                      - generic: Rascunho
+      - contentinfo:
+        - generic:
+          - generic: "Dados atualizados em: Sem informação"
+          - generic: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic: v1.8.0
+  - dialog "Novo Relatório" [ref=e679]:
+    - heading "Novo Relatório" [level=2] [ref=e681]
+    - generic [ref=e682]:
+      - generic [ref=e683]:
+        - generic [ref=e684]: Nome
+        - 'textbox "Ex: Vendas Mensal" [active] [ref=e685]'
+      - generic [ref=e686]:
+        - generic [ref=e687]: Descrição
+        - textbox "Opcional" [ref=e688]
+      - generic [ref=e689]:
+        - generic [ref=e690]: Pasta
+        - 'combobox "Ex: Financeiro/Mensal" [ref=e691]'
+      - generic [ref=e692]:
+        - generic [ref=e693]: Tags (separadas por vírgula)
+        - 'textbox "Ex: vendas, mensal, KPI" [ref=e694]'
+    - generic [ref=e695]:
+      - button "Cancelar" [ref=e696]
+      - button "Novo Relatório" [disabled]
+    - button "Close" [ref=e697]:
+      - img
+      - generic [ref=e698]: Close

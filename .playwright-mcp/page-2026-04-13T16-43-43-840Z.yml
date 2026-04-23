@@ -1,0 +1,285 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T":
+      - list:
+        - listitem [ref=e1584]:
+          - img [ref=e1586]
+          - generic [ref=e1589]: Gráfico carregado com sucesso! 105 registros.
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - generic [ref=e11]:
+              - img "JCLA Logo" [ref=e14] [cursor=pointer]
+              - button [ref=e16]:
+                - img
+            - button "Nova Conversa" [ref=e18]:
+              - img
+              - text: Nova Conversa
+          - generic [ref=e19]:
+            - button "Conversas" [ref=e21]:
+              - generic [ref=e22]:
+                - img [ref=e23]
+                - generic [ref=e25]: Conversas
+              - img [ref=e26]
+            - generic [ref=e28]:
+              - button "Gráficos" [ref=e29]:
+                - generic [ref=e30]:
+                  - img [ref=e31]
+                  - generic [ref=e33]: Gráficos
+                - img [ref=e34]
+              - generic [ref=e40]:
+                - button "Abrir galeria de gráficos" [ref=e41]:
+                  - img
+                  - text: Abrir galeria de gráficos
+                - generic [ref=e42]:
+                  - generic [ref=e44] [cursor=pointer]:
+                    - img [ref=e46]
+                    - generic [ref=e48]:
+                      - heading "O conjunto de dados analisado compreende **50.000*..." [level=4] [ref=e49]
+                      - paragraph [ref=e50]: Barras · Geral
+                  - generic [ref=e52] [cursor=pointer]:
+                    - img [ref=e54]
+                    - generic [ref=e56]:
+                      - heading "Analise" [level=4] [ref=e57]
+                      - paragraph [ref=e58]: Barras · Geral
+                  - generic [ref=e60] [cursor=pointer]:
+                    - img [ref=e62]
+                    - generic [ref=e64]:
+                      - heading "Tega sistemas 2" [level=4] [ref=e65]
+                      - paragraph [ref=e66]: Linhas · Geral
+                  - generic [ref=e68] [cursor=pointer]:
+                    - img [ref=e70]
+                    - generic [ref=e72]:
+                      - heading "### Análise do Estoque Médio de Produtos por Loja ..." [level=4] [ref=e73]
+                      - paragraph [ref=e74]: Barras · Geral
+            - button "Dashboards" [ref=e76]:
+              - generic [ref=e77]:
+                - img [ref=e78]
+                - generic [ref=e80]: Dashboards
+              - img [ref=e81]
+            - button "Relatórios" [ref=e84]:
+              - generic [ref=e85]:
+                - img [ref=e86]
+                - generic [ref=e88]: Relatórios
+              - img [ref=e89]
+          - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e93]:
+            - generic [ref=e94]:
+              - generic [ref=e96]: A
+              - generic [ref=e97]:
+                - paragraph [ref=e98]: Admin Teste 2
+                - paragraph [ref=e99]: admin2@teste.com.br
+              - generic [ref=e100]:
+                - generic [ref=e101]:
+                  - img
+                  - text: Admin
+                - img
+        - generic [ref=e1590]:
+          - generic [ref=e1593]:
+            - generic [ref=e1594]:
+              - button "Voltar" [ref=e1595]:
+                - img
+                - generic [ref=e1596]: Voltar
+              - generic [ref=e1597]:
+                - heading "Analise" [level=1] [ref=e1598]:
+                  - generic [ref=e1599]: Analise
+                - paragraph [ref=e1600]: Teste QA descricao
+            - generic [ref=e1601]:
+              - button "Gráfico" [ref=e1602]:
+                - img
+                - generic [ref=e1603]: Gráfico
+              - button "Tabela" [ref=e1604]:
+                - img
+                - generic [ref=e1605]: Tabela
+              - button "Atualizar" [ref=e1606]:
+                - img
+                - generic [ref=e1607]: Atualizar
+              - button "Editar" [ref=e1608]:
+                - img
+                - generic [ref=e1609]: Editar
+              - button "Exportar" [ref=e1610]:
+                - img
+                - generic [ref=e1611]: Exportar
+              - button "Compartilhar" [ref=e1612]:
+                - img
+                - generic [ref=e1613]: Compartilhar
+          - generic [ref=e1615]:
+            - generic [ref=e1617]:
+              - generic [ref=e1618]:
+                - generic [ref=e1619]:
+                  - img [ref=e1620]
+                  - text: Visualização do Gráfico
+                - generic [ref=e1622]:
+                  - generic [ref=e1623]: "Tipo: Barras"
+                  - text: •
+                  - generic [ref=e1624]: 105 registros
+              - generic [ref=e1627]:
+                - generic [ref=e1629]:
+                  - img [ref=e1630]
+                  - combobox [ref=e1632]:
+                    - generic: Todos (100)
+                    - img
+                - generic [ref=e1636]:
+                  - img [ref=e1637]:
+                    - generic [ref=e1641]:
+                      - generic [ref=e1643]: "69"
+                      - generic [ref=e1645]: "70"
+                      - generic [ref=e1647]: "71"
+                      - generic [ref=e1649]: "72"
+                      - generic [ref=e1651]: "73"
+                      - generic [ref=e1653]: "74"
+                      - generic [ref=e1655]: "75"
+                      - generic [ref=e1657]: "76"
+                      - generic [ref=e1659]: "77"
+                      - generic [ref=e1661]: "78"
+                      - generic [ref=e1663]: "79"
+                      - generic [ref=e1665]: "80"
+                      - generic [ref=e1667]: "81"
+                      - generic [ref=e1669]: "82"
+                      - generic [ref=e1671]: "83"
+                      - generic [ref=e1673]: "84"
+                      - generic [ref=e1675]: "85"
+                      - generic [ref=e1677]: "86"
+                      - generic [ref=e1679]: "87"
+                      - generic [ref=e1681]: "88"
+                      - generic [ref=e1683]: "89"
+                      - generic [ref=e1685]: "90"
+                      - generic [ref=e1687]: "91"
+                      - generic [ref=e1689]: "92"
+                      - generic [ref=e1691]: "93"
+                      - generic [ref=e1693]: "96"
+                      - generic [ref=e1695]: "97"
+                      - generic [ref=e1697]: "98"
+                      - generic [ref=e1699]: "99"
+                      - generic [ref=e1701]: "100"
+                      - generic [ref=e1703]: "101"
+                      - generic [ref=e1705]: "102"
+                      - generic [ref=e1707]: "103"
+                      - generic [ref=e1709]: "104"
+                      - generic [ref=e1711]: "105"
+                      - generic [ref=e1713]: "106"
+                      - generic [ref=e1715]: "107"
+                      - generic [ref=e1717]: "108"
+                      - generic [ref=e1719]: "109"
+                      - generic [ref=e1721]: "110"
+                      - generic [ref=e1723]: "111"
+                      - generic [ref=e1725]: "1"
+                      - generic [ref=e1727]: "4"
+                      - generic [ref=e1729]: "12"
+                      - generic [ref=e1731]: "13"
+                      - generic [ref=e1733]: "15"
+                      - generic [ref=e1735]: "16"
+                      - generic [ref=e1737]: "17"
+                      - generic [ref=e1739]: "18"
+                      - generic [ref=e1741]: "20"
+                      - generic [ref=e1743]: "21"
+                      - generic [ref=e1745]: "22"
+                      - generic [ref=e1747]: "23"
+                      - generic [ref=e1749]: "24"
+                      - generic [ref=e1751]: "25"
+                      - generic [ref=e1753]: "26"
+                      - generic [ref=e1755]: "27"
+                      - generic [ref=e1757]: "29"
+                      - generic [ref=e1759]: "30"
+                      - generic [ref=e1761]: "32"
+                      - generic [ref=e1763]: "33"
+                      - generic [ref=e1765]: "34"
+                      - generic [ref=e1767]: "38"
+                      - generic [ref=e1769]: "39"
+                      - generic [ref=e1771]: "41"
+                      - generic [ref=e1773]: "42"
+                      - generic [ref=e1775]: "45"
+                      - generic [ref=e1777]: "51"
+                      - generic [ref=e1779]: "52"
+                      - generic [ref=e1781]: "53"
+                      - generic [ref=e1783]: "54"
+                      - generic [ref=e1785]: "55"
+                      - generic [ref=e1787]: "56"
+                      - generic [ref=e1789]: "57"
+                      - generic [ref=e1791]: "58"
+                      - generic [ref=e1793]: "59"
+                      - generic [ref=e1795]: "60"
+                      - generic [ref=e1797]: "62"
+                      - generic [ref=e1799]: "63"
+                      - generic [ref=e1801]: "64"
+                      - generic [ref=e1803]: "65"
+                      - generic [ref=e1805]: "66"
+                      - generic [ref=e1807]: "67"
+                      - generic [ref=e1809]: "68"
+                      - generic [ref=e1811]: "112"
+                      - generic [ref=e1813]: "113"
+                      - generic [ref=e1815]: "114"
+                      - generic [ref=e1817]: "115"
+                      - generic [ref=e1819]: "116"
+                      - generic [ref=e1821]: "117"
+                      - generic [ref=e1823]: "118"
+                      - generic [ref=e1825]: "119"
+                      - generic [ref=e1827]: "120"
+                      - generic [ref=e1829]: "121"
+                      - generic [ref=e1831]: "122"
+                      - generic [ref=e1833]: "123"
+                      - generic [ref=e1835]: "124"
+                      - generic [ref=e1837]: "125"
+                      - generic [ref=e1839]: "126"
+                      - generic [ref=e1841]: "127"
+                    - generic [ref=e1843]:
+                      - generic [ref=e1845]: "-31.500.000"
+                      - generic [ref=e1847]: "-21.000.000"
+                      - generic [ref=e1849]: "-10.500.000"
+                      - generic [ref=e1851]: "0"
+                      - generic [ref=e1853]: 10.500.000
+                  - list [ref=e1855]:
+                    - listitem [ref=e1856]:
+                      - img [ref=e1857]
+                      - text: estoque_medio_por_produto
+                    - listitem [ref=e1859]:
+                      - img [ref=e1860]
+                      - text: estoque_total
+                  - generic:
+                    - generic:
+                      - paragraph: "125"
+                      - generic:
+                        - generic:
+                          - generic: "estoque_medio_por_produto:"
+                          - generic: "0"
+                        - generic:
+                          - generic: "estoque_total:"
+                          - generic: "0"
+            - generic [ref=e1862]:
+              - generic [ref=e1863]:
+                - generic [ref=e1865]: Informações da Execução
+                - generic [ref=e1866]:
+                  - generic [ref=e1867]:
+                    - generic [ref=e1868]: "Tempo de execução:"
+                    - generic [ref=e1869]: 1.349s
+                  - generic [ref=e1870]:
+                    - generic [ref=e1871]: "Registros retornados:"
+                    - generic [ref=e1872]: "105"
+                  - generic [ref=e1873]:
+                    - generic [ref=e1874]: "Tipo de gráfico:"
+                    - generic [ref=e1875]: Barras
+              - generic [ref=e1876]:
+                - generic [ref=e1878]:
+                  - img [ref=e1879]
+                  - text: Código
+                - generic [ref=e1883]:
+                  - tablist [ref=e1885]:
+                    - tab "SQL" [selected] [ref=e1886]:
+                      - img
+                      - text: SQL
+                  - tabpanel "SQL" [ref=e1887]:
+                    - code [ref=e1890]:
+                      - generic [ref=e1891]:
+                        - textbox "Editor content"
+                        - textbox [ref=e1892]
+                        - generic [ref=e1897]: "1"
+                        - generic [ref=e1903]: S
+      - contentinfo [ref=e217]:
+        - generic [ref=e218]:
+          - generic [ref=e219]: "Dados atualizados em: Sem informação"
+          - generic [ref=e220]: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic [ref=e221]: v1.8.0
+  - generic [ref=e846]:
+    - alert
+    - alert
+  - generic [ref=e1109]: "-31.500.000"

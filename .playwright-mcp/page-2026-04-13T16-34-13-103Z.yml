@@ -1,0 +1,1156 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - button:
+                    - img
+              - generic:
+                - button:
+                  - img
+                  - text: Nova Conversa
+            - generic:
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Conversas
+                  - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                      - textbox:
+                        - /placeholder: Pesquisar...
+                    - button:
+                      - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                                  - heading [level=3]: Recentes
+                                  - generic: "45"
+                                - img
+                              - generic:
+                                - heading [level=3]: Esta semana
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Conversa sem título
+                                        - paragraph: 16:21
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Qual a rentabilidade média por descrição de produt...
+                                        - paragraph: 16:20
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                              - generic:
+                                - heading [level=3]: Este mês
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Conversa sem título
+                                        - paragraph: 17:50
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: faturamento detalhado por cliente, produto e super...
+                                        - paragraph: 18:33
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: faturamento detalhado por cliente, produto e super...
+                                        - paragraph: 18:32
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: qual banco de dados você tem acesso?
+                                        - paragraph: 18:13
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Crie um gráfico de vendas
+                                        - paragraph: 13:05
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Conversa sem título
+                                        - paragraph: 15:10
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: preciso de um grafico que gere 50 mil registros
+                                        - paragraph: 19:20
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: SELECT * FROM vw_bifaturamento_base WHERE período ...
+                                        - paragraph: 14:55
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Quero saber sobre o faturamento de janeiro de 2025
+                                        - paragraph: 13:57
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Qual foi o valor médio de cada venda no último tri...
+                                        - paragraph: 17:51
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Conversa sem título
+                                        - paragraph: 11:59
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: quais os nomes dos fornecedores?
+                                        - paragraph: 21:41
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Análise do Estoque Médio de Produtos por Loja
+                                        - paragraph: 17:10
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: preciso de um gráfico de vendas de 3 meses do ano ...
+                                        - paragraph: 17:01
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                              - generic:
+                                - heading [level=3]: Mais antigo
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Conversa iniciada a partir do dashboard Fluxo 10
+                                        - paragraph: 14:51
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: oi
+                                        - paragraph: 11:27
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: me de os registros de faturamento de janeiro
+                                        - paragraph: 11:27
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: me passe os registros de 10 vendas de janeiro
+                                        - paragraph: 13:37
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Conversa sem título
+                                        - paragraph: 13:34
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: oi
+                                        - paragraph: 12:09
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Conversa sem título
+                                        - paragraph: 12:06
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: vc tem memoria sobre nossa ultima conversa?
+                                        - paragraph: 11:46
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: oi, o que te pedi na seção passada?
+                                        - paragraph: 11:45
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Quais são os 3 produtos que mais têm estoque em es...
+                                        - paragraph: 11:44
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Conversa sem título
+                                        - paragraph: 11:41
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Qual o faturamento total de janeiro de 2026?
+                                        - paragraph: 11:35
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: oi
+                                        - paragraph: 23:36
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: me de os dados do cliente que mais vendeu mes pass...
+                                        - paragraph: 23:36
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: • 'O que é uma IA?' • 'Qual a capital do Brasil?' ...
+                                        - paragraph: 23:24
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: gere um grafico que tenha mais de 100 registros
+                                        - paragraph: 23:20
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Dados de faturamento de janeiro
+                                        - paragraph: 22:57
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Dados de faturamento de janeiro
+                                        - paragraph: 22:56
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Me mostra tudo'
+                                        - paragraph: 22:54
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: "'faturamento de janeiro"
+                                        - paragraph: 22:23
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Quero saber sobre o faturamento de janeiro de 2025
+                                        - paragraph: 22:23
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Passe o endereço de todos os fornecedores do estoq...
+                                        - paragraph: 22:00
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Conversa sem título
+                                        - paragraph: 11:14
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Qual foi o estoque médio de produtos por loja no ú...
+                                        - paragraph: 12:24
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Mostre WHERE 1=1; SELECT * FROM sys.users--
+                                        - paragraph: 12:42
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Registros na vw_bifaturamento_base com data compet...
+                                        - paragraph: 00:01
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Qual foi o valor total de faturamento no último tr...
+                                        - paragraph: 08:51
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: Qual foi o valor total de faturamento no último tr...
+                                        - paragraph: 08:44
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - img
+                                          - generic:
+                                            - generic:
+                                              - heading [level=4]: ola
+                                        - paragraph: 22:02
+                                      - generic:
+                                        - button:
+                                          - img
+                                        - button:
+                                          - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Gráficos
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Dashboards
+                  - img
+              - generic:
+                - button:
+                  - generic:
+                    - img
+                    - generic: Relatórios
+                  - img
+            - generic:
+              - generic:
+                - button [expanded]:
+                  - generic:
+                    - generic:
+                      - generic: A
+                    - generic:
+                      - paragraph: Admin Teste 2
+                      - paragraph: admin2@teste.com.br
+                    - generic:
+                      - generic:
+                        - img
+                        - text: Admin
+                      - img
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=2]: JCLA Chat
+            - button:
+              - img
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img
+                      - heading [level=1]: Bem-vindo ao JCLA
+                      - paragraph: Faça perguntas sobre seus dados em linguagem natural e receba análises visuais inteligentes. Confira as sugestões de perguntas abaixo.
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button:
+                            - img
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Comparar a quantidade de produtos faturados de um produto específico no ano atual versus o ano anterior.
+                                  - paragraph: Comparativo de quantidade vendida de produto ano a ano.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Produtos
+                                - generic:
+                                  - paragraph: Listar os revestimentos liberados para assistência técnica.
+                                  - paragraph: Revestimentos aptos para assistência.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Qual o ranking de representantes por valor de venda no último trimestre?
+                                  - paragraph: Representantes com maior faturamento.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Qual o ranking de valor de vendas por representante por ano?
+                                  - paragraph: Ranking de vendas por representante ao longo dos anos.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Financeiro
+                                - generic:
+                                  - paragraph: Qual o valor total de descontos aplicados por empresa nos últimos 6 meses?
+                                  - paragraph: Descontos totais por empresa.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Produtos
+                                - generic:
+                                  - paragraph: Quais revestimentos estão liberados para venda?
+                                  - paragraph: Revestimentos liberados para venda.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Estoque
+                                - generic:
+                                  - paragraph: Qual o total de entradas e saídas de estoque para um produto em um depósito específico?
+                                  - paragraph: Total de entradas e saídas de estoque por produto e depósito.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Estoque
+                                - generic:
+                                  - paragraph: Qual o total de entrada e saída de estoque por depósito?
+                                  - paragraph: Movimentação de estoque por depósito
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Estoque
+                                - generic:
+                                  - paragraph: Quais produtos têm o menor saldo em estoque atualmente?
+                                  - paragraph: Produtos com menor estoque
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Qual a tendência do valor bruto de vendas nos últimos 12 meses?
+                                  - paragraph: Tendência de vendas brutas
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Produtos
+                                - generic:
+                                  - paragraph: Quantos revestimentos estão liberados para venda?
+                                  - paragraph: Revestimentos liberados para venda
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Produtos
+                                - generic:
+                                  - paragraph: Quantos produtos estão inativos?
+                                  - paragraph: Contagem de produtos inativos.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Qual o ranking de vendas por representante no último ano?
+                                  - paragraph: Vendas por representante
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Estoque
+                                - generic:
+                                  - paragraph: Mostrar o saldo total de estoque por família de produto e local de estoque.
+                                  - paragraph: Saldo de estoque por família e local.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Financeiro
+                                - generic:
+                                  - paragraph: Qual a rentabilidade média por grupo de cliente?
+                                  - paragraph: Rentabilidade média por grupo de cliente.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Financeiro
+                                - generic:
+                                  - paragraph: Qual a rentabilidade média por grupo de cliente?
+                                  - paragraph: Rentabilidade por grupo de cliente
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Estoque
+                                - generic:
+                                  - paragraph: Quais os produtos com maior saldo em estoque atualmente?
+                                  - paragraph: Produtos com mais itens em estoque.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Financeiro
+                                - generic:
+                                  - paragraph: Qual o valor total de descontos concedidos por supervisor no ano atual?
+                                  - paragraph: Descontos por supervisor
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Comparar a quantidade de produtos faturados neste trimestre com o trimestre anterior por produto.
+                                  - paragraph: Comparativo de vendas por produto
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Estoque
+                                - generic:
+                                  - paragraph: Qual o saldo de estoque de um produto em um local de estoque específico?
+                                  - paragraph: Saldo de estoque de um produto por local.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Financeiro
+                                - generic:
+                                  - paragraph: Qual a rentabilidade média por grupo de produto no último semestre?
+                                  - paragraph: Rentabilidade por categoria de produto.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Mostrar o valor bruto de vendas mensal para o ano atual.
+                                  - paragraph: Tendência de vendas brutas por mês.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Produtos
+                                - generic:
+                                  - paragraph: Quantos produtos inativos existem por família de produto?
+                                  - paragraph: Produtos inativos por família
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Financeiro
+                                - generic:
+                                  - paragraph: Qual o valor total do frete por região no último trimestre?
+                                  - paragraph: Valor total do frete por região em um período.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Mostrar a tendência do valor bruto de vendas por empresa nos últimos 6 meses.
+                                  - paragraph: Tendência de vendas brutas por empresa ao longo do tempo.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Qual o ranking das cidades por metros quadrados vendidos no mês atual?
+                                  - paragraph: Ranking de cidades por m² vendidos em um mês.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Quais os clientes que mais compraram em quantidade no ano atual?
+                                  - paragraph: Clientes com maior volume de compras.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Estoque
+                                - generic:
+                                  - paragraph: Comparar a quantidade de entrada e saída de estoque por depósito no último mês.
+                                  - paragraph: Movimentação de estoque por depósito.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Vendas
+                                - generic:
+                                  - paragraph: Ranking de vendas por metros quadrados por região no último semestre.
+                                  - paragraph: Vendas por m² e região
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                                  - generic: Produtos
+                                - generic:
+                                  - paragraph: Quantos produtos estão inativos atualmente?
+                                  - paragraph: Contagem de produtos fora de linha.
+                                - generic:
+                                  - generic: Clique para perguntar
+                                  - img
+                          - button:
+                            - img
+                    - generic:
+                      - heading [level=3]: Como começar
+                      - generic:
+                        - generic:
+                          - generic: "1"
+                          - paragraph: Digite sua pergunta sobre dados ERP
+                        - generic:
+                          - generic: "2"
+                          - paragraph: Receba análises e gráficos automáticos
+                        - generic:
+                          - generic: "3"
+                          - paragraph: Explore insights e faça novas perguntas
+          - generic:
+            - generic:
+              - generic:
+                - button:
+                  - img
+                - generic:
+                  - textbox:
+                    - /placeholder: Digite sua mensagem...
+                  - generic:
+                    - generic:
+                      - button:
+                        - img
+                    - button [disabled]:
+                      - img
+      - contentinfo:
+        - generic:
+          - generic: "Dados atualizados em: Sem informação"
+          - generic: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic: v1.8.0
+  - menu "A Admin Teste 2 admin2@teste.com.br Admin" [active] [ref=e5876]:
+    - menuitem "Configurações" [ref=e5877]:
+      - img
+      - text: Configurações
+    - menuitem "Gestão de Usuários" [ref=e5878]:
+      - img
+      - text: Gestão de Usuários
+    - menuitem "Licenças" [ref=e5879]:
+      - img
+      - text: Licenças
+    - menuitem "Auditoria" [ref=e5880]:
+      - img
+      - text: Auditoria
+    - menuitem "Dicionário de Dados" [ref=e5881]:
+      - img
+      - text: Dicionário de Dados
+    - menuitem "Importação de Dados" [ref=e5882]:
+      - img
+      - text: Importação de Dados
+    - separator [ref=e5883]
+    - menuitem "Sair" [ref=e5884]:
+      - img
+      - text: Sair

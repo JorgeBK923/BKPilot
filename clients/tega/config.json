@@ -1,0 +1,12 @@
+{
+  "id": "tega",
+  "nome": "TEGA Sistemas",
+  "baseUrl": "https://devjcla.sistemastega.com.br",
+  "timeout_ms": 30000,
+  "max_paginas": 500,
+  "envPassword": "QA_PASSWORD",
+  "postLoginSelector": "button:has-text(\"Nova Conversa\"), textarea",
+  "loginMaxAttempts": 3,
+  "defaultFlow": "chat-ia",
+  "defaultRetesteFlow": "reteste-bugs"
+}

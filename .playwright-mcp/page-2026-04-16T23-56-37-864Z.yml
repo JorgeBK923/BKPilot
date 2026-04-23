@@ -1,0 +1,204 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T"
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - img "JCLA Logo" [ref=e82] [cursor=pointer]
+              - button [ref=e84]:
+                - img
+            - button "Nova Conversa" [ref=e86]:
+              - img
+              - text: Nova Conversa
+          - generic [ref=e87]:
+            - button "Conversas" [ref=e89]:
+              - generic [ref=e90]:
+                - img [ref=e91]
+                - generic [ref=e93]: Conversas
+              - img [ref=e94]
+            - generic [ref=e264]:
+              - button "Gráficos" [ref=e265]:
+                - generic [ref=e266]:
+                  - img [ref=e267]
+                  - generic [ref=e269]: Gráficos
+                - img [ref=e270]
+              - generic [ref=e1051]:
+                - button "Abrir galeria de gráficos" [ref=e1052]:
+                  - img
+                  - text: Abrir galeria de gráficos
+                - generic [ref=e1053]:
+                  - generic [ref=e1055] [cursor=pointer]:
+                    - img [ref=e1057]
+                    - generic [ref=e1059]:
+                      - heading "### Saldo de Estoque por Local O saldo total de e..." [level=4] [ref=e1060]
+                      - paragraph [ref=e1061]: Mapa de Calor · teste
+                  - generic [ref=e1063] [cursor=pointer]:
+                    - img [ref=e1065]
+                    - generic [ref=e1067]:
+                      - heading "Faturamento dos 5 Maiores Clientes" [level=4] [ref=e1068]
+                      - paragraph [ref=e1069]: Linhas · Teste
+            - button "Dashboards" [ref=e273]:
+              - generic [ref=e274]:
+                - img [ref=e275]
+                - generic [ref=e277]: Dashboards
+              - img [ref=e278]
+            - button "Relatórios" [ref=e281]:
+              - generic [ref=e282]:
+                - img [ref=e283]
+                - generic [ref=e285]: Relatórios
+              - img [ref=e286]
+          - button "A Admin Teste admin@teste.com.br Admin" [ref=e290]:
+            - generic [ref=e291]:
+              - generic [ref=e293]: A
+              - generic [ref=e294]:
+                - paragraph [ref=e295]: Admin Teste
+                - paragraph [ref=e296]: admin@teste.com.br
+              - generic [ref=e297]:
+                - generic [ref=e298]:
+                  - img
+                  - text: Admin
+                - img
+        - generic [ref=e1070]:
+          - generic [ref=e1075]:
+            - heading "Galeria de Gráficos" [level=1] [ref=e1076]
+            - paragraph [ref=e1077]: Gerencie e visualize todos os seus gráficos personalizados
+          - generic [ref=e1078]:
+            - generic [ref=e1079]:
+              - generic [ref=e1081]:
+                - img [ref=e1082]
+                - textbox "Buscar gráficos por nome, categoria ou tags..." [ref=e1084]
+              - generic [ref=e1085]:
+                - button "Recarregar Dados" [ref=e1086]
+                - combobox [ref=e1087]:
+                  - generic: Todas as Categorias
+                  - img
+                - combobox [ref=e1088]:
+                  - generic: Grande
+                  - img
+            - generic [ref=e1089]:
+              - generic [ref=e1092]:
+                - img [ref=e1093]
+                - generic [ref=e1095]:
+                  - paragraph [ref=e1096]: Total de Gráficos
+                  - paragraph [ref=e1097]: "2"
+              - generic [ref=e1100]:
+                - img [ref=e1101]
+                - generic [ref=e1103]:
+                  - paragraph [ref=e1104]: Categorias
+                  - paragraph [ref=e1105]: "2"
+              - generic [ref=e1108]:
+                - img [ref=e1109]
+                - generic [ref=e1111]:
+                  - paragraph [ref=e1112]: Tipos Diferentes
+                  - paragraph [ref=e1113]: "2"
+              - generic [ref=e1116]:
+                - img [ref=e1117]
+                - generic [ref=e1119]:
+                  - paragraph [ref=e1120]: Gráficos Ativos
+                  - paragraph [ref=e1121]: "2"
+            - generic [ref=e1122]:
+              - generic [ref=e1123] [cursor=pointer]:
+                - generic [ref=e1124]:
+                  - button [ref=e1125]:
+                    - img
+                  - button [active] [ref=e1126]:
+                    - img
+                  - button [ref=e1127]:
+                    - img
+                - generic "### Saldo de Estoque por Local O saldo total de e..." [ref=e1131]
+                - paragraph [ref=e1164]: Sem dados para exibir
+                - generic [ref=e1140]: Estoque
+              - generic [ref=e1141] [cursor=pointer]:
+                - generic [ref=e1142]:
+                  - button [ref=e1143]:
+                    - img
+                  - button [ref=e1144]:
+                    - img
+                  - button [ref=e1145]:
+                    - img
+                - generic "Faturamento dos 5 Maiores Clientes" [ref=e1149]
+                - generic [ref=e1152]:
+                  - img [ref=e1153]
+                  - generic [ref=e1155]: Carregando gráfico...
+                - generic [ref=e1157]:
+                  - generic [ref=e1158]: Faturamento
+                  - generic [ref=e1159]: Clientes
+          - generic [ref=e1165]:
+            - generic [ref=e1166]:
+              - generic [ref=e1167]:
+                - button [ref=e1168]:
+                  - img
+                - heading "Editar Gráfico" [level=2] [ref=e1169]
+                - generic [ref=e1170]: 9b810744-0f2b-42f8-8b4d-0cb21179dccb
+              - generic [ref=e1171]:
+                - button "Cancelar" [ref=e1172]
+                - button "Atualizar" [ref=e1173]
+            - generic [ref=e1174]:
+              - generic [ref=e1176]:
+                - generic [ref=e1177]:
+                  - generic [ref=e1178]: Nome do Gráfico
+                  - textbox "Nome do Gráfico" [ref=e1179]: "### Saldo de Estoque por LocalO saldo total de e..."
+                - generic [ref=e1180]:
+                  - generic [ref=e1181]: Categoria
+                  - textbox "Categoria" [ref=e1182]: teste
+                - generic [ref=e1183]:
+                  - generic [ref=e1184]: Tipo de Gráfico
+                  - combobox [ref=e1185]:
+                    - generic: Mapa de Calor
+                    - img
+                - generic [ref=e1186]:
+                  - generic [ref=e1187]: Descrição (opcional)
+                  - textbox "Descrição (opcional)" [ref=e1188]: teste11111
+                - generic [ref=e1189]:
+                  - generic [ref=e1190]: Tags (opcional)
+                  - generic [ref=e1191]:
+                    - textbox "Digite uma tag e pressione Enter" [ref=e1192]
+                    - button [disabled]:
+                      - img
+                  - generic [ref=e1194]:
+                    - text: estoque
+                    - button [ref=e1195]:
+                      - img [ref=e1196]
+              - generic [ref=e1199]:
+                - generic [ref=e1200]:
+                  - generic [ref=e1201]: Consulta SQL
+                  - generic [ref=e1202]:
+                    - button "IA" [ref=e1203]:
+                      - img
+                      - text: IA
+                    - button "Preview" [ref=e1204]:
+                      - img
+                      - text: Preview
+                - generic [ref=e1207]:
+                  - tablist [ref=e1209]:
+                    - tab "SQL" [selected] [ref=e1210]:
+                      - img
+                      - text: SQL
+                    - tab "Python" [ref=e1211]:
+                      - img
+                      - text: Python
+                  - tabpanel "SQL" [ref=e1212]:
+                    - code [ref=e1215]:
+                      - generic [ref=e1216]:
+                        - textbox "Editor content" [ref=e1217]
+                        - textbox [ref=e1218]
+                        - generic [ref=e1223]: "1"
+                        - generic [ref=e1235]:
+                          - generic [ref=e1237]: SELECT t.localestoquedescricao AS localestoquedescricao, SUM(t.quantidadesaldo) AS
+                          - generic [ref=e1239]: saldo_estoque FROM gold_gralha.vw_estoque_jcla AS t GROUP BY t.localestoquedescricao ORDER
+                          - generic [ref=e1241]: BY saldo_estoque DESC LIMIT 20
+            - contentinfo [ref=e1243]:
+              - generic [ref=e1244]:
+                - generic [ref=e1245]: "Dados atualizados em: Sem informação"
+                - generic [ref=e1246]: © 2026 JCLA Analytics. Todos os direitos reservados.
+                - generic [ref=e1247]: v1.8.0
+      - contentinfo [ref=e643]:
+        - generic [ref=e644]:
+          - generic [ref=e645]: "Dados atualizados em: Sem informação"
+          - generic [ref=e646]: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic [ref=e647]: v1.8.0
+  - generic [ref=e1248]:
+    - alert
+    - alert

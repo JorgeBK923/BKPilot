@@ -1,0 +1,35 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T"
+  - generic [ref=e6]:
+    - generic [ref=e9]:
+      - button "Voltar" [ref=e10]:
+        - img
+        - text: Voltar
+      - generic [ref=e11]:
+        - heading "Gestão de Usuários" [level=1] [ref=e12]
+        - paragraph [ref=e13]: Gerencie usuários, permissões e configurações do sistema
+    - generic [ref=e17]:
+      - tablist [ref=e18]:
+        - tab "Usuários" [ref=e19]
+        - tab "Permissões" [active] [selected] [ref=e20]
+        - tab "Personas" [ref=e21]
+      - tabpanel "Permissões" [ref=e709]:
+        - generic [ref=e710]:
+          - generic [ref=e711]:
+            - generic [ref=e712]:
+              - heading "Gerenciamento de Permissões" [level=2] [ref=e713]
+              - paragraph [ref=e714]: Configure grupos de acesso e suas permissões de dados
+            - generic [ref=e715]:
+              - button "Sincronizar Metadados" [ref=e716]:
+                - img
+                - text: Sincronizar Metadados
+              - button "Novo Grupo" [ref=e717]:
+                - img
+                - text: Novo Grupo
+          - generic [ref=e718]:
+            - generic [ref=e719]:
+              - generic [ref=e720]: Selecionar Grupo
+              - generic [ref=e721]: Escolha um grupo para configurar permissões
+            - combobox [ref=e724]:
+              - generic: Selecione um grupo...
+              - img

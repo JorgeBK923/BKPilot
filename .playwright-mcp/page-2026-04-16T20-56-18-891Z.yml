@@ -1,0 +1,430 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e1859]:
+          - generic [ref=e1860]:
+            - generic [ref=e1861]:
+              - img "JCLA Logo" [ref=e1864] [cursor=pointer]
+              - button [ref=e2513]:
+                - img
+            - button "Nova Conversa" [ref=e1868]:
+              - img
+              - text: Nova Conversa
+          - generic [ref=e1869]:
+            - button "Conversas" [ref=e1871]:
+              - generic [ref=e1872]:
+                - img [ref=e1873]
+                - generic [ref=e1875]: Conversas
+              - img [ref=e1876]
+            - generic [ref=e1878]:
+              - button "Gráficos" [ref=e1879]:
+                - generic [ref=e1880]:
+                  - img [ref=e1881]
+                  - generic [ref=e1883]: Gráficos
+                - img [ref=e1884]
+              - generic [ref=e1890]:
+                - button "Abrir galeria de gráficos" [ref=e1891]:
+                  - img
+                  - text: Abrir galeria de gráficos
+                - generic [ref=e1892]:
+                  - generic [ref=e1894] [cursor=pointer]:
+                    - img [ref=e1896]
+                    - generic [ref=e1898]:
+                      - heading "O conjunto de dados analisado compreende **50.000*..." [level=4] [ref=e1899]
+                      - paragraph [ref=e1900]: Barras · Geral
+                  - generic [ref=e1902] [cursor=pointer]:
+                    - img [ref=e1904]
+                    - generic [ref=e1906]:
+                      - heading "Analise" [level=4] [ref=e1907]
+                      - paragraph [ref=e1908]: Barras · Geral
+                  - generic [ref=e1910] [cursor=pointer]:
+                    - img [ref=e1912]
+                    - generic [ref=e1914]:
+                      - heading "Tega sistemas 2" [level=4] [ref=e1915]
+                      - paragraph [ref=e1916]: Linhas · Geral
+                  - generic [ref=e1918] [cursor=pointer]:
+                    - img [ref=e1920]
+                    - generic [ref=e1922]:
+                      - heading "### Análise do Estoque Médio de Produtos por Loja ..." [level=4] [ref=e1923]
+                      - paragraph [ref=e1924]: Barras · Geral
+            - button "Dashboards" [ref=e2515]:
+              - generic [ref=e2516]:
+                - img [ref=e2517]
+                - generic [ref=e2519]: Dashboards
+              - img [ref=e2520]
+            - button "Relatórios" [ref=e2523]:
+              - generic [ref=e2524]:
+                - img [ref=e2525]
+                - generic [ref=e2527]: Relatórios
+              - img [ref=e2528]
+          - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e1927]:
+            - generic [ref=e1928]:
+              - generic [ref=e1930]: A
+              - generic [ref=e1931]:
+                - paragraph [ref=e1932]: Admin Teste 2
+                - paragraph [ref=e1933]: admin2@teste.com.br
+              - generic [ref=e1934]:
+                - generic [ref=e1935]:
+                  - img
+                  - text: Admin
+                - img
+        - generic [ref=e74]:
+          - generic [ref=e79]:
+            - heading "Galeria de Gráficos" [level=1] [ref=e80]
+            - paragraph [ref=e81]: Gerencie e visualize todos os seus gráficos personalizados
+          - generic [ref=e82]:
+            - generic [ref=e83]:
+              - generic [ref=e85]:
+                - img [ref=e86]
+                - textbox "Buscar gráficos por nome, categoria ou tags..." [ref=e88]
+              - generic [ref=e89]:
+                - button "Recarregar Dados" [ref=e2530]
+                - combobox [ref=e91]:
+                  - generic: Todas as Categorias
+                  - img
+                - combobox [ref=e2531]:
+                  - generic: Grande
+                  - img
+            - generic [ref=e93]:
+              - generic [ref=e96]:
+                - img [ref=e97]
+                - generic [ref=e99]:
+                  - paragraph [ref=e100]: Total de Gráficos
+                  - paragraph [ref=e101]: "4"
+              - generic [ref=e104]:
+                - img [ref=e105]
+                - generic [ref=e107]:
+                  - paragraph [ref=e108]: Categorias
+                  - paragraph [ref=e109]: "1"
+              - generic [ref=e112]:
+                - img [ref=e113]
+                - generic [ref=e115]:
+                  - paragraph [ref=e116]: Tipos Diferentes
+                  - paragraph [ref=e117]: "2"
+              - generic [ref=e120]:
+                - img [ref=e121]
+                - generic [ref=e123]:
+                  - paragraph [ref=e124]: Gráficos Ativos
+                  - paragraph [ref=e125]: "4"
+            - generic [ref=e126]:
+              - generic [ref=e565] [cursor=pointer]:
+                - generic [ref=e566]:
+                  - button [ref=e567]:
+                    - img
+                  - button [ref=e2532]:
+                    - img
+                  - button [ref=e2533]:
+                    - img
+                - generic "O conjunto de dados analisado compreende **50.000*..." [ref=e573]
+                - generic [ref=e576]:
+                  - img [ref=e577]
+                  - generic [ref=e579]: Erro na query do gráfico
+                  - generic [ref=e580]: Erro interno no acesso aos dados do gráfico
+                  - button "Corrigir" [ref=e581]:
+                    - img
+                    - text: Corrigir
+              - generic [ref=e582] [cursor=pointer]:
+                - generic [ref=e583]:
+                  - button [ref=e584]:
+                    - img
+                  - button [ref=e2534]:
+                    - img
+                  - button [ref=e2535]:
+                    - img
+                - generic "Analise" [ref=e590]
+                - generic [ref=e628]:
+                  - generic [ref=e630]:
+                    - img [ref=e631]
+                    - combobox [ref=e633]:
+                      - generic: Todos (105)
+                      - img
+                  - generic [ref=e637]:
+                    - img [ref=e638]:
+                      - generic [ref=e642]:
+                        - generic [ref=e3247]: "1"
+                        - generic [ref=e3249]: "15"
+                        - generic [ref=e3251]: "20"
+                        - generic [ref=e3253]: "24"
+                        - generic [ref=e3255]: "29"
+                        - generic [ref=e3257]: "34"
+                        - generic [ref=e3259]: "42"
+                        - generic [ref=e3261]: "53"
+                        - generic [ref=e3263]: "57"
+                        - generic [ref=e3265]: "62"
+                        - generic [ref=e3267]: "66"
+                        - generic [ref=e3269]: "111"
+                        - generic [ref=e3271]: "115"
+                        - generic [ref=e3273]: "119"
+                        - generic [ref=e3275]: "123"
+                        - generic [ref=e3277]: "127"
+                        - generic [ref=e3279]: "132"
+                        - generic [ref=e3281]: "72"
+                        - generic [ref=e3283]: "76"
+                        - generic [ref=e3285]: "80"
+                        - generic [ref=e3287]: "84"
+                        - generic [ref=e3289]: "88"
+                        - generic [ref=e3291]: "92"
+                        - generic [ref=e3293]: "98"
+                        - generic [ref=e3295]: "102"
+                        - generic [ref=e3297]: "106"
+                        - generic [ref=e3299]: "110"
+                      - generic [ref=e698]:
+                        - generic [ref=e3301]: "-31.500.000"
+                        - generic [ref=e3303]: "-21.000.000"
+                        - generic [ref=e3305]: "-10.500.000"
+                        - generic [ref=e3307]: "0"
+                        - generic [ref=e708]: 10.500.000
+                    - list [ref=e2873]:
+                      - listitem [ref=e2874]:
+                        - img [ref=e2875]
+                        - text: estoque_medio_por_produto
+                      - listitem [ref=e2877]:
+                        - img [ref=e2878]
+                        - text: estoque_total
+              - generic [ref=e597] [cursor=pointer]:
+                - generic [ref=e598]:
+                  - button [ref=e599]:
+                    - img
+                  - button [ref=e2880]:
+                    - img
+                  - button [ref=e2881]:
+                    - img
+                - generic "Tega sistemas 2" [ref=e605]
+                - generic [ref=e608]:
+                  - img [ref=e609]
+                  - generic [ref=e611]: Carregando gráfico...
+              - generic [ref=e612] [cursor=pointer]:
+                - generic [ref=e613]:
+                  - button [ref=e614]:
+                    - img
+                  - button [ref=e2882]:
+                    - img
+                  - button [ref=e2883]:
+                    - img
+                - generic "### Análise do Estoque Médio de Produtos por Loja ..." [ref=e620]
+                - generic [ref=e623]:
+                  - img [ref=e624]
+                  - generic [ref=e626]: Carregando gráfico...
+          - generic [ref=e993]:
+            - generic [ref=e994]:
+              - generic [ref=e995]:
+                - button [ref=e996]:
+                  - img
+                - heading "Editar Gráfico" [level=2] [ref=e997]
+                - generic [ref=e998]: ff98925b-3276-43da-a4fe-973d6b0e0697
+              - generic [ref=e999]:
+                - button "Cancelar" [ref=e1000]
+                - button "Atualizar" [ref=e1001]
+            - generic [ref=e1002]:
+              - generic [ref=e1004]:
+                - generic [ref=e1005]:
+                  - generic [ref=e1006]: Nome do Gráfico
+                  - textbox "Nome do Gráfico" [ref=e1007]: Analise
+                - generic [ref=e1008]:
+                  - generic [ref=e1009]: Categoria
+                  - textbox "Categoria" [ref=e1010]: Geral
+                - generic [ref=e1011]:
+                  - generic [ref=e1012]: Tipo de Gráfico
+                  - combobox [ref=e1013]:
+                    - generic: Barras
+                    - img
+                - generic [ref=e1014]:
+                  - generic [ref=e1015]: Descrição (opcional)
+                  - textbox "Descrição (opcional)" [ref=e1016]: Teste QA descricao
+                - generic [ref=e1017]:
+                  - generic [ref=e1018]: Tags (opcional)
+                  - generic [ref=e1019]:
+                    - textbox "Digite uma tag e pressione Enter" [ref=e1020]
+                    - button [disabled]:
+                      - img
+                - generic [ref=e3676]:
+                  - generic [ref=e3677]:
+                    - img [ref=e3678]
+                    - text: Mapeamento de Eixos
+                  - generic [ref=e3680]:
+                    - generic [ref=e3681]: Eixo X (Labels)
+                    - combobox [ref=e3682]:
+                      - generic: revestimentodescricao
+                      - img
+                  - generic [ref=e3683]:
+                    - generic [ref=e3684]: Eixos Y (Valores) (4)
+                    - generic [ref=e3685]:
+                      - generic [ref=e3686] [cursor=pointer]:
+                        - checkbox "total_revestimentos" [checked] [ref=e3687]
+                        - generic [ref=e3688]: total_revestimentos
+                      - generic [ref=e3689] [cursor=pointer]:
+                        - checkbox "liberado_representante" [checked] [ref=e3690]
+                        - generic [ref=e3691]: liberado_representante
+                      - generic [ref=e3692] [cursor=pointer]:
+                        - checkbox "liberado_acessorios" [checked] [ref=e3693]
+                        - generic [ref=e3694]: liberado_acessorios
+                      - generic [ref=e3695] [cursor=pointer]:
+                        - checkbox "liberado_venda" [checked] [ref=e3696]
+                        - generic [ref=e3697]: liberado_venda
+                - generic [ref=e3698]: ✅ 4052 registros em 1.56s
+              - generic [ref=e1021]:
+                - generic [ref=e1022]:
+                  - generic [ref=e1023]:
+                    - generic [ref=e1024]: Consulta SQL
+                    - generic [ref=e1025]:
+                      - button "IA" [ref=e1026]:
+                        - img
+                        - text: IA
+                      - button "Preview" [ref=e1027]:
+                        - img
+                        - text: Preview
+                  - generic [ref=e1030]:
+                    - tablist [ref=e1032]:
+                      - tab "SQL" [selected] [ref=e1033]:
+                        - img
+                        - text: SQL
+                      - tab "Python" [ref=e1034]:
+                        - img
+                        - text: Python
+                    - tabpanel "SQL" [ref=e1035]:
+                      - code [ref=e1038]:
+                        - generic [ref=e1039]:
+                          - textbox "Editor content" [ref=e1040]
+                          - textbox [ref=e1041]
+                          - generic [ref=e1043]:
+                            - generic [ref=e3700]: "1"
+                            - generic [ref=e3702]: "2"
+                            - generic [ref=e3704]: "3"
+                            - generic [ref=e3706]: "4"
+                            - generic [ref=e3708]: "5"
+                            - generic [ref=e3710]: "6"
+                            - generic [ref=e3712]: "7"
+                            - generic [ref=e3714]: "8"
+                            - generic [ref=e3716]: "9"
+                            - generic [ref=e3718]: "10"
+                            - generic [ref=e3720]: "11"
+                            - generic [ref=e3723]: "12"
+                          - generic [ref=e1062]:
+                            - generic [ref=e3754]: SELECT
+                            - generic [ref=e3756]: t.revestimentodescricao,
+                            - generic [ref=e3758]: COUNT(DISTINCT t.revestimentoid) AS total_revestimentos,
+                            - generic [ref=e3760]: SUM(t.revestimentoliberadorepresentante) AS liberado_representante,
+                            - generic [ref=e3762]: SUM(t.revestimentoliberadoacessorios) AS liberado_acessorios,
+                            - generic [ref=e3764]: SUM(t.revestimentoliberadovenda) AS liberado_venda
+                            - generic [ref=e3766]: FROM
+                            - generic [ref=e3768]: gold_gralha.vw_revestimento_jcla AS t
+                            - generic [ref=e3770]: GROUP BY
+                            - generic [ref=e3772]: t.revestimentodescricao
+                            - generic [ref=e3774]: ORDER BY
+                            - generic [ref=e3776]: total_revestimentos DESC
+                  - generic [ref=e3777]:
+                    - generic [ref=e3780]:
+                      - tablist [ref=e3781]:
+                        - tab "Gráfico" [selected] [ref=e3782]:
+                          - img
+                          - text: Gráfico
+                        - tab "Dados (4052)" [ref=e3783]:
+                          - img
+                          - text: Dados (4052)
+                      - generic [ref=e3784]:
+                        - generic [ref=e3785]: 4052 registros • 1.56s
+                        - button [ref=e3786]:
+                          - img
+                    - generic [ref=e3790]:
+                      - generic [ref=e3792]:
+                        - img [ref=e3793]
+                        - combobox [ref=e3795]:
+                          - generic: Todos (4052)
+                          - img
+                      - generic [ref=e3799]:
+                        - img [ref=e3800]:
+                          - generic [ref=e3804]:
+                            - generic [ref=e3807]: TC IMETEXTIL...
+                            - generic [ref=e3809]: TC JS HARMON...
+                            - generic [ref=e3811]: TC LINHO LAS...
+                            - generic [ref=e3813]: TC BOUCLE BA...
+                            - generic [ref=e3815]: TC NL PORTOB...
+                            - generic [ref=e3817]: COMPOSE TC 8...
+                            - generic [ref=e3819]: COMPOSE TC 8...
+                            - generic [ref=e3821]: COMPOSE TC 3...
+                            - generic [ref=e3823]: COMPOSE TC 8...
+                            - generic [ref=e3825]: TC VELUDO SH...
+                            - generic [ref=e3827]: COMPOSE TC 8...
+                            - generic [ref=e3829]: TC VELVET IC...
+                            - generic [ref=e3831]: TC VELUDO AZ...
+                            - generic [ref=e3833]: TC NICOLETT ...
+                            - generic [ref=e3835]: TC BR CHENIL...
+                            - generic [ref=e3837]: COMPOSE TC 3...
+                            - generic [ref=e3839]: KR BEGE CLAR...
+                            - generic [ref=e3841]: TC LINHO BIS...
+                            - generic [ref=e3843]: TC ADAR SUED...
+                            - generic [ref=e3845]: KR TOP LEATH...
+                            - generic [ref=e3847]: TC JS ALPHA ...
+                            - generic [ref=e3849]: TC B ROSSI V...
+                            - generic [ref=e3851]: TC B ROSSI V...
+                            - generic [ref=e3853]: TC IBC CHENI...
+                            - generic [ref=e3855]: TC JS BAHAMA...
+                            - generic [ref=e3857]: TC JS SALEM ...
+                            - generic [ref=e3859]: KR TRADING B...
+                            - generic [ref=e3861]: KR LD PARATY...
+                            - generic [ref=e3863]: TC JS OREGON...
+                            - generic [ref=e3865]: Outros
+                          - generic [ref=e3867]:
+                            - generic [ref=e3869]: "0"
+                            - generic [ref=e3871]: "1.000"
+                            - generic [ref=e3873]: "2.000"
+                            - generic [ref=e3875]: "3.000"
+                            - generic [ref=e3877]: "4.000"
+                        - list [ref=e4485]:
+                          - listitem [ref=e4486]:
+                            - img [ref=e4487]
+                            - text: total_revestimentos
+                          - listitem [ref=e4489]:
+                            - img [ref=e4490]
+                            - text: liberado_acessorios
+                          - listitem [ref=e4492]:
+                            - img [ref=e4493]
+                            - text: liberado_venda
+                - generic [ref=e1801]:
+                  - generic "Arrastar para redimensionar" [ref=e1802]:
+                    - img [ref=e1803]
+                  - generic [ref=e1806]:
+                    - generic [ref=e1807]:
+                      - generic [ref=e1808]:
+                        - img [ref=e1809]
+                        - generic [ref=e1812]: Assistente IA
+                      - generic [ref=e1847]:
+                        - button [ref=e4495]:
+                          - img
+                        - button [ref=e1848]:
+                          - img
+                    - generic [ref=e1813]:
+                      - generic [ref=e1850]: Busque os dados da tabela tabela_que_nao_existe_xyz_123 agrupados por mes
+                      - generic [ref=e1852]: A tabela 'tabela_que_nao_existe_xyz_123' não foi encontrada no dicionário de dados disponível para o seu grupo de acesso. Por favor, verifique o nome da tabela ou solicite acesso, se necessário. A consulta original foi mantida.
+                      - generic [ref=e1854]: teste de falha de conexão
+                      - generic [ref=e1855]:
+                        - generic [ref=e1856]: "Erro na requisição: Erro de rede. Verifique sua conexão."
+                        - button "Tentar novamente" [ref=e1857]:
+                          - img
+                          - text: Tentar novamente
+                      - generic [ref=e3641]: Mostre dados de revestimento usando a view vw_revestimento_jcla
+                      - generic [ref=e3642]:
+                        - generic [ref=e3643]: "Ajustei a consulta para usar a view `vw_revestimento_jcla` conforme solicitado. A consulta agora mostra a descrição do revestimento, o total de revestimentos únicos e a contagem de revestimentos liberados para representante, acessórios e venda, agrupados pela descrição do revestimento. 📝 Alterado: SQL, Eixos"
+                        - generic [ref=e4496]:
+                          - img
+                          - text: Aplicado
+                    - generic [ref=e1845]:
+                      - 'textbox "Ex: Agrupar por mês, gráfico de pizza..." [ref=e1846]'
+                      - button [disabled]:
+                        - img
+            - contentinfo [ref=e1072]:
+              - generic [ref=e1073]:
+                - generic [ref=e1074]: "Dados atualizados em: Sem informação"
+                - generic [ref=e1075]: © 2026 JCLA Analytics. Todos os direitos reservados.
+                - generic [ref=e1076]: v1.8.0
+      - contentinfo [ref=e129]:
+        - generic [ref=e130]:
+          - generic [ref=e131]: "Dados atualizados em: Sem informação"
+          - generic [ref=e132]: © 2026 JCLA Analytics. Todos os direitos reservados.
+          - generic [ref=e133]: v1.8.0
+  - generic [ref=e1077]:
+    - alert
+    - alert
+  - generic [ref=e1078]: "1.000"

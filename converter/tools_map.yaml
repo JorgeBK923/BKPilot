@@ -1,0 +1,73 @@
+# tools_map.yaml — Mapeamento de tools por target CLI
+# Cada tool tem uma entrada por target com type e template
+# Types: mcp (Claude Code MCP), xml (OpenCode), json (Codex), implicit (no markup)
+
+playwright.browser_navigate:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_navigate" }
+  opencode: { type: xml, template: '<use_tool><name>browser_navigate</name><url>{{ url }}</url></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_navigate","args":{"url":"{{ url }}"}}' }
+
+playwright.browser_click:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_click" }
+  opencode: { type: xml, template: '<use_tool><name>browser_click</name><selector>{{ selector }}</selector></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_click","args":{"selector":"{{ selector }}"}}' }
+
+playwright.browser_fill_form:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_fill_form" }
+  opencode: { type: xml, template: '<use_tool><name>browser_fill_form</name><selector>{{ selector }}</selector><value>{{ value }}</value></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_fill_form","args":{"selector":"{{ selector }}","value":"{{ value }}"}}' }
+
+playwright.browser_snapshot:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_snapshot" }
+  opencode: { type: xml, template: '<use_tool><name>browser_snapshot</name></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_snapshot","args":{}}' }
+
+playwright.browser_take_screenshot:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_take_screenshot" }
+  opencode: { type: xml, template: '<use_tool><name>browser_take_screenshot</name></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_take_screenshot","args":{}}' }
+
+playwright.browser_wait_for:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_wait_for" }
+  opencode: { type: xml, template: '<use_tool><name>browser_wait_for</name><selector>{{ selector }}</selector></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_wait_for","args":{"selector":"{{ selector }}"}}' }
+
+playwright.browser_press_key:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_press_key" }
+  opencode: { type: xml, template: '<use_tool><name>browser_press_key</name><key>{{ key }}</key></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_press_key","args":{"key":"{{ key }}"}}' }
+
+playwright.browser_evaluate:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_evaluate" }
+  opencode: { type: xml, template: '<use_tool><name>browser_evaluate</name><script>{{ script }}</script></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_evaluate","args":{"script":"{{ script }}"}}' }
+
+playwright.browser_console_messages:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_console_messages" }
+  opencode: { type: xml, template: '<use_tool><name>browser_console_messages</name></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_console_messages","args":{}}' }
+
+playwright.browser_network_requests:
+  claude:   { type: mcp, tool: "mcp__playwright__browser_network_requests" }
+  opencode: { type: xml, template: '<use_tool><name>browser_network_requests</name></use_tool>' }
+  codex:    { type: json, template: '{"tool":"browser_network_requests","args":{}}' }
+
+fs.read_file:
+  claude:   { type: implicit }
+  opencode: { type: xml, template: '<use_tool><name>read_file</name><path>{{ path }}</path></use_tool>' }
+  codex:    { type: json, template: '{"tool":"read_file","args":{"path":"{{ path }}"}}' }
+
+fs.write_file:
+  claude:   { type: implicit }
+  opencode: { type: xml, template: '<use_tool><name>write_file</name><path>{{ path }}</path><content>{{ content }}</content></use_tool>' }
+  codex:    { type: json, template: '{"tool":"write_file","args":{"path":"{{ path }}","content":"{{ content }}"}}' }
+
+shell.bash:
+  claude:   { type: implicit }
+  opencode: { type: xml, template: '<use_tool><name>execute_command</name><command>{{ command }}</command></use_tool>' }
+  codex:    { type: json, template: '{"tool":"execute_command","args":{"command":"{{ command }}"}}' }
+
+http.request:
+  claude:   { type: implicit }
+  opencode: { type: xml, template: '<use_tool><name>http_request</name><method>{{ method }}</method><url>{{ url }}</url></use_tool>' }
+  codex:    { type: json, template: '{"tool":"http_request","args":{"method":"{{ method }}","url":"{{ url }}"}}' }

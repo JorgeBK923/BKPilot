@@ -1,0 +1,91 @@
+- generic [ref=e2]:
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e1016]:
+        - img [ref=e1018]
+        - generic [ref=e1021]: Erro interno no acesso aos dados do gráfico
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - img "JCLA Logo" [ref=e14] [cursor=pointer]
+            - button [ref=e16]:
+              - img
+          - button "Nova Conversa" [ref=e18]:
+            - img
+            - text: Nova Conversa
+        - generic [ref=e19]:
+          - button "Conversas" [ref=e21]:
+            - generic [ref=e22]:
+              - img [ref=e23]
+              - generic [ref=e25]: Conversas
+            - img [ref=e26]
+          - generic [ref=e183]:
+            - button "Gráficos" [ref=e184]:
+              - generic [ref=e185]:
+                - img [ref=e186]
+                - generic [ref=e188]: Gráficos
+              - img [ref=e189]
+            - generic [ref=e981]:
+              - button "Abrir galeria de gráficos" [ref=e982]:
+                - img
+                - text: Abrir galeria de gráficos
+              - generic [ref=e983]:
+                - generic [ref=e985] [cursor=pointer]:
+                  - img [ref=e987]
+                  - generic [ref=e989]:
+                    - heading "O conjunto de dados analisado compreende **50.000*..." [level=4] [ref=e990]
+                    - paragraph [ref=e991]: Barras · Geral
+                - generic [ref=e993] [cursor=pointer]:
+                  - img [ref=e995]
+                  - generic [ref=e997]:
+                    - heading "Analise" [level=4] [ref=e998]
+                    - paragraph [ref=e999]: Barras · Geral
+                - generic [ref=e1001] [cursor=pointer]:
+                  - img [ref=e1003]
+                  - generic [ref=e1005]:
+                    - heading "Tega sistemas 2" [level=4] [ref=e1006]
+                    - paragraph [ref=e1007]: Linhas · Geral
+                - generic [ref=e1009] [cursor=pointer]:
+                  - img [ref=e1011]
+                  - generic [ref=e1013]:
+                    - heading "### Análise do Estoque Médio de Produtos por Loja ..." [level=4] [ref=e1014]
+                    - paragraph [ref=e1015]: Barras · Geral
+          - button "Dashboards" [ref=e192]:
+            - generic [ref=e193]:
+              - img [ref=e194]
+              - generic [ref=e196]: Dashboards
+            - img [ref=e197]
+          - button "Relatórios" [ref=e200]:
+            - generic [ref=e201]:
+              - img [ref=e202]
+              - generic [ref=e204]: Relatórios
+            - img [ref=e205]
+        - button "A Admin Teste 2 admin2@teste.com.br Admin" [ref=e209]:
+          - generic [ref=e210]:
+            - generic [ref=e212]: A
+            - generic [ref=e213]:
+              - paragraph [ref=e214]: Admin Teste 2
+              - paragraph [ref=e215]: admin2@teste.com.br
+            - generic [ref=e216]:
+              - generic [ref=e217]:
+                - img
+                - text: Admin
+              - img
+      - generic [ref=e1023]:
+        - button "Voltar" [ref=e1025]:
+          - img
+          - generic [ref=e1026]: Voltar
+        - generic [ref=e1028]:
+          - img [ref=e1029]
+          - heading "Erro ao executar gráfico" [level=2] [ref=e1031]
+          - paragraph [ref=e1032]: Erro interno no acesso aos dados do gráfico
+          - button "Tentar novamente" [ref=e1033]:
+            - img
+            - text: Tentar novamente
+    - contentinfo [ref=e562]:
+      - generic [ref=e563]:
+        - generic [ref=e564]: "Dados atualizados em: Sem informação"
+        - generic [ref=e565]: © 2026 JCLA Analytics. Todos os direitos reservados.
+        - generic [ref=e566]: v1.8.0

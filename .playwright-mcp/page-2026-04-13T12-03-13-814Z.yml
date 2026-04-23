@@ -1,0 +1,263 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T"
+    - generic [ref=e5892]:
+      - generic [ref=e5895]:
+        - button "Voltar" [ref=e5896]:
+          - img
+          - text: Voltar
+        - generic [ref=e5897]:
+          - heading "Auditoria do Sistema" [level=1] [ref=e5898]
+          - paragraph [ref=e5899]: Visualize e analise logs de auditoria de todas as operações do sistema
+      - generic [ref=e5901]:
+        - tablist [ref=e5902]:
+          - tab "Conversas" [selected] [ref=e5903]:
+            - img
+            - text: Conversas
+          - tab "Notificações" [ref=e5904]:
+            - img
+            - text: Notificações
+        - tabpanel "Conversas" [ref=e5905]:
+          - generic [ref=e5906]:
+            - generic [ref=e5907]:
+              - generic [ref=e5908]:
+                - generic [ref=e5910]: Total de Eventos
+                - generic [ref=e5911]:
+                  - generic [ref=e5912]: "592"
+                  - paragraph [ref=e5913]: Últimos 30 dias
+              - generic [ref=e5914]:
+                - generic [ref=e5916]: Taxa de Sucesso
+                - generic [ref=e5917]:
+                  - generic [ref=e5918]: 99.0%
+                  - paragraph [ref=e5919]: 586 Sucesso
+              - generic [ref=e5920]:
+                - generic [ref=e5922]: Eventos de Alto Risco
+                - generic [ref=e5923]:
+                  - generic [ref=e5924]: "3"
+                  - paragraph [ref=e5925]: Alto
+              - generic [ref=e5926]:
+                - generic [ref=e5928]: Logins Falhados
+                - generic [ref=e5929]:
+                  - generic [ref=e5930]: "3"
+                  - paragraph [ref=e5931]: Autenticação
+            - generic [ref=e5932]:
+              - generic [ref=e5934]:
+                - generic [ref=e5935]:
+                  - generic [ref=e5936]: Filtros
+                  - generic [ref=e5937]: Visualize e analise logs de auditoria de todas as operações do sistema
+                - button "Ocultar" [ref=e5938]:
+                  - img
+                  - text: Ocultar
+              - generic [ref=e5939]:
+                - generic [ref=e5940]:
+                  - generic [ref=e5941]:
+                    - generic [ref=e5942]: Categoria
+                    - combobox [ref=e5943]:
+                      - generic: Todos
+                      - img
+                  - generic [ref=e5944]:
+                    - generic [ref=e5945]: Status
+                    - combobox [ref=e5946]:
+                      - generic: Todos
+                      - img
+                  - generic [ref=e5947]:
+                    - generic [ref=e5948]: Nível de Risco
+                    - combobox [ref=e5949]:
+                      - generic: Todos
+                      - img
+                  - generic [ref=e5950]:
+                    - generic [ref=e5951]: Usuário
+                    - textbox "User ID ou Nome" [ref=e5952]
+                - generic [ref=e5953]:
+                  - button "Limpar" [ref=e5954]
+                  - button "Atualizar" [ref=e5955]:
+                    - img
+                    - text: Atualizar
+            - generic [ref=e5956]:
+              - generic [ref=e5957]:
+                - generic [ref=e5958]: Auditoria do Sistema
+                - generic [ref=e5959]: Mostrando 1 - 10 de 2709 logs
+              - generic [ref=e5960]:
+                - table [ref=e5963]:
+                  - rowgroup [ref=e5964]:
+                    - row "Data/Hora Categoria Ação Usuário Status Risco Detalhes" [ref=e5965]:
+                      - columnheader [ref=e5966]
+                      - columnheader "Data/Hora" [ref=e5967]
+                      - columnheader "Categoria" [ref=e5968]
+                      - columnheader "Ação" [ref=e5969]
+                      - columnheader "Usuário" [ref=e5970]
+                      - columnheader "Status" [ref=e5971]
+                      - columnheader "Risco" [ref=e5972]
+                      - columnheader "Detalhes" [ref=e5973]
+                  - rowgroup [ref=e5974]:
+                    - row "13/04/2026, 11:56:22 Autenticação login adminteste2 Sucesso Baixo Login realizado com sucesso" [ref=e5975] [cursor=pointer]:
+                      - cell [ref=e5976]:
+                        - button [ref=e5977]:
+                          - img
+                      - cell "13/04/2026, 11:56:22" [ref=e5978]
+                      - cell "Autenticação" [ref=e5979]:
+                        - generic [ref=e5980]: Autenticação
+                      - cell "login" [ref=e5981]
+                      - cell "adminteste2" [ref=e5982]:
+                        - generic [ref=e5984]: adminteste2
+                      - cell "Sucesso" [ref=e5985]:
+                        - generic [ref=e5986]: Sucesso
+                      - cell "Baixo" [ref=e5987]:
+                        - generic [ref=e5988]: Baixo
+                      - cell "Login realizado com sucesso" [ref=e5989]:
+                        - generic "Login realizado com sucesso" [ref=e5990]
+                    - row "13/04/2026, 11:28:44 Autenticação logout admingralha Sucesso Baixo Logout realizado" [ref=e5991] [cursor=pointer]:
+                      - cell [ref=e5992]:
+                        - button [ref=e5993]:
+                          - img
+                      - cell "13/04/2026, 11:28:44" [ref=e5994]
+                      - cell "Autenticação" [ref=e5995]:
+                        - generic [ref=e5996]: Autenticação
+                      - cell "logout" [ref=e5997]
+                      - cell "admingralha" [ref=e5998]:
+                        - generic [ref=e6000]: admingralha
+                      - cell "Sucesso" [ref=e6001]:
+                        - generic [ref=e6002]: Sucesso
+                      - cell "Baixo" [ref=e6003]:
+                        - generic [ref=e6004]: Baixo
+                      - cell "Logout realizado" [ref=e6005]:
+                        - generic "Logout realizado" [ref=e6006]
+                    - row "13/04/2026, 11:23:17 Autenticação login admingralha Sucesso Baixo Login realizado com sucesso" [ref=e6007] [cursor=pointer]:
+                      - cell [ref=e6008]:
+                        - button [ref=e6009]:
+                          - img
+                      - cell "13/04/2026, 11:23:17" [ref=e6010]
+                      - cell "Autenticação" [ref=e6011]:
+                        - generic [ref=e6012]: Autenticação
+                      - cell "login" [ref=e6013]
+                      - cell "admingralha" [ref=e6014]:
+                        - generic [ref=e6016]: admingralha
+                      - cell "Sucesso" [ref=e6017]:
+                        - generic [ref=e6018]: Sucesso
+                      - cell "Baixo" [ref=e6019]:
+                        - generic [ref=e6020]: Baixo
+                      - cell "Login realizado com sucesso" [ref=e6021]:
+                        - generic "Login realizado com sucesso" [ref=e6022]
+                    - row "10/04/2026, 14:23:53 Autenticação login admingralha Sucesso Baixo Login realizado com sucesso" [ref=e6023] [cursor=pointer]:
+                      - cell [ref=e6024]:
+                        - button [ref=e6025]:
+                          - img
+                      - cell "10/04/2026, 14:23:53" [ref=e6026]
+                      - cell "Autenticação" [ref=e6027]:
+                        - generic [ref=e6028]: Autenticação
+                      - cell "login" [ref=e6029]
+                      - cell "admingralha" [ref=e6030]:
+                        - generic [ref=e6032]: admingralha
+                      - cell "Sucesso" [ref=e6033]:
+                        - generic [ref=e6034]: Sucesso
+                      - cell "Baixo" [ref=e6035]:
+                        - generic [ref=e6036]: Baixo
+                      - cell "Login realizado com sucesso" [ref=e6037]:
+                        - generic "Login realizado com sucesso" [ref=e6038]
+                    - row "10/04/2026, 14:23:14 Consultas execute_query admingralha Erro Baixo Consulta executada via chatbot" [ref=e6039] [cursor=pointer]:
+                      - cell [ref=e6040]:
+                        - button [ref=e6041]:
+                          - img
+                      - cell "10/04/2026, 14:23:14" [ref=e6042]
+                      - cell "Consultas" [ref=e6043]:
+                        - generic [ref=e6044]: Consultas
+                      - cell "execute_query" [ref=e6045]
+                      - cell "admingralha" [ref=e6046]:
+                        - generic [ref=e6048]: admingralha
+                      - cell "Erro" [ref=e6049]:
+                        - generic [ref=e6050]: Erro
+                      - cell "Baixo" [ref=e6051]:
+                        - generic [ref=e6052]: Baixo
+                      - cell "Consulta executada via chatbot" [ref=e6053]:
+                        - generic "Consulta executada via chatbot" [ref=e6054]
+                    - row "10/04/2026, 14:22:33 Consultas execute_query admingralha Erro Baixo Consulta executada via chatbot" [ref=e6055] [cursor=pointer]:
+                      - cell [ref=e6056]:
+                        - button [ref=e6057]:
+                          - img
+                      - cell "10/04/2026, 14:22:33" [ref=e6058]
+                      - cell "Consultas" [ref=e6059]:
+                        - generic [ref=e6060]: Consultas
+                      - cell "execute_query" [ref=e6061]
+                      - cell "admingralha" [ref=e6062]:
+                        - generic [ref=e6064]: admingralha
+                      - cell "Erro" [ref=e6065]:
+                        - generic [ref=e6066]: Erro
+                      - cell "Baixo" [ref=e6067]:
+                        - generic [ref=e6068]: Baixo
+                      - cell "Consulta executada via chatbot" [ref=e6069]:
+                        - generic "Consulta executada via chatbot" [ref=e6070]
+                    - row "10/04/2026, 14:21:05 Consultas execute_query admingralha Sucesso Baixo Consulta executada via chatbot" [ref=e6071] [cursor=pointer]:
+                      - cell [ref=e6072]:
+                        - button [ref=e6073]:
+                          - img
+                      - cell "10/04/2026, 14:21:05" [ref=e6074]
+                      - cell "Consultas" [ref=e6075]:
+                        - generic [ref=e6076]: Consultas
+                      - cell "execute_query" [ref=e6077]
+                      - cell "admingralha" [ref=e6078]:
+                        - generic [ref=e6080]: admingralha
+                      - cell "Sucesso" [ref=e6081]:
+                        - generic [ref=e6082]: Sucesso
+                      - cell "Baixo" [ref=e6083]:
+                        - generic [ref=e6084]: Baixo
+                      - cell "Consulta executada via chatbot" [ref=e6085]:
+                        - generic "Consulta executada via chatbot" [ref=e6086]
+                    - row "10/04/2026, 14:17:09 Consultas execute_query admingralha Sucesso Baixo Consulta executada via chatbot" [ref=e6087] [cursor=pointer]:
+                      - cell [ref=e6088]:
+                        - button [ref=e6089]:
+                          - img
+                      - cell "10/04/2026, 14:17:09" [ref=e6090]
+                      - cell "Consultas" [ref=e6091]:
+                        - generic [ref=e6092]: Consultas
+                      - cell "execute_query" [ref=e6093]
+                      - cell "admingralha" [ref=e6094]:
+                        - generic [ref=e6096]: admingralha
+                      - cell "Sucesso" [ref=e6097]:
+                        - generic [ref=e6098]: Sucesso
+                      - cell "Baixo" [ref=e6099]:
+                        - generic [ref=e6100]: Baixo
+                      - cell "Consulta executada via chatbot" [ref=e6101]:
+                        - generic "Consulta executada via chatbot" [ref=e6102]
+                    - row "10/04/2026, 14:16:45 Conversas create_conversation admingralha Sucesso Baixo Conversa criada" [ref=e6103] [cursor=pointer]:
+                      - cell [ref=e6104]:
+                        - button [ref=e6105]:
+                          - img
+                      - cell "10/04/2026, 14:16:45" [ref=e6106]
+                      - cell "Conversas" [ref=e6107]:
+                        - generic [ref=e6108]: Conversas
+                      - cell "create_conversation" [ref=e6109]
+                      - cell "admingralha" [ref=e6110]:
+                        - generic [ref=e6112]: admingralha
+                      - cell "Sucesso" [ref=e6113]:
+                        - generic [ref=e6114]: Sucesso
+                      - cell "Baixo" [ref=e6115]:
+                        - generic [ref=e6116]: Baixo
+                      - cell "Conversa criada" [ref=e6117]:
+                        - generic "Conversa criada" [ref=e6118]
+                    - row "10/04/2026, 14:16:22 Autenticação login admingralha Sucesso Baixo Login realizado com sucesso" [ref=e6119] [cursor=pointer]:
+                      - cell [ref=e6120]:
+                        - button [ref=e6121]:
+                          - img
+                      - cell "10/04/2026, 14:16:22" [ref=e6122]
+                      - cell "Autenticação" [ref=e6123]:
+                        - generic [ref=e6124]: Autenticação
+                      - cell "login" [ref=e6125]
+                      - cell "admingralha" [ref=e6126]:
+                        - generic [ref=e6128]: admingralha
+                      - cell "Sucesso" [ref=e6129]:
+                        - generic [ref=e6130]: Sucesso
+                      - cell "Baixo" [ref=e6131]:
+                        - generic [ref=e6132]: Baixo
+                      - cell "Login realizado com sucesso" [ref=e6133]:
+                        - generic "Login realizado com sucesso" [ref=e6134]
+                - generic [ref=e6135]:
+                  - generic [ref=e6136]:
+                    - generic [ref=e6137]: "Logs por página:"
+                    - combobox [ref=e6138]:
+                      - generic: "10"
+                      - img
+                  - generic [ref=e6139]:
+                    - button "Anterior" [disabled]
+                    - generic [ref=e6140]: 1 / 271
+                    - button "Próximo" [ref=e6141]
+  - generic [ref=e2415]: "-6.000.000"

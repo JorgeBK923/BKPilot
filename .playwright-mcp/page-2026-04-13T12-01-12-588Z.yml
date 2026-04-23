@@ -1,0 +1,37 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T"
+    - generic [ref=e2776]:
+      - generic [ref=e2779]:
+        - button "Voltar" [ref=e2780]:
+          - img
+          - text: Voltar
+        - generic [ref=e2781]:
+          - heading "Gestão de Usuários" [level=1] [ref=e2782]
+          - paragraph [ref=e2783]: Gerencie usuários, permissões e configurações do sistema
+      - generic [ref=e2787]:
+        - tablist [ref=e2788]:
+          - tab "Usuários" [ref=e2789]
+          - tab "Permissões" [active] [selected] [ref=e2790]
+          - tab "Personas" [ref=e2791]
+        - tabpanel "Permissões" [ref=e3402]:
+          - generic [ref=e3403]:
+            - generic [ref=e3404]:
+              - generic [ref=e3405]:
+                - heading "Gerenciamento de Permissões" [level=2] [ref=e3406]
+                - paragraph [ref=e3407]: Configure grupos de acesso e suas permissões de dados
+              - generic [ref=e3408]:
+                - button "Sincronizar Metadados" [ref=e3409]:
+                  - img
+                  - text: Sincronizar Metadados
+                - button "Novo Grupo" [ref=e3410]:
+                  - img
+                  - text: Novo Grupo
+            - generic [ref=e3411]:
+              - generic [ref=e3412]:
+                - generic [ref=e3413]: Selecionar Grupo
+                - generic [ref=e3414]: Escolha um grupo para configurar permissões
+              - combobox [ref=e3417]:
+                - generic: Selecione um grupo...
+                - img
+  - generic [ref=e2415]: "-6.000.000"

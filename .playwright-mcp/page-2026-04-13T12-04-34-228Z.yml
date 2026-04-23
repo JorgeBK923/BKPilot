@@ -1,0 +1,42 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T"
+    - generic [ref=e8742]:
+      - generic [ref=e8745]:
+        - button "Voltar" [ref=e8746]:
+          - img
+          - text: Voltar
+        - generic [ref=e8747]:
+          - heading "Importação de Dados" [level=1] [ref=e8748]
+          - paragraph [ref=e8749]: Importe arquivos CSV ou Excel para a base de dados
+      - generic [ref=e8750]:
+        - generic [ref=e8751]:
+          - generic [ref=e8752]:
+            - generic [ref=e8753]: "1"
+            - generic [ref=e8754]: Upload
+          - generic [ref=e8756]:
+            - generic [ref=e8757]: "2"
+            - generic [ref=e8758]: Tabela Destino
+          - generic [ref=e8760]:
+            - generic [ref=e8761]: "3"
+            - generic [ref=e8762]: Mapeamento
+        - generic [ref=e8764]:
+          - generic [ref=e8765]:
+            - generic [ref=e8766]: Upload do Arquivo
+            - generic [ref=e8767]: Selecione um arquivo CSV ou Excel para importar
+          - generic [ref=e8770] [cursor=pointer]:
+            - img [ref=e8771]
+            - generic [ref=e8773]:
+              - paragraph [ref=e8774]: Arraste e solte o arquivo aqui
+              - paragraph [ref=e8775]: CSV (.csv) ou Excel (.xlsx, .xls) — máx. 50MB
+            - button "Selecionar Arquivo" [ref=e8776]:
+              - img
+              - text: Selecionar Arquivo
+        - generic [ref=e8777]:
+          - button "Anterior" [disabled]:
+            - img
+            - text: Anterior
+          - button "Próximo" [disabled]:
+            - text: Próximo
+            - img
+  - generic [ref=e2415]: "-6.000.000"

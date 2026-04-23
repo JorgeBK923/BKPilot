@@ -1,0 +1,75 @@
+- generic:
+  - generic:
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - button:
+              - img
+              - text: Voltar
+            - generic:
+              - heading [level=1]: Gestão de Usuários
+              - paragraph: Gerencie usuários, permissões e configurações do sistema
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - tablist:
+                - tab: Usuários
+                - tab [selected]: Permissões
+                - tab: Personas
+              - tabpanel:
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading [level=2]: Gerenciamento de Permissões
+                      - paragraph: Configure grupos de acesso e suas permissões de dados
+                    - generic:
+                      - button:
+                        - img
+                        - text: Sincronizar Metadados
+                      - button:
+                        - img
+                        - text: Novo Grupo
+                  - generic:
+                    - generic:
+                      - generic: Selecionar Grupo
+                      - generic: Escolha um grupo para configurar permissões
+                    - generic:
+                      - generic:
+                        - combobox:
+                          - generic: Selecione um grupo...
+                          - img
+  - dialog "Criar Grupo" [ref=e726]:
+    - generic [ref=e727]:
+      - heading "Criar Grupo" [level=2] [ref=e728]
+      - paragraph [ref=e729]: Preencha os dados do novo grupo de acesso
+    - generic [ref=e730]:
+      - generic [ref=e731]:
+        - generic [ref=e732]:
+          - generic [ref=e733]:
+            - text: Nome
+            - generic [ref=e734]: "*"
+          - textbox "Nome *" [active] [ref=e735]:
+            - /placeholder: Nome do grupo
+        - generic [ref=e736]:
+          - generic [ref=e737]: Área
+          - textbox "Área" [ref=e738]:
+            - /placeholder: Área de atuação
+        - generic [ref=e739]:
+          - generic [ref=e740]: Descrição
+          - textbox "Descrição" [ref=e741]:
+            - /placeholder: Descrição do grupo
+        - generic [ref=e742]:
+          - generic [ref=e743]:
+            - generic [ref=e744]: Grupo Ativo
+            - paragraph [ref=e745]: Usuários deste grupo podem acessar o sistema
+          - switch "Grupo Ativo" [checked] [ref=e746]
+          - checkbox [checked]
+      - generic [ref=e747]:
+        - button "Cancelar" [ref=e748]
+        - button "Criar" [ref=e749]
+    - button "Close" [ref=e750]:
+      - img
+      - generic [ref=e751]: Close
