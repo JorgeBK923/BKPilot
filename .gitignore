@@ -6,6 +6,9 @@ clients/*/.env
 clients/*/fixtures/
 clients/*/bugs/
 
+# Pacotes de automação gerados para o cliente (entregáveis por stack)
+clients/*/entregaveis/
+
 # Artefatos gerados (grandes demais para o repositório)
 estado/screenshots/
 resultado/

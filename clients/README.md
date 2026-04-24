@@ -95,7 +95,8 @@ cp clients/tega/config.json clients/novo/
 # editar id, nome, baseUrl, envPassword, defaultFlow
 # escrever login.js
 # escrever flows/<defaultFlow>.js
-echo "QA_PASSWORD_NOVO=..." >> .env
+cp clients/.env.example clients/novo/.env
+# editar clients/novo/.env com a senha do ambiente do cliente
 ```
 
 ## Referência arquitetural

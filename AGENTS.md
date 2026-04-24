@@ -3,7 +3,7 @@
 ## Quick Start
 ```bash
 claude
-# Slash commands in .claude/commands/ (14 total)
+# Slash commands in .claude/commands/ (19 total, incluindo /plano-automacao)
 ```
 
 ## Framework
@@ -44,6 +44,8 @@ resultado/<timestamp>/     # execution outputs
   console_log.json, network_log.json, cleanup_log.json
   videos/, screenshots/, *.md
 resultado/latest → resultado/<timestamp>/  # symlink after each run
+entregaveis/<cliente>/automacao/<stack>/  # client automation package
+  codigo/, *.md, *.pdf
 cenarios/cenarios.xlsx     # test spreadsheet
 .env                       # QA_PASSWORD (never commit)
 CLAUDE.md                  # global rules
@@ -55,6 +57,8 @@ CLAUDE.md                  # global rules
 - **Gate checks:** `/explorar` and `/gerar-cenarios` have mandatory gates — if ❌ in coverage, complete it
 - **Phase 3 mutative:** controlled by `permite_mutativo` from project API (`true` = execute POST/PUT/DELETE)
 - **Spreadsheet:** atualizar a original in-place (fazer backup `.bak` antes), NÃO criar planilha separada
+- **Client automation reports:** todo `.md` destinado ao cliente em `entregaveis/<cliente>/automacao/<stack>/` deve ter `.pdf` correspondente
+- **Internal governance:** nunca enviar `resultado/<timestamp>/governanca/`, `.env`, tokens, `geracao_id`, identidade de modelo/agente/executor ou logs internos ao cliente
 
 ## Testing
 - `/testar-modulo` = Etapa A (spreadsheet) + Etapa B (free exploration: 375px viewport, 3G throttle, memory leak detection)

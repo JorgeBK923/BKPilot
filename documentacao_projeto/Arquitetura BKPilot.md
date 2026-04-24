@@ -195,6 +195,13 @@ Ou seja: o projeto é multi-CLI por desenho, não por improviso.
                 | logs, screenshots, vídeos     |
                 | cleanup, network, summaries   |
                 +-------------------------------+
+                          |
+                          v
+                +-------------------------------+
+                | entregaveis/<client>/         |
+                | automacao/<stack>/            |
+                | codigo, docs, PDFs, auditoria |
+                +-------------------------------+
 ```
 
 ## 10. Engine genérica
@@ -318,11 +325,46 @@ O desenho esperado é:
 ```text
 estado/<client>/                  memória de exploração do cliente
 resultado/<client>/<timestamp>/   artefatos daquela execução
+resultado/<timestamp>/governanca/ artefatos internos de governança
 clients/<client>/cenarios/        materiais persistentes do cliente
 clients/<client>/bugs/<data>/     material de bugs e reteste
+entregaveis/<client>/automacao/<stack>/ pacote de automação entregue ao cliente
 ```
 
 Isso corrige uma limitação comum em automações mais simples, nas quais o resultado da execução anterior se mistura com a seguinte.
+
+### 15.1 Entrega de automação ao cliente
+
+As skills `/plano-automacao`, `/gerar-automacao-cliente` e `/auditar-automacao-cliente` adicionam uma camada específica de consultoria e entrega de código de automação.
+
+O pacote destinado ao cliente deve ficar em:
+
+```text
+entregaveis/<cliente>/automacao/<stack>/
+```
+
+Esse pacote concentra:
+
+- código gerado em `codigo/`;
+- especificação intermediária em `especificacao_automacao.json`;
+- mapeamento de cenários;
+- cobertura da automação;
+- pendências;
+- inventário de arquivos;
+- auditoria técnica da geração;
+- auditoria independente;
+- correções aplicadas pela auditoria, quando existirem;
+- resumo final da geração.
+
+Todo relatório `.md` destinado ao cliente deve possuir também a versão `.pdf` correspondente. Essa regra evita que o cliente receba apenas markdown quando a entrega exige leitura direta ou arquivamento formal.
+
+Arquivos de governança interna, como autoria, metadados do executor e bloqueios de segregação, devem ficar em `resultado/<timestamp>/governanca/` e não devem ser enviados ao cliente sem revisão.
+
+### 15.2 Auditoria com remediação
+
+A auditoria da automação não é apenas uma revisão passiva. Quando encontrar defeitos técnicos objetivos e corrigíveis no código gerado, a skill deve corrigir antes da entrega e registrar o que foi alterado em `correcoes_auditoria.md` e `correcoes_auditoria.pdf`.
+
+Defeitos não corrigíveis automaticamente devem permanecer documentados como pendência explícita, sem mascarar o risco no parecer final.
 
 ## 16. O que já está implementado vs. o que é roadmap
 
@@ -336,7 +378,11 @@ Uma boa documentação arquitetural precisa diferenciar claramente estado atual 
 - engine genérica em `core/`;
 - client packs em `clients/<id>/`;
 - orquestradores em `cenarios/`;
-- estrutura de artefatos por cliente e timestamp.
+- estrutura de artefatos por cliente e timestamp;
+- consultoria de viabilidade via `/plano-automacao`;
+- pacote de automação em `entregaveis/<cliente>/automacao/<stack>/`;
+- regra de PDF para relatórios `.md` destinados ao cliente;
+- auditoria de automação com remediação obrigatória de defeitos técnicos corrigíveis.
 
 ### 16.2 Ainda depende de evolução futura
 

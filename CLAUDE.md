@@ -231,6 +231,16 @@ Skills avulsas que podem ser usadas independentemente:
 - `/usabilidade` — avaliação heurística de UX (10 heurísticas de Nielsen, eficiência de fluxos, scores)
 - `/relatorio-parcial` — relatório de acompanhamento semanal para o cliente (PDF)
 
+Skills de entrega de automação ao cliente (executar **após** `/gerar-cenarios` e, idealmente, após pelo menos um ciclo de `/testar-modulo`):
+- `/plano-automacao` — plano estratégico de automação de testes (o que automatizar, com qual prioridade e stack)
+- `/gerar-automacao-cliente` — geração de pacote de código no stack do cliente (Playwright/Cypress/pytest/Selenium/Robot). Saída em `entregaveis/<cliente>/automacao/<stack>/`. Todo `.md` de cliente deve ter `.pdf` correspondente.
+- `/auditar-automacao-cliente` — auditoria independente com remediação obrigatória: corrige defeitos técnicos objetivos, revalida, gera `correcoes_auditoria.md` quando aplicável e bloqueia entrega se restar falha alta.
+
+Regra de entrega ao cliente para automação:
+- enviar somente o pacote revisado em `entregaveis/<cliente>/automacao/<stack>/`;
+- todo relatório `.md` destinado ao cliente deve ter uma versão `.pdf` correspondente;
+- não enviar `resultado/<timestamp>/governanca/`, `.env`, tokens, `automacao_autoria_<cliente>_<stack>.json`, `auditoria_interna_<cliente>_<stack>.md`, identidade de modelo/agente/executor ou `geracao_id`.
+
 ---
 
 ## 10. Estrutura de Artefatos
@@ -254,6 +264,12 @@ resultado/<timestamp>/
 
 resultado/
 └── parciais_index.json      ← índice histórico de relatórios parciais
+
+entregaveis/
+└── <cliente>/automacao/<stack>/
+    ├── codigo/               ← código de automação entregue ao cliente
+    ├── *.md                  ← relatórios e rastreabilidade
+    └── *.pdf                 ← versões PDF obrigatórias dos .md de cliente
 
 assets/
 └── logo-bugkillers.png      ← logo para relatórios

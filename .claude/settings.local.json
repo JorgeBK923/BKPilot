@@ -9,7 +9,8 @@
       "Bash(rm -f resultado/latest)",
       "Bash(ln -sf 2026-04-13_0854 resultado/latest)",
       "Bash(pip install:*)",
-      "mcp__playwright__browser_navigate"
+      "mcp__playwright__browser_navigate",
+      "Bash(node scripts/gerar_mvp_doc.js)"
     ]
   }
 }

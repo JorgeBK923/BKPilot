@@ -88,6 +88,36 @@ su - bkpilot
 
 Rodar como `root` até pode parecer mais simples no início, mas aumenta risco operacional. Um ambiente de automação já tem poder suficiente; não vale ampliar isso desnecessariamente.
 
+### 5.4 Hardening mínimo da VPS
+
+Como esta VPS pode armazenar credenciais, vídeos, screenshots e outros artefatos de cliente, recomenda-se aplicar um endurecimento mínimo logo no início da preparação do ambiente.
+
+Checklist mínimo recomendado:
+
+- ativar o firewall liberando o SSH antes;
+- instalar e validar o `fail2ban`;
+- operar com usuário dedicado, não com `root`;
+- proteger arquivos de segredo com permissões restritas;
+- testar o acesso com o usuário operacional antes de endurecer o SSH.
+
+Exemplo de sequência segura:
+
+```bash
+sudo ufw allow OpenSSH
+sudo ufw enable
+sudo apt install -y fail2ban
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+chmod 600 .env 2>/dev/null || true
+```
+
+Se a operação evoluir para uso contínuo com dados sensíveis, avance depois para:
+
+- autenticação SSH por chave;
+- desativação de login por senha;
+- desativação de login direto como `root`;
+- backup criptografado dos artefatos relevantes.
+
 ## 6. Atualizar o sistema
 
 Antes de instalar qualquer dependência do projeto, atualize os pacotes do sistema.
@@ -184,11 +214,42 @@ cd bkpilot
 
 Substitua `<URL_DO_REPOSITORIO>` pela URL real do repositório.
 
+### 10.1 Checkpoint antes de instalar dependências
+
+Antes de rodar qualquer comando de instalação, confirme que você realmente está dentro da pasta do projeto:
+
+```bash
+pwd
+ls
+```
+
+Você deve ver o diretório `bkpilot` no caminho atual e arquivos como `package.json`, `setup.sh` e a pasta `clients/`.
+
+Se `package.json` não aparecer, pare e volte para a pasta correta antes de continuar. Isso evita instalar dependências fora do repositório, por exemplo diretamente em `/root`.
+
 ## 11. Instalar dependências do projeto
 
 ```bash
 npm install
 ```
+
+### Como saber se deu certo
+
+Depois do `npm install`, valide que a instalação aconteceu dentro do repositório e que os pacotes principais ficaram disponíveis:
+
+```bash
+ls -d node_modules
+ls package-lock.json
+npm ls playwright xlsx docx canvas dotenv --depth=0
+```
+
+Se quiser um teste direto de carregamento dos pacotes principais:
+
+```bash
+node -e "require('playwright'); require('xlsx'); require('docx'); require('dotenv'); console.log('Dependências OK')"
+```
+
+Se `package.json` não estiver na pasta atual ou se `npm install` criar arquivos no lugar errado, apague esses artefatos indevidos e volte para o diretório correto antes de prosseguir.
 
 ### O que isso instala
 
@@ -279,54 +340,135 @@ Depende da operação da equipe.
 
 Se o time opera majoritariamente em uma CLI, instale ao menos a principal. Se a VPS for ambiente multiuso do time, faz sentido instalar as três.
 
-## 15. Configurar o `.env`
+## 15. Configurar os arquivos `.env`
 
-Crie o arquivo de ambiente a partir do template:
+O BKPilot separa credenciais em dois níveis:
+
+- **Raiz (`.env`)** — integrações globais: Jira, GitHub Issues
+- **Por cliente (`clients/<id>/.env`)** — senha do usuário de QA do cliente
+
+### 15.1 `.env` raiz (integrações globais)
+
+Antes de copiar, vale conferir os arquivos ocultos do diretório:
+
+```bash
+ls -la
+```
+
+Depois execute um comando por vez:
 
 ```bash
 cp .env.example .env
 nano .env
 ```
 
-Preencha pelo menos:
+Preencha apenas se for usar integração com issue tracker:
+
+```env
+JIRA_URL=https://suaempresa.atlassian.net
+JIRA_EMAIL=email@empresa.com
+JIRA_TOKEN=...
+JIRA_PROJECT_KEY=BUG
+
+GITHUB_REPO=org/repositorio
+GITHUB_TOKEN=...
+```
+
+Se não for usar integrações externas agora, deixe o arquivo como está e siga em frente.
+
+### 15.2 `.env` por cliente (credenciais de QA)
+
+Cada cliente tem seu próprio arquivo de credenciais isolado:
+
+```bash
+cp clients/.env.example clients/<id>/.env
+nano clients/<id>/.env
+```
+
+Preencha com a senha do usuário de QA do ambiente do cliente:
 
 ```env
 QA_PASSWORD=<senha_do_usuario_qa>
 ```
 
-Dependendo da CLI e do fluxo operacional, também poderão ser necessárias chaves como:
+O nome da variável deve corresponder ao campo `envPassword` definido em `clients/<id>/config.json`.
 
-```env
-ANTHROPIC_API_KEY=...
-OPENAI_API_KEY=...
+### 15.3 Sobre autenticação das CLIs
+
+Nesta operação, o **Claude Code** será autenticado pelo próprio fluxo de login da CLI, e não por `ANTHROPIC_API_KEY` no `.env` do projeto:
+
+```bash
+claude   # solicita login na primeira execução
 ```
+
+Em outras palavras: para o fluxo padrão do BKPilot com Claude Code, não é necessário configurar `ANTHROPIC_API_KEY` no `.env` do projeto.
+
+As demais CLIs devem seguir o método de autenticação exigido por cada ferramenta e pelo plano contratado pela equipe.
+
+### 15.4 Login do Claude Code em VPS remota
+
+Quando o login do Claude Code ocorrer em uma VPS acessada por SSH, o fluxo pode depender do navegador do seu computador local.
+
+Procedimento recomendado:
+
+```bash
+claude
+```
+
+Se a CLI exibir uma URL de autenticação:
+
+- abra essa URL no navegador do seu computador local;
+- conclua o login com a conta autorizada da empresa;
+- se o navegador exibir um código, cole esse código de volta no terminal da VPS;
+- se aparecer erro de código inválido, repita o fluxo e tente concluir sem demora, porque o código pode expirar.
+
+Antes de endurecer o SSH da VPS, vale concluir esse login uma vez e confirmar que a sessão da CLI ficou funcional no usuário operacional correto.
 
 ### Regra importante
 
-Nunca coloque senha inline no comando de execução. A senha deve vir do `.env`.
+Nunca coloque senha inline no comando de execução. A senha deve vir do `clients/<id>/.env`.
 
 ## 16. Executar o setup do projeto
-
-O repositório já possui um `setup.sh` e ele deve ser usado.
 
 ```bash
 chmod +x setup.sh
 bash setup.sh
 ```
 
-### O que esse passo deve resolver
+### O que o `setup.sh` faz
 
-O `setup.sh` existe para reduzir divergência entre instalações. Ele ajuda a:
+| Etapa | O que faz |
+|---|---|
+| Pré-requisitos | Verifica Node.js, npm, Claude Code e ffmpeg |
+| Playwright MCP | Garante que o MCP está disponível via `npx` |
+| Chromium | Instala o browser headless do Playwright |
+| Pastas | Cria `estado/screenshots/`, `resultado/`, `cenarios/` |
+| `.env` raiz | Copia `.env.example` → `.env` se não existir |
 
-- validar pré-requisitos;
-- preparar a estrutura do projeto;
-- alinhar configuração básica do ambiente.
+### O que o `setup.sh` não faz
 
-Mesmo quando você já instalou dependências manualmente, ainda vale rodar esse passo para garantir consistência.
+O script **não configura o `.env` por cliente**. Após o setup, crie manualmente o arquivo de credenciais de cada cliente:
+
+```bash
+cp clients/.env.example clients/<id>/.env
+nano clients/<id>/.env   # preencher QA_PASSWORD
+```
+
+Isso é intencional — cada cliente tem credenciais diferentes e o setup não tem como saber quais clientes serão operados nesta VPS.
+
+### Sobre Claude Code
+
+O `setup.sh` valida que `claude` está instalado. Se o comando não for encontrado, instale antes de continuar:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+Após instalar, execute `claude` uma vez para concluir o login pela CLI antes de rodar o setup novamente.
 
 ## 17. Rodar o Skill Converter
 
-O BKPilot usa uma base única de skills e gera distribuições por target.
+O BKPilot mantém as skills em `src/*.md` como fonte canônica e usa o `converter/` para gerar distribuições equivalentes para as CLIs suportadas.
 
 ```bash
 node converter/render.js --lint
@@ -335,9 +477,27 @@ node converter/render.js --build-all
 
 ### O que validar aqui
 
-- as skills estão consistentes;
+- as skills estão consistentes com a fonte canônica em `src/`;
 - os targets são gerados sem erro;
 - a instalação não quebrou a cadeia de build do projeto.
+
+### Relação com a estrutura de clientes
+
+O Skill Converter opera sobre as **skills genéricas** — ele não lida com configuração de clientes. A lógica específica de cada cliente (credenciais, flows, seletores) vive exclusivamente em `clients/<id>/` e é carregada em tempo de execução pelo `core/client.js`.
+
+| Onde vive | O que contém |
+|---|---|
+| `src/` | Fonte canônica das skills |
+| `converter/` | Geração de distribuições para as CLIs suportadas |
+| `.claude/commands/` | Projeção operacional para Claude Code |
+| `dist/codex/` | Distribuição para Codex |
+| `dist/opencode/` | Distribuição para OpenCode |
+| `clients/<id>/` | Configuração, login e flows do cliente |
+| `clients/<id>/.env` | Credenciais do cliente (nunca commitadas) |
+| `entregaveis/<id>/automacao/<stack>/` | Pacotes de automação destinados ao cliente |
+| `resultado/<timestamp>/governanca/` | Artefatos internos de governança, não enviados automaticamente ao cliente |
+
+Isso significa que adicionar ou alterar um cliente **não requer rodar o converter** — basta criar ou editar a pasta do cliente.
 
 ## 18. Teste operacional mínimo
 
@@ -349,8 +509,16 @@ npm -v
 git --version
 ffmpeg -version
 npx playwright --version
+```
+
+Depois valide apenas a(s) CLI(s) realmente instalada(s) para essa VPS:
+
+```bash
 claude --version
+# ou
 codex --version
+# ou
+opencode --version
 ```
 
 E faça o teste de browser:
@@ -361,13 +529,19 @@ node -e "const { chromium } = require('playwright'); (async()=>{ const b = await
 
 ## 19. Primeiro uso real
 
-Depois de validar o ambiente:
+Depois de validar o ambiente, autentique e abra a CLI escolhida pelo time:
 
 ```bash
 claude
 ```
 
-Ou a CLI escolhida pelo time.
+Ou a CLI escolhida pela equipe.
+
+Antes de iniciar um fluxo real, confirme que:
+
+- a autenticação da CLI foi concluída;
+- a sessão ficou persistida no usuário operacional correto;
+- o browser headless já foi validado no passo anterior.
 
 A partir daí, o primeiro fluxo recomendado continua sendo:
 
@@ -394,9 +568,13 @@ Esse primeiro teste é importante porque valida o caminho completo:
 | ffmpeg | `ffmpeg -version` | versão instalada |
 | Playwright | `npx playwright --version` | versão instalada |
 | Chromium | teste headless | `Chromium OK` |
-| `.env` | `cat .env` | variável de QA preenchida |
+| `.env` raiz | `ls -la .env` | arquivo presente com permissão controlada |
+| `.env` por cliente | `ls -la clients/<id>/.env` e `grep '^QA_PASSWORD=' clients/<id>/.env` | arquivo presente e variável preenchida |
+| Permissões dos segredos | `ls -l .env clients/<id>/.env` | preferencialmente restritas ao usuário operacional |
+| UFW | `sudo ufw status` | ativo com SSH liberado |
+| fail2ban | `sudo fail2ban-client status sshd` | jail `sshd` ativa |
 | Skill Converter | `node converter/render.js --lint` | sem erro |
-| CLI operacional | `claude --version` / `codex --version` / `opencode --version` | disponível |
+| CLI operacional | `claude --version` ou `codex --version` ou `opencode --version` | disponível conforme a CLI instalada |
 
 ## 21. Problemas comuns
 
@@ -425,7 +603,20 @@ Se `claude`, `codex` ou `opencode` não forem encontrados, confirme:
 
 ### 21.4 `.env` ausente ou incompleto
 
-Se a autenticação falhar logo no começo, o primeiro lugar para olhar é o `.env`.
+Se a autenticação falhar logo no começo, verifique os dois níveis sem expor o conteúdo inteiro na tela:
+
+```bash
+ls -la .env
+ls -la clients/<id>/.env
+grep '^QA_PASSWORD=' clients/<id>/.env
+```
+
+O erro `QA_PASSWORD ausente em clients/<id>/.env` indica que o arquivo do cliente não foi criado. Corrija com:
+
+```bash
+cp clients/.env.example clients/<id>/.env
+nano clients/<id>/.env
+```
 
 ### 21.5 Projeto instala, mas não opera
 
@@ -437,16 +628,93 @@ Instalar dependências não significa que a cadeia operacional está saudável. 
 4. CLI;
 5. primeiro fluxo real com `/explorar`.
 
-## 22. Boas práticas para VPS de operação
+### 21.6 Rodei `npm install` fora do projeto
+
+Se você rodou `npm install` fora da pasta do BKPilot, normalmente verá `node_modules`, `package.json` ou `package-lock.json` em um local inesperado, como `/root`.
+
+Valide com:
+
+```bash
+pwd
+ls
+```
+
+Se estiver no lugar errado, apague os artefatos indevidos, volte para a pasta do repositório e repita a instalação no diretório correto.
+
+### 21.7 Juntei dois comandos e criei um arquivo estranho
+
+Se você colar dois comandos na mesma linha ou digitar algo como `cp ... nano ...` sem separação correta, pode acabar criando um arquivo com nome inesperado.
+
+Para localizar melhor esse tipo de arquivo:
+
+```bash
+ls -la
+ls -lb
+ls -li
+```
+
+Se o nome estiver muito estranho, use o inode com `find ... -inum ... -delete` para remover com segurança.
+
+### 21.8 Não estou vendo `.env` ou `.env.example`
+
+Arquivos iniciados com ponto não aparecem no `ls` simples.
+
+Use:
+
+```bash
+ls -la
+```
+
+Isso evita concluir incorretamente que o template não existe.
+
+## 22. Transferência de artefatos para o computador local
+
+Como o BKPilot pode gerar vídeos, screenshots, logs, pacotes de automação e outros artefatos, defina desde cedo uma forma segura de tirar esses arquivos da VPS.
+
+Opções práticas:
+
+- usar o gerenciador de arquivos/SFTP do cliente SSH;
+- compactar a pasta da execução ou o pacote de automação com `tar -czf`;
+- baixar via `scp`;
+- sincronizar recorrências com `rsync`.
+
+Exemplo de compactação de uma execução:
+
+```bash
+tar -czf cliente-01_execucao-001.tar.gz resultado/cliente-01/2026-04-24_1530
+```
+
+Exemplo de compactação de um pacote de automação para cliente:
+
+```bash
+mkdir -p exports
+tar -czf exports/cliente-01_playwright-ts_automacao.tar.gz \
+  entregaveis/cliente-01/automacao/playwright-ts
+```
+
+Exemplo de cópia via `scp` a partir do computador local:
+
+```bash
+scp usuario@IP_DA_VPS:/home/bkpilot/bkpilot/exports/cliente-01_playwright-ts_automacao.tar.gz .
+```
+
+Antes de compactar um pacote de automação, confirme que todos os relatórios `.md` destinados ao cliente possuem `.pdf` correspondente. Essa é uma regra obrigatória das skills `/gerar-automacao-cliente` e `/auditar-automacao-cliente`.
+
+Não inclua automaticamente `resultado/<timestamp>/governanca/` no pacote enviado ao cliente. Essa pasta pode conter metadados internos, autoria da execução e informações de governança.
+
+Quando os artefatos tiverem dado sensível de cliente, baixe, arquive e remova da VPS o que não precisar permanecer nela.
+
+## 23. Boas práticas para VPS de operação
 
 - use usuário dedicado;
 - não rode rotina diária como `root`;
 - mantenha o sistema atualizado;
-- não armazene credenciais fora do `.env`;
+- não armazene credenciais fora de `clients/<id>/.env` (QA) ou `.env` raiz (integrações);
+- aplique permissões restritas aos arquivos de segredo, preferencialmente `chmod 600`;
 - valide browser e CLI após qualquer atualização importante;
 - mantenha espaço em disco sob observação, porque vídeos e screenshots crescem rápido.
 
-## 23. Conclusão
+## 24. Conclusão
 
 Uma instalação boa do BKPilot em VPS não é só conseguir rodar `npm install`. É deixar o ambiente pronto para operar com consistência.
 

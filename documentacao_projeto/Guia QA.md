@@ -223,6 +223,8 @@ No agente isso normalmente vira:
 -> /relatorio-parcial -> /reportar-bug -> /gerar-relatorio
 ```
 
+Quando o ciclo inclui automação de testes para o cliente, o ponto de partida é `/plano-automacao`, que decide se o sistema está pronto para receber investimento em automação antes de acionar `/gerar-automacao-cliente`.
+
 Agora o ponto importante: isso não é uma sequência decorativa. Cada etapa prepara a próxima.
 
 ### 10.1 `/explorar`
@@ -422,6 +424,53 @@ Cuidados
 
 - parcial não é relatório final resumido;
 - ela existe para dar clareza de andamento, risco e bloqueios no meio do ciclo.
+
+### 10.8 `/plano-automacao`
+
+Objetivo
+
+Avaliar a viabilidade técnica e o retorno de investimento da automação de testes antes de qualquer proposta de entrega de código ao cliente.
+
+Quando usar
+
+Use no início de projetos que envolvam automação de testes, quando o cliente solicita uma proposta de automação ou quando você precisa decidir se o sistema está maduro o suficiente para justificar o investimento.
+
+Essa skill é a porta de entrada do pipeline de automação. Ela pode economizar semanas de trabalho em um sistema que ainda não está pronto para automação.
+
+Exemplo
+
+```text
+/plano-automacao https://app.cliente.com.br --login qa@cliente.com --dominio "ERP de vendas"
+```
+
+Cuidados
+
+- não ignore o veredito da skill; se o sistema for classificado como "Não Viável", a automação provavelmente será frustrante;
+- revise o `scores_automatizabilidade.json` gerado; ele é o gate check obrigatório da skill;
+- todo relatório `.md` destinado ao cliente (plano, estimativa, viabilidade) deve ter `.pdf` correspondente.
+
+Guia dedicado:
+
+```text
+documentacao_projeto/Guia QA - Skill plano-automacao.md
+```
+
+### 10.9 Skills de automação do cliente
+
+As skills `/gerar-automacao-cliente` e `/auditar-automacao-cliente` possuem guia próprio porque geram pacote de código para entrega ao cliente.
+
+Use o guia dedicado antes de operar esse fluxo:
+
+```text
+documentacao_projeto/Guia QA - Skills de Automacao do Cliente.md
+```
+
+Regras principais desse fluxo:
+
+- o pacote do cliente fica em `entregaveis/<cliente>/automacao/<stack>/`;
+- todo relatório `.md` destinado ao cliente deve ter `.pdf` correspondente;
+- a auditoria deve corrigir defeitos técnicos objetivos antes da entrega;
+- arquivos de governança em `resultado/<timestamp>/governanca/` são internos e não devem ser enviados ao cliente.
 
 ## 11. Quando usar os comandos avulsos
 

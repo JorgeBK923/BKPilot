@@ -243,7 +243,7 @@ Esses scripts mostram que o agente não depende apenas do raciocínio do modelo.
 
 ## 14. Papel das skills no produto
 
-As skills são a superfície operacional do framework. Hoje o projeto trabalha com 16 skills principais cobrindo:
+As skills são a superfície operacional do framework. Hoje o projeto trabalha com 19 skills principais cobrindo:
 
 - exploração;
 - geração de cenários;
@@ -251,6 +251,7 @@ As skills são a superfície operacional do framework. Hoje o projeto trabalha c
 - regressão;
 - auditorias de acessibilidade, performance, API e usabilidade;
 - testes em IA;
+- planejamento, geração e auditoria de automação para cliente;
 - relatórios;
 - consolidação de bugs.
 
@@ -287,11 +288,55 @@ O estado atual do repositório indica o seguinte desenho:
 ```text
 estado/<client>/                  memória da exploração
 resultado/<client>/<timestamp>/   artefatos da execução
+resultado/<timestamp>/governanca/ artefatos internos de governança
 clients/<client>/cenarios/        planilhas e materiais persistentes
 clients/<client>/bugs/<data>/     exports e anexos de bugs
+entregaveis/<client>/automacao/<stack>/ pacote de automação entregue ao cliente
 ```
 
 Essa é a estrutura que a especificação deve considerar como vigente.
+
+### 16.1 Pacotes de automação para cliente
+
+As skills `/plano-automacao`, `/gerar-automacao-cliente` e `/auditar-automacao-cliente` formalizam uma entrega específica: consultoria de viabilidade e código de automação exportável no stack escolhido pelo cliente.
+
+O destino padrão do pacote é:
+
+```text
+entregaveis/<cliente>/automacao/<stack>/
+```
+
+Esse pacote deve conter, quando aplicável:
+
+- `codigo/`;
+- `especificacao_automacao.json`;
+- `mapeamento_cenarios.md` e `mapeamento_cenarios.pdf`;
+- `README_automacao.md` e `README_automacao.pdf`;
+- `cobertura_automacao.md` e `cobertura_automacao.pdf`;
+- `pendencias.md` e `pendencias.pdf`;
+- `inventario_arquivos.md` e `inventario_arquivos.pdf`;
+- `auditoria_codigo.md` e `auditoria_codigo.pdf`;
+- `auditoria_independente.md` e `auditoria_independente.pdf`;
+- `correcoes_auditoria.md` e `correcoes_auditoria.pdf`, quando houver correção ou pendência técnica;
+- `resumo_geracao.md` e `resumo_geracao.pdf`.
+
+Todo relatório `.md` destinado ao cliente deve ter PDF correspondente antes da entrega.
+
+### 16.2 Separação entre cliente e governança interna
+
+Artefatos de governança interna devem ficar fora do pacote enviado ao cliente. O local previsto é:
+
+```text
+resultado/<timestamp>/governanca/
+```
+
+Essa pasta pode conter autoria da automação, metadados de execução, auditoria interna, bloqueios por segregação e outras informações que não devem ser enviadas automaticamente ao cliente.
+
+### 16.3 Auditoria com correção obrigatória
+
+A auditoria do pacote de automação não deve apenas apontar defeitos. Quando encontrar erro técnico objetivo e corrigível no código gerado, a skill deve corrigir, revalidar e documentar a alteração antes da entrega.
+
+Se algo não puder ser corrigido com segurança, deve aparecer como pendência explícita no pacote e no parecer final.
 
 ## 17. Regras de segurança e operação
 
@@ -354,12 +399,14 @@ Mais importante do que a combinação exata de modelos por etapa é manter coer�
 
 ## 21. O que esta v1.5 corrige
 
-Esta versão corrige principalmente quatro distorções:
+Esta versão corrige principalmente seis distorções:
 
 1. explicita o caráter multi-CLI do agente;
 2. corrige a leitura equivocada de multi-ICL como se cada modelo fosse target de build;
 3. alinha a especificação ao multi-tenant real em `clients/<id>/`;
-4. retira do campo de "implementado" o bootstrap que ainda não existe no código atual.
+4. retira do campo de "implementado" o bootstrap que ainda não existe no código atual;
+5. documenta a entrega de automação em `entregaveis/<cliente>/automacao/<stack>/`;
+6. formaliza PDF obrigatório para relatórios `.md` de cliente e remediação obrigatória na auditoria de automação.
 
 ## 22. Conclusão
 
@@ -370,6 +417,9 @@ O ecossistema BKPilot deve ser entendido hoje da seguinte forma:
 - as skills continuam sendo o principal ativo operacional;
 - o projeto é multi-CLI por distribuição;
 - o projeto é multi-tenant por cliente;
+- entregas de automação para cliente vivem em `entregaveis/<cliente>/automacao/<stack>/`;
+- relatórios `.md` destinados ao cliente também devem ser entregues em PDF;
+- a auditoria de automação deve corrigir defeitos técnicos corrigíveis antes da entrega;
 - a especificação deve refletir a realidade implementada, sem esconder o roadmap, mas sem misturá-lo com o presente.
 
 Esse alinhamento é essencial para que produto, arquitetura e operação evoluam na mesma direção.
