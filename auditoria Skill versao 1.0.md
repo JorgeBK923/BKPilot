@@ -4,7 +4,7 @@
 
 Auditoria inicial das skills do projeto `BKPilot`, com foco em:
 
-- organização do catálogo de comandos
+- organização do catálogo de comandos1
 - coerência entre documentação e estrutura real do repositório
 - dependências implícitas e explícitas
 - riscos operacionais e lacunas documentais

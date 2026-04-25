@@ -2,6 +2,9 @@
 .env
 clients/*/.env
 
+# Dados de clientes específicos (não comitar no repo)
+clients/gni/
+
 # Fixtures e dados sensíveis por cliente
 clients/*/fixtures/
 clients/*/bugs/
