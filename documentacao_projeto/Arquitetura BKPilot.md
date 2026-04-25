@@ -185,13 +185,13 @@ Ou seja: o projeto é multi-CLI por desenho, não por improviso.
                            |                         |
                            v                         v
                 +-------------------+     +------------------------+
-                |  clients/<id>/    |     | estado/<client>/       |
+                |  clients/<id>/    |     | clients/<id>/estado/       |
                 | config/login/flow |     | mapa, elementos, APIs  |
                 +---------+---------+     +------------------------+
                           |
                           v
                 +-------------------------------+
-                | resultado/<client>/<ts>/      |
+                | clients/<id>/resultado/<ts>/      |
                 | logs, screenshots, vídeos     |
                 | cleanup, network, summaries   |
                 +-------------------------------+
@@ -323,9 +323,9 @@ Outro ponto importante da arquitetura atual é o isolamento por cliente e timest
 O desenho esperado é:
 
 ```text
-estado/<client>/                  memória de exploração do cliente
-resultado/<client>/<timestamp>/   artefatos daquela execução
-resultado/<timestamp>/governanca/ artefatos internos de governança
+clients/<id>/estado/                  memória de exploração do cliente
+clients/<id>/resultado/<timestamp>/   artefatos daquela execução
+clients/<id>/resultado/<timestamp>/governanca/ artefatos internos de governança
 clients/<client>/cenarios/        materiais persistentes do cliente
 clients/<client>/bugs/<data>/     material de bugs e reteste
 entregaveis/<client>/automacao/<stack>/ pacote de automação entregue ao cliente
@@ -358,7 +358,7 @@ Esse pacote concentra:
 
 Todo relatório `.md` destinado ao cliente deve possuir também a versão `.pdf` correspondente. Essa regra evita que o cliente receba apenas markdown quando a entrega exige leitura direta ou arquivamento formal.
 
-Arquivos de governança interna, como autoria, metadados do executor e bloqueios de segregação, devem ficar em `resultado/<timestamp>/governanca/` e não devem ser enviados ao cliente sem revisão.
+Arquivos de governança interna, como autoria, metadados do executor e bloqueios de segregação, devem ficar em `clients/<id>/clients/<id>/resultado/<timestamp>/governanca/` e não devem ser enviados ao cliente sem revisão.
 
 ### 15.2 Auditoria com remediação
 
@@ -380,7 +380,7 @@ Uma boa documentação arquitetural precisa diferenciar claramente estado atual 
 - orquestradores em `cenarios/`;
 - estrutura de artefatos por cliente e timestamp;
 - consultoria de viabilidade via `/plano-automacao`;
-- pacote de automação em `entregaveis/<cliente>/automacao/<stack>/`;
+- pacote de automação em `clients/<id>/entregaveis/automacao/<stack>/`;
 - regra de PDF para relatórios `.md` destinados ao cliente;
 - auditoria de automação com remediação obrigatória de defeitos técnicos corrigíveis.
 
@@ -400,7 +400,7 @@ Se alguém abrir esse repositório e quiser entender a ordem mental certa, a lei
 2. entender `converter/` como pipeline de distribuição;
 3. entender `core/` como engine compartilhada;
 4. entender `clients/` como especialização por cliente;
-5. entender `estado/` e `resultado/` como memória e evidência operacional.
+5. entender `clients/<id>/estado/` e `clients/<id>/resultado/` como memória e evidência operacional.
 
 Essa sequência ajuda a não cair na leitura errada de que o sistema é apenas um conjunto de markdowns ou apenas um conjunto de scripts Node.
 

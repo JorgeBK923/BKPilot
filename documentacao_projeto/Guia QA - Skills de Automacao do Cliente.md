@@ -28,12 +28,12 @@ Esta skill gera um pacote de automação exportável no stack escolhido pelo cli
 
 Ela usa como entrada os artefatos já produzidos pelo BKPilot, como:
 
-- `estado/mapa.md`
-- `estado/fluxos.md`
-- `estado/elementos.json`
-- `estado/api_endpoints.json`
+- `clients/<id>/estado/mapa.md`
+- `clients/<id>/estado/fluxos.md`
+- `clients/<id>/estado/elementos.json`
+- `clients/<id>/estado/api_endpoints.json`
 - `cenarios/cenarios.xlsx`
-- achados recentes em `resultado/latest/`, quando relevantes
+- achados recentes em `clients/<id>/resultado/latest/`, quando relevantes
 
 Ela gera como saída uma pasta como:
 
@@ -73,7 +73,7 @@ auditoria_independente.md
 Quando houver dado interno de governança, também pode gerar:
 
 ```text
-resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md
+clients/<id>/resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md
 ```
 
 O arquivo interno não deve ser enviado ao cliente sem revisão, porque pode conter dados de governança.
@@ -273,10 +273,10 @@ README.md
 package.json
 src/
 .claude/
-estado/
-resultado/
+clients/<id>/estado/
+clients/<id>/resultado/
 cenarios/
-entregaveis/
+clients/<id>/entregaveis/
 ```
 
 Se não aparecer `package.json`, pare. Você está no diretório errado.
@@ -493,7 +493,7 @@ resumo_geracao.md
 Também deve existir um log interno de autoria:
 
 ```text
-resultado/<timestamp>/governanca/automacao_autoria_<cliente>_<stack>.json
+clients/<id>/resultado/<timestamp>/governanca/automacao_autoria_<cliente>_<stack>.json
 ```
 
 Esse arquivo é interno. Não envie ao cliente.
@@ -632,7 +632,7 @@ Esse é o arquivo que o QA pode revisar para entender o parecer técnico do paco
 Arquivo interno, quando aplicavel:
 
 ```text
-resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md
+clients/<id>/resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md
 ```
 
 Esse arquivo pode conter metadados internos de governança. Não envie ao cliente automaticamente.
@@ -746,10 +746,10 @@ tar -czf exports/acme_playwright-ts_automacao.tar.gz \
 Use somente para arquivo interno BugKillers:
 
 ```bash
-tar -czf exports/acme_playwright-ts_governanca.tar.gz resultado/*/governanca
+tar -czf exports/acme_playwright-ts_governanca.tar.gz clients/<id>/resultado/*/governanca
 ```
 
-Se houver dados de vários clientes em `resultado/`, prefira filtrar manualmente antes de compactar.
+Se houver dados de vários clientes em `clients/<id>/resultado/`, prefira filtrar manualmente antes de compactar.
 
 ### 21.4 Conferir tamanho do arquivo
 
@@ -919,7 +919,7 @@ Se houver muitos `.md`, gerar todos antes de compactar o pacote. O QA não deve 
 Não envie automaticamente:
 
 ```text
-resultado/<timestamp>/governanca/
+clients/<id>/resultado/<timestamp>/governanca/
 automacao_autoria_<cliente>_<stack>.json
 auditoria_interna_<cliente>_<stack>.md
 .env
@@ -976,7 +976,7 @@ ls estado
 ls cenarios
 ```
 
-Se faltar `estado/mapa.md` ou `cenarios/cenarios.xlsx`, rode antes `/explorar` e `/gerar-cenarios`.
+Se faltar `clients/<id>/estado/mapa.md` ou `cenarios/cenarios.xlsx`, rode antes `/explorar` e `/gerar-cenarios`.
 
 ### 27.3 O pacote foi gerado, mas a auditoria bloqueou
 
@@ -1017,7 +1017,7 @@ Veja tamanho por pasta:
 
 ```bash
 du -sh entregaveis/<cliente>/automacao/<stack>/*
-du -sh resultado/*
+du -sh clients/<id>/resultado/*
 ```
 
 Se necessário, compacte apenas o pacote de automação e deixe vídeos/logs de execução fora do download.
@@ -1142,7 +1142,7 @@ find entregaveis/acme/automacao/playwright-ts -maxdepth 3 -type f | sort
 
 - Nunca coloque senha no comando.
 - Nunca baixe `.env`.
-- Nunca envie `resultado/<timestamp>/governanca/` ao cliente sem revisão.
+- Nunca envie `clients/<id>/clients/<id>/resultado/<timestamp>/governanca/` ao cliente sem revisão.
 - Nunca compartilhe chave SSH em chat.
 - Nunca compacte a raiz inteira do projeto para enviar ao cliente.
 - Sempre revise `auditoria_independente.md` antes de entregar.
@@ -1196,7 +1196,7 @@ auditoria_independente.md
 O arquivo que não deve ser enviado automaticamente:
 
 ```text
-resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md
+clients/<id>/resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md
 ```
 
 ## 31. Fontes externas consultadas

@@ -19,14 +19,14 @@ Executa um fluxo de ponta a ponta descrito em linguagem natural. O QA descreve o
 
 ## Parâmetros
 - `"<descrição do fluxo>"` — descrição em linguagem natural do fluxo a testar (obrigatório). Ex: `"login → dashboard → criar pedido → logout"`
-- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` no `.env`
+- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--dados <arquivo.json>` — arquivo JSON com conjuntos de dados para execução data-driven (opcional). Cada objeto no array é uma iteração do fluxo com dados diferentes
 
 ## Instruções de Execução
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`

@@ -31,7 +31,15 @@ O script `setup.sh` verifica os pré-requisitos, instala o Playwright MCP e os b
 
 ## Configuração
 
-Cada cliente tem suas próprias credenciais isoladas em `clients/<id>/.env`:
+Cada cliente tem suas próprias credenciais isoladas em `clients/<id>/.env`. Use o script dedicado para criar um cliente novo (cria pasta, `.env`, `config.json` e `login.js` skeleton):
+
+```bash
+./novo-cliente.sh <id> --nome "Nome do Cliente" --url https://app.cliente.com.br
+# editar clients/<id>/.env e preencher QA_PASSWORD
+# ajustar clients/<id>/config.json (postLoginSelector) e clients/<id>/login.js (seletores reais)
+```
+
+Alternativamente, manualmente:
 
 ```bash
 cp clients/.env.example clients/<id>/.env
@@ -41,6 +49,8 @@ cp clients/.env.example clients/<id>/.env
 ```
 QA_PASSWORD=sua_senha_aqui
 ```
+
+> O `setup.sh` é bootstrap de máquina (Node, Playwright, ffmpeg, pastas base). Roda **uma vez por máquina**, não por cliente. Para cada cliente novo, use `./novo-cliente.sh`.
 
 O `.env` da raiz é reservado para integrações globais (Jira, GitHub Issues):
 
@@ -81,7 +91,7 @@ O Claude Code reconhece automaticamente os comandos na pasta `.claude/commands/`
 /relatorio-parcial --cliente "Nome do Cliente" --semana 1
 
 # 5. Reportar bugs
-/reportar-bug --fonte resultado/latest/
+/reportar-bug --fonte clients/<id>/resultado/latest/
 
 # 6. Gerar relatório final para entrega
 /gerar-relatorio --cliente "Nome do Cliente" --formato pdf
@@ -103,14 +113,14 @@ O Claude Code reconhece automaticamente os comandos na pasta `.claude/commands/`
 As skills `/gerar-automacao-cliente` e `/auditar-automacao-cliente` produzem um pacote em:
 
 ```text
-entregaveis/<cliente>/automacao/<stack>/
+clients/<id>/entregaveis/automacao/<stack>/
 ```
 
 Esse pacote pode ser enviado ao cliente após revisão. Ele contém `codigo/`, especificação, rastreabilidade, cobertura, pendências, inventário, auditoria técnica, auditoria independente, correções de auditoria quando existirem e resumo da geração.
 
-Regra obrigatória: todo relatório `.md` destinado ao cliente deve ter também um `.pdf` correspondente antes da entrega. Exemplos: `README_automacao.md` e `README_automacao.pdf`, `auditoria_independente.md` e `auditoria_independente.pdf`, `correcoes_auditoria.md` e `correcoes_auditoria.pdf`.
+Regra obrigatória: todo relatório `.md` destinado ao cliente deve ter também um `.pdf` correspondente antes da entrega. Exemplos: `README_automacao.md` e `README_automacao.pdf`, `auditoria_independente.md` e `auditoria_independente.pdf`.
 
-Não envie ao cliente a pasta `resultado/<timestamp>/governanca/`, arquivos `.env`, tokens, `automacao_autoria_<cliente>_<stack>.json`, `auditoria_interna_<cliente>_<stack>.md`, identidade de modelo/agente/executor ou `geracao_id`.
+Não envie ao cliente a pasta `clients/<id>/resultado/<timestamp>/governanca/`, arquivos `.env`, tokens, `automacao_autoria_<cliente>_<stack>.json`, `auditoria_interna_<cliente>_<stack>.md`, identidade de modelo/agente/executor ou `geracao_id`.
 
 ### Uso avulso
 
@@ -176,30 +186,32 @@ bugkillers-qa-agent/
 │     ├─ login.js        ← função de login do cliente
 │     ├─ flows/          ← implementação customizada de runScenario
 │     ├─ cenarios/       ← planilhas e fichas de risco do cliente
+│     ├─ estado/         ← artefatos intermediários (/explorar)
+│     │  ├─ mapa.md
+│     │  ├─ fluxos.md
+│     │  ├─ elementos.json
+│     │  └─ api_endpoints.json
+│     ├─ resultado/      ← saídas de execução com timestamp
+│     │  ├─ YYYY-MM-DD_HHMM/
+│     │  │  ├─ videos/         ← evidências em MP4
+│     │  │  ├─ screenshots/    ← capturas de tela por passo
+│     │  │  ├─ dados_brutos/   ← JSONs de análise intermediária
+│     │  │  ├─ console_log.json
+│     │  │  ├─ network_log.json
+│     │  │  ├─ cleanup_log.json
+│     │  │  └─ *.md / *.pdf
+│     │  └─ latest -> ...   ← symlink para a execução mais recente
+│     ├─ entregaveis/    ← pacotes de automação gerados para o cliente
+│     │  └─ automacao/<stack>/
+│     │     ├─ codigo/
+│     │     ├─ *.md
+│     │     └─ *.pdf
 │     └─ .env            ← credenciais do cliente (nunca commitar)
 ├─ assets/
 │  └─ logo-bugkillers.png  ← logo para relatórios
-├─ estado/               ← artefatos intermediários (gerados pelo /explorar)
-│  ├─ mapa.md
-│  ├─ fluxos.md
-│  ├─ elementos.json
-│  ├─ api_endpoints.json
-│  └─ screenshots/
-├─ resultado/            ← saídas de execução com timestamp
-│  ├─ <cliente>/
-│  │  ├─ YYYY-MM-DD_HHMM/
-│  │  │  ├─ videos/         ← evidências em MP4
-│  │  │  ├─ screenshots/    ← capturas de tela por passo
-│  │  │  ├─ console_log.json
-│  │  │  ├─ network_log.json
-│  │  │  ├─ cleanup_log.json
-│  │  │  └─ parcial_semana*.pdf
-│  │  └─ latest -> ...   ← symlink para a execução mais recente
-├─ entregaveis/          ← pacotes de automação gerados para clientes
-│  └─ <cliente>/automacao/<stack>/
-│     ├─ codigo/
-│     ├─ *.md
-│     └─ *.pdf
+├─ scripts/              ← scripts utilitários compartilhados
+│  ├─ refazer-relatorios.js  ← recalcula custos sem re-explorar
+│  └─ ...
 ├─ documentacao_projeto/ ← arquitetura, especificação técnica e guias
 ├─ CLAUDE.md             ← instruções globais para todas as skills
 ├─ AGENTS.md             ← quick reference e regras de reteste

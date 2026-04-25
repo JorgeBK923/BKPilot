@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-04-24_2228",
+  " sistema": "GNIweb",
+  "tecnologia": "GeneXus",
+  "seletores_principais": {
+    "login": {
+      "usuario": "#vUSUARIOLOGIN",
+      "senha": "#vSENHA",
+      "botao_entrar": "#BTNENTER"
+    },
+    "dashboard": {
+      "modulos_grid": "tr[id^='Grid1ContainerRow']",
+      "nome_modulo_input": "input[id^='vNOMEMODULO_']",
+      "modulo_link": "tr[id^='Grid1ContainerRow'] td a"
+    },
+    "modulo_comercial": {
+      "treeview": "#TREEVIEW1Container",
+      "tree_nodes": "#TREEVIEW1Container a",
+      "filtro_empresa": "#vEMPRESAPEDIDOID",
+      "filtro_tipo_pedido": "#vTIPOPEDIDOID",
+      "filtro_pedido_id": "#vPEDIDOID",
+      "filtro_cliente": "#vCLIENTENOME1",
+      "checkbox_faturado": "#vPEDIDOFATURADO",
+      "checkbox_cancelado": "#vPEDIDOCANCELADO",
+      "status_pedido": "#vPEDIDOSTATUSPEDIDO"
+    }
+  },
+  "padroes_ids": {
+    "descricao": "GeneXus generated IDs",
+    "exemplos": [
+      "vNOMEMODULO_0001",
+      "Grid1ContainerRow_0001",
+      "TABLE1_0001",
+      "vDESCRICAOUSUARIO_MPAGE",
+      "vDYNAMICFILTERSOPERATOREMPRESAPEDIDOID",
+      "vEMPRESAPEDIDOID"
+    ],
+    "estabilidade": "Alta — padrão previsível, baseado em nome do campo + índice/linha",
+    "semanticos": false
+  },
+  "componentes_ui": {
+    "treeview": "YUI TreeView — menu expansível em todos os módulos",
+    "grid": "Tabelas HTML com paginação e filtros dinâmicos",
+    "filtros": "Selects dinâmicos com prefixo vDYNAMICFILTERS*",
+    "modais": "Não observados — sistema usa navegação de página completa",
+    "toasts": "Não observados"
+  }
+}

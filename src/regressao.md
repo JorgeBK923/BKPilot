@@ -31,7 +31,7 @@ inputs:
     description: "Pasta com exportação do Jira (Excel/Word/XML) ou estrutura manual. Convenção: clients/<client>/bugs/<data>/"
   - name: login
     required: false
-    description: "Email de autenticação. Senha via QA_PASSWORD no .env"
+    description: "Email de autenticação. Senha via QA_PASSWORD em clients/<id>/.env"
   - name: visual-diff
     required: false
     description: "Ativa comparação visual pixel-a-pixel de screenshots (flag booleano)"
@@ -89,7 +89,7 @@ Suporta **exportação direta do Jira** nos formatos Excel (.xlsx), Word (.docx)
 - `--bugs <pasta>` — pasta com dados dos bugs. Aceita:
   - **Exportação Jira** (Excel .xlsx, Word .docx ou XML) — formato mais comum
   - **Estrutura manual** — `index.json` + subpastas por bug com `descricao.md`, `passos.md`
-- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` no `.env`
+- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--visual-diff` — ativa comparação visual pixel-a-pixel de screenshots entre evidência anterior e reteste (opcional)
 
 ## Modo de Operação
@@ -123,7 +123,7 @@ Você **NÃO PODE** encerrar a skill nem imprimir o resumo final enquanto qualqu
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Validação de pré-condição
 

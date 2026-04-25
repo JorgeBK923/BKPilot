@@ -378,7 +378,14 @@ Se não for usar integrações externas agora, deixe o arquivo como está e siga
 
 ### 15.2 `.env` por cliente (credenciais de QA)
 
-Cada cliente tem seu próprio arquivo de credenciais isolado:
+Cada cliente tem seu próprio arquivo de credenciais isolado. A forma recomendada é o script `novo-cliente.sh`, que cria a estrutura inteira do cliente (pasta, `.env`, `config.json` e `login.js` skeleton) de uma vez:
+
+```bash
+./novo-cliente.sh <id> --nome "Nome do Cliente" --url https://app.cliente.com.br
+nano clients/<id>/.env   # preencher QA_PASSWORD
+```
+
+Alternativamente, manualmente:
 
 ```bash
 cp clients/.env.example clients/<id>/.env
@@ -442,19 +449,26 @@ bash setup.sh
 | Pré-requisitos | Verifica Node.js, npm, Claude Code e ffmpeg |
 | Playwright MCP | Garante que o MCP está disponível via `npx` |
 | Chromium | Instala o browser headless do Playwright |
-| Pastas | Cria `estado/screenshots/`, `resultado/`, `cenarios/` |
-| `.env` raiz | Copia `.env.example` → `.env` se não existir |
+| Pastas | Cria `clients/<id>/estado/screenshots/`, `clients/<id>/resultado/`, `cenarios/`, `clients/` |
+| `.env` raiz | Copia `.env.example` → `.env` se não existir (apenas integrações globais — Jira, GitHub) |
 
 ### O que o `setup.sh` não faz
 
-O script **não configura o `.env` por cliente**. Após o setup, crie manualmente o arquivo de credenciais de cada cliente:
+O `setup.sh` é **bootstrap de máquina** — roda uma vez por VPS, não por cliente. Ele **não configura o `.env` por cliente** porque cada cliente tem credenciais diferentes e o setup não tem como saber quais clientes serão operados nesta VPS.
+
+Para cada cliente novo, use o script dedicado `novo-cliente.sh` (recomendado), que cria a estrutura completa do client pack:
+
+```bash
+./novo-cliente.sh <id> --nome "Nome do Cliente" --url https://app.cliente.com.br
+nano clients/<id>/.env   # preencher QA_PASSWORD
+```
+
+Ou manualmente:
 
 ```bash
 cp clients/.env.example clients/<id>/.env
 nano clients/<id>/.env   # preencher QA_PASSWORD
 ```
-
-Isso é intencional — cada cliente tem credenciais diferentes e o setup não tem como saber quais clientes serão operados nesta VPS.
 
 ### Sobre Claude Code
 
@@ -494,8 +508,8 @@ O Skill Converter opera sobre as **skills genéricas** — ele não lida com con
 | `dist/opencode/` | Distribuição para OpenCode |
 | `clients/<id>/` | Configuração, login e flows do cliente |
 | `clients/<id>/.env` | Credenciais do cliente (nunca commitadas) |
-| `entregaveis/<id>/automacao/<stack>/` | Pacotes de automação destinados ao cliente |
-| `resultado/<timestamp>/governanca/` | Artefatos internos de governança, não enviados automaticamente ao cliente |
+| `clients/<id>/entregaveis/automacao/<stack>/` | Pacotes de automação destinados ao cliente |
+| `clients/<id>/clients/<id>/resultado/<timestamp>/governanca/` | Artefatos internos de governança, não enviados automaticamente ao cliente |
 
 Isso significa que adicionar ou alterar um cliente **não requer rodar o converter** — basta criar ou editar a pasta do cliente.
 
@@ -681,7 +695,7 @@ Opções práticas:
 Exemplo de compactação de uma execução:
 
 ```bash
-tar -czf cliente-01_execucao-001.tar.gz resultado/cliente-01/2026-04-24_1530
+tar -czf cliente-01_execucao-001.tar.gz clients/cliente-01/clients/<id>/resultado/2026-04-24_1530
 ```
 
 Exemplo de compactação de um pacote de automação para cliente:
@@ -700,7 +714,7 @@ scp usuario@IP_DA_VPS:/home/bkpilot/bkpilot/exports/cliente-01_playwright-ts_aut
 
 Antes de compactar um pacote de automação, confirme que todos os relatórios `.md` destinados ao cliente possuem `.pdf` correspondente. Essa é uma regra obrigatória das skills `/gerar-automacao-cliente` e `/auditar-automacao-cliente`.
 
-Não inclua automaticamente `resultado/<timestamp>/governanca/` no pacote enviado ao cliente. Essa pasta pode conter metadados internos, autoria da execução e informações de governança.
+Não inclua automaticamente `clients/<id>/clients/<id>/resultado/<timestamp>/governanca/` no pacote enviado ao cliente. Essa pasta pode conter metadados internos, autoria da execução e informações de governança.
 
 Quando os artefatos tiverem dado sensível de cliente, baixe, arquive e remova da VPS o que não precisar permanecer nela.
 

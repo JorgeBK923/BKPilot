@@ -19,7 +19,7 @@ Skill dedicada ao teste de sistemas de IA conversacional (chat, copilot, agente 
 
 ## Parâmetros
 - `--url` — URL do chat/sistema de IA (obrigatório). Ex: `https://devjcla.sistemastega.com.br/`
-- `--login <email>` — email de autenticação (obrigatório). A senha é lida de `QA_PASSWORD` do `.env`.
+- `--login <email>` — email de autenticação (obrigatório). A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`.
 - `--dominio "<texto>"` — contexto do negócio em linguagem natural (obrigatório). Ex: `"ERP de vendas, estoque e faturamento de fábrica de estofados"`. Usado pra preencher slots dos cenários funcionais.
 - `--categorias <lista>` — opcional; default = todas 7. Valores: `core,guardrails,permissoes,robustez,ux,historico,performance` (separados por vírgula).
 - `--qtd-total <n>` — opcional; default 74. Distribuição entre categorias segue proporção validada do Ciclo III.

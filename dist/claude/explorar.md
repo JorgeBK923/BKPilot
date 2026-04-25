@@ -159,10 +159,10 @@ Se `permite_mutativo = true` (default), adicione:
 Antes de qualquer ação, verificar se a senha foi passada inline no argumento `--login`:
 - Se o argumento contiver `:` (ex: `--login email:senha`), **PARAR** e exibir:
   > ❌ ERRO DE SEGURANÇA: A senha não deve ser passada como argumento.
-  > Configure QA_PASSWORD no arquivo .env e use apenas --login <email>.
+  > Configure QA_PASSWORD em clients/<id>/.env e use apenas --login <email>.
 - Caso contrário, ler a senha da variável de ambiente `QA_PASSWORD`
 - Se `QA_PASSWORD` não estiver definida e `--login` foi passado, **PARAR** e exibir:
-  > ❌ QA_PASSWORD não encontrada. Crie o arquivo .env com: QA_PASSWORD=sua_senha
+  > ❌ QA_PASSWORD não encontrada. Crie clients/<id>/.env com: QA_PASSWORD=sua_senha
 
 ### 2. Preparação
 - Criar pasta `estado/` na raiz do projeto (se não existir)

@@ -19,13 +19,13 @@ Skill híbrida que combina execução de roteiro + exploração livre. Primeiro 
 ## Parâmetros
 - `<nome-do-modulo>` — nome do módulo a testar. Deve corresponder à coluna `Módulo` da planilha (obrigatório). Ex: `Login`, `Cadastro`, `Dashboard`
 - `<arquivo>` — caminho da planilha de cenários (obrigatório). Ex: `cenarios/cenarios.xlsx`
-- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` no `.env`
+- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 
 ## Instruções de Execução
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Validação de pré-condição
 Verificar se o arquivo informado existe:

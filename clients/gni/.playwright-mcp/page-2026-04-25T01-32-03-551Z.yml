@@ -1,0 +1,412 @@
+- table [ref=e2]:
+  - rowgroup [ref=e3]:
+    - row "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e4]:
+      - cell "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e5]:
+        - table [ref=e6]:
+          - rowgroup [ref=e7]:
+            - row "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e8]:
+              - cell "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e9]:
+                - table [ref=e10]:
+                  - rowgroup [ref=e11]:
+                    - row "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e12]:
+                      - cell [ref=e13]
+                      - cell "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e14]:
+                        - table [ref=e15]:
+                          - rowgroup [ref=e16]:
+                            - row "Dados do Meu Usuário 999995 - bugkillers" [ref=e17]:
+                              - cell "Dados do Meu Usuário 999995 - bugkillers" [ref=e18]:
+                                - table [ref=e19]:
+                                  - rowgroup [ref=e20]:
+                                    - row "Dados do Meu Usuário 999995 - bugkillers" [ref=e21]:
+                                      - cell "Dados do Meu Usuário" [ref=e22]:
+                                        - img "Dados do Meu Usuário" [ref=e23] [cursor=pointer]
+                                      - cell "999995 - bugkillers" [ref=e24]:
+                                        - generic [ref=e25]: 999995 - bugkillers
+                            - row "Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e26]:
+                              - cell "Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e27]:
+                                - table [ref=e28]:
+                                  - rowgroup [ref=e29]:
+                                    - row "Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e30]:
+                                      - cell "Clique aqui para ver suas mensagens" [ref=e31]:
+                                        - table [ref=e32]:
+                                          - rowgroup [ref=e33]:
+                                            - row "Clique aqui para ver suas mensagens" [ref=e34]:
+                                              - cell "Clique aqui para ver suas mensagens" [ref=e35]:
+                                                - img "Clique aqui para ver suas mensagens" [ref=e38] [cursor=pointer]
+                                              - cell [ref=e39]
+                                      - cell [ref=e40]
+                                      - cell [ref=e41]:
+                                        - img [ref=e42] [cursor=pointer]
+                                      - cell [ref=e43]
+                                      - cell "TEGA Seach - Encontre aqui as respostas para suas dúvidas" [ref=e44]:
+                                        - img "TEGA Seach - Encontre aqui as respostas para suas dúvidas" [ref=e45] [cursor=pointer]
+                                      - cell [ref=e46]
+                                      - cell "Acesso a Pagina Principal" [ref=e47]:
+                                        - img "Acesso a Pagina Principal" [ref=e48] [cursor=pointer]
+                                      - cell [ref=e49]
+                                      - cell "Sair do Sistema" [ref=e50]:
+                                        - img "Sair do Sistema" [ref=e51] [cursor=pointer]
+                      - cell [ref=e52]
+    - row "HOME RECENTES" [ref=e53]:
+      - cell "HOME RECENTES" [ref=e54]:
+        - generic [ref=e56]:
+          - table [ref=e57]:
+            - rowgroup [ref=e58]
+          - table [ref=e59]:
+            - rowgroup [ref=e60]:
+              - row "HOME RECENTES" [ref=e61]:
+                - cell "HOME RECENTES" [ref=e62]:
+                  - generic:
+                    - list [ref=e63]:
+                      - listitem [ref=e64]
+                      - listitem [ref=e66]:
+                        - link "HOME" [ref=e67] [cursor=pointer]:
+                          - /url: paginaprincipal
+                      - listitem [ref=e68]:
+                        - link "RECENTES" [ref=e69] [cursor=pointer]:
+                          - /url: "#"
+                    - list [ref=e70]
+    - row "Atendimento Lojas CEPP CRM Comercial Compras Contabil Custos Estoque Financeiro Fiscal Industrial Manutenção Entidades Suporte Transporte Qualidade Gerencial" [ref=e71]:
+      - cell "Atendimento Lojas CEPP CRM Comercial Compras Contabil Custos Estoque Financeiro Fiscal Industrial Manutenção Entidades Suporte Transporte Qualidade Gerencial" [ref=e72]:
+        - generic [ref=e74]:
+          - paragraph
+          - table [ref=e76]:
+            - rowgroup [ref=e77]:
+              - row "Atendimento Lojas CEPP CRM Comercial Compras Contabil Custos Estoque" [ref=e78]:
+                - cell "Atendimento" [ref=e79]:
+                  - table [ref=e80]:
+                    - rowgroup [ref=e81]:
+                      - row "Atendimento" [ref=e82]:
+                        - cell "Atendimento" [ref=e83]:
+                          - table [ref=e84]:
+                            - rowgroup [ref=e85]:
+                              - row [ref=e86]:
+                                - cell [ref=e87]:
+                                  - paragraph [ref=e88]:
+                                    - link [ref=e89] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?34,GEST%C3%83O+DE+ATENDIMENTO
+                              - row "Atendimento" [ref=e90]:
+                                - cell "Atendimento" [ref=e91]:
+                                  - generic [ref=e92]: Atendimento
+                              - row [ref=e93]:
+                                - cell [ref=e94]:
+                                  - paragraph
+                - cell "Lojas" [ref=e95]:
+                  - table [ref=e96]:
+                    - rowgroup [ref=e97]:
+                      - row "Lojas" [ref=e98]:
+                        - cell "Lojas" [ref=e99]:
+                          - table [ref=e100]:
+                            - rowgroup [ref=e101]:
+                              - row [ref=e102]:
+                                - cell [ref=e103]:
+                                  - paragraph [ref=e104]:
+                                    - link [ref=e105] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?918,GEST%C3%83O+DE+LOJAS
+                              - row "Lojas" [ref=e106]:
+                                - cell "Lojas" [ref=e107]:
+                                  - generic [ref=e108]: Lojas
+                              - row [ref=e109]:
+                                - cell [ref=e110]:
+                                  - paragraph
+                - cell "CEPP" [ref=e111]:
+                  - table [ref=e112]:
+                    - rowgroup [ref=e113]:
+                      - row "CEPP" [ref=e114]:
+                        - cell "CEPP" [ref=e115]:
+                          - table [ref=e116]:
+                            - rowgroup [ref=e117]:
+                              - row [ref=e118]:
+                                - cell [ref=e119]:
+                                  - paragraph [ref=e120]:
+                                    - link [ref=e121] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?105,GEST%C3%83O+CEPP
+                              - row "CEPP" [ref=e122]:
+                                - cell "CEPP" [ref=e123]:
+                                  - generic [ref=e124]: CEPP
+                              - row [ref=e125]:
+                                - cell [ref=e126]:
+                                  - paragraph
+                - cell "CRM" [ref=e127]:
+                  - table [ref=e128]:
+                    - rowgroup [ref=e129]:
+                      - row "CRM" [ref=e130]:
+                        - cell "CRM" [ref=e131]:
+                          - table [ref=e132]:
+                            - rowgroup [ref=e133]:
+                              - row [ref=e134]:
+                                - cell [ref=e135]:
+                                  - paragraph [ref=e136]:
+                                    - link [ref=e137] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?100,GEST%C3%83O+CRM
+                              - row "CRM" [ref=e138]:
+                                - cell "CRM" [ref=e139]:
+                                  - generic [ref=e140]: CRM
+                              - row [ref=e141]:
+                                - cell [ref=e142]:
+                                  - paragraph
+                - cell "Comercial" [ref=e143]:
+                  - table [ref=e144]:
+                    - rowgroup [ref=e145]:
+                      - row "Comercial" [ref=e146]:
+                        - cell "Comercial" [ref=e147]:
+                          - table [ref=e148]:
+                            - rowgroup [ref=e149]:
+                              - row [ref=e150]:
+                                - cell [ref=e151]:
+                                  - paragraph [ref=e152]:
+                                    - link [ref=e153] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?15,GEST%C3%83O+COMERCIAL
+                              - row "Comercial" [ref=e154]:
+                                - cell "Comercial" [ref=e155]:
+                                  - generic [ref=e156]: Comercial
+                              - row [ref=e157]:
+                                - cell [ref=e158]:
+                                  - paragraph
+                - cell "Compras" [ref=e159]:
+                  - table [ref=e160]:
+                    - rowgroup [ref=e161]:
+                      - row "Compras" [ref=e162]:
+                        - cell "Compras" [ref=e163]:
+                          - table [ref=e164]:
+                            - rowgroup [ref=e165]:
+                              - row [ref=e166]:
+                                - cell [ref=e167]:
+                                  - paragraph [ref=e168]:
+                                    - link [ref=e169] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?16,GEST%C3%83O+DE+COMPRAS
+                              - row "Compras" [ref=e170]:
+                                - cell "Compras" [ref=e171]:
+                                  - generic [ref=e172]: Compras
+                              - row [ref=e173]:
+                                - cell [ref=e174]:
+                                  - paragraph
+                - cell "Contabil" [ref=e175]:
+                  - table [ref=e176]:
+                    - rowgroup [ref=e177]:
+                      - row "Contabil" [ref=e178]:
+                        - cell "Contabil" [ref=e179]:
+                          - table [ref=e180]:
+                            - rowgroup [ref=e181]:
+                              - row [ref=e182]:
+                                - cell [ref=e183]:
+                                  - paragraph [ref=e184]:
+                                    - link [ref=e185] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?12,GEST%C3%83O+CONTABIL
+                              - row "Contabil" [ref=e186]:
+                                - cell "Contabil" [ref=e187]:
+                                  - generic [ref=e188]: Contabil
+                              - row [ref=e189]:
+                                - cell [ref=e190]:
+                                  - paragraph
+                - cell "Custos" [ref=e191]:
+                  - table [ref=e192]:
+                    - rowgroup [ref=e193]:
+                      - row "Custos" [ref=e194]:
+                        - cell "Custos" [ref=e195]:
+                          - table [ref=e196]:
+                            - rowgroup [ref=e197]:
+                              - row [ref=e198]:
+                                - cell [ref=e199]:
+                                  - paragraph [ref=e200]:
+                                    - link [ref=e201] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?17,GEST%C3%83O+DE+CUSTOS
+                              - row "Custos" [ref=e202]:
+                                - cell "Custos" [ref=e203]:
+                                  - generic [ref=e204]: Custos
+                              - row [ref=e205]:
+                                - cell [ref=e206]:
+                                  - paragraph
+                - cell "Estoque" [ref=e207]:
+                  - table [ref=e208]:
+                    - rowgroup [ref=e209]:
+                      - row "Estoque" [ref=e210]:
+                        - cell "Estoque" [ref=e211]:
+                          - table [ref=e212]:
+                            - rowgroup [ref=e213]:
+                              - row [ref=e214]:
+                                - cell [ref=e215]:
+                                  - paragraph [ref=e216]:
+                                    - link [ref=e217] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?186,GEST%C3%83O+DE+ESTOQUE
+                              - row "Estoque" [ref=e218]:
+                                - cell "Estoque" [ref=e219]:
+                                  - generic [ref=e220]: Estoque
+                              - row [ref=e221]:
+                                - cell [ref=e222]:
+                                  - paragraph
+              - row "Financeiro Fiscal Industrial Manutenção Entidades Suporte Transporte Qualidade Gerencial" [ref=e223]:
+                - cell "Financeiro" [ref=e224]:
+                  - table [ref=e225]:
+                    - rowgroup [ref=e226]:
+                      - row "Financeiro" [ref=e227]:
+                        - cell "Financeiro" [ref=e228]:
+                          - table [ref=e229]:
+                            - rowgroup [ref=e230]:
+                              - row [ref=e231]:
+                                - cell [ref=e232]:
+                                  - paragraph [ref=e233]:
+                                    - link [ref=e234] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?18,GEST%C3%83O+FINANCEIRA
+                              - row "Financeiro" [ref=e235]:
+                                - cell "Financeiro" [ref=e236]:
+                                  - generic [ref=e237]: Financeiro
+                              - row [ref=e238]:
+                                - cell [ref=e239]:
+                                  - paragraph
+                - cell "Fiscal" [ref=e240]:
+                  - table [ref=e241]:
+                    - rowgroup [ref=e242]:
+                      - row "Fiscal" [ref=e243]:
+                        - cell "Fiscal" [ref=e244]:
+                          - table [ref=e245]:
+                            - rowgroup [ref=e246]:
+                              - row [ref=e247]:
+                                - cell [ref=e248]:
+                                  - paragraph [ref=e249]:
+                                    - link [ref=e250] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?13,GEST%C3%83O+FISCAL
+                              - row "Fiscal" [ref=e251]:
+                                - cell "Fiscal" [ref=e252]:
+                                  - generic [ref=e253]: Fiscal
+                              - row [ref=e254]:
+                                - cell [ref=e255]:
+                                  - paragraph
+                - cell "Industrial" [ref=e256]:
+                  - table [ref=e257]:
+                    - rowgroup [ref=e258]:
+                      - row "Industrial" [ref=e259]:
+                        - cell "Industrial" [ref=e260]:
+                          - table [ref=e261]:
+                            - rowgroup [ref=e262]:
+                              - row [ref=e263]:
+                                - cell [ref=e264]:
+                                  - paragraph [ref=e265]:
+                                    - link [ref=e266] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?14,GEST%C3%83O+INDUSTRIAL
+                              - row "Industrial" [ref=e267]:
+                                - cell "Industrial" [ref=e268]:
+                                  - generic [ref=e269]: Industrial
+                              - row [ref=e270]:
+                                - cell [ref=e271]:
+                                  - paragraph
+                - cell "Manutenção" [ref=e272]:
+                  - table [ref=e273]:
+                    - rowgroup [ref=e274]:
+                      - row "Manutenção" [ref=e275]:
+                        - cell "Manutenção" [ref=e276]:
+                          - table [ref=e277]:
+                            - rowgroup [ref=e278]:
+                              - row [ref=e279]:
+                                - cell [ref=e280]:
+                                  - paragraph [ref=e281]:
+                                    - link [ref=e282] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?455,GEST%C3%83O+DE+MANUTEN%C3%87%C3%83O
+                              - row "Manutenção" [ref=e283]:
+                                - cell "Manutenção" [ref=e284]:
+                                  - generic [ref=e285]: Manutenção
+                              - row [ref=e286]:
+                                - cell [ref=e287]:
+                                  - paragraph
+                - cell "Entidades" [ref=e288]:
+                  - table [ref=e289]:
+                    - rowgroup [ref=e290]:
+                      - row "Entidades" [ref=e291]:
+                        - cell "Entidades" [ref=e292]:
+                          - table [ref=e293]:
+                            - rowgroup [ref=e294]:
+                              - row [ref=e295]:
+                                - cell [ref=e296]:
+                                  - paragraph [ref=e297]:
+                                    - link [ref=e298] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?87,GEST%C3%83O+DE+ENTIDADES
+                              - row "Entidades" [ref=e299]:
+                                - cell "Entidades" [ref=e300]:
+                                  - generic [ref=e301]: Entidades
+                              - row [ref=e302]:
+                                - cell [ref=e303]:
+                                  - paragraph
+                - cell "Suporte" [ref=e304]:
+                  - table [ref=e305]:
+                    - rowgroup [ref=e306]:
+                      - row "Suporte" [ref=e307]:
+                        - cell "Suporte" [ref=e308]:
+                          - table [ref=e309]:
+                            - rowgroup [ref=e310]:
+                              - row [ref=e311]:
+                                - cell [ref=e312]:
+                                  - paragraph [ref=e313]:
+                                    - link [ref=e314] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?9,GEST%C3%83O+DE+SUPORTE
+                              - row "Suporte" [ref=e315]:
+                                - cell "Suporte" [ref=e316]:
+                                  - generic [ref=e317]: Suporte
+                              - row [ref=e318]:
+                                - cell [ref=e319]:
+                                  - paragraph
+                - cell "Transporte" [ref=e320]:
+                  - table [ref=e321]:
+                    - rowgroup [ref=e322]:
+                      - row "Transporte" [ref=e323]:
+                        - cell "Transporte" [ref=e324]:
+                          - table [ref=e325]:
+                            - rowgroup [ref=e326]:
+                              - row [ref=e327]:
+                                - cell [ref=e328]:
+                                  - paragraph [ref=e329]:
+                                    - link [ref=e330] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?19,GEST%C3%83O+DE+TRANSPORTE
+                              - row "Transporte" [ref=e331]:
+                                - cell "Transporte" [ref=e332]:
+                                  - generic [ref=e333]: Transporte
+                              - row [ref=e334]:
+                                - cell [ref=e335]:
+                                  - paragraph
+                - cell "Qualidade" [ref=e336]:
+                  - table [ref=e337]:
+                    - rowgroup [ref=e338]:
+                      - row "Qualidade" [ref=e339]:
+                        - cell "Qualidade" [ref=e340]:
+                          - table [ref=e341]:
+                            - rowgroup [ref=e342]:
+                              - row [ref=e343]:
+                                - cell [ref=e344]:
+                                  - paragraph [ref=e345]:
+                                    - link [ref=e346] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?1252,GEST%C3%83O+DE+QUALIDADE
+                              - row "Qualidade" [ref=e347]:
+                                - cell "Qualidade" [ref=e348]:
+                                  - generic [ref=e349]: Qualidade
+                              - row [ref=e350]:
+                                - cell [ref=e351]:
+                                  - paragraph
+                - cell "Gerencial" [ref=e352]:
+                  - table [ref=e353]:
+                    - rowgroup [ref=e354]:
+                      - row "Gerencial" [ref=e355]:
+                        - cell "Gerencial" [ref=e356]:
+                          - table [ref=e357]:
+                            - rowgroup [ref=e358]:
+                              - row [ref=e359]:
+                                - cell [ref=e360]:
+                                  - paragraph [ref=e361]:
+                                    - link [ref=e362] [cursor=pointer]:
+                                      - /url: hescolhaopcaosistema?3064,GEST%C3%83O+GERENCIAL
+                              - row "Gerencial" [ref=e363]:
+                                - cell "Gerencial" [ref=e364]:
+                                  - generic [ref=e365]: Gerencial
+                              - row [ref=e366]:
+                                - cell [ref=e367]:
+                                  - paragraph
+            - rowgroup
+          - paragraph
+          - paragraph
+          - paragraph
+          - paragraph
+    - row "21-AMAILDO QUADRI - ME | DEUS SEJA LOUVADO ! | Versão CBS_IBS.23903.C 2026 TEGA Gestão e Tecnologia Ltda" [ref=e368]:
+      - cell "21-AMAILDO QUADRI - ME | DEUS SEJA LOUVADO ! | Versão CBS_IBS.23903.C 2026 TEGA Gestão e Tecnologia Ltda" [ref=e369]:
+        - table [ref=e370]:
+          - rowgroup [ref=e371]:
+            - row "21-AMAILDO QUADRI - ME | DEUS SEJA LOUVADO ! | Versão CBS_IBS.23903.C 2026 TEGA Gestão e Tecnologia Ltda" [ref=e372]:
+              - cell "21-AMAILDO QUADRI - ME | DEUS SEJA LOUVADO ! | Versão CBS_IBS.23903.C 2026" [ref=e373]
+              - cell "TEGA Gestão e Tecnologia Ltda" [ref=e374]

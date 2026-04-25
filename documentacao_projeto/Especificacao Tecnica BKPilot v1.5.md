@@ -182,8 +182,8 @@ Hoje, esse isolamento já existe no desenho implementado:
 
 ```text
 clients/<id>/            comportamento e material do cliente
-estado/<client>/         memória de exploração do cliente
-resultado/<client>/<ts>/ evidência e saída daquela execução
+clients/<id>/estado/         memória de exploração do cliente
+clients/<id>/resultado/<ts>/ evidência e saída daquela execução
 ```
 
 Isso corrige um problema estrutural comum em agentes acoplados: a mistura de regras específicas de cliente com engine genérica.
@@ -286,9 +286,9 @@ Por isso, a arquitetura incorpora como parte do desenho:
 O estado atual do repositório indica o seguinte desenho:
 
 ```text
-estado/<client>/                  memória da exploração
-resultado/<client>/<timestamp>/   artefatos da execução
-resultado/<timestamp>/governanca/ artefatos internos de governança
+clients/<id>/estado/                  memória da exploração
+clients/<id>/resultado/<timestamp>/   artefatos da execução
+clients/<id>/resultado/<timestamp>/governanca/ artefatos internos de governança
 clients/<client>/cenarios/        planilhas e materiais persistentes
 clients/<client>/bugs/<data>/     exports e anexos de bugs
 entregaveis/<client>/automacao/<stack>/ pacote de automação entregue ao cliente
@@ -327,7 +327,7 @@ Todo relatório `.md` destinado ao cliente deve ter PDF correspondente antes da 
 Artefatos de governança interna devem ficar fora do pacote enviado ao cliente. O local previsto é:
 
 ```text
-resultado/<timestamp>/governanca/
+clients/<id>/resultado/<timestamp>/governanca/
 ```
 
 Essa pasta pode conter autoria da automação, metadados de execução, auditoria interna, bloqueios por segregação e outras informações que não devem ser enviadas automaticamente ao cliente.
@@ -405,7 +405,7 @@ Esta versão corrige principalmente seis distorções:
 2. corrige a leitura equivocada de multi-ICL como se cada modelo fosse target de build;
 3. alinha a especificação ao multi-tenant real em `clients/<id>/`;
 4. retira do campo de "implementado" o bootstrap que ainda não existe no código atual;
-5. documenta a entrega de automação em `entregaveis/<cliente>/automacao/<stack>/`;
+5. documenta a entrega de automação em `clients/<id>/entregaveis/automacao/<stack>/`;
 6. formaliza PDF obrigatório para relatórios `.md` de cliente e remediação obrigatória na auditoria de automação.
 
 ## 22. Conclusão
@@ -417,7 +417,7 @@ O ecossistema BKPilot deve ser entendido hoje da seguinte forma:
 - as skills continuam sendo o principal ativo operacional;
 - o projeto é multi-CLI por distribuição;
 - o projeto é multi-tenant por cliente;
-- entregas de automação para cliente vivem em `entregaveis/<cliente>/automacao/<stack>/`;
+- entregas de automação para cliente vivem em `clients/<id>/entregaveis/automacao/<stack>/`;
 - relatórios `.md` destinados ao cliente também devem ser entregues em PDF;
 - a auditoria de automação deve corrigir defeitos técnicos corrigíveis antes da entrega;
 - a especificação deve refletir a realidade implementada, sem esconder o roadmap, mas sem misturá-lo com o presente.

@@ -103,7 +103,7 @@ Uma tela web simples acessada pelo navegador. O cliente vê apenas um formulári
 
 - A API cria um processo filho do Claude Code em modo headless (sem interface)
 - Roda a skill `/pipeline-completo` em background
-- Escreve resultados em `resultado/<timestamp>/` — exatamente como hoje
+- Escreve resultados em `clients/<id>/resultado/<timestamp>/` — exatamente como hoje
 - A API monitora essa pasta para reportar progresso ao front-end
 
 ---

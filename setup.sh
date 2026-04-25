@@ -76,20 +76,30 @@ echo "▶ Criando estrutura de pastas..."
 mkdir -p estado/screenshots
 mkdir -p resultado
 mkdir -p cenarios/historico
-echo "  ✅ estado/, resultado/, cenarios/ criados"
+mkdir -p clients
+echo "  ✅ estado/, resultado/, cenarios/, clients/ criados"
 
-# ── 5. Configurar .env ────────────────────────────────────────────
+# ── 5. Configurar .env raiz (integrações globais) ────────────────
 
 echo ""
 if [ ! -f .env ]; then
   cp .env.example .env
-  echo "  ✅ Arquivo .env criado a partir do .env.example"
+  echo "  ✅ .env raiz criado a partir do .env.example"
   echo ""
-  echo "  ⚠️  IMPORTANTE: Edite o arquivo .env e preencha QA_PASSWORD"
-  echo "     com a senha do usuário de QA antes de usar o agente."
+  echo "  ℹ️  O .env raiz é reservado para integrações globais"
+  echo "     (Jira, GitHub Issues). Credenciais de QA por cliente"
+  echo "     ficam em clients/<id>/.env (arquitetura multi-tenant)."
 else
-  echo "  ✅ Arquivo .env já existe — mantido sem alterações"
+  echo "  ✅ .env raiz já existe — mantido sem alterações"
 fi
+
+# ── 5.1. Orientação sobre credenciais por cliente ─────────────────
+
+echo ""
+echo "▶ Credenciais por cliente (multi-tenant):"
+echo "     Para cada novo cliente, rode:"
+echo "       ./novo-cliente.sh <id>"
+echo "     Isso cria clients/<id>/ com .env, config.json e login.js."
 
 # ── 6. Verificar .gitignore ───────────────────────────────────────
 
@@ -107,9 +117,10 @@ echo "╔═══════════════════════�
 echo "║   Setup concluído! Próximos passos:       ║"
 echo "╠══════════════════════════════════════════╣"
 echo "║                                          ║"
-echo "║  1. Edite .env com sua QA_PASSWORD       ║"
-echo "║  2. Execute: claude                      ║"
-echo "║  3. Digite:  /explorar <URL>             ║"
+echo "║  1. Crie um cliente: ./novo-cliente.sh <id> ║"
+echo "║  2. Preencha QA_PASSWORD em clients/<id>/.env ║"
+echo "║  3. Execute: claude                        ║"
+echo "║  4. Digite:  /explorar <URL>               ║"
 echo "║                                          ║"
 echo "╚══════════════════════════════════════════╝"
 echo ""

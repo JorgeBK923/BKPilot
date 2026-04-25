@@ -17,7 +17,7 @@ inputs:
     description: "URL base da API"
   - name: login
     required: false
-    description: "Email de autenticação. Senha via QA_PASSWORD no .env"
+    description: "Email de autenticação. Senha via QA_PASSWORD em clients/<id>/.env"
   - name: endpoints
     required: false
     description: "Fonte dos endpoints: auto (padrão) ou caminho para arquivo JSON"
@@ -42,7 +42,7 @@ Testa endpoints de API automaticamente. Descobre endpoints via network tab (usan
 
 ## Parâmetros
 - `<URL>` — URL base da API (obrigatório). Ex: `https://app.cliente.com.br` ou `https://api.cliente.com.br/v1`
-- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` no `.env`. Usado para obter token JWT/session para testes autenticados
+- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`. Usado para obter token JWT/session para testes autenticados
 - `--endpoints <auto|arquivo.json>` — fonte dos endpoints (padrão: auto)
   - `auto` — usa `estado/api_endpoints.json` se disponível. Se não existir, abre o browser, navega pela aplicação e descobre endpoints via network tab
   - `<arquivo.json>` — arquivo JSON com lista manual de endpoints a testar
@@ -63,7 +63,7 @@ Testa endpoints de API automaticamente. Descobre endpoints via network tab (usan
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`

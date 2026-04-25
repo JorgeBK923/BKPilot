@@ -11,20 +11,20 @@ Claude Code + **Playwright MCP** via `.claude/settings.json` (npx, not npm insta
 
 ## Security (BLOCK-B/C/D/E)
 - **NEVER** pass password inline (`--login email:senha`). Stop immediately.
-- Password from `QA_PASSWORD` in `.env` only
-- Jira/GitHub tokens from `.env` only — **NEVER** pass tokens inline as parameters
-- `.env` is gitignored
+- Password from `QA_PASSWORD` in `clients/<id>/.env` only (multi-tenant — each client has its own isolated env)
+- Jira/GitHub tokens from root `.env` only — **NEVER** pass tokens inline as parameters
+- All `.env` files (root and `clients/*/.env`) are gitignored
 
 ## Browser Automation
 - Playwright MCP only — no Selenium, Cypress
 - Use `networkidle` wait for SPA pages
-- Log `console.error/warning` → `resultado/<timestamp>/console_log.json`
-- Log network failures (≥400, >3000ms) → `resultado/<timestamp>/network_log.json`
+- Log `console.error/warning` → `clients/<id>/resultado/<timestamp>/console_log.json`
+- Log network failures (≥400, >3000ms) → `clients/<id>/resultado/<timestamp>/network_log.json`
 - Detect session expiry (401/redirect) → re-authenticate and continue
 
 ## Data Cleanup
 - Skills that create data must clean up after
-- Log to `resultado/<timestamp>/cleanup_log.json`
+- Log to `clients/<id>/resultado/<timestamp>/cleanup_log.json`
 - Mark unreversible items as "pendente"
 
 ## Video Recording
@@ -36,19 +36,39 @@ Claude Code + **Playwright MCP** via `.claude/settings.json` (npx, not npm insta
 - Convert `.webm` → `.mp4`: `ffmpeg -i input.webm -c:v libx264 -crf 23 -preset fast output.mp4`
 - If ffmpeg missing: keep `.webm`, show warning, continue (non-blocking)
 
-## Artifacts
+## Artifacts (Estrutura Multi-Tenant por Cliente)
+> **REGRA:** Todos os artefatos gerados por skills devem ficar **dentro** da pasta do cliente (`clients/<id>/`). **NUNCA** criar pastas `resultado/`, `estado/` ou `entregaveis/` na raiz do projeto.
+
 ```
-estado/                    # /explorar output
-  mapa.md, fluxos.md, elementos.json, api_endpoints.json
-resultado/<timestamp>/     # execution outputs
-  console_log.json, network_log.json, cleanup_log.json
-  videos/, screenshots/, *.md
-resultado/latest → resultado/<timestamp>/  # symlink after each run
-entregaveis/<cliente>/automacao/<stack>/  # client automation package
-  codigo/, *.md, *.pdf
-cenarios/cenarios.xlsx     # test spreadsheet
-.env                       # QA_PASSWORD (never commit)
-CLAUDE.md                  # global rules
+clients/<id>/                 # pasta do cliente (multi-tenant)
+  ├─ estado/                  # /explorar output
+  │   ├─ mapa.md
+  │   ├─ fluxos.md
+  │   ├─ elementos.json
+  │   └─ api_endpoints.json
+  ├─ resultado/<timestamp>/   # execution outputs
+  │   ├─ console_log.json
+  │   ├─ network_log.json
+  │   ├─ cleanup_log.json
+  │   ├─ dados_brutos/
+  │   ├─ videos/
+  │   ├─ screenshots/
+  │   └─ *.md / *.pdf
+  ├─ resultado/latest → <timestamp>/   # symlink para execução mais recente
+  ├─ entregaveis/automacao/<stack>/   # pacote de automação para o cliente
+  │   ├─ codigo/
+  │   ├─ *.md
+  │   └─ *.pdf
+  ├─ cenarios/                # planilhas e fichas de risco do cliente
+  ├─ flows/                   # implementação customizada de runScenario
+  ├─ config.json              # baseUrl, envPassword, defaultFlow
+  ├─ login.js                 # função de login do cliente
+  └─ .env                     # QA_PASSWORD per client (never commit)
+
+cenarios/cenarios.xlsx        # test spreadsheet (global)
+.env                          # global integrations: Jira/GitHub tokens (never commit)
+CLAUDE.md                     # global rules
+AGENTS.md                     # quick reference
 ```
 
 ## Conventions
@@ -57,8 +77,8 @@ CLAUDE.md                  # global rules
 - **Gate checks:** `/explorar` and `/gerar-cenarios` have mandatory gates — if ❌ in coverage, complete it
 - **Phase 3 mutative:** controlled by `permite_mutativo` from project API (`true` = execute POST/PUT/DELETE)
 - **Spreadsheet:** atualizar a original in-place (fazer backup `.bak` antes), NÃO criar planilha separada
-- **Client automation reports:** todo `.md` destinado ao cliente em `entregaveis/<cliente>/automacao/<stack>/` deve ter `.pdf` correspondente
-- **Internal governance:** nunca enviar `resultado/<timestamp>/governanca/`, `.env`, tokens, `geracao_id`, identidade de modelo/agente/executor ou logs internos ao cliente
+- **Client automation reports:** todo `.md` destinado ao cliente em `clients/<id>/entregaveis/automacao/<stack>/` deve ter `.pdf` correspondente
+- **Internal governance:** nunca enviar `clients/<id>/resultado/<timestamp>/governanca/`, `.env`, tokens, `geracao_id`, identidade de modelo/agente/executor ou logs internos ao cliente
 
 ## Testing
 - `/testar-modulo` = Etapa A (spreadsheet) + Etapa B (free exploration: 375px viewport, 3G throttle, memory leak detection)
@@ -110,6 +130,9 @@ Antes de marcar qualquer bug como **inconclusivo**, você DEVE tentar pelo menos
 
 ## Setup
 ```bash
-bash setup.sh  # installs Playwright MCP + Chromium, creates .env from .env.example
-# Then edit .env with QA_PASSWORD
+bash setup.sh  # one-time per machine: installs Playwright MCP + Chromium, creates root .env (Jira/GitHub)
+
+# For each new client (creates clients/<id>/ with .env, config.json, login.js skeleton):
+./novo-cliente.sh <id> --nome "Client Name" --url https://app.client.com
+# Then edit clients/<id>/.env with QA_PASSWORD
 ```

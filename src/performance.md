@@ -21,7 +21,7 @@ inputs:
     description: "URL base do sistema a analisar"
   - name: login
     required: false
-    description: "Email de autenticação. Senha via QA_PASSWORD no .env"
+    description: "Email de autenticação. Senha via QA_PASSWORD em clients/<id>/.env"
   - name: paginas
     required: false
     description: "Lista de URLs específicas separadas por vírgula"
@@ -59,7 +59,7 @@ Mede Core Web Vitals (LCP, FCP, CLS, TTFB, INP), analisa recursos pesados, gera 
 
 ## Parâmetros
 - `<URL>` — URL base do sistema a analisar (obrigatório)
-- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` no `.env`
+- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--paginas <URLs>` — lista de URLs específicas separadas por vírgula para analisar (opcional). Se omitido, analisa a URL base e páginas linkadas até profundidade 1
 - `--throttle <3g|4g|wifi>` — condição de rede simulada (padrão: wifi — sem throttle)
 
@@ -67,7 +67,7 @@ Mede Core Web Vitals (LCP, FCP, CLS, TTFB, INP), analisa recursos pesados, gera 
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`

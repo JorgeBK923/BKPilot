@@ -1,0 +1,129 @@
+- table [ref=e2]:
+  - rowgroup [ref=e3]:
+    - row "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e4]:
+      - cell "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e5]:
+        - table [ref=e6]:
+          - rowgroup [ref=e7]:
+            - row "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e8]:
+              - cell "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e9]:
+                - table [ref=e10]:
+                  - rowgroup [ref=e11]:
+                    - row "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e12]:
+                      - cell [ref=e13]
+                      - cell "Dados do Meu Usuário 999995 - bugkillers Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e14]:
+                        - table [ref=e15]:
+                          - rowgroup [ref=e16]:
+                            - row "Dados do Meu Usuário 999995 - bugkillers" [ref=e17]:
+                              - cell "Dados do Meu Usuário 999995 - bugkillers" [ref=e18]:
+                                - table [ref=e19]:
+                                  - rowgroup [ref=e20]:
+                                    - row "Dados do Meu Usuário 999995 - bugkillers" [ref=e21]:
+                                      - cell "Dados do Meu Usuário" [ref=e22]:
+                                        - img "Dados do Meu Usuário" [ref=e23] [cursor=pointer]
+                                      - cell "999995 - bugkillers" [ref=e24]:
+                                        - generic [ref=e25]: 999995 - bugkillers
+                            - row "Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e26]:
+                              - cell "Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e27]:
+                                - table [ref=e28]:
+                                  - rowgroup [ref=e29]:
+                                    - row "Clique aqui para ver suas mensagens TEGA Seach - Encontre aqui as respostas para suas dúvidas Acesso a Pagina Principal Sair do Sistema" [ref=e30]:
+                                      - cell "Clique aqui para ver suas mensagens" [ref=e31]:
+                                        - table [ref=e32]:
+                                          - rowgroup [ref=e33]:
+                                            - row "Clique aqui para ver suas mensagens" [ref=e34]:
+                                              - cell "Clique aqui para ver suas mensagens" [ref=e35]:
+                                                - img "Clique aqui para ver suas mensagens" [ref=e38] [cursor=pointer]
+                                              - cell [ref=e39]
+                                      - cell [ref=e40]
+                                      - cell [ref=e41]:
+                                        - img [ref=e42] [cursor=pointer]
+                                      - cell [ref=e43]
+                                      - cell "TEGA Seach - Encontre aqui as respostas para suas dúvidas" [ref=e44]:
+                                        - img "TEGA Seach - Encontre aqui as respostas para suas dúvidas" [ref=e45] [cursor=pointer]
+                                      - cell [ref=e46]
+                                      - cell "Acesso a Pagina Principal" [ref=e47]:
+                                        - img "Acesso a Pagina Principal" [ref=e48] [cursor=pointer]
+                                      - cell [ref=e49]
+                                      - cell "Sair do Sistema" [ref=e50]:
+                                        - img "Sair do Sistema" [ref=e51] [cursor=pointer]
+                      - cell [ref=e52]
+    - row "HOME RECENTES" [ref=e53]:
+      - cell "HOME RECENTES" [ref=e54]:
+        - generic [ref=e56]:
+          - table [ref=e57]:
+            - rowgroup [ref=e58]
+          - table [ref=e59]:
+            - rowgroup [ref=e60]:
+              - row "HOME RECENTES" [ref=e61]:
+                - cell "HOME RECENTES" [ref=e62]:
+                  - generic:
+                    - list [ref=e63]:
+                      - listitem [ref=e64]
+                      - listitem [ref=e66]:
+                        - link "HOME" [ref=e67] [cursor=pointer]:
+                          - /url: paginaprincipal
+                      - listitem [ref=e68]:
+                        - link "RECENTES" [ref=e69] [cursor=pointer]:
+                          - /url: "#"
+                    - list [ref=e70]
+    - row "GESTÃO DE ATENDIMENTO Clique aqui para acessar os manuais do módulo! Cadastros - 770 Portaria - 769 Ligações - 298 Relatórios - 495" [ref=e71]:
+      - cell "GESTÃO DE ATENDIMENTO Clique aqui para acessar os manuais do módulo! Cadastros - 770 Portaria - 769 Ligações - 298 Relatórios - 495" [ref=e72]:
+        - table [ref=e75]:
+          - rowgroup [ref=e76]:
+            - row:
+              - cell
+            - row "GESTÃO DE ATENDIMENTO Clique aqui para acessar os manuais do módulo! Cadastros - 770 Portaria - 769 Ligações - 298 Relatórios - 495" [ref=e77]:
+              - cell "GESTÃO DE ATENDIMENTO Clique aqui para acessar os manuais do módulo! Cadastros - 770 Portaria - 769 Ligações - 298 Relatórios - 495" [ref=e78]:
+                - table [ref=e79]:
+                  - rowgroup [ref=e80]:
+                    - row "GESTÃO DE ATENDIMENTO Clique aqui para acessar os manuais do módulo!" [ref=e81]:
+                      - cell "GESTÃO DE ATENDIMENTO Clique aqui para acessar os manuais do módulo!" [ref=e82]:
+                        - table [ref=e83]:
+                          - rowgroup [ref=e84]:
+                            - row "GESTÃO DE ATENDIMENTO" [ref=e85]:
+                              - cell "GESTÃO DE ATENDIMENTO" [ref=e86]:
+                                - generic [ref=e87]: GESTÃO DE ATENDIMENTO
+                            - row "Clique aqui para acessar os manuais do módulo!" [ref=e88]:
+                              - cell "Clique aqui para acessar os manuais do módulo!" [ref=e89]:
+                                - link "Clique aqui para acessar os manuais do módulo!" [ref=e91] [cursor=pointer]:
+                                  - /url: "#"
+                    - row "Cadastros - 770 Portaria - 769 Ligações - 298 Relatórios - 495" [ref=e92]:
+                      - cell "Cadastros - 770 Portaria - 769 Ligações - 298 Relatórios - 495" [ref=e93]:
+                        - generic [ref=e96]:
+                          - table [ref=e98]:
+                            - rowgroup [ref=e99]:
+                              - row "Cadastros - 770" [ref=e100]:
+                                - cell [ref=e101] [cursor=pointer]
+                                - cell "Cadastros - 770" [ref=e102]:
+                                  - link "Cadastros - 770" [ref=e103] [cursor=pointer]:
+                                    - /url: javascript:YAHOO.widget.TreeView.getNode('TREEVIEW1Container',1).toggle()
+                          - table [ref=e105]:
+                            - rowgroup [ref=e106]:
+                              - row "Portaria - 769" [ref=e107]:
+                                - cell [ref=e108] [cursor=pointer]
+                                - cell "Portaria - 769" [ref=e109]:
+                                  - link "Portaria - 769" [ref=e110] [cursor=pointer]:
+                                    - /url: javascript:YAHOO.widget.TreeView.getNode('TREEVIEW1Container',10).toggle()
+                          - table [ref=e112]:
+                            - rowgroup [ref=e113]:
+                              - row "Ligações - 298" [ref=e114]:
+                                - cell [ref=e115] [cursor=pointer]
+                                - cell "Ligações - 298" [ref=e116]:
+                                  - link "Ligações - 298" [ref=e117] [cursor=pointer]:
+                                    - /url: javascript:YAHOO.widget.TreeView.getNode('TREEVIEW1Container',14).toggle()
+                          - table [ref=e119]:
+                            - rowgroup [ref=e120]:
+                              - row "Relatórios - 495" [ref=e121]:
+                                - cell [ref=e122] [cursor=pointer]
+                                - cell "Relatórios - 495" [ref=e123]:
+                                  - link "Relatórios - 495" [ref=e124] [cursor=pointer]:
+                                    - /url: javascript:YAHOO.widget.TreeView.getNode('TREEVIEW1Container',17).toggle()
+                    - row:
+                      - cell
+    - row "21-AMAILDO QUADRI - ME | DEUS SEJA LOUVADO ! | Versão CBS_IBS.23903.C 2026 TEGA Gestão e Tecnologia Ltda" [ref=e125]:
+      - cell "21-AMAILDO QUADRI - ME | DEUS SEJA LOUVADO ! | Versão CBS_IBS.23903.C 2026 TEGA Gestão e Tecnologia Ltda" [ref=e126]:
+        - table [ref=e127]:
+          - rowgroup [ref=e128]:
+            - row "21-AMAILDO QUADRI - ME | DEUS SEJA LOUVADO ! | Versão CBS_IBS.23903.C 2026 TEGA Gestão e Tecnologia Ltda" [ref=e129]:
+              - cell "21-AMAILDO QUADRI - ME | DEUS SEJA LOUVADO ! | Versão CBS_IBS.23903.C 2026" [ref=e130]
+              - cell "TEGA Gestão e Tecnologia Ltda" [ref=e131]

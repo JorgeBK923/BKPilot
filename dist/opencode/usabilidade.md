@@ -22,7 +22,7 @@ Avaliação completa de usabilidade baseada nas 10 heurísticas de Nielsen, aná
 
 ## Parâmetros
 - `<URL>` — URL do sistema a avaliar (obrigatório)
-- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` no `.env`
+- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--modulo <nome>` — avaliar apenas páginas do módulo especificado. Requer `estado/mapa.md` (opcional)
 - `--fluxos "<fluxo1>;<fluxo2>"` — fluxos específicos para medir eficiência (opcional). Ex: `"login → dashboard;cadastro → confirmação"`. Se omitido, os fluxos são inferidos de `estado/fluxos.md` (se disponível) ou identificados durante a navegação
 
@@ -30,7 +30,7 @@ Avaliação completa de usabilidade baseada nas 10 heurísticas de Nielsen, aná
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`

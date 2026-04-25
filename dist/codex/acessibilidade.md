@@ -22,7 +22,7 @@ Auditoria completa de acessibilidade baseada nas diretrizes WCAG 2.1 (níveis A,
 
 ## Parâmetros
 - `<URL>` — URL da página ou sistema a auditar (obrigatório)
-- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` no `.env`
+- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--nivel <A|AA|AAA>` — nível WCAG a verificar (padrão: AA)
 - `--modulo <nome>` — auditar apenas páginas do módulo especificado. Requer `estado/mapa.md` (opcional)
 
@@ -30,7 +30,7 @@ Auditoria completa de acessibilidade baseada nas diretrizes WCAG 2.1 (níveis A,
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`

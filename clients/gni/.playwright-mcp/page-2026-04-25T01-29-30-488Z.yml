@@ -1,0 +1,45 @@
+- table [ref=e3]:
+  - rowgroup [ref=e4]:
+    - row:
+      - cell
+    - row "CONFIRMAR Esqueceu a sua senha? clique aqui." [ref=e5]:
+      - cell "CONFIRMAR Esqueceu a sua senha? clique aqui." [ref=e6]:
+        - table [ref=e7]:
+          - rowgroup [ref=e8]:
+            - row "CONFIRMAR Esqueceu a sua senha? clique aqui." [ref=e9]:
+              - cell "CONFIRMAR Esqueceu a sua senha? clique aqui." [ref=e10]:
+                - table [ref=e11]:
+                  - rowgroup [ref=e12]:
+                    - row "CONFIRMAR Esqueceu a sua senha? clique aqui." [ref=e13]:
+                      - cell "CONFIRMAR Esqueceu a sua senha? clique aqui." [ref=e14]:
+                        - table [ref=e15]:
+                          - rowgroup [ref=e16]:
+                            - row [ref=e17]:
+                              - cell [ref=e18]
+                            - row "CONFIRMAR Esqueceu a sua senha? clique aqui." [ref=e19]:
+                              - cell "CONFIRMAR Esqueceu a sua senha? clique aqui." [ref=e20]:
+                                - table [ref=e21]:
+                                  - rowgroup [ref=e22]:
+                                    - row [ref=e23]:
+                                      - cell [ref=e24]:
+                                        - textbox "Usuário" [ref=e25]
+                                    - row [ref=e26]:
+                                      - cell [ref=e27]:
+                                        - textbox "Senha" [ref=e28]
+                                    - row "CONFIRMAR" [ref=e29]:
+                                      - cell "CONFIRMAR" [ref=e30]:
+                                        - button "CONFIRMAR" [ref=e31] [cursor=pointer]
+                                    - row "Esqueceu a sua senha? clique aqui." [ref=e32]:
+                                      - cell "Esqueceu a sua senha? clique aqui." [ref=e33]:
+                                        - link "Esqueceu a sua senha? clique aqui." [ref=e35] [cursor=pointer]:
+                                          - /url: "#"
+                                    - row:
+                                      - cell
+    - row [ref=e36]:
+      - cell [ref=e37]:
+        - table [ref=e38]:
+          - rowgroup:
+            - row:
+              - cell
+    - row:
+      - cell

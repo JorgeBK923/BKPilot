@@ -24,7 +24,7 @@ inputs:
     description: "URL da página com o formulário a testar"
   - name: login
     required: false
-    description: "Email de autenticação. Senha via QA_PASSWORD no .env"
+    description: "Email de autenticação. Senha via QA_PASSWORD em clients/<id>/.env"
 targets:
   claude:
     supported: true
@@ -56,13 +56,13 @@ Especialista em formulários. Identifica todos os campos de um formulário e exe
 
 ## Parâmetros
 - `<URL>` — URL da página com o formulário a testar (obrigatório)
-- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` no `.env`
+- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 
 ## Instruções de Execução
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`

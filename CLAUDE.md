@@ -55,7 +55,7 @@ Nesses casos, o LLM **apenas dispara** o script via Bash, lê o **JSON/MD de res
 
 ### Padrão arquitetural para skills híbridas
 - `.claude/commands/<skill>.md` — orquestra, decide, analisa resultado
-- `cenarios/_<skill>.js` — executa trabalho pesado, escreve `resultado/<timestamp>/<skill>_summary.json`
+- `cenarios/_<skill>.js` — executa trabalho pesado, escreve `clients/<id>/resultado/<timestamp>/<skill>_summary.json`
 - LLM lê **somente** o summary final, nunca logs brutos
 
 ---
@@ -63,9 +63,10 @@ Nesses casos, o LLM **apenas dispara** o script via Bash, lê o **JSON/MD de res
 ## 2. Segurança de Credenciais
 
 - **NUNCA** expor `QA_PASSWORD` em logs, arquivos de resultado, screenshots ou saídas de terminal
-- A senha é lida exclusivamente da variável de ambiente `QA_PASSWORD` definida no arquivo `.env`
+- A senha é lida exclusivamente da variável de ambiente `QA_PASSWORD` definida em `clients/<id>/.env` (arquitetura multi-tenant — cada cliente tem seu próprio `.env` isolado). O `.env` da raiz é exclusivo para tokens de integrações globais (Jira, GitHub) e **não** contém `QA_PASSWORD`.
 - Se `--login` contiver `:` (ex: `email:senha`), **PARAR imediatamente** e exibir erro de segurança
-- Nunca commitar o `.env` — ele está protegido pelo `.gitignore`
+- Nunca commitar nenhum `.env` — tanto o raiz quanto `clients/*/.env` estão protegidos pelo `.gitignore`
+- Para criar um cliente novo: `./novo-cliente.sh <id> --nome "Nome" --url https://...` (cria pasta, `.env`, `config.json` e `login.js` skeleton). O `setup.sh` é bootstrap de máquina, roda **uma vez por máquina** — não cria credenciais por cliente.
 
 ---
 
@@ -78,7 +79,7 @@ Ao iniciar o browser, interceptar eventos de console:
 - Capturar todas as mensagens: console.error, console.warning, console.log (apenas erros e avisos são reportados)
 - Formato de registro por mensagem:
   { "timestamp": "ISO-8601", "level": "error|warning", "text": "mensagem", "url": "página", "lineNumber": N }
-- Salvar acumulado em: resultado/<timestamp>/console_log.json
+- Salvar acumulado em: clients/<id>/resultado/<timestamp>/console_log.json
 - No resultado final (.md), incluir seção "Console Errors" listando erros críticos
 - Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
 ```
@@ -98,7 +99,7 @@ Ao iniciar o browser, interceptar requisições de rede:
 - Registrar requisições que falharam (timeout, DNS, conexão recusada)
 - Formato por requisição:
   { "timestamp": "ISO-8601", "method": "GET|POST|...", "url": "endpoint", "status": N, "duration_ms": N, "size_bytes": N, "error": "mensagem se falhou" }
-- Salvar acumulado em: resultado/<timestamp>/network_log.json
+- Salvar acumulado em: clients/<id>/resultado/<timestamp>/network_log.json
 - No resultado final (.md), incluir seção "Network Issues" com erros 5xx e requisições lentas
 - Muitos erros 5xx consecutivos devem gerar alerta no resumo
 ```
@@ -138,7 +139,7 @@ Ao final da execução, realizar cleanup dos dados criados durante os testes:
 - Manter registro de cada dado criado: { "item": "descrição", "tipo": "cadastro|pedido|...", "url": "onde foi criado" }
 - Tentar reverter: excluir registros via interface (botão excluir) ou API se disponível
 - Registrar resultado do cleanup: { "item", "tipo", "url", "status": "limpo|pendente", "motivo": "se pendente" }
-- Salvar em: resultado/<timestamp>/cleanup_log.json
+- Salvar em: clients/<id>/resultado/<timestamp>/cleanup_log.json
 - No resultado final (.md), incluir seção "Cleanup de Dados"
 - Se cleanup não for possível: registrar como pendência para o QA resolver manualmente
 ```
@@ -192,8 +193,8 @@ Esta regra é **OBRIGATÓRIA e INEGOCIÁVEL** para TODAS as ICLs (Claude, GLM, M
 ### Onde salvar:
 
 ```
-resultado/<timestamp>/screenshots/  ← PNGs por passo/cenário/bug
-resultado/<timestamp>/videos/       ← MP4 (falhas críticas ou fluxos longos)
+clients/<id>/resultado/<timestamp>/screenshots/  ← PNGs por passo/cenário/bug
+clients/<id>/resultado/<timestamp>/videos/       ← MP4 (falhas críticas ou fluxos longos)
 ```
 
 **Checklist antes de encerrar qualquer skill de teste:**
@@ -208,7 +209,7 @@ Se qualquer item estiver **NÃO**, a skill não terminou. Voltar e capturar.
 ## 8. Timestamps e Organização
 
 - Formato padrão de timestamp: `YYYY-MM-DD_HHMM` (ex: `2026-04-04_1530`)
-- Sempre criar symlink `resultado/latest → resultado/<timestamp>/`
+- Sempre criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 - Nomear artefatos de forma descritiva: `<tipo>_<contexto>_<timestamp>.<ext>`
 
 ---
@@ -233,43 +234,55 @@ Skills avulsas que podem ser usadas independentemente:
 
 Skills de entrega de automação ao cliente (executar **após** `/gerar-cenarios` e, idealmente, após pelo menos um ciclo de `/testar-modulo`):
 - `/plano-automacao` — plano estratégico de automação de testes (o que automatizar, com qual prioridade e stack)
-- `/gerar-automacao-cliente` — geração de pacote de código no stack do cliente (Playwright/Cypress/pytest/Selenium/Robot). Saída em `entregaveis/<cliente>/automacao/<stack>/`. Todo `.md` de cliente deve ter `.pdf` correspondente.
+- `/gerar-automacao-cliente` — geração de pacote de código no stack do cliente (Playwright/Cypress/pytest/Selenium/Robot). Saída em `clients/<id>/entregaveis/automacao/<stack>/`. Todo `.md` de cliente deve ter `.pdf` correspondente.
 - `/auditar-automacao-cliente` — auditoria independente com remediação obrigatória: corrige defeitos técnicos objetivos, revalida, gera `correcoes_auditoria.md` quando aplicável e bloqueia entrega se restar falha alta.
 
 Regra de entrega ao cliente para automação:
-- enviar somente o pacote revisado em `entregaveis/<cliente>/automacao/<stack>/`;
+- enviar somente o pacote revisado em `clients/<id>/entregaveis/automacao/<stack>/`;
 - todo relatório `.md` destinado ao cliente deve ter uma versão `.pdf` correspondente;
-- não enviar `resultado/<timestamp>/governanca/`, `.env`, tokens, `automacao_autoria_<cliente>_<stack>.json`, `auditoria_interna_<cliente>_<stack>.md`, identidade de modelo/agente/executor ou `geracao_id`.
+- não enviar `clients/<id>/resultado/<timestamp>/governanca/`, `.env`, tokens, `automacao_autoria_<cliente>_<stack>.json`, `auditoria_interna_<cliente>_<stack>.md`, identidade de modelo/agente/executor ou `geracao_id`.
 
 ---
 
-## 10. Estrutura de Artefatos
+## 10. Estrutura de Artefatos (Multi-Tenant)
+
+> **REGRA:** Todos os artefatos gerados por skills devem ficar **dentro** da pasta do cliente (`clients/<id>/`). **NUNCA** criar pastas `resultado/`, `estado/` ou `entregaveis/` na raiz do projeto.
 
 ```
-estado/
-├── mapa.md                  ← mapa do sistema
-├── fluxos.md                ← fluxos identificados
-├── elementos.json           ← elementos interativos + console errors por página
-├── api_endpoints.json       ← endpoints descobertos via network tab
-└── screenshots/             ← screenshots de cada página
-
-resultado/<timestamp>/
-├── console_log.json         ← log de console do browser
-├── network_log.json         ← log de requisições de rede
-├── cleanup_log.json         ← log de cleanup de dados
-├── parcial_semana*.pdf      ← relatórios parciais de acompanhamento
-├── videos/                  ← evidências em MP4
-├── screenshots/             ← capturas por passo
-└── *.md                     ← resultados detalhados
-
-resultado/
-└── parciais_index.json      ← índice histórico de relatórios parciais
-
-entregaveis/
-└── <cliente>/automacao/<stack>/
-    ├── codigo/               ← código de automação entregue ao cliente
-    ├── *.md                  ← relatórios e rastreabilidade
-    └── *.pdf                 ← versões PDF obrigatórias dos .md de cliente
+clients/<id>/
+├── estado/                      ← /explorar output
+│   ├── mapa.md                  ← mapa do sistema
+│   ├── fluxos.md                ← fluxos identificados
+│   ├── elementos.json           ← elementos interativos + console errors por página
+│   ├── api_endpoints.json       ← endpoints descobertos via network tab
+│   └── screenshots/             ← screenshots de cada página
+│
+├── resultado/<timestamp>/       ← execution outputs
+│   ├── console_log.json         ← log de console do browser
+│   ├── network_log.json         ← log de requisições de rede
+│   ├── cleanup_log.json         ← log de cleanup de dados
+│   ├── dados_brutos/            ← JSONs de análise intermediária
+│   ├── parcial_semana*.pdf      ← relatórios parciais de acompanhamento
+│   ├── videos/                  ← evidências em MP4
+│   ├── screenshots/             ← capturas por passo
+│   └── *.md / *.pdf             ← resultados detalhados
+│
+├── resultado/
+│   └── latest → <timestamp>/    ← symlink para execução mais recente
+│
+├── entregaveis/
+│   └── automacao/<stack>/       ← pacote de automação para o cliente
+│       ├── codigo/              ← código de automação entregue ao cliente
+│       ├── *.md                 ← relatórios e rastreabilidade
+│       └── *.pdf                ← versões PDF obrigatórias dos .md de cliente
+│
+├── cenarios/                    ← planilhas e fichas de risco do cliente
+├── flows/                       ← implementação customizada de runScenario
+├── config.json                  ← baseUrl, envPassword, defaultFlow
+├── login.js                     ← função de login do cliente
+└── .env                         ← QA_PASSWORD per client (never commit)
+```
+(ver estrutura completa na seção 10 acima)
 
 assets/
 └── logo-bugkillers.png      ← logo para relatórios

@@ -103,7 +103,7 @@ Antes de usar a skill, confirme que a VPS já está preparada:
 - dependências instaladas com `npm install`;
 - Playwright e Chromium instalados;
 - CLI operacional autenticada (Claude Code, OpenCode, etc.);
-- arquivo `.env` configurado com `QA_PASSWORD`;
+- arquivo `clients/<id>/.env` do cliente alvo configurado com `QA_PASSWORD` (multi-tenant: cada cliente tem seu próprio `.env` em `clients/<id>/`);
 - espaço em disco suficiente para screenshots, vídeos e relatórios.
 
 Comandos rápidos de verificação:
@@ -128,7 +128,7 @@ Tenha estes dados em mãos:
 ```text
 URL do sistema: <URL_BASE_DO_CLIENTE>
 Login de teste: <EMAIL_DE_TESTE>
-Senha: QA_PASSWORD (já no .env)
+Senha: QA_PASSWORD (já em clients/<id>/.env)
 Contexto do negócio: <DESCRICAO_DO_DOMINIO>
 Valor hora do QA: <VALOR> (default: R$ 150)
 Tamanho da equipe: <N> (default: 1 QA)
@@ -171,10 +171,10 @@ README.md
 package.json
 src/
 .claude/
-estado/
-resultado/
+clients/<id>/estado/
+clients/<id>/resultado/
 cenarios/
-entregaveis/
+clients/<id>/entregaveis/
 ```
 
 ### 8.2 Abrir a CLI
@@ -227,7 +227,7 @@ Exemplo completo:
 | Parâmetro | Obrigatório | Default | Descrição |
 |-----------|-------------|---------|-----------|
 | `<URL>` | Sim | — | URL base do sistema a avaliar |
-| `--login` | Sim (se sistema protegido) | — | Email de autenticação. Senha lida de `QA_PASSWORD` no `.env` |
+| `--login` | Sim (se sistema protegido) | — | Email de autenticação. Senha lida de `QA_PASSWORD` em `clients/<id>/.env` |
 | `--horas-base` | Não | 150 | Valor hora do profissional em reais |
 | `--time-size` | Não | 1 | Quantidade de QAs na equipe de automação |
 | `--modulo-core` | Não | — | Nome do módulo central, se já conhecido |
@@ -236,7 +236,7 @@ Exemplo completo:
 
 **Regras de segurança:**
 - Nunca passe senha inline (`--login email:senha`). Use apenas o email.
-- A senha é lida automaticamente da variável `QA_PASSWORD` no `.env`.
+- A senha é lida automaticamente da variável `QA_PASSWORD` em `clients/<id>/.env` (multi-tenant).
 
 ### 9.4 Quando passar `--dominio`
 
@@ -270,7 +270,7 @@ Se não passar, a skill vai identificar o core automaticamente usando heurístic
 Após a execução, confira:
 
 ```bash
-ls resultado/latest/
+ls clients/<id>/resultado/latest/
 ```
 
 Artefatos esperados:
@@ -398,20 +398,20 @@ Antes de enviar o relatório ao cliente ou stakeholder, confirme:
 ```bash
 mkdir -p exports
 tar -czf exports/plano_automacao_<cliente>_<timestamp>.tar.gz \
-  resultado/<timestamp>/automacao_plano_<timestamp>.md \
-  resultado/<timestamp>/automacao_estimativa_<timestamp>.md \
-  resultado/<timestamp>/automacao_viabilidade_<timestamp>.md \
-  resultado/<timestamp>/screenshots/
+  clients/<id>/resultado/<timestamp>/automacao_plano_<timestamp>.md \
+  clients/<id>/resultado/<timestamp>/automacao_estimativa_<timestamp>.md \
+  clients/<id>/resultado/<timestamp>/automacao_viabilidade_<timestamp>.md \
+  clients/<id>/resultado/<timestamp>/screenshots/
 ```
 
 Exemplo:
 
 ```bash
 tar -czf exports/plano_automacao_acme_2026-04-24_1430.tar.gz \
-  resultado/2026-04-24_1430/automacao_plano_2026-04-24_1430.md \
-  resultado/2026-04-24_1430/automacao_estimativa_2026-04-24_1430.md \
-  resultado/2026-04-24_1430/automacao_viabilidade_2026-04-24_1430.md \
-  resultado/2026-04-24_1430/screenshots/
+  clients/<id>/resultado/2026-04-24_1430/automacao_plano_2026-04-24_1430.md \
+  clients/<id>/resultado/2026-04-24_1430/automacao_estimativa_2026-04-24_1430.md \
+  clients/<id>/resultado/2026-04-24_1430/automacao_viabilidade_2026-04-24_1430.md \
+  clients/<id>/resultado/2026-04-24_1430/screenshots/
 ```
 
 ### 13.2 Conferir tamanho
@@ -543,8 +543,8 @@ A skill vai:
 No terminal da VPS:
 
 ```bash
-ls resultado/latest/
-cat resultado/latest/automacao_plano_*.md | head -n 80
+ls clients/<id>/resultado/latest/
+cat clients/<id>/resultado/latest/automacao_plano_*.md | head -n 80
 ```
 
 ### Passo 6: compactar
@@ -576,7 +576,7 @@ Descompacte e leia o plano antes de apresentar.
 ## 16. Boas práticas de segurança
 
 - Nunca coloque senha no comando (`--login email:senha` é proibido).
-- Nunca envie `resultado/<timestamp>/governanca/` ao cliente.
+- Nunca envie `clients/<id>/clients/<id>/resultado/<timestamp>/governanca/` ao cliente.
 - Nunca envie `console_log.json` ou `network_log.json` ao cliente sem revisão.
 - **Sempre gere PDF para todo `.md` destinado ao cliente. Nunca entregue apenas Markdown.**
 - Sempre revise o veredito antes de apresentar — a skill pode ser conservadora demais ou otimista demais.
@@ -620,8 +620,8 @@ Compactar:
 
 ```bash
 tar -czf exports/plano_automacao_<cliente>_<timestamp>.tar.gz \
-  resultado/<timestamp>/automacao_*.md \
-  resultado/<timestamp>/screenshots/
+  clients/<id>/resultado/<timestamp>/automacao_*.md \
+  clients/<id>/resultado/<timestamp>/screenshots/
 ```
 
 Baixar pelo Termius:
@@ -636,7 +636,7 @@ SFTP -> /home/<USUARIO_DA_VPS>/bkpilot/exports/
 
 Antes de executar:
 
-- [ ] `.env` configurado com `QA_PASSWORD`
+- [ ] `clients/<id>/.env` configurado com `QA_PASSWORD`
 - [ ] URL do sistema confirmada e acessível
 - [ ] Login de teste válido
 - [ ] `--dominio` preparado (opcional mas recomendado)

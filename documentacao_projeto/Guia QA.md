@@ -137,7 +137,7 @@ Antes da primeira operação, confirme estes itens:
 - Node.js 18+ instalado;
 - dependências do projeto instaladas;
 - browsers do Playwright instalados;
-- `.env` configurado com a senha de QA;
+- `clients/<id>/.env` configurado com a senha de QA do cliente alvo;
 - CLI operacional do time disponível;
 - acesso ao ambiente do cliente;
 - certeza de que o ambiente é de dev/homologação quando houver ação mutativa.
@@ -158,7 +158,7 @@ Certo:
 --login email@cliente.com
 ```
 
-Com a senha vindo do `.env`.
+Com a senha vindo de `clients/<id>/.env` (arquitetura multi-tenant: cada cliente tem seu próprio `.env` isolado).
 
 Essa regra existe por segurança. Senha inline vaza para histórico de terminal, logs e captura de comando.
 
@@ -184,15 +184,28 @@ O `setup.sh` existe para reduzir erro humano na primeira instalação. Em vez de
 - ajusta a configuração necessária;
 - cria a estrutura inicial esperada pelo projeto.
 
-### 8.3 Configurar o `.env`
+### 8.3 Configurar credenciais (multi-tenant)
 
-Depois do setup, revise o `.env` e preencha:
+O `setup.sh` é executado **uma vez por máquina** — não cria credenciais de cliente. Para cada cliente novo, use o script dedicado:
 
-```env
-QA_PASSWORD=sua_senha_aqui
+```bash
+./novo-cliente.sh <id> --nome "Nome do Cliente" --url https://app.cliente.com.br
 ```
 
-Se o cliente exigir variável específica, siga o contrato configurado no `config.json` do client pack.
+Isso cria `clients/<id>/` com `.env`, `config.json` e `login.js` skeleton. Depois:
+
+1. **`clients/<id>/.env`** — preencha:
+
+   ```env
+   QA_PASSWORD=sua_senha_aqui
+   ```
+
+2. **`clients/<id>/config.json`** — ajuste `postLoginSelector` (selector que aparece após login bem-sucedido) e `defaultFlow`/`defaultRetesteFlow` se aplicável.
+3. **`clients/<id>/login.js`** — ajuste os seletores de usuário/senha conforme a tela de login real.
+
+O `.env` da raiz do projeto **não armazena** `QA_PASSWORD` — ele é exclusivo de integrações globais (Jira, GitHub Issues). A senha de QA mora sempre em `clients/<id>/.env`.
+
+Se o cliente exigir variável específica, siga o contrato configurado em `envPassword` do `config.json` do client pack.
 
 ## 9. Playwright: o que você realmente precisa entender
 
@@ -362,7 +375,7 @@ Exemplo
 Exemplo usando base anterior
 
 ```text
-/reportar-bug --fonte resultado/latest/ --bugs-anteriores resultado/tega/2026-04-14_1806/
+/reportar-bug --fonte resultado/latest/ --bugs-anteriores clients/tega/clients/<id>/resultado/2026-04-14_1806/
 ```
 
 Cuidados
@@ -467,10 +480,10 @@ documentacao_projeto/Guia QA - Skills de Automacao do Cliente.md
 
 Regras principais desse fluxo:
 
-- o pacote do cliente fica em `entregaveis/<cliente>/automacao/<stack>/`;
+- o pacote do cliente fica em `clients/<id>/entregaveis/automacao/<stack>/`;
 - todo relatório `.md` destinado ao cliente deve ter `.pdf` correspondente;
 - a auditoria deve corrigir defeitos técnicos objetivos antes da entrega;
-- arquivos de governança em `resultado/<timestamp>/governanca/` são internos e não devem ser enviados ao cliente.
+- arquivos de governança em `clients/<id>/clients/<id>/resultado/<timestamp>/governanca/` são internos e não devem ser enviados ao cliente.
 
 ## 11. Quando usar os comandos avulsos
 
@@ -809,7 +822,7 @@ Cuidados
 
 Um QA que não entende os artefatos gerados perde metade do valor do agente.
 
-### 12.1 `estado/<client>/`
+### 12.1 `clients/<id>/estado/`
 
 Representa o conhecimento persistido sobre o sistema explorado daquele cliente.
 
@@ -822,7 +835,7 @@ Normalmente inclui:
 
 Pense nessa pasta como memória estruturada da exploração.
 
-### 12.2 `resultado/<client>/<timestamp>/`
+### 12.2 `clients/<id>/resultado/<timestamp>/`
 
 É a pasta da execução.
 
@@ -885,7 +898,7 @@ Nunca trate ação mutativa como trivial. Se o projeto pode escrever no sistema,
 
 ### 14.1 Falta de credencial
 
-Se o `.env` está errado, quase todo o fluxo quebra cedo.
+Se o `clients/<id>/.env` está errado, quase todo o fluxo quebra cedo.
 
 Sinal típico:
 
@@ -894,7 +907,7 @@ Sinal típico:
 - reauth entra em loop;
 - comandos reclamam de variável ausente.
 
-Primeiro diagnóstico: revisar `.env` e o contrato de `envPassword` do cliente.
+Primeiro diagnóstico: revisar `clients/<id>/.env` e o contrato de `envPassword` no `config.json` do cliente.
 
 ### 14.2 Erro de login
 
@@ -929,7 +942,7 @@ Antes de iniciar:
 
 - [ ] estou no cliente certo;
 - [ ] revisei o pack em `clients/<id>/`;
-- [ ] confirmei credenciais no `.env`;
+- [ ] confirmei credenciais em `clients/<id>/.env`;
 - [ ] sei se o ambiente aceita mutação;
 - [ ] sei qual CLI vou usar;
 - [ ] entendi o objetivo do ciclo.
@@ -948,7 +961,7 @@ Antes de fechar execução:
 Se for sua primeira operação real, siga esta sequência:
 
 1. leia o pack do cliente em `clients/<id>/`;
-2. confirme o `.env`;
+2. confirme `clients/<id>/.env`;
 3. rode a exploração;
 4. revise o material gerado;
 5. gere cenários;

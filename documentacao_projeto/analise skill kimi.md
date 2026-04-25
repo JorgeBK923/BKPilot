@@ -43,7 +43,7 @@ O projeto possui **19 skills** (slash commands) definidos em `.claude/commands/`
 | Skill | Função | Destaque |
 |-------|--------|----------|
 | `/plano-automacao` | Consultoria embarcada para automação de testes | Análise de viabilidade técnica, estimativa de horas/custo, matriz de prioridade (Quick Wins vs Core), veredito de viabilidade com bloqueadores. **Regra: todo `.md` destinado ao cliente deve ter PDF correspondente** |
-| `/gerar-automacao-cliente` | Gera pacote de automacao exportavel no stack do cliente | Especificacao intermediaria, codigo em `entregaveis/<cliente>/automacao/<stack>/`, cobertura, rastreabilidade e PDFs dos `.md` de cliente |
+| `/gerar-automacao-cliente` | Gera pacote de automacao exportavel no stack do cliente | Especificacao intermediaria, codigo em `clients/<id>/entregaveis/automacao/<stack>/`, cobertura, rastreabilidade e PDFs dos `.md` de cliente |
 | `/auditar-automacao-cliente` | Auditoria independente do pacote gerado | Segregacao obrigatoria, remediacao de defeitos tecnicos corrigiveis, revalidacao, parecer independente e PDFs dos `.md` de cliente |
 
 ### 📊 Relatórios
@@ -162,7 +162,7 @@ As principais oportunidades estão em: **resiliência do pipeline** (checkpoints
 - **Arquivo:** `.claude/commands/explorar.md`
 - **Descrição:** Mapeia o sistema alvo por completo. Navega por todas as páginas acessíveis, abre modais e wizards, ativa abas, identifica elementos interativos, detecta fluxos, captura console errors, monitora rede, detecta endpoints de API e tira screenshots de cada tela.
 - **Gate Check:** Fase 4 com ficha de cobertura 100% verde.
-- **Artefatos:** `estado/mapa.md`, `estado/fluxos.md`, `estado/elementos.json`, `estado/api_endpoints.json`, `resultado/<timestamp>/cobertura.md`
+- **Artefatos:** `clients/<id>/estado/mapa.md`, `clients/<id>/estado/fluxos.md`, `clients/<id>/estado/elementos.json`, `clients/<id>/estado/api_endpoints.json`, `clients/<id>/resultado/<timestamp>/cobertura.md`
 
 ### `/gerar-cenarios` — Geração de Cenários BDD/Gherkin
 - **Arquivo:** `.claude/commands/gerar-cenarios.md`
@@ -174,108 +174,108 @@ As principais oportunidades estão em: **resiliência do pipeline** (checkpoints
 - **Arquivo:** `.claude/commands/executar-planilha.md`
 - **Descrição:** Executa cenários de teste em lote a partir de uma planilha `.xlsx` ou `.csv`.
 - **Features:** Circuit breaker, retry, agrupamento por URL, monitoramento de console/rede.
-- **Artefatos:** Planilha atualizada in-place (com backup `.bak`), `resultado/<timestamp>/planilha_<timestamp>.md`
+- **Artefatos:** Planilha atualizada in-place (com backup `.bak`), `clients/<id>/resultado/<timestamp>/planilha_<timestamp>.md`
 
 ### `/executar-fluxo` — Execução de Fluxo E2E
 - **Arquivo:** `.claude/commands/executar-fluxo.md`
 - **Descrição:** Executa um fluxo de ponta a ponta descrito em linguagem natural.
 - **Features:** Data-driven testing, monitoramento de console/rede, cleanup de dados.
-- **Artefatos:** `resultado/<timestamp>/fluxo_<timestamp>.md`, vídeo MP4, screenshots
+- **Artefatos:** `clients/<id>/resultado/<timestamp>/fluxo_<timestamp>.md`, vídeo MP4, screenshots
 
 ### `/testar-modulo` — Teste Completo de Módulo
 - **Arquivo:** `.claude/commands/testar-modulo.md`
 - **Descrição:** Skill híbrida que combina execução de roteiro + exploração livre.
 - **Etapa A:** Execução dos cenários da planilha para o módulo especificado.
 - **Etapa B:** Exploração livre restrita ao módulo (acessibilidade, mobile 375px, throttle 3G, memory leak).
-- **Artefatos:** `resultado/<timestamp>/modulo_<timestamp>.md`, vídeos, screenshots
+- **Artefatos:** `clients/<id>/resultado/<timestamp>/modulo_<timestamp>.md`, vídeos, screenshots
 
 ### `/testar-forms` — Teste de Formulários
 - **Arquivo:** `.claude/commands/testar-forms.md`
 - **Descrição:** Especialista em formulários. Identifica todos os campos e executa bateria completa de testes.
 - **Grupos de teste:** 13 (dados válidos, campos vazios, dados inválidos, limites, caracteres especiais, upload, wizard, autocomplete, i18n, persistência, segurança expandida, JS desabilitado).
-- **Artefatos:** `resultado/<timestamp>/forms_<timestamp>.md`, vídeo MP4, screenshots
+- **Artefatos:** `clients/<id>/resultado/<timestamp>/forms_<timestamp>.md`, vídeo MP4, screenshots
 
 ### `/testar-ia` — Teste Especializado de IA Conversacional
 - **Arquivo:** `.claude/commands/testar-ia.md`
 - **Descrição:** Skill dedicada ao teste de sistemas de IA conversacional.
 - **Categorias de risco:** F. Core, Guardrails, Permissões, Robustez, UX, Histórico, Performance.
 - **Features:** Biblioteca adversarial reutilizável, chat cleanup automático, validação semântica por regex, reteste de ambiente.
-- **Artefatos:** `cenarios/cenarios_ia_<timestamp>.xlsx`, `resultado/<timestamp>/ia_placar_consolidado.md`, `resultado/<timestamp>/ia_auditoria_pendente.md`
+- **Artefatos:** `cenarios/cenarios_ia_<timestamp>.xlsx`, `clients/<id>/resultado/<timestamp>/ia_placar_consolidado.md`, `clients/<id>/resultado/<timestamp>/ia_auditoria_pendente.md`
 
 ### `/performance` — Análise de Performance e Core Web Vitals
 - **Arquivo:** `.claude/commands/performance.md`
 - **Descrição:** Mede Core Web Vitals (LCP, FCP, CLS, TTFB, INP), analisa recursos pesados, gera waterfall de rede.
 - **Features:** Throttle de rede (3G, 4G, WiFi), score de performance por página.
-- **Artefatos:** `resultado/<timestamp>/performance_<timestamp>.md`, screenshots, logs
+- **Artefatos:** `clients/<id>/resultado/<timestamp>/performance_<timestamp>.md`, screenshots, logs
 
 ### `/usabilidade` — Avaliação Heurística de Usabilidade
 - **Arquivo:** `.claude/commands/usabilidade.md`
 - **Descrição:** Avaliação completa baseada nas 10 heurísticas de Nielsen.
 - **Features:** Análise de eficiência de fluxos, consistência de UI, feedback visual, UX de formulários, UX de erros e navegação.
-- **Artefatos:** `resultado/<timestamp>/usabilidade_<timestamp>.md`, vídeo MP4, screenshots
+- **Artefatos:** `clients/<id>/resultado/<timestamp>/usabilidade_<timestamp>.md`, vídeo MP4, screenshots
 
 ### `/acessibilidade` — Auditoria de Acessibilidade WCAG
 - **Arquivo:** `.claude/commands/acessibilidade.md`
 - **Descrição:** Auditoria completa baseada nas diretrizes WCAG 2.1 (níveis A, AA e AAA).
 - **Cobertura:** Contraste de cores, atributos ARIA, navegação por teclado, textos alternativos, labels de formulário, hierarquia de headings, compatibilidade com screen readers.
-- **Artefatos:** `resultado/<timestamp>/acessibilidade_<timestamp>.md`, screenshots
+- **Artefatos:** `clients/<id>/resultado/<timestamp>/acessibilidade_<timestamp>.md`, screenshots
 
 ### `/regressao` — Teste de Regressão
 - **Arquivo:** `.claude/commands/regressao.md`
 - **Descrição:** Retesta bugs corrigidos e verifica se as correções introduziram regressões.
 - **Modos:** Planilha, Bugs Externos (Jira Excel/Word/XML), Combinado.
 - **Features:** Visual diff, evidências visuais obrigatórias, ingestão de exportações Jira.
-- **Artefatos:** `resultado/<timestamp>/regressao_<timestamp>.md`, vídeos, screenshots, evidências anteriores
+- **Artefatos:** `clients/<id>/resultado/<timestamp>/regressao_<timestamp>.md`, vídeos, screenshots, evidências anteriores
 
 ### `/reportar-bug` — Geração de Bug Cards
 - **Arquivo:** `.claude/commands/reportar-bug.md`
 - **Descrição:** Transforma erros encontrados em bug cards completos no padrão BugKillers.
 - **Features:** Deduplicação contra bugs anteriores, análise de causa raiz, classificação de severidade e frequência.
-- **Artefatos:** `resultado/latest/bugs_<timestamp>.md`
+- **Artefatos:** `clients/<id>/resultado/latest/bugs_<timestamp>.md`
 
 ### `/push-bugs` — Enviar Bugs para Issue Tracker
 - **Arquivo:** `.claude/commands/push-bugs.md`
 - **Descrição:** Envia bug cards para Jira Cloud, GitHub Issues ou exporta CSV.
 - **Segurança:** Nunca expõe tokens inline (BLOCK-F).
-- **Artefatos:** `resultado/latest/push_bugs_<timestamp>.json`, `resultado/latest/bugs_<timestamp>.csv`
+- **Artefatos:** `clients/<id>/resultado/latest/push_bugs_<timestamp>.json`, `clients/<id>/resultado/latest/bugs_<timestamp>.csv`
 
 ### `/api-check` — Testes de API
 - **Arquivo:** `.claude/commands/api-check.md`
 - **Descrição:** Testa endpoints de API automaticamente.
 - **Cobertura:** Status code, autenticação, payloads inválidos, tempo de resposta, SQL injection, path traversal, SSRF, header injection, mass assignment, rate limiting, CORS, headers de segurança.
-- **Artefatos:** `resultado/<timestamp>/api-check_<timestamp>.md`
+- **Artefatos:** `clients/<id>/resultado/<timestamp>/api-check_<timestamp>.md`
 
 ### `/gerar-relatorio` — Relatório Final para o Cliente
 - **Arquivo:** `.claude/commands/gerar-relatorio.md`
 - **Descrição:** Consolida todos os resultados do pipeline em relatório final profissional.
 - **Formatos:** PDF, PPTX, DOCX.
 - **Features:** Métricas, bugs, evidências, gráficos, análise de tendência, cobertura vs. risco, parecer técnico.
-- **Artefatos:** `resultado/latest/relatorio_<timestamp>.pdf` (ou .pptx / .docx)
+- **Artefatos:** `clients/<id>/resultado/latest/relatorio_<timestamp>.pdf` (ou .pptx / .docx)
 
 ### `/plano-automacao` — Plano Estratégico de Automacao de Testes
 - **Arquivo:** `.claude/commands/plano-automacao.md`
 - **Descrição:** Consultoria embarcada que analisa um sistema web e gera um Plano Estratégico de Automacao completo. Avalia viabilidade tecnica antes de qualquer investimento.
 - **Fases:** Mapeamento do sistema, avaliacao de automatizabilidade (score 0-100), matriz de prioridade (Valor x Facilidade), estimativa de horas/custo, veredito de viabilidade (Viavel/Parcialmente Viavel/Nao Viavel), plano de execucao por fases (Quick Wins → Core → Ampliacao).
 - **Features:** Score tecnico por modulo (IDs, data-testid, estabilidade, dados, ambiente), multiplicadores de risco, calculo de ROI e payback, identificacao de bloqueadores criticos. **Regra obrigatoria: todo `.md` destinado ao cliente deve ter PDF correspondente.**
-- **Artefatos:** `resultado/<timestamp>/automacao_plano_<timestamp>.md` **+ `.pdf`**, `resultado/<timestamp>/automacao_estimativa_<timestamp>.md` **+ `.pdf`** (ou `.xlsx`), `resultado/<timestamp>/automacao_viabilidade_<timestamp>.md` **+ `.pdf`**
+- **Artefatos:** `clients/<id>/clients/<id>/resultado/<timestamp>/automacao_plano_<timestamp>.md` **+ `.pdf`**, `clients/<id>/clients/<id>/resultado/<timestamp>/automacao_estimativa_<timestamp>.md` **+ `.pdf`** (ou `.xlsx`), `clients/<id>/clients/<id>/resultado/<timestamp>/automacao_viabilidade_<timestamp>.md` **+ `.pdf`**
 
 ### `/gerar-automacao-cliente` — Geracao de Codigo de Automacao para Entrega ao Cliente
 - **Arquivo:** `.claude/commands/gerar-automacao-cliente.md`
 - **Descricao:** Transforma artefatos de QA em um pacote de automacao exportavel no stack escolhido pelo cliente.
 - **Features:** Especificacao intermediaria obrigatoria, mapeamento cenario -> arquivo, cobertura implementada/parcial/nao automatizada, pendencias, auditoria tecnica da geracao e PDF correspondente para cada `.md` destinado ao cliente.
-- **Artefatos:** `entregaveis/<cliente>/automacao/<stack>/especificacao_automacao.json`, `codigo/`, `mapeamento_cenarios.md/.pdf`, `cobertura_automacao.md/.pdf`, `auditoria_codigo.md/.pdf`, `resumo_geracao.md/.pdf`
+- **Artefatos:** `clients/<id>/entregaveis/automacao/<stack>/especificacao_automacao.json`, `codigo/`, `mapeamento_cenarios.md/.pdf`, `cobertura_automacao.md/.pdf`, `auditoria_codigo.md/.pdf`, `resumo_geracao.md/.pdf`
 
 ### `/auditar-automacao-cliente` — Auditoria Independente de Codigo de Automacao do Cliente
 - **Arquivo:** `.claude/commands/auditar-automacao-cliente.md`
 - **Descricao:** Audita independentemente o pacote gerado, impedindo autoaprovacao, corrigindo defeitos tecnicos objetivos e validando se o codigo reduz retrabalho real.
 - **Features:** Bloqueio quando segregacao nao puder ser comprovada, remediacao obrigatoria de falhas corrigiveis, revalidacoes por stack, cruzamento entre especificacao, mapa, inventario, auditoria tecnica e cobertura.
-- **Artefatos:** `<pacote>/auditoria_independente.md/.pdf`, `<pacote>/correcoes_auditoria.md/.pdf` quando houver correcao ou pendencia tecnica, e `resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md` quando houver metadados internos ou bloqueio de governanca
+- **Artefatos:** `<pacote>/auditoria_independente.md/.pdf`, `<pacote>/correcoes_auditoria.md/.pdf` quando houver correcao ou pendencia tecnica, e `clients/<id>/clients/<id>/resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md` quando houver metadados internos ou bloqueio de governanca
 
 ### `/relatorio-parcial` — Relatório Parcial de Acompanhamento
 - **Arquivo:** `.claude/commands/relatorio-parcial.md`
 - **Descrição:** Gera relatório parcial em PDF para envio ao cliente durante a execução do projeto.
 - **Features:** Progresso geral, bugs críticos, riscos, bloqueios, próximos passos, semáforo 🟢🟡🔴.
-- **Artefatos:** `resultado/latest/parcial_semana<n>_<timestamp>.pdf`, `resultado/parciais_index.json`
+- **Artefatos:** `clients/<id>/resultado/latest/parcial_semana<n>_<timestamp>.pdf`, `clients/<id>/resultado/parciais_index.json`
 
 ---
 

@@ -25,7 +25,7 @@ A skill mapeia o sistema, identifica o core de negócio, avalia a automatizabili
 ## Parametros
 
 - `<URL>` — URL base do sistema a avaliar (obrigatório)
-- `--login <email>` — email de autenticacao. A senha é lida de `QA_PASSWORD` no `.env`
+- `--login <email>` — email de autenticacao. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--horas-base <n>` — valor hora do profissional de automação em reais (default: 150). Usado para calcular custo financeiro
 - `--time-size <n>` — quantidade de QAs na equipe de automação (default: 1). Usado para calcular prazo em dias úteis
 - `--modulo-core "<nome>"` — se o time já sabe qual é o módulo central, informe para acelerar a análise (opcional)
@@ -36,7 +36,7 @@ A skill mapeia o sistema, identifica o core de negócio, avalia a automatizabili
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANCA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANCA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
@@ -48,12 +48,19 @@ Se `--login` contiver `:` (senha inline), PARAR e exibir:
 - Criar symlink `resultado/latest → resultado/<timestamp>/` (em Windows, se symlink falhar por falta de permissao, gerar `resultado/latest.txt` contendo o timestamp atual como fallback)
 
 ### 2.1 Configuração de gravacao de video
-Ao iniciar o browser via Playwright MCP, ativar gravacao:
+Ao iniciar o browser via Playwright MCP, ativar gravacao com `recordVideo` (camelCase) — snake_case (`record_video`) é silenciosamente ignorado no Node.js:
+```javascript
+browser.newContext({
+  recordVideo: {
+    dir: 'resultado/<timestamp>/videos/_raw/',
+    size: { width: 1280, height: 720 }
+  }
+});
 ```
-video: 'on'
-videoDir: 'resultado/<timestamp>/videos/_raw/'
-videoSize: { width: 1280, height: 720 }
-```
+- Usar `page.video()` para obter o objeto Video e `await page.video().path()` para o caminho do arquivo.
+- Fechar o contexto (`await context.close()`) para finalizar o arquivo `.webm` antes de lê-lo.
+- Converter `.webm` → `.mp4` com: `ffmpeg -i input.webm -c:v libx264 -crf 23 -preset fast output.mp4`. Se ffmpeg não estiver disponível, manter `.webm`, exibir aviso e continuar (non-blocking).
+
 Um unico video contínuo cobre toda a sessão de avaliação.
 
 ### 2.2 Monitoramento de console do browser
@@ -84,7 +91,7 @@ Esta skill roda **100% via MCP Playwright**. Todo o scan de DOM, screenshot, nav
 
 ### Cleanup (BLOCK-E)
 
-Esta skill **não cria dados** no sistema por padrão — apenas lê e inspeciona DOM. Se durante a Fase 2.3 for feito um teste mutativo (criar registro para avaliar cleanup), este deve ser removido antes do fim da skill e registrado em `cleanup_log.json`. Em modo somente-leitura (default), nenhum cleanup é necessário.
+Esta skill **não cria dados** no sistema por padrão — apenas lê e inspeciona DOM. Se durante a avaliação for feito um teste mutativo (criar registro para avaliar cleanup), este deve ser removido antes do fim da skill e registrado em `cleanup_log.json`. Em modo somente-leitura (default), nenhum cleanup é necessário.
 
 ---
 
@@ -240,6 +247,9 @@ Arredondar para inteiro. Score sempre em [0, 100].
     }
   ]
 }
+```
+
+> **Nota:** o regex de IDs dinâmicos na heurística acima (`/^(react|vue|ng)-\d+$/i`) é uma aproximação inicial. Frameworks podem gerar padrões diferentes (ex: `rfs-`, `frc-`, `_ngcontent-`). O agente deve ajustar a regex no `browser_evaluate` se detectar outro padrão dominante no sistema avaliado.
 ```
 
 ---
@@ -609,6 +619,9 @@ Documento técnico focado no time de desenvolvimento:
 - Seletores problemáticos encontrados (com exemplos de HTML)
 - APIs detectadas e sua usabilidade para testes
 - Sugestões de melhorias para fácilitar automação (ex: "Adicionar data-testid nos botões de acao")
+
+### 7.4 Entrega ao Cliente
+Todo `.md` destinado ao cliente deve ser copiado para `entregaveis/<cliente>/automacao/<stack>/` com `.pdf` correspondente, conforme convenção do AGENTS.md. Nunca enviar `resultado/<timestamp>/governanca/`, `.env`, tokens, `geracao_id`, identidade de modelo/agente/executor ou logs internos ao cliente.
 
 ---
 

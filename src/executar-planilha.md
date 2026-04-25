@@ -27,7 +27,7 @@ inputs:
     description: "Filtra por prioridade: Alta, Média ou Baixa"
   - name: login
     required: false
-    description: "Email de autenticação. Senha via QA_PASSWORD no .env"
+    description: "Email de autenticação. Senha via QA_PASSWORD em clients/<id>/.env"
   - name: retry
     required: false
     description: "Número de tentativas para cenários que falharem (padrão: 0)"
@@ -70,7 +70,7 @@ Executa cenários de teste em lote a partir de uma planilha `.xlsx` ou `.csv`. C
 - `<arquivo>` — caminho da planilha de cenários (obrigatório). Ex: `cenarios/cenarios.xlsx`
 - `--modulo <nome>` — executa apenas cenários do módulo especificado
 - `--prioridade <nivel>` — executa apenas cenários da prioridade especificada: `Alta`, `Média` ou `Baixa`
-- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` no `.env`
+- `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--retry <n>` — número de tentativas para cenários que falharem (padrão: 0, sem retry)
 - `--max-falhas <n>` — número máximo de falhas consecutivas antes de ativar circuit breaker (padrão: 10)
 - `--retry-falhos` — ao final, re-executar apenas os cenários que falharam (segunda chance)
@@ -79,7 +79,7 @@ Executa cenários de teste em lote a partir de uma planilha `.xlsx` ou `.csv`. C
 
 ### 1. Validação de segurança
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
-> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD no .env.
+> ❌ ERRO DE SEGURANÇA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
 ### 2. Validação de pré-condição
 Verificar se o arquivo informado existe:
