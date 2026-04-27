@@ -120,10 +120,11 @@ function runBuild(skills, targetFilter) {
       manifest.skills[skill.id] = { src_hash: null, targets: {} };
     }
 
+    const cached = manifest.skills[skill.id];
+    const sourceChanged = cached.src_hash !== srcHash;
+
     for (const targetName of targetsToRender) {
-      const cached = manifest.skills[skill.id];
       const targetEntry = cached.targets[targetName];
-      const sourceChanged = cached.src_hash !== srcHash;
 
       if (!sourceChanged && targetEntry?.status === 'ok') {
         const outputPath = path.join(ROOT, targetEntry.output);
@@ -140,8 +141,7 @@ function runBuild(skills, targetFilter) {
       const result = renderSkill(skill, targetName, { blocks, toolsMap });
       if (result) {
         const distHash = hash(result.content);
-        manifest.skills[skill.id].src_hash = srcHash;
-        manifest.skills[skill.id].targets[targetName] = {
+        cached.targets[targetName] = {
           dist_hash: distHash,
           status: 'ok',
           output: path.relative(ROOT, result.outputPath)
@@ -149,7 +149,7 @@ function runBuild(skills, targetFilter) {
         console.log(`  ✅ ${skill.id} → ${targetName}: ${path.relative(ROOT, result.outputPath)}`);
         rendered++;
       } else {
-        manifest.skills[skill.id].targets[targetName] = {
+        cached.targets[targetName] = {
           dist_hash: null,
           status: 'skipped',
           reason: 'supported: false'
@@ -157,6 +157,8 @@ function runBuild(skills, targetFilter) {
         skipped++;
       }
     }
+
+    cached.src_hash = srcHash;
   }
 
   saveManifest(manifest);

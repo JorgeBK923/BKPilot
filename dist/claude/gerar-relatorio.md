@@ -5,23 +5,24 @@ Consolida todos os resultados do pipeline de QA em um relatório final profissio
 
 ## Uso
 ```
-/gerar-relatorio --cliente "<nome>" --formato <pdf|pptx|docx>
+/gerar-relatorio --cliente <id> --nome-cliente "<nome>" --formato <pdf|pptx|docx>
 ```
 
 ## Parâmetros
-- `--cliente "<nome>"` — nome do cliente para o cabeçalho do relatório (obrigatório). Ex: `--cliente "TEGA Sistemas"`
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
+- `--nome-cliente "<nome>"` — nome do cliente para o cabeçalho do relatório (obrigatório). Ex: `--nome-cliente "TEGA Sistemas"`
 - `--formato <pdf|pptx|docx>` — formato de saída (obrigatório)
 
 ## Instruções de Execução
 
 ### 1. Validação de pré-condição
-Verificar se `resultado/latest/` existe e contém arquivos:
+Verificar se `clients/<id>/resultado/latest/` existe e contém arquivos:
 - Se **não existir** ou estiver vazia, PARAR e exibir:
-  > ❌ Nenhum resultado encontrado em resultado/latest/
+  > ❌ Nenhum resultado encontrado em clients/<id>/resultado/latest/
   > Execute pelo menos uma skill de execução antes: /executar-fluxo, /testar-modulo, /executar-planilha
 
 ### 2. Coleta dos dados
-Ler todos os arquivos presentes em `resultado/latest/`:
+Ler todos os arquivos presentes em `clients/<id>/resultado/latest/`:
 - `fluxo_*.md` → resultados de execução de fluxos
 - `forms_*.md` → resultados de testes de formulários
 - `planilha_*.md` → resultados de execução por planilha
@@ -31,7 +32,7 @@ Ler todos os arquivos presentes em `resultado/latest/`:
 - `console_log.json` → erros de console consolidados
 - `network_log.json` → issues de rede consolidados
 
-Se `bugs_*.md` não existir em `resultado/latest/`, executar internamente a lógica do `/reportar-bug` para gerar os bug cards antes de montar o relatório.
+Se `bugs_*.md` não existir em `clients/<id>/resultado/latest/`, executar internamente a lógica do `/reportar-bug` para gerar os bug cards antes de montar o relatório.
 
 ### 3. Consolidação das métricas
 Calcular a partir dos arquivos coletados:
@@ -44,7 +45,7 @@ Calcular a partir dos arquivos coletados:
 **Consolidação obrigatória de retestes e reclassificações manuais:**
 O placar final do ciclo **DEVE** refletir o estado pós-reteste e pós-auditoria manual, não o output bruto do executor. Regras:
 
-1. **Retestes pontuais do mesmo ciclo:** se uma pasta posterior em `resultado/` contém reteste de cenários que falharam no ciclo principal (ex.: run de 5 cenários), o status do reteste **sobrescreve** o status original na contagem final.
+1. **Retestes pontuais do mesmo ciclo:** se uma pasta posterior em `clients/<id>/resultado/` contém reteste de cenários que falharam no ciclo principal (ex.: run de 5 cenários), o status do reteste **sobrescreve** o status original na contagem final.
    - Cenário 478 falhou no run original → passou no reteste → conta como **Passou** no placar final.
    - Se o reteste confirmar a falha, conta como Falhou e vira bug card.
 2. **Reclassificação manual (auditoria):** se o QA reclassificou um cenário Passou→Falhou ou Falhou→Passou (ex.: detecção de alucinação que o executor não viu), o status reclassificado **prevalece**.
@@ -75,12 +76,12 @@ Gerar os seguintes gráficos como imagens para inclusão no relatório:
 - **Pizza de severidade:** distribuição de bugs por severidade (Crítico/Alto/Médio/Baixo)
 - **Barras por módulo:** quantidade de bugs por módulo, colorido por severidade
 - **Barras empilhadas de execução:** cenários Passou/Falhou/Pulou por módulo
-- **Linha de tendência** (se houver execuções anteriores em `resultado/`): evolução de bugs ao longo do tempo
+- **Linha de tendência** (se houver execuções anteriores em `clients/<id>/resultado/`): evolução de bugs ao longo do tempo
 
-Salvar gráficos em `resultado/latest/graficos/` como PNG.
+Salvar gráficos em `clients/<id>/resultado/latest/graficos/` como PNG.
 
 ### 5. Análise de tendência
-Se existirem execuções anteriores em `resultado/` (além da latest):
+Se existirem execuções anteriores em `clients/<id>/resultado/` (além da latest):
 - Comparar quantidade de bugs por severidade entre execuções
 - Identificar: bugs novos, bugs corrigidos, bugs persistentes
 - Calcular: taxa de correção (%), tendência (melhorando/piorando/estável)
@@ -155,9 +156,9 @@ Montar o relatório com as seguintes seções:
 Registrar timestamp: `YYYY-MM-DD_HHMM`
 
 Gerar o arquivo no formato solicitado:
-- **PDF:** usar ferramentas disponíveis (weasyprint, reportlab, pandoc) para gerar `resultado/latest/relatorio_<timestamp>.pdf`
-- **PPTX:** criar apresentação com slides por seção `resultado/latest/relatorio_<timestamp>.pptx`
-- **DOCX:** criar documento Word formatado `resultado/latest/relatorio_<timestamp>.docx`
+- **PDF:** usar ferramentas disponíveis (weasyprint, reportlab, pandoc) para gerar `clients/<id>/resultado/latest/relatorio_<timestamp>.pdf`
+- **PPTX:** criar apresentação com slides por seção `clients/<id>/resultado/latest/relatorio_<timestamp>.pptx`
+- **DOCX:** criar documento Word formatado `clients/<id>/resultado/latest/relatorio_<timestamp>.docx`
 
 Aplicar identidade visual BugKillers:
 - Cor primária: `#C0392B` (vermelho)
@@ -176,11 +177,11 @@ Aplicar identidade visual BugKillers:
    Tendência: melhorando | piorando | estável | primeira execução
    Módulos críticos: <lista>
    Escopo não testado: <n> módulos
-   Arquivo: resultado/latest/relatorio_<timestamp>.<ext>
+   Arquivo: clients/<id>/resultado/latest/relatorio_<timestamp>.<ext>
 
 📋 Pipeline concluído. Relatório pronto para entrega ao cliente.
 ```
 
 ## Artefatos gerados
-- `resultado/latest/relatorio_<timestamp>.pdf` (ou .pptx / .docx)
-- `resultado/latest/graficos/*.png`
+- `clients/<id>/resultado/latest/relatorio_<timestamp>.pdf` (ou .pptx / .docx)
+- `clients/<id>/resultado/latest/graficos/*.png`

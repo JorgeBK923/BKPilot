@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 function loadClient(clientId, root = process.cwd()) {
-  if (!clientId) throw new Error('clientId obrigatório (ex: --client tega)');
+  if (!clientId) throw new Error('clientId obrigatório (ex: --cliente tega)');
   const dir = path.join(root, 'clients', clientId);
   if (!fs.existsSync(dir)) {
     throw new Error(`Cliente não encontrado: ${dir}`);

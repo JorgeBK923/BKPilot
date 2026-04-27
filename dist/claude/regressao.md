@@ -1,6 +1,6 @@
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA POR BUG**
 >
-> **NUNCA** finalize o reteste de um bug sem capturar screenshot (PNG) ou vídeo (MP4) do estado pós-correção. Cada bug retestado **deve** ter um arquivo `JBUG-<ID>_reteste_<descricao>.png` em `resultado/<timestamp>/screenshots/` antes de ser marcado como Corrigido/Persiste/Regressão.
+> **NUNCA** finalize o reteste de um bug sem capturar screenshot (PNG) ou vídeo (MP4) do estado pós-correção. Cada bug retestado **deve** ter um arquivo `JBUG-<ID>_reteste_<descricao>.png` em `clients/<id>/resultado/<timestamp>/screenshots/` antes de ser marcado como Corrigido/Persiste/Regressão.
 >
 > Se por qualquer motivo a captura falhar (modal desaparece, timing etc.), **registre o motivo no relatório**. Silêncio ou "observado durante sessão" sem arquivo em disco **não é aceitável**.
 >
@@ -21,7 +21,7 @@
 Retesta bugs corrigidos e verifica se as correções introduziram regressões. Opera em **três modos**:
 
 - **Modo Planilha:** retesta cenários que falharam em execução anterior (comportamento original)
-- **Modo Bugs Externos:** retesta bugs a partir de uma pasta `dados/bugs/` com exportação do Jira (Excel/Word/XML) ou estrutura manual. Cruza com a planilha original para contexto e cenários relacionados.
+- **Modo Bugs Externos:** retesta bugs a partir de uma pasta `clients/<client>/bugs/<data>/` com exportação do Jira (Excel/Word/XML) ou estrutura manual. Cruza com a planilha original para contexto e cenários relacionados.
 - **Modo Combinado:** bugs externos + planilha de contexto (recomendado)
 
 Suporta **exportação direta do Jira** nos formatos Excel (.xlsx), Word (.docx) e XML. A skill detecta automaticamente o formato e faz o parse. Também ingere evidências visuais (prints/vídeos) dos bugs para comparação antes/depois.
@@ -29,16 +29,17 @@ Suporta **exportação direta do Jira** nos formatos Excel (.xlsx), Word (.docx)
 ## Uso
 ```
 # Modo Planilha (original)
-/regressao --planilha cenarios/cenarios.xlsx [--login <email>] [--visual-diff]
+/regressao --cliente <id> --planilha cenarios/cenarios.xlsx [--login <email>] [--visual-diff]
 
 # Modo Bugs Externos (exportação Jira)
-/regressao --bugs dados/bugs/ [--planilha cenarios/cenarios.xlsx] [--login <email>] [--visual-diff]
+/regressao --cliente <id> --bugs clients/<id>/bugs/<data>/ [--planilha cenarios/cenarios.xlsx] [--login <email>] [--visual-diff]
 
 # Modo Combinado (recomendado)
-/regressao --bugs dados/bugs/ --planilha cenarios/cenarios_relatorios_2026-04-16_1500.xlsx --login adminteste2
+/regressao --cliente tega --bugs clients/tega/bugs/2026-04-17/ --planilha cenarios/cenarios_relatorios_2026-04-16_1500.xlsx --login adminteste2
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `--planilha <arquivo>` — planilha original de cenários (opcional, mas recomendada). Usada para cruzar bugs com cenários existentes, entender fluxos e detectar cenários relacionados
 - `--bugs <pasta>` — pasta com dados dos bugs. Aceita:
   - **Exportação Jira** (Excel .xlsx, Word .docx ou XML) — formato mais comum
@@ -66,7 +67,7 @@ Você **NÃO PODE** encerrar a skill nem imprimir o resumo final enquanto qualqu
 - [ ] Cada bug tem evidência de reteste (screenshot obrigatório, vídeo se possível)
 - [ ] Cada bug foi classificado (Corrigido / Persiste / Regressão / Inconclusivo)
 - [ ] Se `--planilha` foi passado: cenários relacionados foram identificados e testados
-- [ ] `console_log.json` e `network_log.json` existem em `resultado/<timestamp>/`
+- [ ] `console_log.json` e `network_log.json` existem em `clients/<id>/resultado/<timestamp>/`
 - [ ] Relatório `regressao_<timestamp>.md` foi gerado com todas as seções
 
 **Regra de evidência:** um bug só é considerado retestado se existe um **screenshot no disco** que prove o resultado. Sem screenshot = não conta.
@@ -102,21 +103,19 @@ Se `--planilha` foi passado:
 
 ### 3. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/`
 - Criar subpastas:
-  - `resultado/<timestamp>/videos/` para vídeos MP4
-  - `resultado/<timestamp>/screenshots/` para screenshots de reteste
-  - `resultado/<timestamp>/evidencias_anteriores/` para cópia de prints/vídeos dos bugs
-  - `resultado/<timestamp>/diff_visual/` (se `--visual-diff` ativado)
-- Atualizar symlink `resultado/latest → resultado/<timestamp>/`
+  - `clients/<id>/resultado/<timestamp>/videos/` para vídeos MP4
+  - `clients/<id>/resultado/<timestamp>/screenshots/` para screenshots de reteste
+  - `clients/<id>/resultado/<timestamp>/evidencias_anteriores/` para cópia de prints/vídeos dos bugs
+  - `clients/<id>/resultado/<timestamp>/diff_visual/` (se `--visual-diff` ativado)
+- Atualizar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 - Autenticar se `--login` foi passado
 
 ### 3.1 Configuração de gravação de vídeo
 Ao iniciar o browser via Playwright MCP, ativar gravação por cenário:
 ```
-video: 'on'
-videoDir: 'resultado/<timestamp>/videos/_raw/'
-videoSize: { width: 1280, height: 720 }
+recordVideo: { dir: 'clients/<id>/resultado/<timestamp>/videos/_raw/', size: { width: 1280, height: 720 } }
 ```
 Abrir e fechar o browser a cada cenário para gerar um vídeo individual por re-execução.
 
@@ -124,13 +123,13 @@ Abrir e fechar o browser a cada cenário para gerar um vídeo individual por re-
 Ativar captura de mensagens do console (conforme BLOCK-B do CLAUDE.md):
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 
 ### 3.3 Monitoramento de requisições de rede
 Ativar interceptação de rede (conforme BLOCK-C do CLAUDE.md):
 - Registrar requisições com status >= 400 e requisições lentas (>3s)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 
 ### 4. Ingestão de dados
 
@@ -204,9 +203,9 @@ Para cada bug listado, ler da subpasta:
 
 #### 4.2 Carregar evidências anteriores
 
-Procurar em `dados/bugs/anexos/` (se existir) arquivos correspondentes a cada bug:
+Procurar em `clients/<client>/bugs/<data>/Anexos/` (se existir) arquivos correspondentes a cada bug:
 - Padrão de nome: `<ID_BUG>*` (ex: `BUG-042.png`, `BUG-042_screenshot.png`, `BUG-042_video.webm`)
-- Copiar para `resultado/<timestamp>/evidencias_anteriores/`
+- Copiar para `clients/<id>/resultado/<timestamp>/evidencias_anteriores/`
 - Registrar no metadata do bug quais evidências foram encontradas
 
 #### 4.3 Ler planilha original (se --planilha foi passado)
@@ -278,7 +277,7 @@ Se `--visual-diff` foi ativado e existem screenshots anteriores:
 
 ### 6. Geração dos artefatos
 
-Salvar `resultado/<timestamp>/regressao_<timestamp>.md`:
+Salvar `clients/<id>/resultado/<timestamp>/regressao_<timestamp>.md`:
 
 ```markdown
 # Resultado — Regressão
@@ -379,28 +378,28 @@ Salvar `resultado/<timestamp>/regressao_<timestamp>.md`:
    Visual diffs: <n> (se ativado)
    Console errors: <n>
    Requisições com erro: <n>
-   Vídeos: resultado/latest/videos/ (<n> arquivos)
-   Screenshots: resultado/latest/screenshots/
-   Evidências anteriores: resultado/latest/evidencias_anteriores/
-   Relatório: resultado/latest/regressao_<timestamp>.md
+   Vídeos: clients/<id>/resultado/latest/videos/ (<n> arquivos)
+   Screenshots: clients/<id>/resultado/latest/screenshots/
+   Evidências anteriores: clients/<id>/resultado/latest/evidencias_anteriores/
+   Relatório: clients/<id>/resultado/latest/regressao_<timestamp>.md
 
 ➡️  Próximo passo: Atualizar status dos bugs no Jira manualmente
-➡️  Para bugs que persistem ou regressões: /reportar-bug --fonte resultado/latest/
+➡️  Para bugs que persistem ou regressões: /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
 ```
 
 ## Encadeia para
 `/reportar-bug`, `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/<timestamp>/regressao_<timestamp>.md`
-- `resultado/<timestamp>/videos/<ID>_<timestamp>.mp4` (um por bug + cenários relacionados)
-- `resultado/<timestamp>/screenshots/<ID>_reteste.png` (um por bug)
-- `resultado/<timestamp>/screenshots/<ID>_regressao.png` (um por cenário relacionado)
-- `resultado/<timestamp>/evidencias_anteriores/` (cópias de prints/vídeos dos bugs)
-- `resultado/<timestamp>/diff_visual/<ID>_diff.png` (se --visual-diff)
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/regressao_<timestamp>.md`
+- `clients/<id>/resultado/<timestamp>/videos/<ID>_<timestamp>.mp4` (um por bug + cenários relacionados)
+- `clients/<id>/resultado/<timestamp>/screenshots/<ID>_reteste.png` (um por bug)
+- `clients/<id>/resultado/<timestamp>/screenshots/<ID>_regressao.png` (um por cenário relacionado)
+- `clients/<id>/resultado/<timestamp>/evidencias_anteriores/` (cópias de prints/vídeos dos bugs)
+- `clients/<id>/resultado/<timestamp>/diff_visual/<ID>_diff.png` (se --visual-diff)
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`
 
 ---
 
@@ -408,7 +407,7 @@ Salvar `resultado/<timestamp>/regressao_<timestamp>.md`:
 Ao iniciar o browser, ativar captura de mensagens do console:
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 - No resultado final, incluir seção "Console Errors" listando erros críticos
 - Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
 
@@ -419,7 +418,7 @@ Ao iniciar o browser, ativar interceptação de rede:
 - Registrar requisições que levaram mais de 3000ms (lentas)
 - Registrar requisições que falharam (timeout, DNS, conexão recusada)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 - No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
 - Muitos erros 5xx consecutivos devem gerar alerta no resumo
 

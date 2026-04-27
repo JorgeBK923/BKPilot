@@ -1,6 +1,6 @@
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
@@ -17,22 +17,23 @@ A skill executa em **4 fases com portões obrigatórios**. Você não pode encer
 
 ## Uso
 ```
-/explorar <URL> --login <email>
-/explorar <URL> --login <email> --delta estado/mapa.md
-/explorar <URL>/nova-funcionalidade --login <email> --escopo "checkout com PIX"
+/explorar --cliente <id> <URL> --login <email>
+/explorar --cliente <id> <URL> --login <email> --delta clients/<id>/estado/mapa.md
+/explorar --cliente <id> <URL>/nova-funcionalidade --login <email> --escopo "checkout com PIX"
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<URL>` — URL base do sistema a explorar (obrigatório)
 - `--login <email>` — email de autenticação. A senha é lida automaticamente da variável de ambiente `QA_PASSWORD` definida no `.env`
-- `--delta <caminho>` — caminho para mapa existente (ex: `estado/mapa.md`). Ativa **modo delta**: compara o estado atual do sistema com o mapa salvo e explora apenas páginas novas ou modificadas
+- `--delta <caminho>` — caminho para mapa existente (ex: `clients/<id>/estado/mapa.md`). Ativa **modo delta**: compara o estado atual do sistema com o mapa salvo e explora apenas páginas novas ou modificadas
 - `--escopo <texto>` — texto livre descrevendo a funcionalidade alvo (ex: "checkout com PIX", "tela de relatórios financeiros"). Restringe a exploração ao contexto descrito, ignorando áreas não relacionadas
 
 ## Modo Delta — Exploração incremental
 
-Quando `--delta estado/mapa.md` é informado, a skill entra em **modo delta**. Em vez de explorar tudo do zero, ela:
+Quando `--delta clients/<id>/estado/mapa.md` é informado, a skill entra em **modo delta**. Em vez de explorar tudo do zero, ela:
 
-1. **Carrega o mapa existente** de `estado/mapa.md` e `estado/elementos.json`
+1. **Carrega o mapa existente** de `clients/<id>/estado/mapa.md` e `clients/<id>/estado/elementos.json`
 2. **Navega por todas as páginas** do sistema (como no modo normal)
 3. **Compara cada página** com a versão salva no mapa:
    - Calcula hash do conteúdo principal (texto + estrutura DOM)
@@ -41,7 +42,7 @@ Quando `--delta estado/mapa.md` é informado, a skill entra em **modo delta**. E
 4. **Pula páginas inalteradas** — não executa Fase 2 (modais, wizards, abas) nelas
 5. **Explora a fundo** apenas páginas `novas` ou `modificadas` (Fase 2 completa)
 6. **Atualiza o mapa** com as descobertas, mantendo o que já existia
-7. **Gera `estado/mapa_delta.md`** com resumo das mudanças detectadas
+7. **Gera `clients/<id>/estado/mapa_delta.md`** com resumo das mudanças detectadas
 
 ### Critérios de detecção de mudança
 
@@ -82,8 +83,8 @@ Além dos artefatos normais, gera:
 | /relatorio-antigo | Relatório v1 | 404 |
 
 ## Mapa atualizado
-- `estado/mapa.md` → atualizado com N páginas (era N, agora N)
-- `estado/elementos.json` → atualizado com novos elementos
+- `clients/<id>/estado/mapa.md` → atualizado com N páginas (era N, agora N)
+- `clients/<id>/estado/elementos.json` → atualizado com novos elementos
 ```
 
 ### Modo delta + escopo
@@ -91,7 +92,7 @@ Além dos artefatos normais, gera:
 Quando `--delta` e `--escopo` são usados juntos:
 
 ```
-/explorar <URL> --login <email> --delta estado/mapa.md --escopo "checkout com PIX"
+/explorar --cliente <id> <URL> --login <email> --delta clients/<id>/estado/mapa.md --escopo "checkout com PIX"
 ```
 
 A skill:
@@ -140,7 +141,7 @@ Você **NÃO PODE** encerrar a skill nem imprimir o resumo final enquanto qualqu
 - [ ] Cada wizard teve **todos** os passos percorridos, cada passo com screenshot próprio
 - [ ] Cada aba de cada página foi ativada e tem screenshot próprio
 - [ ] `tempo_carregamento_ms` foi preenchido (não-nulo) em todas as páginas
-- [ ] `console_log.json` e `network_log.json` acumulados existem e estão não-vazios em `resultado/<timestamp>/`
+- [ ] `console_log.json` e `network_log.json` acumulados existem e estão não-vazios em `clients/<id>/resultado/<timestamp>/`
 - [ ] A ficha de cobertura (Fase 4) está 100% verde
 
 Se `permite_mutativo = true` (default), adicione:
@@ -165,11 +166,11 @@ Antes de qualquer ação, verificar se a senha foi passada inline no argumento `
   > ❌ QA_PASSWORD não encontrada. Crie clients/<id>/.env com: QA_PASSWORD=sua_senha
 
 ### 2. Preparação
-- Criar pasta `estado/` na raiz do projeto (se não existir)
-- Criar pasta `resultado/` na raiz do projeto (se não existir)
+- Criar pasta `clients/<id>/estado/` na raiz do projeto (se não existir)
+- Criar pasta `clients/<id>/resultado/` na raiz do projeto (se não existir)
 - Registrar timestamp de início: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/` para logs desta execução
-- Atualizar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/` para logs desta execução
+- Atualizar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 - Consultar `GET /api/v1/projects/{id}` para obter `permite_mutativo`. Se o projeto não for encontrado, abortar com erro claro. Se o campo existir, use-o; se a API não estiver disponível (execução local), assuma `true` como default
 
 ### 2.1 Consulta de sitemap.xml e robots.txt
@@ -181,10 +182,10 @@ Antes de iniciar a navegação, tentar obter informações prévias:
 Se `--delta <caminho>` foi informado:
 
 1. **Verificar se o arquivo existe:**
-   - Se `estado/mapa.md` ou o arquivo informado **não existir**, abortar com erro:
+   - Se `clients/<id>/estado/mapa.md` ou o arquivo informado **não existir**, abortar com erro:
      > ❌ Arquivo de mapa não encontrado: <caminho>. Execute /explorar sem --delta primeiro para criar o mapa inicial.
-2. **Carregar `estado/mapa.md`** e extrair a lista de páginas conhecidas (URLs, títulos, hashes se disponíveis)
-3. **Carregar `estado/elementos.json`** se existir — contém a estrutura detalhada de cada página (forms, botões, modais, wizards)
+2. **Carregar `clients/<id>/estado/mapa.md`** e extrair a lista de páginas conhecidas (URLs, títulos, hashes se disponíveis)
+3. **Carregar `clients/<id>/estado/elementos.json`** se existir — contém a estrutura detalhada de cada página (forms, botões, modais, wizards)
 4. **Inicializar estrutura de delta:**
    ```json
    {
@@ -225,7 +226,7 @@ Se `--escopo <texto>` foi informado (com ou sem `--delta`):
 Ao iniciar o browser, ativar captura de mensagens do console:
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- **Acumular continuamente em `resultado/<timestamp>/console_log.json`** — este arquivo acumulado é obrigatório e será verificado na Fase 4
+- **Acumular continuamente em `clients/<id>/resultado/<timestamp>/console_log.json`** — este arquivo acumulado é obrigatório e será verificado na Fase 4
 - Associar erros à página onde ocorreram (para inclusão no `elementos.json`)
 
 ### 3.2 Monitoramento de requisições de rede (BLOCK-C)
@@ -233,9 +234,9 @@ Ao iniciar o browser, ativar interceptação de rede:
 - Registrar requisições com status >= 400 (erros HTTP)
 - Registrar requisições que levaram mais de 3000ms (lentas)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes }`
-- **Acumular em `resultado/<timestamp>/network_log.json`** — obrigatório e verificado na Fase 4
+- **Acumular em `clients/<id>/resultado/<timestamp>/network_log.json`** — obrigatório e verificado na Fase 4
 - **Detectar endpoints de API:** identificar requisições XHR/Fetch para URLs de API (padrões: `/api/`, `/v1/`, `/graphql`, JSON responses)
-- Salvar endpoints descobertos em `estado/api_endpoints.json`
+- Salvar endpoints descobertos em `clients/<id>/estado/api_endpoints.json`
 
 ### 3.3 Re-autenticação de sessão (BLOCK-D)
 Durante toda a exploração, monitorar sinais de sessão expirada:
@@ -259,7 +260,7 @@ Se detectado: registrar evento, re-autenticar, voltar ao ponto onde parou, conti
 - Para cada página encontrada, registrar:
   - URL, título, profundidade
   - **`tempo_carregamento_ms`** (use `performance.timing` ou `page.metrics()` — não deixe null)
-  - 1 screenshot base em `estado/screenshots/<slug-da-url>.png`
+  - 1 screenshot base em `clients/<id>/estado/screenshots/<slug-da-url>.png`
   - Contagem preliminar de: formulários, botões, tabelas, modais visíveis, abas visíveis, wizards visíveis
 
 **O que NÃO fazer nesta fase:**
@@ -318,7 +319,7 @@ Se qualquer item falhar, volte e complete. Só então prossiga para a Fase 2.
 - Identifique componentes de tab (atributos: `role="tab"`, `role="tablist"`, classes `nav-tabs`, ou seletores de aba visíveis)
 - Clique em cada aba
 - Aguarde renderização
-- Capture screenshot: `estado/screenshots/<pagina>_aba_<nome>.png`
+- Capture screenshot: `clients/<id>/estado/screenshots/<pagina>_aba_<nome>.png`
 - Registre no array `abas` da página dentro de `elementos.json`, incluindo o conteúdo observado (tabelas, botões, contadores)
 
 ### 2.2 Abrir todos os modais de CRUD
@@ -328,7 +329,7 @@ Se qualquer item falhar, volte e complete. Só então prossiga para a Fase 2.
   1. Clique no trigger
   2. Aguarde o modal/drawer renderizar (role="dialog", overlay, etc.)
   3. Capture **todos** os campos do formulário: nome, tipo, obrigatório, placeholder, validação visível, opções de dropdown
-  4. Screenshot: `estado/screenshots/<pagina>_modal_<acao>.png`
+  4. Screenshot: `clients/<id>/estado/screenshots/<pagina>_modal_<acao>.png`
   5. Feche o modal (ESC ou botão Cancelar) — **NÃO salve/envie nada** nesta fase, mesmo com `permite_mutativo=true`. Escrita real só acontece na Fase 3
 - Se o "botão" abre uma rota nova em vez de modal, registre como página da Fase 1 tardia e trate como tal
 - Registre cada modal como item do array `modais` da página em `elementos.json`
@@ -336,7 +337,7 @@ Se qualquer item falhar, volte e complete. Só então prossiga para a Fase 2.
 ### 2.3 Percorrer wizards de ponta a ponta
 - Se a página tem wizard (stepper, passos N/M, carousel de onboarding):
   1. Preencha dados mínimos para avançar em cada passo — use valores neutros de fixture (não dados reais)
-  2. Capture screenshot de CADA passo: `estado/screenshots/<pagina>_wizard_passo<N>.png`
+  2. Capture screenshot de CADA passo: `clients/<id>/estado/screenshots/<pagina>_wizard_passo<N>.png`
   3. Registre todos os campos de todos os passos
   4. No passo final, **NÃO clique em Finalizar/Confirmar** — volte ou cancele. A conclusão real do wizard só acontece na Fase 3 (quando `permite_mutativo=true`)
 - Registre a estrutura completa do wizard (array de passos com campos) em `elementos.json`
@@ -369,13 +370,13 @@ Se falhar, volte à página específica e complete. Só então prossiga.
 - Se houver chat, busca principal ou geração (IA): enviar 1 consulta real
 - Aguardar resposta completa
 - Capturar o endpoint POST correspondente em `network_log.json`
-- Screenshot: `estado/screenshots/fase3_consulta_resposta.png`
+- Screenshot: `clients/<id>/estado/screenshots/fase3_consulta_resposta.png`
 - Registrar a conversa/resultado criado em `cleanup_log.json` se aplicável
 
 ### 3.2 Ação CRUD de criação
 - Escolher uma entidade de baixo impacto (conversa, rascunho, usuário de teste, grupo de teste)
 - Criar com dados marcados como teste: prefixo `QA_TEST_<timestamp>`
-- Registrar imediatamente em `resultado/<timestamp>/cleanup_log.json`:
+- Registrar imediatamente em `clients/<id>/resultado/<timestamp>/cleanup_log.json`:
   ```json
   { "item": "QA_TEST_2026-...", "tipo": "usuario", "url": "...", "id": "..." }
   ```
@@ -408,14 +409,14 @@ Para cada item em `cleanup_log.json`:
 
 ### 4.1 Verificar evidência no disco
 Use Glob/Read/Bash para contar arquivos reais:
-- Quantos screenshots existem em `estado/screenshots/`?
+- Quantos screenshots existem em `clients/<id>/estado/screenshots/`?
 - Quantos modais foram esperados (contagem de botões CRUD em `elementos.json`)?
 - Quantos wizards foram esperados e quantos passos cada um tem?
-- `console_log.json` e `network_log.json` existem em `resultado/<timestamp>/` e têm conteúdo (não são `[]`)?
+- `console_log.json` e `network_log.json` existem em `clients/<id>/resultado/<timestamp>/` e têm conteúdo (não são `[]`)?
 - `api_endpoints.json` contém verbos mutativos (quando `permite_mutativo=true`)?
 
 ### 4.2 Gerar ficha de cobertura
-Crie `resultado/<timestamp>/cobertura.md` neste formato exato:
+Crie `clients/<id>/resultado/<timestamp>/cobertura.md` neste formato exato:
 
 ```markdown
 # Ficha de Cobertura — Exploração <timestamp>
@@ -464,9 +465,9 @@ Crie `resultado/<timestamp>/cobertura.md` neste formato exato:
 
 ## 5. Geração dos artefatos finais
 
-Salvar em `estado/`:
+Salvar em `clients/<id>/estado/`:
 
-### `estado/mapa.md` — estrutura completa do sistema
+### `clients/<id>/estado/mapa.md` — estrutura completa do sistema
 ```
 # Mapa do Sistema
 Gerado em: <timestamp>
@@ -503,7 +504,7 @@ Modo mutativo: ativo | desativado
 - Screenshots: <lista>
 ```
 
-### `estado/fluxos.md` — sequências de navegação identificadas
+### `clients/<id>/estado/fluxos.md` — sequências de navegação identificadas
 ```
 # Fluxos Identificados
 
@@ -515,7 +516,7 @@ Modo mutativo: ativo | desativado
 - Exercitado na Fase 3: sim | não
 ```
 
-### `estado/elementos.json` — todos os elementos interativos
+### `clients/<id>/estado/elementos.json` — todos os elementos interativos
 ```json
 {
   "paginas": [
@@ -553,7 +554,7 @@ Modo mutativo: ativo | desativado
 }
 ```
 
-### `estado/api_endpoints.json` — endpoints detectados
+### `clients/<id>/estado/api_endpoints.json` — endpoints detectados
 ```json
 {
   "descoberto_em": "<timestamp>",
@@ -566,13 +567,13 @@ Modo mutativo: ativo | desativado
 }
 ```
 
-### `resultado/<timestamp>/cobertura.md`
+### `clients/<id>/resultado/<timestamp>/cobertura.md`
 Gerado na Fase 4 (obrigatório).
 
-### `resultado/<timestamp>/cleanup_log.json`
+### `clients/<id>/resultado/<timestamp>/cleanup_log.json`
 Gerado na Fase 3 se `permite_mutativo=true` (obrigatório nesse caso).
 
-### `estado/mapa_delta.md` (se `--delta` foi usado)
+### `clients/<id>/estado/mapa_delta.md` (se `--delta` foi usado)
 Gerado apenas no modo delta. Contém:
 - Contagem de páginas: anteriores, novas, modificadas, removidas, inalteradas
 - Lista de páginas novas com URL, título e elementos detectados
@@ -613,7 +614,7 @@ Exibir no terminal:
    Páginas modificadas:           <n>
    Páginas removidas:             <n>
    Páginas inalteradas (puladas): <n>
-   Delta report:                  estado/mapa_delta.md
+   Delta report:                  clients/<id>/estado/mapa_delta.md
 ```
 
 **Se modo escopo (`--escopo`) estava ativo**, adicionar ao resumo:
@@ -624,23 +625,23 @@ Exibir no terminal:
 ```
 
    Artefatos:
-     estado/mapa.md
-     estado/fluxos.md
-     estado/elementos.json
-     estado/api_endpoints.json
-     estado/screenshots/ (<n> imagens)
-     resultado/<timestamp>/cobertura.md
-     resultado/<timestamp>/console_log.json
-     resultado/<timestamp>/network_log.json
-     resultado/<timestamp>/cleanup_log.json (se permite_mutativo)
+     clients/<id>/estado/mapa.md
+     clients/<id>/estado/fluxos.md
+     clients/<id>/estado/elementos.json
+     clients/<id>/estado/api_endpoints.json
+     clients/<id>/estado/screenshots/ (<n> imagens)
+     clients/<id>/resultado/<timestamp>/cobertura.md
+     clients/<id>/resultado/<timestamp>/console_log.json
+     clients/<id>/resultado/<timestamp>/network_log.json
+     clients/<id>/resultado/<timestamp>/cleanup_log.json (se permite_mutativo)
 ```
 
 **Se modo delta estava ativo**, adicionar:
 ```
-     estado/mapa_delta.md
+     clients/<id>/estado/mapa_delta.md
 ```
 
-➡️  Próximo passo: /gerar-cenarios --formato gherkin
+➡️  Próximo passo: /gerar-cenarios --cliente <id> --formato gherkin
 ```
 
 ---
@@ -649,16 +650,16 @@ Exibir no terminal:
 `/gerar-cenarios`
 
 ## Artefatos gerados
-- `estado/mapa.md`
-- `estado/fluxos.md`
-- `estado/elementos.json`
-- `estado/api_endpoints.json`
-- `estado/screenshots/*.png`
-- `resultado/<timestamp>/cobertura.md`
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/<timestamp>/cleanup_log.json` (se `permite_mutativo=true`)
-- `estado/mapa_delta.md` (se `--delta` foi usado)
+- `clients/<id>/estado/mapa.md`
+- `clients/<id>/estado/fluxos.md`
+- `clients/<id>/estado/elementos.json`
+- `clients/<id>/estado/api_endpoints.json`
+- `clients/<id>/estado/screenshots/*.png`
+- `clients/<id>/resultado/<timestamp>/cobertura.md`
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/<timestamp>/cleanup_log.json` (se `permite_mutativo=true`)
+- `clients/<id>/estado/mapa_delta.md` (se `--delta` foi usado)
 
 ---
 
@@ -666,7 +667,7 @@ Exibir no terminal:
 Ao iniciar o browser, ativar captura de mensagens do console:
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 - No resultado final, incluir seção "Console Errors" listando erros críticos
 - Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
 
@@ -677,7 +678,7 @@ Ao iniciar o browser, ativar interceptação de rede:
 - Registrar requisições que levaram mais de 3000ms (lentas)
 - Registrar requisições que falharam (timeout, DNS, conexão recusada)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 - No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
 - Muitos erros 5xx consecutivos devem gerar alerta no resumo
 
@@ -701,7 +702,7 @@ Ao final da execução, realizar limpeza dos dados criados durante os testes:
 - Manter registro de cada dado criado: `{ item, tipo, url }`
 - Tentar reverter: excluir registros via interface (botão excluir) ou API se disponível
 - Registrar resultado: `{ item, tipo, url, status: "limpo|pendente", motivo }`
-- Salvar em `resultado/<timestamp>/cleanup_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/cleanup_log.json`
 - No resultado final, incluir seção "Cleanup de Dados"
 - Se cleanup não for possível: registrar como pendência para o QA resolver manualmente
 

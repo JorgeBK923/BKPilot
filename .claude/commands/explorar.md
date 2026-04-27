@@ -1,13 +1,12 @@
-# /explorar — Mapeamento do Sistema Alvo
-
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
 > Aplica-se a **TODAS as ICLs** (Claude, GLM, Minimax, Kimi, MiMo, Qwen, GPT, Codex). Ver §7.1 do CLAUDE.md.
 
+# /explorar — Mapeamento do Sistema Alvo
 
 ## Descrição
 Mapeia o sistema alvo por completo. Navega por todas as páginas acessíveis, abre modais e wizards, ativa abas, identifica elementos interativos, detecta fluxos, captura console errors, monitora rede, detecta endpoints de API e tira screenshots de cada tela.
@@ -18,12 +17,94 @@ A skill executa em **4 fases com portões obrigatórios**. Você não pode encer
 
 ## Uso
 ```
-/explorar <URL> --login <email>
+/explorar --cliente <id> <URL> --login <email>
+/explorar --cliente <id> <URL> --login <email> --delta clients/<id>/estado/mapa.md
+/explorar --cliente <id> <URL>/nova-funcionalidade --login <email> --escopo "checkout com PIX"
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<URL>` — URL base do sistema a explorar (obrigatório)
 - `--login <email>` — email de autenticação. A senha é lida automaticamente da variável de ambiente `QA_PASSWORD` definida no `.env`
+- `--delta <caminho>` — caminho para mapa existente (ex: `clients/<id>/estado/mapa.md`). Ativa **modo delta**: compara o estado atual do sistema com o mapa salvo e explora apenas páginas novas ou modificadas
+- `--escopo <texto>` — texto livre descrevendo a funcionalidade alvo (ex: "checkout com PIX", "tela de relatórios financeiros"). Restringe a exploração ao contexto descrito, ignorando áreas não relacionadas
+
+## Modo Delta — Exploração incremental
+
+Quando `--delta clients/<id>/estado/mapa.md` é informado, a skill entra em **modo delta**. Em vez de explorar tudo do zero, ela:
+
+1. **Carrega o mapa existente** de `clients/<id>/estado/mapa.md` e `clients/<id>/estado/elementos.json`
+2. **Navega por todas as páginas** do sistema (como no modo normal)
+3. **Compara cada página** com a versão salva no mapa:
+   - Calcula hash do conteúdo principal (texto + estrutura DOM)
+   - Compara com o hash salvo (se existir)
+   - Classifica: `nova`, `modificada`, ou `inalterada`
+4. **Pula páginas inalteradas** — não executa Fase 2 (modais, wizards, abas) nelas
+5. **Explora a fundo** apenas páginas `novas` ou `modificadas` (Fase 2 completa)
+6. **Atualiza o mapa** com as descobertas, mantendo o que já existia
+7. **Gera `clients/<id>/estado/mapa_delta.md`** com resumo das mudanças detectadas
+
+### Critérios de detecção de mudança
+
+| Critério | Como detectar |
+|----------|---------------|
+| Página nova | URL não existe no mapa anterior |
+| Página modificada | Hash do conteúdo ≠ hash salvo, ou novos elementos DOM (botões, forms, tabelas) |
+| Página removida | URL existe no mapa anterior mas retorna 404 ou redirect |
+| Inalterada | Hash do conteúdo = hash salvo E mesma contagem de elementos |
+
+### Output do modo delta
+
+Além dos artefatos normais, gera:
+
+```markdown
+# Delta Report — Exploração <timestamp>
+
+## Resumo
+- Páginas no mapa anterior: N
+- Páginas novas: N
+- Páginas modificadas: N
+- Páginas removidas: N
+- Páginas inalteradas (puladas): N
+
+## Páginas novas
+| URL | Título | Elementos |
+|-----|--------|-----------|
+| /nova-funcionalidade | Tela de Checkout | 3 forms, 5 botões, 1 tabela |
+
+## Páginas modificadas
+| URL | Título | Mudança detectada |
+|-----|--------|-------------------|
+| /dashboard | Dashboard | +2 botões, +1 modal "Exportar" |
+
+## Páginas removidas
+| URL | Título anterior | Status atual |
+|-----|-----------------|--------------|
+| /relatorio-antigo | Relatório v1 | 404 |
+
+## Mapa atualizado
+- `clients/<id>/estado/mapa.md` → atualizado com N páginas (era N, agora N)
+- `clients/<id>/estado/elementos.json` → atualizado com novos elementos
+```
+
+### Modo delta + escopo
+
+Quando `--delta` e `--escopo` são usados juntos:
+
+```
+/explorar --cliente <id> <URL> --login <email> --delta clients/<id>/estado/mapa.md --escopo "checkout com PIX"
+```
+
+A skill:
+1. Carrega o mapa existente
+2. **Foca apenas** nas páginas relacionadas ao escopo descrito
+3. Identifica páginas novas/modificadas **dentro do escopo**
+4. Ignora páginas fora do escopo (mesmo que sejam novas)
+5. Gera delta report filtrado pelo escopo
+
+**Exemplo:** se o escopo é "checkout com PIX", a skill explora a fundo `/checkout`, `/pagamento`, `/confirmacao-pix` mas ignora `/relatorios`, `/configuracoes`, etc.
+
+---
 
 ## Comportamento fixo (definido pela spec, não pelo QA)
 A profundidade e a completude da exploração não são parametrizáveis — são **contratuais** pela especificação da plataforma. A skill sempre:
@@ -60,7 +141,7 @@ Você **NÃO PODE** encerrar a skill nem imprimir o resumo final enquanto qualqu
 - [ ] Cada wizard teve **todos** os passos percorridos, cada passo com screenshot próprio
 - [ ] Cada aba de cada página foi ativada e tem screenshot próprio
 - [ ] `tempo_carregamento_ms` foi preenchido (não-nulo) em todas as páginas
-- [ ] `console_log.json` e `network_log.json` acumulados existem e estão não-vazios em `resultado/<timestamp>/`
+- [ ] `console_log.json` e `network_log.json` acumulados existem e estão não-vazios em `clients/<id>/resultado/<timestamp>/`
 - [ ] A ficha de cobertura (Fase 4) está 100% verde
 
 Se `permite_mutativo = true` (default), adicione:
@@ -85,17 +166,54 @@ Antes de qualquer ação, verificar se a senha foi passada inline no argumento `
   > ❌ QA_PASSWORD não encontrada. Crie clients/<id>/.env com: QA_PASSWORD=sua_senha
 
 ### 2. Preparação
-- Criar pasta `estado/` na raiz do projeto (se não existir)
-- Criar pasta `resultado/` na raiz do projeto (se não existir)
+- Criar pasta `clients/<id>/estado/` na raiz do projeto (se não existir)
+- Criar pasta `clients/<id>/resultado/` na raiz do projeto (se não existir)
 - Registrar timestamp de início: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/` para logs desta execução
-- Atualizar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/` para logs desta execução
+- Atualizar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 - Consultar `GET /api/v1/projects/{id}` para obter `permite_mutativo`. Se o projeto não for encontrado, abortar com erro claro. Se o campo existir, use-o; se a API não estiver disponível (execução local), assuma `true` como default
 
 ### 2.1 Consulta de sitemap.xml e robots.txt
 Antes de iniciar a navegação, tentar obter informações prévias:
 - **robots.txt:** acessar `<URL>/robots.txt`. Se existir: registrar rotas bloqueadas (`Disallow`) e sitemaps referenciados. Rotas bloqueadas devem ser **respeitadas** (não visitadas).
 - **sitemap.xml:** acessar `<URL>/sitemap.xml`. Se existir: extrair URLs listadas como ponto de partida adicional, para não depender só da navegação visível.
+
+### 2.2 Modo Delta — carregamento do mapa existente
+Se `--delta <caminho>` foi informado:
+
+1. **Verificar se o arquivo existe:**
+   - Se `clients/<id>/estado/mapa.md` ou o arquivo informado **não existir**, abortar com erro:
+     > ❌ Arquivo de mapa não encontrado: <caminho>. Execute /explorar sem --delta primeiro para criar o mapa inicial.
+2. **Carregar `clients/<id>/estado/mapa.md`** e extrair a lista de páginas conhecidas (URLs, títulos, hashes se disponíveis)
+3. **Carregar `clients/<id>/estado/elementos.json`** se existir — contém a estrutura detalhada de cada página (forms, botões, modais, wizards)
+4. **Inicializar estrutura de delta:**
+   ```json
+   {
+     "timestamp": "<timestamp>",
+     "mapa_anterior": "<caminho>",
+     "paginas_anteriores": N,
+     "paginas_novas": [],
+     "paginas_modificadas": [],
+     "paginas_removidas": [],
+     "paginas_inalteradas": []
+   }
+   ```
+5. **Se `--escopo` também foi informado:** filtrar as páginas do mapa anterior para identificar quais já estão dentro do escopo. Isso serve como baseline para detectar mudanças relevantes.
+
+### 2.3 Modo Escopo — restrição de contexto
+Se `--escopo <texto>` foi informado (com ou sem `--delta`):
+
+1. **Interpretar o escopo:** analisar o texto para identificar palavras-chave relacionadas a funcionalidades (ex: "checkout", "PIX", "relatório", "usuário")
+2. **Durante a Fase 1**, ao descobrir páginas:
+   - Se a URL, título ou conteúdo da página **corresponde ao escopo**: marcar como `dentro_do_escopo` e explorar normalmente
+   - Se **não corresponde ao escopo**: registrar como `fora_do_escopo` e pular (não executa Fase 2)
+3. **Critério de correspondência:** uma página está no escopo se:
+   - A URL contém palavras-chave do escopo
+   - O título da página contém palavras-chave do escopo
+   - O conteúdo visível menciona termos do escopo
+4. **No resumo final**, listar páginas fora do escopo que foram encontradas mas não exploradas
+
+---
 
 ### 3. Autenticação (se --login foi passado)
 - Abrir a URL base via Playwright MCP
@@ -108,7 +226,7 @@ Antes de iniciar a navegação, tentar obter informações prévias:
 Ao iniciar o browser, ativar captura de mensagens do console:
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- **Acumular continuamente em `resultado/<timestamp>/console_log.json`** — este arquivo acumulado é obrigatório e será verificado na Fase 4
+- **Acumular continuamente em `clients/<id>/resultado/<timestamp>/console_log.json`** — este arquivo acumulado é obrigatório e será verificado na Fase 4
 - Associar erros à página onde ocorreram (para inclusão no `elementos.json`)
 
 ### 3.2 Monitoramento de requisições de rede (BLOCK-C)
@@ -116,9 +234,9 @@ Ao iniciar o browser, ativar interceptação de rede:
 - Registrar requisições com status >= 400 (erros HTTP)
 - Registrar requisições que levaram mais de 3000ms (lentas)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes }`
-- **Acumular em `resultado/<timestamp>/network_log.json`** — obrigatório e verificado na Fase 4
+- **Acumular em `clients/<id>/resultado/<timestamp>/network_log.json`** — obrigatório e verificado na Fase 4
 - **Detectar endpoints de API:** identificar requisições XHR/Fetch para URLs de API (padrões: `/api/`, `/v1/`, `/graphql`, JSON responses)
-- Salvar endpoints descobertos em `estado/api_endpoints.json`
+- Salvar endpoints descobertos em `clients/<id>/estado/api_endpoints.json`
 
 ### 3.3 Re-autenticação de sessão (BLOCK-D)
 Durante toda a exploração, monitorar sinais de sessão expirada:
@@ -130,7 +248,7 @@ Se detectado: registrar evento, re-autenticar, voltar ao ponto onde parou, conti
 
 ---
 
-## 🏃 Fase 1 — Mapa raso (esqueleto)
+## Fase 1 — Mapa raso (esqueleto)
 
 **Objetivo:** descobrir todas as páginas acessíveis do sistema. Superficial de propósito — profundidade vem na Fase 2.
 
@@ -142,7 +260,7 @@ Se detectado: registrar evento, re-autenticar, voltar ao ponto onde parou, conti
 - Para cada página encontrada, registrar:
   - URL, título, profundidade
   - **`tempo_carregamento_ms`** (use `performance.timing` ou `page.metrics()` — não deixe null)
-  - 1 screenshot base em `estado/screenshots/<slug-da-url>.png`
+  - 1 screenshot base em `clients/<id>/estado/screenshots/<slug-da-url>.png`
   - Contagem preliminar de: formulários, botões, tabelas, modais visíveis, abas visíveis, wizards visíveis
 
 **O que NÃO fazer nesta fase:**
@@ -157,6 +275,30 @@ Se detectado: registrar evento, re-autenticar, voltar ao ponto onde parou, conti
 - Erro 404/500: registrar `status: erro_<codigo>`, pular
 - Página restrita (403 ou redirect inesperado): registrar em "Padrões de Permissão" do mapa
 
+**Se modo delta (`--delta`) está ativo:**
+- Para cada página visitada, calcular hash do conteúdo (texto visível + estrutura DOM simplificada)
+- Comparar com a entrada correspondente no mapa anterior:
+  - **URL não existe no mapa anterior** → classificar como `nova`
+  - **Hash diferente ou contagem de elementos mudou** → classificar como `modificada`
+  - **Hash igual e mesma contagem de elementos** → classificar como `inalterada`
+  - **URL do mapa anterior retorna 404** → classificar como `removida`
+- Páginas `inalteradas`: registrar URL e título, **pular Fase 2** (não abre modais, não percorre wizards)
+- Páginas `novas` ou `modificadas`: explorar normalmente (Fase 2 completa)
+- Páginas `removidas`: registrar no delta report
+
+**Se modo escopo (`--escopo`) está ativo:**
+- Para cada página descoberta, verificar se corresponde ao escopo:
+  - URL contém palavras-chave do escopo → `dentro_do_escopo`
+  - Título ou conteúdo menciona termos do escopo → `dentro_do_escopo`
+  - Caso contrário → `fora_do_escopo`
+- Páginas `fora_do_escopo`: registrar e pular (não executa Fase 2)
+- Páginas `dentro_do_escopo`: explorar normalmente
+
+**Se ambos (`--delta` + `--escopo`) estão ativos:**
+- Aplicar filtro de escopo primeiro
+- Dentro do escopo, aplicar detecção delta (nova/modificada/inalterada)
+- Páginas fora do escopo são ignoradas mesmo se forem novas
+
 ### Portão da Fase 1
 Verifique antes de avançar:
 - [ ] Lista de páginas existe em memória/rascunho
@@ -167,7 +309,7 @@ Se qualquer item falhar, volte e complete. Só então prossiga para a Fase 2.
 
 ---
 
-## 🔍 Fase 2 — Aprofundamento por página (músculo)
+## Fase 2 — Aprofundamento por página (músculo)
 
 **Objetivo:** para cada página da Fase 1, capturar tudo que está escondido atrás de cliques — modais, abas, wizards, accordions, expansões.
 
@@ -177,7 +319,7 @@ Se qualquer item falhar, volte e complete. Só então prossiga para a Fase 2.
 - Identifique componentes de tab (atributos: `role="tab"`, `role="tablist"`, classes `nav-tabs`, ou seletores de aba visíveis)
 - Clique em cada aba
 - Aguarde renderização
-- Capture screenshot: `estado/screenshots/<pagina>_aba_<nome>.png`
+- Capture screenshot: `clients/<id>/estado/screenshots/<pagina>_aba_<nome>.png`
 - Registre no array `abas` da página dentro de `elementos.json`, incluindo o conteúdo observado (tabelas, botões, contadores)
 
 ### 2.2 Abrir todos os modais de CRUD
@@ -187,7 +329,7 @@ Se qualquer item falhar, volte e complete. Só então prossiga para a Fase 2.
   1. Clique no trigger
   2. Aguarde o modal/drawer renderizar (role="dialog", overlay, etc.)
   3. Capture **todos** os campos do formulário: nome, tipo, obrigatório, placeholder, validação visível, opções de dropdown
-  4. Screenshot: `estado/screenshots/<pagina>_modal_<acao>.png`
+  4. Screenshot: `clients/<id>/estado/screenshots/<pagina>_modal_<acao>.png`
   5. Feche o modal (ESC ou botão Cancelar) — **NÃO salve/envie nada** nesta fase, mesmo com `permite_mutativo=true`. Escrita real só acontece na Fase 3
 - Se o "botão" abre uma rota nova em vez de modal, registre como página da Fase 1 tardia e trate como tal
 - Registre cada modal como item do array `modais` da página em `elementos.json`
@@ -195,7 +337,7 @@ Se qualquer item falhar, volte e complete. Só então prossiga para a Fase 2.
 ### 2.3 Percorrer wizards de ponta a ponta
 - Se a página tem wizard (stepper, passos N/M, carousel de onboarding):
   1. Preencha dados mínimos para avançar em cada passo — use valores neutros de fixture (não dados reais)
-  2. Capture screenshot de CADA passo: `estado/screenshots/<pagina>_wizard_passo<N>.png`
+  2. Capture screenshot de CADA passo: `clients/<id>/estado/screenshots/<pagina>_wizard_passo<N>.png`
   3. Registre todos os campos de todos os passos
   4. No passo final, **NÃO clique em Finalizar/Confirmar** — volte ou cancele. A conclusão real do wizard só acontece na Fase 3 (quando `permite_mutativo=true`)
 - Registre a estrutura completa do wizard (array de passos com campos) em `elementos.json`
@@ -216,7 +358,7 @@ Se falhar, volte à página específica e complete. Só então prossiga.
 
 ---
 
-## ⚡ Fase 3 — Exercício mutativo (pulso) — condicional ao projeto
+## Fase 3 — Exercício mutativo (pulso) — condicional ao projeto
 
 **Objetivo:** executar ações reais em fluxos principais para capturar verbos POST/PUT/DELETE da API e validar fluxos ponta a ponta.
 
@@ -228,13 +370,13 @@ Se falhar, volte à página específica e complete. Só então prossiga.
 - Se houver chat, busca principal ou geração (IA): enviar 1 consulta real
 - Aguardar resposta completa
 - Capturar o endpoint POST correspondente em `network_log.json`
-- Screenshot: `estado/screenshots/fase3_consulta_resposta.png`
+- Screenshot: `clients/<id>/estado/screenshots/fase3_consulta_resposta.png`
 - Registrar a conversa/resultado criado em `cleanup_log.json` se aplicável
 
 ### 3.2 Ação CRUD de criação
 - Escolher uma entidade de baixo impacto (conversa, rascunho, usuário de teste, grupo de teste)
 - Criar com dados marcados como teste: prefixo `QA_TEST_<timestamp>`
-- Registrar imediatamente em `resultado/<timestamp>/cleanup_log.json`:
+- Registrar imediatamente em `clients/<id>/resultado/<timestamp>/cleanup_log.json`:
   ```json
   { "item": "QA_TEST_2026-...", "tipo": "usuario", "url": "...", "id": "..." }
   ```
@@ -261,20 +403,20 @@ Para cada item em `cleanup_log.json`:
 
 ---
 
-## 🪞 Fase 4 — Auto-auditoria (espelho)
+## Fase 4 — Auto-auditoria (espelho)
 
 **Objetivo:** antes de dizer "terminei", provar que terminou. Verifique arquivos no disco, não sua memória.
 
 ### 4.1 Verificar evidência no disco
 Use Glob/Read/Bash para contar arquivos reais:
-- Quantos screenshots existem em `estado/screenshots/`?
+- Quantos screenshots existem em `clients/<id>/estado/screenshots/`?
 - Quantos modais foram esperados (contagem de botões CRUD em `elementos.json`)?
 - Quantos wizards foram esperados e quantos passos cada um tem?
-- `console_log.json` e `network_log.json` existem em `resultado/<timestamp>/` e têm conteúdo (não são `[]`)?
+- `console_log.json` e `network_log.json` existem em `clients/<id>/resultado/<timestamp>/` e têm conteúdo (não são `[]`)?
 - `api_endpoints.json` contém verbos mutativos (quando `permite_mutativo=true`)?
 
 ### 4.2 Gerar ficha de cobertura
-Crie `resultado/<timestamp>/cobertura.md` neste formato exato:
+Crie `clients/<id>/resultado/<timestamp>/cobertura.md` neste formato exato:
 
 ```markdown
 # Ficha de Cobertura — Exploração <timestamp>
@@ -323,9 +465,9 @@ Crie `resultado/<timestamp>/cobertura.md` neste formato exato:
 
 ## 5. Geração dos artefatos finais
 
-Salvar em `estado/`:
+Salvar em `clients/<id>/estado/`:
 
-### `estado/mapa.md` — estrutura completa do sistema
+### `clients/<id>/estado/mapa.md` — estrutura completa do sistema
 ```
 # Mapa do Sistema
 Gerado em: <timestamp>
@@ -362,7 +504,7 @@ Modo mutativo: ativo | desativado
 - Screenshots: <lista>
 ```
 
-### `estado/fluxos.md` — sequências de navegação identificadas
+### `clients/<id>/estado/fluxos.md` — sequências de navegação identificadas
 ```
 # Fluxos Identificados
 
@@ -374,7 +516,7 @@ Modo mutativo: ativo | desativado
 - Exercitado na Fase 3: sim | não
 ```
 
-### `estado/elementos.json` — todos os elementos interativos
+### `clients/<id>/estado/elementos.json` — todos os elementos interativos
 ```json
 {
   "paginas": [
@@ -412,7 +554,7 @@ Modo mutativo: ativo | desativado
 }
 ```
 
-### `estado/api_endpoints.json` — endpoints detectados
+### `clients/<id>/estado/api_endpoints.json` — endpoints detectados
 ```json
 {
   "descoberto_em": "<timestamp>",
@@ -425,11 +567,19 @@ Modo mutativo: ativo | desativado
 }
 ```
 
-### `resultado/<timestamp>/cobertura.md`
+### `clients/<id>/resultado/<timestamp>/cobertura.md`
 Gerado na Fase 4 (obrigatório).
 
-### `resultado/<timestamp>/cleanup_log.json`
+### `clients/<id>/resultado/<timestamp>/cleanup_log.json`
 Gerado na Fase 3 se `permite_mutativo=true` (obrigatório nesse caso).
+
+### `clients/<id>/estado/mapa_delta.md` (se `--delta` foi usado)
+Gerado apenas no modo delta. Contém:
+- Contagem de páginas: anteriores, novas, modificadas, removidas, inalteradas
+- Lista de páginas novas com URL, título e elementos detectados
+- Lista de páginas modificadas com descrição da mudança
+- Lista de páginas removidas com URL e status atual
+- Mapa atualizado (merge do anterior com as descobertas)
 
 ---
 
@@ -454,19 +604,44 @@ Exibir no terminal:
    Modo mutativo:                 ativo | desativado
    Itens de cleanup:              <n> limpos, <n> pendentes
    Tempo total:                   <duração>
+```
+
+**Se modo delta (`--delta`) estava ativo**, adicionar ao resumo:
+```
+   Modo delta:                    ativo
+   Páginas no mapa anterior:      <n>
+   Páginas novas:                 <n>
+   Páginas modificadas:           <n>
+   Páginas removidas:             <n>
+   Páginas inalteradas (puladas): <n>
+   Delta report:                  clients/<id>/estado/mapa_delta.md
+```
+
+**Se modo escopo (`--escopo`) estava ativo**, adicionar ao resumo:
+```
+   Escopo:                        "<texto do escopo>"
+   Páginas dentro do escopo:      <n>
+   Páginas fora do escopo:        <n>
+```
 
    Artefatos:
-     estado/mapa.md
-     estado/fluxos.md
-     estado/elementos.json
-     estado/api_endpoints.json
-     estado/screenshots/ (<n> imagens)
-     resultado/<timestamp>/cobertura.md
-     resultado/<timestamp>/console_log.json
-     resultado/<timestamp>/network_log.json
-     resultado/<timestamp>/cleanup_log.json (se permite_mutativo)
+     clients/<id>/estado/mapa.md
+     clients/<id>/estado/fluxos.md
+     clients/<id>/estado/elementos.json
+     clients/<id>/estado/api_endpoints.json
+     clients/<id>/estado/screenshots/ (<n> imagens)
+     clients/<id>/resultado/<timestamp>/cobertura.md
+     clients/<id>/resultado/<timestamp>/console_log.json
+     clients/<id>/resultado/<timestamp>/network_log.json
+     clients/<id>/resultado/<timestamp>/cleanup_log.json (se permite_mutativo)
+```
 
-➡️  Próximo passo: /gerar-cenarios --formato gherkin
+**Se modo delta estava ativo**, adicionar:
+```
+     clients/<id>/estado/mapa_delta.md
+```
+
+➡️  Próximo passo: /gerar-cenarios --cliente <id> --formato gherkin
 ```
 
 ---
@@ -475,12 +650,60 @@ Exibir no terminal:
 `/gerar-cenarios`
 
 ## Artefatos gerados
-- `estado/mapa.md`
-- `estado/fluxos.md`
-- `estado/elementos.json`
-- `estado/api_endpoints.json`
-- `estado/screenshots/*.png`
-- `resultado/<timestamp>/cobertura.md`
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/<timestamp>/cleanup_log.json` (se `permite_mutativo=true`)
+- `clients/<id>/estado/mapa.md`
+- `clients/<id>/estado/fluxos.md`
+- `clients/<id>/estado/elementos.json`
+- `clients/<id>/estado/api_endpoints.json`
+- `clients/<id>/estado/screenshots/*.png`
+- `clients/<id>/resultado/<timestamp>/cobertura.md`
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/<timestamp>/cleanup_log.json` (se `permite_mutativo=true`)
+- `clients/<id>/estado/mapa_delta.md` (se `--delta` foi usado)
+
+---
+
+### Monitoramento de console do browser (BLOCK-B)
+Ao iniciar o browser, ativar captura de mensagens do console:
+- Interceptar eventos `console.error` e `console.warning`
+- Registrar: `{ timestamp, level, text, url, lineNumber }`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
+- No resultado final, incluir seção "Console Errors" listando erros críticos
+- Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
+
+
+### Monitoramento de requisições de rede (BLOCK-C)
+Ao iniciar o browser, ativar interceptação de rede:
+- Registrar requisições com status >= 400 (erros HTTP)
+- Registrar requisições que levaram mais de 3000ms (lentas)
+- Registrar requisições que falharam (timeout, DNS, conexão recusada)
+- Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
+- No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
+- Muitos erros 5xx consecutivos devem gerar alerta no resumo
+
+
+### Re-autenticação de sessão (BLOCK-D)
+Durante a execução, monitorar sinais de sessão expirada:
+- Redirecionamento inesperado para página de login
+- Resposta HTTP 401 ou 403 em requisição autenticada
+- Presença de modal ou banner de "sessão expirada" na página
+
+Se detectado:
+1. Registrar evento: `{ timestamp, url, motivo }`
+2. Re-autenticar usando as credenciais originais (--login + QA_PASSWORD)
+3. Retornar à página/ação onde a sessão expirou
+4. Continuar execução normalmente
+5. Incluir contagem de re-autenticações no resumo final
+
+
+### Cleanup de dados de teste (BLOCK-E)
+Ao final da execução, realizar limpeza dos dados criados durante os testes:
+- Manter registro de cada dado criado: `{ item, tipo, url }`
+- Tentar reverter: excluir registros via interface (botão excluir) ou API se disponível
+- Registrar resultado: `{ item, tipo, url, status: "limpo|pendente", motivo }`
+- Salvar em `clients/<id>/resultado/<timestamp>/cleanup_log.json`
+- No resultado final, incluir seção "Cleanup de Dados"
+- Se cleanup não for possível: registrar como pendência para o QA resolver manualmente
+
+

@@ -1,23 +1,24 @@
-# /executar-planilha — Execução em Lote por Planilha
-
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
 > Aplica-se a **TODAS as ICLs** (Claude, GLM, Minimax, Kimi, MiMo, Qwen, GPT, Codex). Ver §7.1 do CLAUDE.md.
 
 
+# /executar-planilha — Execução em Lote por Planilha
+
 ## Descrição
 Executa cenários de teste em lote a partir de uma planilha `.xlsx` ou `.csv`. Cada linha é um cenário que o agente executa via Playwright, marcando o resultado diretamente na planilha. Suporta retry, circuit breaker, agrupamento por URL e monitoramento de console/rede.
 
 ## Uso
 ```
-/executar-planilha <arquivo> [--modulo <nome>] [--prioridade <Alta|Média|Baixa>] [--login <email>] [--retry <n>] [--max-falhas <n>] [--retry-falhos]
+/executar-planilha --cliente <id> <arquivo> [--modulo <nome>] [--prioridade <Alta|Média|Baixa>] [--login <email>] [--retry <n>] [--max-falhas <n>] [--retry-falhos]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<arquivo>` — caminho da planilha de cenários (obrigatório). Ex: `cenarios/cenarios.xlsx`
 - `--modulo <nome>` — executa apenas cenários do módulo especificado
 - `--prioridade <nivel>` — executa apenas cenários da prioridade especificada: `Alta`, `Média` ou `Baixa`
@@ -43,10 +44,10 @@ Verificar se a planilha contém as colunas obrigatórias: `ID`, `Módulo`, `Flux
 
 ### 3. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/`
-- Criar subpasta `resultado/<timestamp>/videos/` para os vídeos MP4
-- Criar subpasta `resultado/<timestamp>/screenshots/` para os screenshots
-- Criar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/`
+- Criar subpasta `clients/<id>/resultado/<timestamp>/videos/` para os vídeos MP4
+- Criar subpasta `clients/<id>/resultado/<timestamp>/screenshots/` para os screenshots
+- Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 - Ler todos os cenários da planilha
 - Aplicar filtros de `--modulo` e/ou `--prioridade` se informados
 - **Otimizar ordem de execução:** agrupar cenários pela mesma URL para minimizar navegações
@@ -59,12 +60,12 @@ Verificar se a planilha contém as colunas obrigatórias: `ID`, `Módulo`, `Flux
 ### 4.1 Monitoramento de console do browser
 Ativar captura de mensagens do console (conforme BLOCK-B do CLAUDE.md):
 - Interceptar eventos `console.error` e `console.warning`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 
 ### 4.2 Monitoramento de requisições de rede
 Ativar interceptação de rede (conforme BLOCK-C do CLAUDE.md):
 - Registrar requisições com status >= 400 e requisições lentas (>3s)
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 
 ### 4.3 Re-autenticação de sessão
 Durante toda a execução, monitorar sinais de sessão expirada (conforme BLOCK-D do CLAUDE.md):
@@ -73,9 +74,7 @@ Durante toda a execução, monitorar sinais de sessão expirada (conforme BLOCK-
 ### 5. Configuração de gravação de vídeo
 Ao iniciar o browser via Playwright MCP, ativar gravação de vídeo por cenário:
 ```
-video: 'on'
-videoDir: 'resultado/<timestamp>/videos/_raw/'
-videoSize: { width: 1280, height: 720 }
+recordVideo: { dir: 'clients/<id>/resultado/<timestamp>/videos/_raw/', size: { width: 1280, height: 720 } }
 ```
 **Importante:** abrir e fechar o browser a cada cenário para que cada um gere seu próprio arquivo de vídeo individual.
 
@@ -107,8 +106,8 @@ Para cada linha filtrada da planilha (na ordem otimizada por URL):
     - `Pulou` — não foi possível executar (ex: pré-condição não atendida)
 13. Se `Falhou` e `--retry > 0`: re-executar até `--retry` vezes antes de marcar como falha definitiva
 14. Preencher colunas de evidência na planilha:
-    - `Screenshot` → `resultado/latest/screenshots/<ID>_final.png`
-    - `Vídeo` → `resultado/latest/videos/<ID>_<timestamp>.mp4`
+    - `Screenshot` → `clients/<id>/resultado/latest/screenshots/<ID>_final.png`
+    - `Vídeo` → `clients/<id>/resultado/latest/videos/<ID>_<timestamp>.mp4`
     - `Observações` → descrição da falha (se Falhou)
 
 ### 6.1 Retry de cenários falhos (se --retry-falhos)
@@ -122,7 +121,7 @@ Após completar todos os cenários, se `--retry-falhos` foi passado:
 Ao final de toda a execução, realizar limpeza (conforme BLOCK-E do CLAUDE.md):
 - Identificar registros criados durante a sessão
 - Tentar reverter via interface ou API
-- Salvar em `resultado/<timestamp>/cleanup_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/cleanup_log.json`
 
 ### 8. Geração dos artefatos
 Atualizar planilha original in-place (com colunas Status, Observações, Screenshot e Vídeo preenchidas):
@@ -130,7 +129,7 @@ Atualizar planilha original in-place (com colunas Status, Observações, Screens
 2. Atualizar a planilha original com os resultados
 3. NÃO criar planilha separada — a original é a source of truth consolidada
 
-Salvar resumo em `resultado/latest/planilha_<timestamp>.md`:
+Salvar resumo em `clients/<id>/resultado/latest/planilha_<timestamp>.md`:
 ```markdown
 # Resultado — Execução por Planilha
 Data: <timestamp>
@@ -174,11 +173,11 @@ Retries executados: <n>
    Retries: <n> | Re-autenticações: <n>
    Console errors: <n> | Requisições com erro: <n>
    Cleanup: <n> itens limpos, <n> pendentes
-   Vídeos: resultado/latest/videos/ (<n> arquivos MP4)
-   Screenshots: resultado/latest/screenshots/
+   Vídeos: clients/<id>/resultado/latest/videos/ (<n> arquivos MP4)
+   Screenshots: clients/<id>/resultado/latest/screenshots/
    Planilha com resultados: <arquivo> (atualizada in-place)
 
-➡️  Próximo passo: /reportar-bug --fonte resultado/latest/
+➡️  Próximo passo: /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
 ```
 
 ## Encadeia para
@@ -186,10 +185,57 @@ Retries executados: <n>
 
 ## Artefatos gerados
 - `<arquivo>` — cópia atualizada in-place (com backup `.bak` da versão original)
-- `resultado/<timestamp>/planilha_<timestamp>.md`
-- `resultado/<timestamp>/videos/<ID>_<timestamp>.mp4` (um por cenário)
-- `resultado/<timestamp>/screenshots/<ID>_final.png` (um por cenário)
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/<timestamp>/cleanup_log.json`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/planilha_<timestamp>.md`
+- `clients/<id>/resultado/<timestamp>/videos/<ID>_<timestamp>.mp4` (um por cenário)
+- `clients/<id>/resultado/<timestamp>/screenshots/<ID>_final.png` (um por cenário)
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/<timestamp>/cleanup_log.json`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`
+
+---
+
+### Monitoramento de console do browser (BLOCK-B)
+Ao iniciar o browser, ativar captura de mensagens do console:
+- Interceptar eventos `console.error` e `console.warning`
+- Registrar: `{ timestamp, level, text, url, lineNumber }`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
+- No resultado final, incluir seção "Console Errors" listando erros críticos
+- Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
+
+
+### Monitoramento de requisições de rede (BLOCK-C)
+Ao iniciar o browser, ativar interceptação de rede:
+- Registrar requisições com status >= 400 (erros HTTP)
+- Registrar requisições que levaram mais de 3000ms (lentas)
+- Registrar requisições que falharam (timeout, DNS, conexão recusada)
+- Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
+- No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
+- Muitos erros 5xx consecutivos devem gerar alerta no resumo
+
+
+### Re-autenticação de sessão (BLOCK-D)
+Durante a execução, monitorar sinais de sessão expirada:
+- Redirecionamento inesperado para página de login
+- Resposta HTTP 401 ou 403 em requisição autenticada
+- Presença de modal ou banner de "sessão expirada" na página
+
+Se detectado:
+1. Registrar evento: `{ timestamp, url, motivo }`
+2. Re-autenticar usando as credenciais originais (--login + QA_PASSWORD)
+3. Retornar à página/ação onde a sessão expirou
+4. Continuar execução normalmente
+5. Incluir contagem de re-autenticações no resumo final
+
+
+### Cleanup de dados de teste (BLOCK-E)
+Ao final da execução, realizar limpeza dos dados criados durante os testes:
+- Manter registro de cada dado criado: `{ item, tipo, url }`
+- Tentar reverter: excluir registros via interface (botão excluir) ou API se disponível
+- Registrar resultado: `{ item, tipo, url, status: "limpo|pendente", motivo }`
+- Salvar em `clients/<id>/resultado/<timestamp>/cleanup_log.json`
+- No resultado final, incluir seção "Cleanup de Dados"
+- Se cleanup não for possível: registrar como pendência para o QA resolver manualmente
+
+

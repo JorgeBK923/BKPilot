@@ -3,7 +3,7 @@
 
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
@@ -16,10 +16,11 @@ Skill híbrida que combina execução de roteiro + exploração livre. Primeiro 
 
 ## Uso
 ```
-/testar-modulo <nome-do-modulo> <arquivo> [--login <email>]
+/testar-modulo --cliente <id> <nome-do-modulo> <arquivo> [--login <email>]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<nome-do-modulo>` — nome do módulo a testar. Deve corresponder à coluna `Módulo` da planilha (obrigatório). Ex: `Login`, `Cadastro`, `Dashboard`
 - `<arquivo>` — caminho da planilha de cenários (obrigatório). Ex: `cenarios/cenarios.xlsx`
 - `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
@@ -43,32 +44,30 @@ Verificar se há cenários com `Módulo` = `<nome-do-modulo>` na planilha:
 
 ### 3. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/`
-- Criar subpasta `resultado/<timestamp>/videos/` para os vídeos MP4
-- Criar subpasta `resultado/<timestamp>/screenshots/` para os screenshots
-- Criar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/`
+- Criar subpasta `clients/<id>/resultado/<timestamp>/videos/` para os vídeos MP4
+- Criar subpasta `clients/<id>/resultado/<timestamp>/screenshots/` para os screenshots
+- Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 - Autenticar se `--login` foi passado
 
 ### 3.1 Configuração de gravação de vídeo
 - **Etapa A (roteiro):** abrir e fechar o browser por cenário para gerar um vídeo individual por cenário
 - **Etapa B (exploração livre):** gravar em sessão contínua única (um único vídeo cobre toda a exploração)
 ```
-video: 'on'
-videoDir: 'resultado/<timestamp>/videos/_raw/'
-videoSize: { width: 1280, height: 720 }
+recordVideo: { dir: 'clients/<id>/resultado/<timestamp>/videos/_raw/', size: { width: 1280, height: 720 } }
 ```
 
 ### 3.2 Monitoramento de console do browser
 Ativar captura de mensagens do console (conforme BLOCK-B do CLAUDE.md):
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 
 ### 3.3 Monitoramento de requisições de rede
 Ativar interceptação de rede (conforme BLOCK-C do CLAUDE.md):
 - Registrar requisições com status >= 400 e requisições lentas (>3s)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 
 ### 3.4 Re-autenticação de sessão
 Durante toda a execução (Etapa A e B), monitorar sinais de sessão expirada (conforme BLOCK-D do CLAUDE.md):
@@ -115,7 +114,7 @@ Após concluir o roteiro, iniciar exploração livre **restrita ao módulo**.
 ### B.1 Escopo da exploração
 - Usar as URLs do módulo identificadas na Etapa A como ponto de entrada
 - Não navegar para fora das páginas do módulo
-- Consultar `estado/mapa.md` se disponível para conhecer a área do módulo
+- Consultar `clients/<id>/estado/mapa.md` se disponível para conhecer a área do módulo
 
 ### B.2 Ações de exploração
 Testar comportamentos não cobertos pelos cenários:
@@ -167,9 +166,9 @@ Ao final, sugerir cenários que deveriam ser adicionados à planilha com base no
 ### 4. Conversão dos vídeos da Etapa B
 Após encerrar a exploração livre, converter o vídeo contínuo:
 ```bash
-ffmpeg -i resultado/<timestamp>/videos/_raw/<arquivo>.webm \
+ffmpeg -i clients/<id>/resultado/<timestamp>/videos/_raw/<arquivo>.webm \
        -c:v libx264 -crf 23 -preset fast \
-       resultado/<timestamp>/videos/exploracao_<timestamp>.mp4
+       clients/<id>/resultado/<timestamp>/videos/exploracao_<timestamp>.mp4
 ```
 Se ffmpeg não disponível: manter `.webm`, exibir aviso (conforme BLOCK-A do CLAUDE.md)
 
@@ -178,7 +177,7 @@ Ao final de toda a execução (Etapa A + B), realizar limpeza (conforme BLOCK-E 
 - Identificar registros criados durante a sessão (formulários submetidos, cadastros feitos)
 - Tentar reverter: excluir registros via interface ou API se possível
 - Registrar resultado: `{ item, tipo, url, status: "limpo|pendente", motivo }`
-- Salvar em `resultado/<timestamp>/cleanup_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/cleanup_log.json`
 - Se cleanup não for possível: registrar como pendência
 
 ### 6. Geração dos artefatos
@@ -187,16 +186,16 @@ Atualizar planilha original in-place (com colunas Status, Observações, Screens
 2. Atualizar a planilha original com os resultados
 3. NÃO criar planilha separada — a original é a source of truth consolidada
 
-Salvar `resultado/latest/modulo_<timestamp>.md`:
+Salvar `clients/<id>/resultado/latest/modulo_<timestamp>.md`:
 ```markdown
 # Resultado — Teste de Módulo: <nome>
 Data: <timestamp>
 Arquivo: <arquivo>
 
 ## Evidências
-- Vídeos por cenário (Etapa A): resultado/latest/videos/<ID>_*.mp4
-- Vídeo exploração livre (Etapa B): resultado/latest/videos/exploracao_<timestamp>.mp4
-- Screenshots: resultado/latest/screenshots/
+- Vídeos por cenário (Etapa A): clients/<id>/resultado/latest/videos/<ID>_*.mp4
+- Vídeo exploração livre (Etapa B): clients/<id>/resultado/latest/videos/exploracao_<timestamp>.mp4
+- Screenshots: clients/<id>/resultado/latest/screenshots/
 
 ## Etapa A — Roteiro
 | Status  | Quantidade |
@@ -267,9 +266,9 @@ Arquivo: <arquivo>
    Requisições com erro: <n>
    Re-autenticações realizadas: <n>
    Cleanup: <n> itens limpos, <n> pendentes
-   Resultado: resultado/latest/modulo_<timestamp>.md
+   Resultado: clients/<id>/resultado/latest/modulo_<timestamp>.md
 
-➡️  Próximo passo: /reportar-bug --fonte resultado/latest/
+➡️  Próximo passo: /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
 ```
 
 ## Encadeia para
@@ -277,14 +276,14 @@ Arquivo: <arquivo>
 
 ## Artefatos gerados
 - `<arquivo>` — cópia atualizada in-place (com backup `.bak` da versão original)
-- `resultado/<timestamp>/modulo_<timestamp>.md`
-- `resultado/<timestamp>/videos/<ID>_<timestamp>.mp4` (um por cenário da Etapa A)
-- `resultado/<timestamp>/videos/exploracao_<timestamp>.mp4` (Etapa B contínua)
-- `resultado/<timestamp>/screenshots/<ID>_final.png`
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/<timestamp>/cleanup_log.json`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/modulo_<timestamp>.md`
+- `clients/<id>/resultado/<timestamp>/videos/<ID>_<timestamp>.mp4` (um por cenário da Etapa A)
+- `clients/<id>/resultado/<timestamp>/videos/exploracao_<timestamp>.mp4` (Etapa B contínua)
+- `clients/<id>/resultado/<timestamp>/screenshots/<ID>_final.png`
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/<timestamp>/cleanup_log.json`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`
 
 ---
 
@@ -292,7 +291,7 @@ Arquivo: <arquivo>
 Ao iniciar o browser, ativar captura de mensagens do console:
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 - No resultado final, incluir seção "Console Errors" listando erros críticos
 - Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
 
@@ -303,7 +302,7 @@ Ao iniciar o browser, ativar interceptação de rede:
 - Registrar requisições que levaram mais de 3000ms (lentas)
 - Registrar requisições que falharam (timeout, DNS, conexão recusada)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 - No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
 - Muitos erros 5xx consecutivos devem gerar alerta no resumo
 
@@ -327,7 +326,7 @@ Ao final da execução, realizar limpeza dos dados criados durante os testes:
 - Manter registro de cada dado criado: `{ item, tipo, url }`
 - Tentar reverter: excluir registros via interface (botão excluir) ou API se disponível
 - Registrar resultado: `{ item, tipo, url, status: "limpo|pendente", motivo }`
-- Salvar em `resultado/<timestamp>/cleanup_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/cleanup_log.json`
 - No resultado final, incluir seção "Cleanup de Dados"
 - Se cleanup não for possível: registrar como pendência para o QA resolver manualmente
 

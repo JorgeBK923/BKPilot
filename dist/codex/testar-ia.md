@@ -3,7 +3,7 @@
 
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
@@ -17,10 +17,11 @@ Skill dedicada ao teste de sistemas de IA conversacional (chat, copilot, agente 
 
 ## Uso
 ```
-/testar-ia --url <url> --login <email> --dominio "<descrição do negócio>" [--categorias <lista>] [--qtd-total <n>] [--cleanup-a-cada <n>] [--reteste-ambiente]
+/testar-ia --cliente <id> --url <url> --login <email> --dominio "<descrição do negócio>" [--categorias <lista>] [--qtd-total <n>] [--cleanup-a-cada <n>] [--reteste-ambiente]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `--url` — URL do chat/sistema de IA (obrigatório). Ex: `https://devjcla.sistemastega.com.br/`
 - `--login <email>` — email de autenticação (obrigatório). A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`.
 - `--dominio "<texto>"` — contexto do negócio em linguagem natural (obrigatório). Ex: `"ERP de vendas, estoque e faturamento de fábrica de estofados"`. Usado pra preencher slots dos cenários funcionais.
@@ -41,8 +42,8 @@ Skill dedicada ao teste de sistemas de IA conversacional (chat, copilot, agente 
 
 ### 3. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar `resultado/<timestamp>/` + subpastas `screenshots/`, `videos/`
-- Criar symlink `resultado/latest`
+- Criar `clients/<id>/resultado/<timestamp>/` + subpastas `screenshots/`, `videos/`
+- Criar symlink `clients/<id>/resultado/latest`
 - Ativar BLOCK-B (console), BLOCK-C (network), BLOCK-D (re-auth) do CLAUDE.md
 
 ### 4. Geração da planilha
@@ -71,9 +72,9 @@ Salvar em `cenarios/cenarios_ia_<timestamp>.xlsx` com colunas padrão. Cada cen�
 ### 5. Execução
 Delegar ao `cenarios/_executar_planilha.js` existente com dois ajustes:
 
-**5.1 Chat cleanup periódico:** a cada `--cleanup-a-cada` cenários, invocar `cenarios/_limpar_chats.js` antes de continuar.
+**5.1 Chat cleanup periódico:** a cada `--cleanup-a-cada` cenários, invocar o script de cleanup do cliente (`clients/<client>/scripts/limpar-chats.js`) antes de continuar. Cliente sem esse script → pular esta etapa.
 
-**5.2 Captura estruturada da resposta:** além de screenshot/vídeo, capturar `innerText` da última bolha da IA em `resultado/<timestamp>/respostas_ia/<ID>.txt` pra validação semântica posterior.
+**5.2 Captura estruturada da resposta:** além de screenshot/vídeo, capturar `innerText` da última bolha da IA em `clients/<id>/resultado/<timestamp>/respostas_ia/<ID>.txt` pra validação semântica posterior.
 
 ### 6. Validação semântica (híbrida)
 Após execução, rodar `cenarios/_validar_ia.js` que processa cada resposta capturada:
@@ -85,17 +86,17 @@ Após execução, rodar `cenarios/_validar_ia.js` que processa cada resposta cap
 - **Vazamento de system prompt:** se resposta contém palavras típicas de system prompt (`"você é"`, `"instrução"`, `"role"`, `"system"`) em contexto suspeito → marca como `Revisar manualmente`.
 
 **6.2 Lista de auditoria pendente:**
-Gerar `resultado/<timestamp>/ia_auditoria_pendente.md` com todos os cenários de Guardrails/Permissões + qualquer caso marcado `Revisar manualmente`. Cada entrada inclui: ID, pergunta, resposta capturada, screenshot, status sugerido pela regex. O QA confirma ou reclassifica antes de gerar bug cards.
+Gerar `clients/<id>/resultado/<timestamp>/ia_auditoria_pendente.md` com todos os cenários de Guardrails/Permissões + qualquer caso marcado `Revisar manualmente`. Cada entrada inclui: ID, pergunta, resposta capturada, screenshot, status sugerido pela regex. O QA confirma ou reclassifica antes de gerar bug cards.
 
 ### 7. Reteste automático de falhas de ambiente
 Se `--reteste-ambiente` (default true):
 1. Filtrar falhas cujo erro contenha: `Timeout 30000ms`, `Limite de Chats Atingido`, `elementHandle.click` sem resposta de IA.
 2. Criar mini-planilha `cenarios/reteste_ambiente_<timestamp>.xlsx` com só esses IDs.
-3. Executar `_limpar_chats.js` + `_executar_planilha.js` na mini-planilha.
+3. Executar `clients/<client>/scripts/limpar-chats.js` (se existir) + `_executar_planilha.js` na mini-planilha.
 4. Consolidar resultado: reteste `Passou` → sobrescreve status original no placar final.
 
 ### 8. Consolidação final
-Gerar `resultado/<timestamp>/ia_placar_consolidado.md` com tabela de evolução (padrão exigido pela `/gerar-relatorio`):
+Gerar `clients/<id>/resultado/<timestamp>/ia_placar_consolidado.md` com tabela de evolução (padrão exigido pela `/gerar-relatorio`):
 
 | Etapa | Passou | Falhou | Observação |
 |-------|--------|--------|------------|
@@ -113,22 +114,22 @@ Gerar `resultado/<timestamp>/ia_placar_consolidado.md` com tabela de evolução 
    Validação semântica: <n> reclassificações automáticas
    Auditoria pendente: <n> cenários requerem revisão manual
    Reteste de ambiente: <n> falsos negativos absolvidos
-   Artefatos: resultado/<timestamp>/
+   Artefatos: clients/<id>/resultado/<timestamp>/
 
 ➡️  Próximo passo:
-    1. Revisar resultado/<timestamp>/ia_auditoria_pendente.md
-    2. /reportar-bug --fonte resultado/latest/
-    3. /gerar-relatorio --cliente "<nome>" --formato pdf
+    1. Revisar clients/<id>/resultado/<timestamp>/ia_auditoria_pendente.md
+    2. /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
+    3. /gerar-relatorio --cliente <id> --nome-cliente "<nome>" --formato pdf
 ```
 
 ## Artefatos gerados
 - `cenarios/cenarios_ia_<timestamp>.xlsx` — planilha gerada com prompts realistas
-- `resultado/<timestamp>/planilha_<timestamp>.md` — resultado bruto do executor
-- `resultado/<timestamp>/respostas_ia/<ID>.txt` — resposta textual capturada por cenário
-- `resultado/<timestamp>/ia_auditoria_pendente.md` — cenários que exigem revisão manual
-- `resultado/<timestamp>/ia_validacao_semantica.json` — reclassificações automáticas
-- `resultado/<timestamp>/ia_placar_consolidado.md` — placar final pós-reteste
-- `resultado/<timestamp>/screenshots/`, `videos/`, `console_log.json`, `network_log.json`
+- `clients/<id>/resultado/<timestamp>/planilha_<timestamp>.md` — resultado bruto do executor
+- `clients/<id>/resultado/<timestamp>/respostas_ia/<ID>.txt` — resposta textual capturada por cenário
+- `clients/<id>/resultado/<timestamp>/ia_auditoria_pendente.md` — cenários que exigem revisão manual
+- `clients/<id>/resultado/<timestamp>/ia_validacao_semantica.json` — reclassificações automáticas
+- `clients/<id>/resultado/<timestamp>/ia_placar_consolidado.md` — placar final pós-reteste
+- `clients/<id>/resultado/<timestamp>/screenshots/`, `videos/`, `console_log.json`, `network_log.json`
 
 ## Encadeia para
 `/reportar-bug` → `/gerar-relatorio`
@@ -146,7 +147,7 @@ Skill derivada do Ciclo III do projeto TEGA/JCLA Analytics (2026-04-14). Bibliot
 Ao iniciar o browser, ativar captura de mensagens do console:
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 - No resultado final, incluir seção "Console Errors" listando erros críticos
 - Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
 
@@ -157,7 +158,7 @@ Ao iniciar o browser, ativar interceptação de rede:
 - Registrar requisições que levaram mais de 3000ms (lentas)
 - Registrar requisições que falharam (timeout, DNS, conexão recusada)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 - No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
 - Muitos erros 5xx consecutivos devem gerar alerta no resumo
 

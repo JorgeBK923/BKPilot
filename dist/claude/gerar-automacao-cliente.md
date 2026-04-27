@@ -23,11 +23,11 @@ O objetivo desta skill e produzir uma base auditavel para posterior consolidacao
 
 ## Uso
 ```bash
-/gerar-automacao-cliente <cliente> --stack <stack> [--modulo <nome>] [--saida <dir>] [--padrao <page-objects|screenplay|keywords>] [--idioma <pt-BR|en-US>]
+/gerar-automacao-cliente --cliente <id> --stack <stack> [--modulo <nome>] [--saida <dir>] [--padrao <page-objects|screenplay|keywords>] [--idioma <pt-BR|en-US>]
 ```
 
 ## Parametros
-- `<cliente>` - identificador textual do cliente ou projeto de entrega (obrigatorio)
+- `--cliente <id>` - identificador da pasta do cliente em `clients/<id>/` (obrigatorio)
 - `--stack <stack>` - stack alvo do codigo. Obrigatorio. Valores suportados inicialmente:
   - `playwright-ts`
   - `playwright-js`
@@ -37,7 +37,7 @@ O objetivo desta skill e produzir uma base auditavel para posterior consolidacao
   - `selenium-csharp`
   - `robot-framework`
 - `--modulo <nome>` - gera apenas para o modulo informado
-- `--saida <dir>` - diretorio de saida do pacote. Default: `entregaveis/<cliente>/automacao/<stack>/`
+- `--saida <dir>` - diretorio de saida do pacote. Default: `clients/<id>/entregaveis/automacao/<stack>/`
 - `--padrao <page-objects|screenplay|keywords>` - padrao arquitetural do codigo. Se omitido, escolher o padrao mais natural do stack
 - `--idioma <pt-BR|en-US>` - idioma dos nomes e comentarios gerados. Default: `pt-BR`
 
@@ -72,10 +72,10 @@ Voce **NAO PODE** encerrar a skill nem imprimir o resumo final enquanto qualquer
 
 Verificar existencia dos artefatos abaixo:
 
-- `estado/mapa.md`
-- `estado/fluxos.md`
-- `estado/elementos.json`
-- `estado/api_endpoints.json`
+- `clients/<id>/estado/mapa.md`
+- `clients/<id>/estado/fluxos.md`
+- `clients/<id>/estado/elementos.json`
+- `clients/<id>/estado/api_endpoints.json`
 - `cenarios/cenarios.xlsx` ou outro arquivo equivalente informado pelo contexto
 
 Se qualquer artefato estrutural estiver ausente, PARAR e exibir:
@@ -94,7 +94,7 @@ Ler e consolidar, no minimo:
 - elementos interativos relevantes
 - endpoints observados
 - cenarios da planilha
-- bugs ou achados de `resultado/latest/` que alterem a estrategia de automacao
+- bugs ou achados de `clients/<id>/resultado/latest/` que alterem a estrategia de automacao
 
 Durante esta fase, extrair:
 
@@ -111,7 +111,7 @@ Se houver conflito entre planilha e artefatos de exploracao, registrar o conflit
 
 Antes de gerar qualquer codigo, criar:
 
-- `entregaveis/<cliente>/automacao/<stack>/especificacao_automacao.json`
+- `clients/<id>/entregaveis/automacao/<stack>/especificacao_automacao.json`
 
 Estrutura minima obrigatoria:
 
@@ -144,7 +144,7 @@ Cada cenario da planilha reaproveitado deve ser normalizado com:
 
 Tambem gerar:
 
-- `entregaveis/<cliente>/automacao/<stack>/mapeamento_cenarios.md`
+- `clients/<id>/entregaveis/automacao/<stack>/mapeamento_cenarios.md`
 
 Este arquivo deve ligar cada ID de cenario a:
 
@@ -154,7 +154,7 @@ Este arquivo deve ligar cada ID de cenario a:
 
 Tambem gerar um log tecnico interno de autoria em:
 
-- `resultado/<timestamp>/governanca/automacao_autoria_<cliente>_<stack>.json`
+- `clients/<id>/resultado/<timestamp>/governanca/automacao_autoria_<cliente>_<stack>.json`
 
 Conteudo minimo:
 
@@ -168,17 +168,17 @@ Conteudo minimo:
   "executor_modelo": "<modelo>",
   "executor_agente": "<agente-ou-instancia>",
   "origem_artefatos": [
-    "estado/mapa.md",
-    "estado/fluxos.md",
-    "estado/elementos.json",
-    "estado/api_endpoints.json",
+    "clients/<id>/estado/mapa.md",
+    "clients/<id>/estado/fluxos.md",
+    "clients/<id>/estado/elementos.json",
+    "clients/<id>/estado/api_endpoints.json",
     "cenarios/cenarios.xlsx"
   ],
   "tipo": "geracao_automacao_cliente"
 }
 ```
 
-Este log e **exclusivamente interno** e nao deve ser copiado para `entregaveis/<cliente>/automacao/<stack>/`.
+Este log e **exclusivamente interno** e nao deve ser copiado para `clients/<id>/entregaveis/automacao/<stack>/`.
 
 Gerar o `geracao_id` de forma deterministica com cliente, stack e timestamp do run. Exemplo:
 
@@ -226,7 +226,7 @@ Se `--padrao` conflitar com o stack, manter o stack como prioridade e registrar 
 
 Gerar o pacote no diretorio de saida:
 
-- `entregaveis/<cliente>/automacao/<stack>/codigo/`
+- `clients/<id>/entregaveis/automacao/<stack>/codigo/`
 
 O pacote deve conter, no minimo:
 
@@ -361,7 +361,7 @@ Tambem **nao** incluir `geracao_id` em artefatos voltados ao cliente, a menos qu
 
 Salvar um resumo executivo em:
 
-- `entregaveis/<cliente>/automacao/<stack>/resumo_geracao.md`
+- `clients/<id>/entregaveis/automacao/<stack>/resumo_geracao.md`
 
 Formato esperado:
 
@@ -401,7 +401,7 @@ Resumo terminal esperado:
    Cenarios parciais: <n>
    Nao automatizados: <n>
    Auditoria tecnica: aprovado | aprovado com ressalvas | reprovado
-   Pacote: entregaveis/<cliente>/automacao/<stack>/
+   Pacote: clients/<id>/entregaveis/automacao/<stack>/
 
 ➡ Proximo passo:
    1. Auditar o pacote gerado
@@ -415,20 +415,20 @@ Resumo terminal esperado:
 - `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/<timestamp>/governanca/automacao_autoria_<cliente>_<stack>.json` (interno, nao entregar ao cliente)
-- `entregaveis/<cliente>/automacao/<stack>/especificacao_automacao.json`
-- `entregaveis/<cliente>/automacao/<stack>/mapeamento_cenarios.md`
-- `entregaveis/<cliente>/automacao/<stack>/mapeamento_cenarios.pdf`
-- `entregaveis/<cliente>/automacao/<stack>/codigo/`
-- `entregaveis/<cliente>/automacao/<stack>/README_automacao.md`
-- `entregaveis/<cliente>/automacao/<stack>/README_automacao.pdf`
-- `entregaveis/<cliente>/automacao/<stack>/cobertura_automacao.md`
-- `entregaveis/<cliente>/automacao/<stack>/cobertura_automacao.pdf`
-- `entregaveis/<cliente>/automacao/<stack>/pendencias.md`
-- `entregaveis/<cliente>/automacao/<stack>/pendencias.pdf`
-- `entregaveis/<cliente>/automacao/<stack>/inventario_arquivos.md`
-- `entregaveis/<cliente>/automacao/<stack>/inventario_arquivos.pdf`
-- `entregaveis/<cliente>/automacao/<stack>/auditoria_codigo.md`
-- `entregaveis/<cliente>/automacao/<stack>/auditoria_codigo.pdf`
-- `entregaveis/<cliente>/automacao/<stack>/resumo_geracao.md`
-- `entregaveis/<cliente>/automacao/<stack>/resumo_geracao.pdf`
+- `clients/<id>/resultado/<timestamp>/governanca/automacao_autoria_<cliente>_<stack>.json` (interno, nao entregar ao cliente)
+- `clients/<id>/entregaveis/automacao/<stack>/especificacao_automacao.json`
+- `clients/<id>/entregaveis/automacao/<stack>/mapeamento_cenarios.md`
+- `clients/<id>/entregaveis/automacao/<stack>/mapeamento_cenarios.pdf`
+- `clients/<id>/entregaveis/automacao/<stack>/codigo/`
+- `clients/<id>/entregaveis/automacao/<stack>/README_automacao.md`
+- `clients/<id>/entregaveis/automacao/<stack>/README_automacao.pdf`
+- `clients/<id>/entregaveis/automacao/<stack>/cobertura_automacao.md`
+- `clients/<id>/entregaveis/automacao/<stack>/cobertura_automacao.pdf`
+- `clients/<id>/entregaveis/automacao/<stack>/pendencias.md`
+- `clients/<id>/entregaveis/automacao/<stack>/pendencias.pdf`
+- `clients/<id>/entregaveis/automacao/<stack>/inventario_arquivos.md`
+- `clients/<id>/entregaveis/automacao/<stack>/inventario_arquivos.pdf`
+- `clients/<id>/entregaveis/automacao/<stack>/auditoria_codigo.md`
+- `clients/<id>/entregaveis/automacao/<stack>/auditoria_codigo.pdf`
+- `clients/<id>/entregaveis/automacao/<stack>/resumo_geracao.md`
+- `clients/<id>/entregaveis/automacao/<stack>/resumo_geracao.pdf`

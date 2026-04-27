@@ -5,15 +5,16 @@ Envia os bug cards gerados pelo `/reportar-bug` para um sistema externo de issue
 
 ## Uso
 ```
-/push-bugs --destino <jira|github|csv> [--fonte <caminho>]
+/push-bugs --cliente <id> --destino <jira|github|csv> [--fonte <caminho>]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `--destino <jira|github|csv>` — destino dos bugs (obrigatório). Escolha uma das opções:
   - `jira` — cria issues no Jira Cloud via REST API
   - `github` — cria issues no GitHub via REST API
   - `csv` — gera arquivo CSV para importação manual em qualquer ferramenta
-- `--fonte <caminho>` — caminho para o bug report (opcional). Default: `resultado/latest/bugs_*.md`
+- `--fonte <caminho>` — caminho para o bug report (opcional). Default: `clients/<id>/resultado/latest/bugs_*.md`
 
 ## Instruções de Execução
 
@@ -24,7 +25,7 @@ Se qualquer variável de destino contiver `:` seguido de texto (ex: `--token abc
 > - GitHub: GITHUB_REPO, GITHUB_TOKEN
 
 ### 2. Validação de pré-condição
-Verificar se `resultado/latest/bugs_*.md` existe:
+Verificar se `clients/<id>/resultado/latest/bugs_*.md` existe:
 - Se **não existir**, PARAR e exibir:
   > ❌ Nenhum bug report encontrado. Execute /reportar-bug primeiro.
 
@@ -74,7 +75,7 @@ Não requer nenhuma variável de ambiente. Gerar arquivo CSV com colunas:
 ID,Severidade,Frequência,Módulo,Título,URL,Descrição,Passos para Reproduzir,Resultado Esperado,Resultado Obtido,Possível Causa Raiz,Screenshot
 ```
 
-Salva em `resultado/latest/bugs_<timestamp>.csv`
+Salva em `clients/<id>/resultado/latest/bugs_<timestamp>.csv`
 
 ### 4. Mapeamento de campos
 
@@ -90,7 +91,7 @@ Salva em `resultado/latest/bugs_<timestamp>.csv`
 | Screenshot | attachment | body (markdown link) | coluna Screenshot |
 
 ### 5. Geração de resumo
-Após enviar todos os bugs, criar `resultado/latest/push_bugs_<timestamp>.json` com:
+Após enviar todos os bugs, criar `clients/<id>/resultado/latest/push_bugs_<timestamp>.json` com:
 ```json
 {
   "timestamp": "2026-04-14_1504",
@@ -113,17 +114,17 @@ Após enviar todos os bugs, criar `resultado/latest/push_bugs_<timestamp>.json` 
    - BUG-001 → PROJ-123 — Dashboard com LCP de 5.4s
    - BUG-002 → PROJ-124 — Layout Shift na Auditoria
    - ...
-   Arquivo: resultado/latest/push_bugs_<timestamp>.json
+   Arquivo: clients/<id>/resultado/latest/push_bugs_<timestamp>.json
 
-➡️  Próximo passo: /gerar-relatorio --cliente "<nome>" --formato pdf
+➡️  Próximo passo: /gerar-relatorio --cliente <id> --nome-cliente "<nome>" --formato pdf
 ```
 
 ## Encadeia para
 `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/latest/push_bugs_<timestamp>.json` — resumo de envio
-- `resultado/latest/bugs_<timestamp>.csv` (quando destino=csv)
+- `clients/<id>/resultado/latest/push_bugs_<timestamp>.json` — resumo de envio
+- `clients/<id>/resultado/latest/bugs_<timestamp>.csv` (quando destino=csv)
 
 ## Segurança (BLOCK-F)
 - **NUNCA** passe JIRA_TOKEN ou GITHUB_TOKEN como parâmetro inline

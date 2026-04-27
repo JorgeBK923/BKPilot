@@ -3,7 +3,7 @@
 
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
@@ -17,10 +17,11 @@ Executa um fluxo de ponta a ponta descrito em linguagem natural. O QA descreve o
 
 ## Uso
 ```
-/executar-fluxo "<descrição do fluxo>" [--login <email>] [--dados <arquivo.json>]
+/executar-fluxo --cliente <id> "<descrição do fluxo>" [--login <email>] [--dados <arquivo.json>]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `"<descrição do fluxo>"` — descrição em linguagem natural do fluxo a testar (obrigatório). Ex: `"login → dashboard → criar pedido → logout"`
 - `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--dados <arquivo.json>` — arquivo JSON com conjuntos de dados para execução data-driven (opcional). Cada objeto no array é uma iteração do fluxo com dados diferentes
@@ -33,10 +34,10 @@ Se `--login` contiver `:` (senha inline), PARAR e exibir:
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/` para esta execução
-- Criar subpasta `resultado/<timestamp>/videos/` para os vídeos
-- Criar subpasta `resultado/<timestamp>/screenshots/` para os screenshots
-- Criar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/` para esta execução
+- Criar subpasta `clients/<id>/resultado/<timestamp>/videos/` para os vídeos
+- Criar subpasta `clients/<id>/resultado/<timestamp>/screenshots/` para os screenshots
+- Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 
 ### 2.1 Carga de dados (se --dados informado)
 Se `--dados` foi passado:
@@ -55,9 +56,7 @@ Se `--dados` foi passado:
 ### 3. Configuração de gravação de vídeo
 Ao iniciar o browser via Playwright MCP, ativar gravação de vídeo:
 ```
-video: 'on'
-videoDir: 'resultado/<timestamp>/videos/_raw/'
-videoSize: { width: 1280, height: 720 }
+recordVideo: { dir: 'clients/<id>/resultado/<timestamp>/videos/_raw/', size: { width: 1280, height: 720 } }
 ```
 A gravação começa automaticamente junto com o browser e é salva ao fechá-lo.
 
@@ -65,18 +64,18 @@ A gravação começa automaticamente junto com o browser e é salva ao fechá-lo
 Ativar captura de mensagens do console (conforme BLOCK-B do CLAUDE.md):
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 
 ### 3.2 Monitoramento de requisições de rede
 Ativar interceptação de rede (conforme BLOCK-C do CLAUDE.md):
 - Registrar requisições com status >= 400 e requisições lentas (>3s)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 
 ### 4. Interpretação do fluxo
 - Analisar a descrição recebida e decompor em passos sequenciais
 - Identificar: URL inicial, ações em cada passo, resultado esperado de cada passo
-- Se houver referência a módulos do sistema, consultar `estado/mapa.md` para obter URLs reais (se disponível)
+- Se houver referência a módulos do sistema, consultar `clients/<id>/estado/mapa.md` para obter URLs reais (se disponível)
 
 ### 5. Autenticação (se --login passado)
 - Navegar até a página de login
@@ -106,9 +105,9 @@ Para cada passo do fluxo:
 ### 7. Conversão do vídeo para MP4
 Após fechar o browser (o Playwright salva o `.webm` automaticamente):
 ```bash
-ffmpeg -i resultado/<timestamp>/videos/_raw/<arquivo>.webm \
+ffmpeg -i clients/<id>/resultado/<timestamp>/videos/_raw/<arquivo>.webm \
        -c:v libx264 -crf 23 -preset fast \
-       resultado/<timestamp>/videos/fluxo_<timestamp>.mp4
+       clients/<id>/resultado/<timestamp>/videos/fluxo_<timestamp>.mp4
 ```
 - Se `ffmpeg` não estiver disponível, **NÃO instalar automaticamente**. Exibir:
   > ⚠️ ffmpeg não encontrado. Instale manualmente:
@@ -125,11 +124,11 @@ Ao final da execução, realizar limpeza dos dados criados (conforme BLOCK-E do 
 - Identificar registros criados durante a sessão (formulários submetidos, cadastros feitos)
 - Tentar reverter: excluir registros via interface ou API se possível
 - Registrar resultado: `{ item, tipo, url, status: "limpo|pendente", motivo }`
-- Salvar em `resultado/<timestamp>/cleanup_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/cleanup_log.json`
 - Se cleanup não for possível: registrar como pendência
 
 ### 9. Geração do arquivo de resultado
-Salvar `resultado/latest/fluxo_<timestamp>.md`:
+Salvar `clients/<id>/resultado/latest/fluxo_<timestamp>.md`:
 ```markdown
 # Resultado — Execução de Fluxo
 Data: <timestamp>
@@ -138,8 +137,8 @@ Status geral: PASSOU | FALHOU
 Modo: normal | data-driven (<n> iterações)
 
 ## Evidências
-- Vídeo completo: resultado/latest/videos/fluxo_<timestamp>.mp4
-- Screenshots por passo: resultado/latest/screenshots/
+- Vídeo completo: clients/<id>/resultado/latest/videos/fluxo_<timestamp>.mp4
+- Screenshots por passo: clients/<id>/resultado/latest/screenshots/
 
 ## Passos
 
@@ -149,7 +148,7 @@ Modo: normal | data-driven (<n> iterações)
 - Resultado obtido: <o que aconteceu>
 - Status: ✅ PASSOU | ❌ FALHOU
 - Duração: <ms>
-- Screenshot: resultado/latest/screenshots/passo_1_<descricao>.png
+- Screenshot: clients/<id>/resultado/latest/screenshots/passo_1_<descricao>.png
 - Erro (se falhou): <mensagem de erro>
 
 ### Passo 2 — ...
@@ -190,24 +189,24 @@ Modo: normal | data-driven (<n> iterações)
    Console errors: <n>
    Requisições com erro: <n>
    Cleanup: <n> itens limpos, <n> pendentes
-   Vídeo: resultado/latest/videos/fluxo_<timestamp>.mp4
-   Screenshots: resultado/latest/screenshots/
-   Resultado: resultado/latest/fluxo_<timestamp>.md
+   Vídeo: clients/<id>/resultado/latest/videos/fluxo_<timestamp>.mp4
+   Screenshots: clients/<id>/resultado/latest/screenshots/
+   Resultado: clients/<id>/resultado/latest/fluxo_<timestamp>.md
 
-➡️  Próximo passo: /reportar-bug --fonte resultado/latest/
+➡️  Próximo passo: /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
 ```
 
 ## Encadeia para
 `/reportar-bug`, `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/<timestamp>/fluxo_<timestamp>.md`
-- `resultado/<timestamp>/videos/fluxo_<timestamp>.mp4`
-- `resultado/<timestamp>/screenshots/passo_*.png`
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/<timestamp>/cleanup_log.json`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/fluxo_<timestamp>.md`
+- `clients/<id>/resultado/<timestamp>/videos/fluxo_<timestamp>.mp4`
+- `clients/<id>/resultado/<timestamp>/screenshots/passo_*.png`
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/<timestamp>/cleanup_log.json`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`
 
 ---
 
@@ -215,7 +214,7 @@ Modo: normal | data-driven (<n> iterações)
 Ao iniciar o browser, ativar captura de mensagens do console:
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 - No resultado final, incluir seção "Console Errors" listando erros críticos
 - Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
 
@@ -226,7 +225,7 @@ Ao iniciar o browser, ativar interceptação de rede:
 - Registrar requisições que levaram mais de 3000ms (lentas)
 - Registrar requisições que falharam (timeout, DNS, conexão recusada)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 - No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
 - Muitos erros 5xx consecutivos devem gerar alerta no resumo
 
@@ -236,7 +235,7 @@ Ao final da execução, realizar limpeza dos dados criados durante os testes:
 - Manter registro de cada dado criado: `{ item, tipo, url }`
 - Tentar reverter: excluir registros via interface (botão excluir) ou API se disponível
 - Registrar resultado: `{ item, tipo, url, status: "limpo|pendente", motivo }`
-- Salvar em `resultado/<timestamp>/cleanup_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/cleanup_log.json`
 - No resultado final, incluir seção "Cleanup de Dados"
 - Se cleanup não for possível: registrar como pendência para o QA resolver manualmente
 

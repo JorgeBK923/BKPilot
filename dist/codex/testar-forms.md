@@ -3,7 +3,7 @@
 
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
@@ -17,10 +17,11 @@ Especialista em formulários. Identifica todos os campos de um formulário e exe
 
 ## Uso
 ```
-/testar-forms <URL> [--login <email>]
+/testar-forms --cliente <id> <URL> [--login <email>]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<URL>` — URL da página com o formulário a testar (obrigatório)
 - `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 
@@ -32,17 +33,15 @@ Se `--login` contiver `:` (senha inline), PARAR e exibir:
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/` para esta execução
-- Criar subpasta `resultado/<timestamp>/videos/` para os vídeos MP4
-- Criar subpasta `resultado/<timestamp>/screenshots/` para os screenshots
-- Criar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/` para esta execução
+- Criar subpasta `clients/<id>/resultado/<timestamp>/videos/` para os vídeos MP4
+- Criar subpasta `clients/<id>/resultado/<timestamp>/screenshots/` para os screenshots
+- Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 
 ### 2.1 Configuração de gravação de vídeo
 Ao iniciar o browser via Playwright MCP, ativar gravação de vídeo:
 ```
-video: 'on'
-videoDir: 'resultado/<timestamp>/videos/_raw/'
-videoSize: { width: 1280, height: 720 }
+recordVideo: { dir: 'clients/<id>/resultado/<timestamp>/videos/_raw/', size: { width: 1280, height: 720 } }
 ```
 Um único vídeo contínuo cobre toda a sessão de testes do formulário.
 
@@ -50,13 +49,13 @@ Um único vídeo contínuo cobre toda a sessão de testes do formulário.
 Ativar captura de mensagens do console (conforme BLOCK-B do CLAUDE.md):
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 
 ### 2.3 Monitoramento de requisições de rede
 Ativar interceptação de rede (conforme BLOCK-C do CLAUDE.md):
 - Registrar requisições com status >= 400 e requisições lentas (>3s)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 
 ### 3. Autenticação e navegação
 - Se `--login` foi passado: autenticar antes de acessar a URL
@@ -168,9 +167,9 @@ Além dos testes básicos do 5.5, testar:
 ### 6. Conversão do vídeo para MP4
 Após fechar o browser (o Playwright salva o `.webm` automaticamente):
 ```bash
-ffmpeg -i resultado/<timestamp>/videos/_raw/<arquivo>.webm \
+ffmpeg -i clients/<id>/resultado/<timestamp>/videos/_raw/<arquivo>.webm \
        -c:v libx264 -crf 23 -preset fast \
-       resultado/<timestamp>/videos/forms_<timestamp>.mp4
+       clients/<id>/resultado/<timestamp>/videos/forms_<timestamp>.mp4
 ```
 - Se `ffmpeg` não estiver disponível, **NÃO instalar automaticamente**. Exibir:
   > ⚠️ ffmpeg não encontrado. Instale manualmente:
@@ -182,7 +181,7 @@ ffmpeg -i resultado/<timestamp>/videos/_raw/<arquivo>.webm \
 - Após conversão bem-sucedida: remover o `.webm` original
 
 ### 7. Geração do arquivo de resultado
-Salvar `resultado/latest/forms_<timestamp>.md`:
+Salvar `clients/<id>/resultado/latest/forms_<timestamp>.md`:
 ```markdown
 # Resultado — Teste de Formulários
 Data: <timestamp>
@@ -190,8 +189,8 @@ URL: <url testada>
 Status geral: PASSOU | FALHOU | PARCIAL
 
 ## Evidências
-- Vídeo completo da sessão: resultado/latest/videos/forms_<timestamp>.mp4
-- Screenshots por teste: resultado/latest/screenshots/
+- Vídeo completo da sessão: clients/<id>/resultado/latest/videos/forms_<timestamp>.mp4
+- Screenshots por teste: clients/<id>/resultado/latest/screenshots/
 
 ## Campos identificados
 | Campo | Tipo | Obrigatório | Máscara | Autocomplete |
@@ -267,23 +266,23 @@ Status geral: PASSOU | FALHOU | PARCIAL
    Falhas encontradas: <n>
    Console errors: <n>
    Requisições com erro: <n>
-   Vídeo: resultado/latest/videos/forms_<timestamp>.mp4
-   Screenshots: resultado/latest/screenshots/
-   Resultado: resultado/latest/forms_<timestamp>.md
+   Vídeo: clients/<id>/resultado/latest/videos/forms_<timestamp>.mp4
+   Screenshots: clients/<id>/resultado/latest/screenshots/
+   Resultado: clients/<id>/resultado/latest/forms_<timestamp>.md
 
-➡️  Próximo passo: /reportar-bug --fonte resultado/latest/
+➡️  Próximo passo: /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
 ```
 
 ## Encadeia para
 `/reportar-bug`, `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/<timestamp>/forms_<timestamp>.md`
-- `resultado/<timestamp>/videos/forms_<timestamp>.mp4`
-- `resultado/<timestamp>/screenshots/forms_*.png`
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/forms_<timestamp>.md`
+- `clients/<id>/resultado/<timestamp>/videos/forms_<timestamp>.mp4`
+- `clients/<id>/resultado/<timestamp>/screenshots/forms_*.png`
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`
 
 ---
 
@@ -291,7 +290,7 @@ Status geral: PASSOU | FALHOU | PARCIAL
 Ao iniciar o browser, ativar captura de mensagens do console:
 - Interceptar eventos `console.error` e `console.warning`
 - Registrar: `{ timestamp, level, text, url, lineNumber }`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 - No resultado final, incluir seção "Console Errors" listando erros críticos
 - Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
 
@@ -302,7 +301,7 @@ Ao iniciar o browser, ativar interceptação de rede:
 - Registrar requisições que levaram mais de 3000ms (lentas)
 - Registrar requisições que falharam (timeout, DNS, conexão recusada)
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 - No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
 - Muitos erros 5xx consecutivos devem gerar alerta no resumo
 

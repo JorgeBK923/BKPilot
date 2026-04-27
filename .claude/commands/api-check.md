@@ -1,18 +1,19 @@
 # /api-check — Testes de API
 
 ## Descrição
-Testa endpoints de API automaticamente. Descobre endpoints via network tab (usando `estado/api_endpoints.json` do `/explorar`) ou recebe lista manual via JSON. Executa testes de status code, autenticação, payloads inválidos, tempo de resposta e detecção de vulnerabilidades de segurança.
+Testa endpoints de API automaticamente. Descobre endpoints via network tab (usando `clients/<id>/estado/api_endpoints.json` do `/explorar`) ou recebe lista manual via JSON. Executa testes de status code, autenticação, payloads inválidos, tempo de resposta e detecção de vulnerabilidades de segurança.
 
 ## Uso
 ```
-/api-check <URL> [--login <email>] [--endpoints <auto|arquivo.json>]
+/api-check --cliente <id> <URL> [--login <email>] [--endpoints <auto|arquivo.json>]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<URL>` — URL base da API (obrigatório). Ex: `https://app.cliente.com.br` ou `https://api.cliente.com.br/v1`
 - `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`. Usado para obter token JWT/session para testes autenticados
 - `--endpoints <auto|arquivo.json>` — fonte dos endpoints (padrão: auto)
-  - `auto` — usa `estado/api_endpoints.json` se disponível. Se não existir, abre o browser, navega pela aplicação e descobre endpoints via network tab
+  - `auto` — usa `clients/<id>/estado/api_endpoints.json` se disponível. Se não existir, abre o browser, navega pela aplicação e descobre endpoints via network tab
   - `<arquivo.json>` — arquivo JSON com lista manual de endpoints a testar
 
 ### Formato do arquivo de endpoints manual
@@ -35,13 +36,13 @@ Se `--login` contiver `:` (senha inline), PARAR e exibir:
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/`
-- Criar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/`
+- Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 
 ### 3. Descoberta de endpoints
 
 #### 3.1 Modo auto (padrão)
-1. Verificar se `estado/api_endpoints.json` existe:
+1. Verificar se `clients/<id>/estado/api_endpoints.json` existe:
    - Se existir: ler endpoints descobertos pelo `/explorar`
 2. Se não existir: abrir browser via Playwright MCP, navegar pela URL base e páginas linkadas, interceptar requisições XHR/Fetch para identificar endpoints
 3. Consolidar lista de endpoints únicos
@@ -145,7 +146,7 @@ Para cada endpoint descoberto/informado:
 - Headers ausentes: sinalizar como recomendação (severidade Baixa)
 
 ### 6. Geração do relatório
-Salvar `resultado/latest/api-check_<timestamp>.md`:
+Salvar `clients/<id>/resultado/latest/api-check_<timestamp>.md`:
 
 ```markdown
 # Resultado — Testes de API
@@ -212,14 +213,14 @@ Autenticação: sim | não
    Vulnerabilidades: Crítica <n> | Alta <n> | Média <n> | Baixa <n>
    Endpoints lentos (>1s): <n>
    Endpoints sem rate limiting: <n>
-   Resultado: resultado/latest/api-check_<timestamp>.md
+   Resultado: clients/<id>/resultado/latest/api-check_<timestamp>.md
 
-➡️  Próximo passo: /reportar-bug --fonte resultado/latest/
+➡️  Próximo passo: /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
 ```
 
 ## Encadeia para
 `/reportar-bug`, `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/<timestamp>/api-check_<timestamp>.md`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/api-check_<timestamp>.md`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`

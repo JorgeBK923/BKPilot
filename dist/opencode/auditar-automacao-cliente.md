@@ -26,13 +26,13 @@ Esta skill existe para validar a saida de `/gerar-automacao-cliente`, mas pode s
 
 ## Uso
 ```bash
-/auditar-automacao-cliente <cliente> --stack <stack> [--pacote <dir>] [--modulo <nome>] [--origem <geracao-id>]
+/auditar-automacao-cliente --cliente <id> --stack <stack> [--pacote <dir>] [--modulo <nome>] [--origem <geracao-id>]
 ```
 
 ## Parametros
-- `<cliente>` - identificador do cliente ou projeto de entrega (obrigatorio)
+- `--cliente <id>` - identificador da pasta do cliente em `clients/<id>/` (obrigatorio)
 - `--stack <stack>` - stack do pacote auditado. Obrigatorio
-- `--pacote <dir>` - diretorio do pacote. Default: `entregaveis/<cliente>/automacao/<stack>/`
+- `--pacote <dir>` - diretorio do pacote. Default: `clients/<id>/entregaveis/automacao/<stack>/`
 - `--modulo <nome>` - audita apenas o subconjunto do modulo informado
 - `--origem <geracao-id>` - identificador interno da geracao a ser auditada. Se informado, deve ter precedencia na busca do log de governanca
 
@@ -67,7 +67,7 @@ Voce **NAO PODE** encerrar a skill nem imprimir o resumo final enquanto qualquer
 
 Antes de ler o codigo, verificar primeiro o log interno de governanca da geracao:
 
-- `resultado/<timestamp>/governanca/automacao_autoria_<cliente>_<stack>.json`
+- `clients/<id>/resultado/<timestamp>/governanca/automacao_autoria_<cliente>_<stack>.json`
 
 Se `--origem <geracao-id>` foi informado, localizar exatamente o log cujo campo `geracao_id` corresponde ao valor.
 
@@ -311,7 +311,7 @@ E proibido finalizar como `aprovado` ou `aprovado com ressalvas` quando ainda ex
 Gerar obrigatoriamente:
 
 - `auditoria_independente.md` dentro do pacote auditado, sem metadados internos de autoria ou `geracao_id`
-- `auditoria_interna.md` em `resultado/<timestamp>/governanca/`, quando houver qualquer dado interno de segregacao, `geracao_id`, identidade de executor, heuristica de log ou bloqueio de governanca
+- `auditoria_interna.md` em `clients/<id>/resultado/<timestamp>/governanca/`, quando houver qualquer dado interno de segregacao, `geracao_id`, identidade de executor, heuristica de log ou bloqueio de governanca
 - `correcoes_auditoria.md` dentro do pacote auditado, quando qualquer correcao for aplicada ou quando houver defeito nao corrigivel que impeca entrega limpa
 - versao `.pdf` de todo `.md` destinado ao cliente que for criado ou atualizado pela auditoria
 
@@ -389,4 +389,4 @@ Se houver bloqueio de segregacao:
 - `<pacote>/auditoria_independente.pdf`
 - `<pacote>/correcoes_auditoria.md`, quando houver correcao aplicada ou defeito nao corrigivel
 - `<pacote>/correcoes_auditoria.pdf`, quando `correcoes_auditoria.md` existir
-- `resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md`, quando houver metadados internos ou bloqueio de governanca
+- `clients/<id>/resultado/<timestamp>/governanca/auditoria_interna_<cliente>_<stack>.md`, quando houver metadados internos ou bloqueio de governanca

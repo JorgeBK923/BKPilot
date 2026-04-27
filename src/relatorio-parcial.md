@@ -10,6 +10,9 @@ scripts: []
 inputs:
   - name: cliente
     required: true
+    description: "Identificador da pasta do cliente em clients/<id>"
+  - name: nome-cliente
+    required: true
     description: "Nome do cliente para o cabeçalho"
   - name: semana
     required: false
@@ -33,44 +36,45 @@ Gera um relatório parcial em PDF para envio ao cliente durante a execução do 
 
 ## Uso
 ```
-/relatorio-parcial --cliente "<nome>" [--semana <n>] [--notas "<observações>"]
+/relatorio-parcial --cliente <id> --nome-cliente "<nome>" [--semana <n>] [--notas "<observações>"]
 ```
 
 ## Parâmetros
-- `--cliente "<nome>"` — nome do cliente para o cabeçalho (obrigatório). Ex: `--cliente "TEGA Sistemas"`
-- `--semana <n>` — número da semana do ciclo de testes (opcional). Ex: `--semana 1`. Se omitido, é calculado automaticamente com base na data da primeira execução em `resultado/`
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
+- `--nome-cliente "<nome>"` — nome do cliente para o cabeçalho (obrigatório). Ex: `--nome-cliente "TEGA Sistemas"`
+- `--semana <n>` — número da semana do ciclo de testes (opcional). Ex: `--semana 1`. Se omitido, é calculado automaticamente com base na data da primeira execução em `clients/<id>/resultado/`
 - `--notas "<observações>"` — observações livres do QA para incluir no relatório (opcional). Ex: `--notas "Ambiente de staging instável na quarta-feira, alguns testes precisaram ser reexecutados"`
 
 ## Instruções de Execução
 
 ### 1. Validação de pré-condição
-Verificar se existe pelo menos uma pasta de resultado em `resultado/`:
+Verificar se existe pelo menos uma pasta de resultado em `clients/<id>/resultado/`:
 - Se **não existir** ou todas estiverem vazias, PARAR e exibir:
-  > ❌ Nenhum resultado encontrado em resultado/
+  > ❌ Nenhum resultado encontrado em clients/<id>/resultado/
   > Execute pelo menos uma skill de execução antes de gerar o relatório parcial.
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/` (se não existir para este relatório)
-- Atualizar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/` (se não existir para este relatório)
+- Atualizar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 
 ### 3. Levantamento do escopo total
-Ler `estado/mapa.md` e `cenarios/*.xlsx` para determinar o escopo completo do projeto:
+Ler `clients/<id>/estado/mapa.md` e `cenarios/*.xlsx` para determinar o escopo completo do projeto:
 
-**Do mapa (estado/mapa.md):**
+**Do mapa (clients/<id>/estado/mapa.md):**
 - Total de módulos/seções identificados no sistema
 - Total de páginas mapeadas
-- Total de fluxos identificados (estado/fluxos.md)
+- Total de fluxos identificados (clients/<id>/estado/fluxos.md)
 
 **Da planilha de cenários (cenarios/*.xlsx mais recente):**
 - Total de cenários planejados
 - Cenários por módulo
 - Cenários por prioridade (Alta / Média / Baixa)
 
-Se `estado/mapa.md` ou a planilha não existirem, usar apenas os dados de `resultado/` disponíveis e indicar que o escopo total é desconhecido.
+Se `clients/<id>/estado/mapa.md` ou a planilha não existirem, usar apenas os dados de `clients/<id>/resultado/` disponíveis e indicar que o escopo total é desconhecido.
 
 ### 4. Coleta dos resultados até o momento
-Ler **todas** as pastas de resultado em `resultado/` (não apenas a latest), coletando:
+Ler **todas** as pastas de resultado em `clients/<id>/resultado/` (não apenas a latest), coletando:
 
 **Resultados de execução:**
 - Todos os arquivos `modulo_*.md`, `fluxo_*.md`, `forms_*.md`, `planilha_*.md`, `regressao_*.md`
@@ -86,7 +90,7 @@ Ler **todas** as pastas de resultado em `resultado/` (não apenas a latest), col
 - `cleanup_log.json` — dados de teste pendentes de limpeza
 
 **Relatórios parciais anteriores:**
-- Verificar se existem `parcial_*.md` anteriores em `resultado/` para referência de evolução
+- Verificar se existem `parcial_*.md` anteriores em `clients/<id>/resultado/` para referência de evolução
 
 ### 5. Cálculo das métricas de progresso
 
@@ -205,20 +209,20 @@ Gerar o PDF aplicando identidade visual BugKillers:
 - Fonte: Arial
 - Logo: `assets/logo-bugkillers.png`
 
-Salvar como: `resultado/latest/parcial_semana<n>_<timestamp>.pdf`
+Salvar como: `clients/<id>/resultado/latest/parcial_semana<n>_<timestamp>.pdf`
 
 Se já existir um parcial da mesma semana, **não sobrescrever** — adicionar sufixo incremental:
 `parcial_semana1_2026-04-04_1530.pdf`, `parcial_semana1_2026-04-05_0930.pdf`
 
 ### 10. Histórico de parciais
-Manter índice de todos os parciais gerados em `resultado/parciais_index.json`:
+Manter índice de todos os parciais gerados em `clients/<id>/resultado/parciais_index.json`:
 ```json
 {
   "parciais": [
     {
       "semana": 1,
       "data": "2026-04-04T15:30:00",
-      "arquivo": "resultado/2026-04-04_1530/parcial_semana1_2026-04-04_1530.pdf",
+      "arquivo": "clients/<id>/resultado/2026-04-04_1530/parcial_semana1_2026-04-04_1530.pdf",
       "progresso_pct": 38,
       "bugs_total": 7,
       "modulos_testados": 5,
@@ -227,7 +231,7 @@ Manter índice de todos os parciais gerados em `resultado/parciais_index.json`:
     {
       "semana": 2,
       "data": "2026-04-11T16:00:00",
-      "arquivo": "resultado/2026-04-11_1600/parcial_semana2_2026-04-11_1600.pdf",
+      "arquivo": "clients/<id>/resultado/2026-04-11_1600/parcial_semana2_2026-04-11_1600.pdf",
       "progresso_pct": 62,
       "bugs_total": 18,
       "modulos_testados": 8,
@@ -246,14 +250,14 @@ Manter índice de todos os parciais gerados em `resultado/parciais_index.json`:
    Bugs acumulados: <n> (Crítico: <n> | Alto: <n> | Médio: <n> | Baixo: <n>)
    Novos desde último parcial: <n> bugs | <n> módulos avançados
    Semáforo: 🟢|🟡|🔴
-   Arquivo: resultado/latest/parcial_semana<n>_<timestamp>.pdf
+   Arquivo: clients/<id>/resultado/latest/parcial_semana<n>_<timestamp>.pdf
 
 📋 Envie o PDF ao cliente para acompanhamento semanal.
 ```
 
 ## Artefatos gerados
-- `resultado/latest/parcial_semana<n>_<timestamp>.pdf` — relatório parcial em PDF
-- `resultado/parciais_index.json` — índice histórico de todos os parciais gerados
+- `clients/<id>/resultado/latest/parcial_semana<n>_<timestamp>.pdf` — relatório parcial em PDF
+- `clients/<id>/resultado/parciais_index.json` — índice histórico de todos os parciais gerados
 
 ## Encadeamento
 - **Pré-condição:** pelo menos uma skill de execução já rodou (`/explorar`, `/testar-modulo`, `/executar-planilha`, etc.)

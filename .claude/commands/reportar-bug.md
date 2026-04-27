@@ -5,13 +5,14 @@ Transforma erros encontrados nas skills de execução em bug cards completos no 
 
 ## Uso
 ```
-/reportar-bug --fonte <caminho> [--template bugkillers] [--bugs-anteriores <caminho>]
+/reportar-bug --cliente <id> --fonte <caminho> [--template bugkillers] [--bugs-anteriores <caminho>]
 ```
 
 ## Parâmetros
-- `--fonte <caminho>` — arquivo ou pasta de resultado para extrair os bugs (obrigatório). Ex: `resultado/latest/` ou `resultado/latest/fluxo_2026-03-28_1430.md`
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
+- `--fonte <caminho>` — arquivo ou pasta de resultado para extrair os bugs (obrigatório). Ex: `clients/<id>/resultado/latest/` ou `clients/<id>/resultado/latest/fluxo_2026-03-28_1430.md`
 - `--template bugkillers` — usa o template padrão BugKillers (opcional, aplicado por padrão)
-- `--bugs-anteriores <caminho>` — caminho de um arquivo `bugs_*.md` anterior para deduplicação (opcional). Ex: `resultado/2026-03-25_1430/bugs_2026-03-25_1430.md`
+- `--bugs-anteriores <caminho>` — caminho de um arquivo `bugs_*.md` anterior para deduplicação (opcional). Ex: `clients/<id>/resultado/2026-03-25_1430/bugs_2026-03-25_1430.md`
 
 ## Instruções de Execução
 
@@ -83,7 +84,7 @@ Para cada bug, usar raciocínio próprio para sugerir possível causa raiz com b
 Formatar como: `Possível causa: <hipótese baseada no comportamento>`
 
 ### 8. Geração dos bug cards
-Criar `resultado/latest/bugs_<timestamp>.md` com um card por bug no template BugKillers:
+Criar `clients/<id>/resultado/latest/bugs_<timestamp>.md` com um card por bug no template BugKillers:
 
 ```markdown
 # Bug Report — BugKillers
@@ -157,13 +158,13 @@ Se houver bugs deduplicados, incluir seção final:
    Novos: <n> | Já reportados: <n>
    Crítico: <n> | Alto: <n> | Médio: <n> | Baixo: <n>
    Frequência: Sempre <n> | Intermitente <n> | Raro <n>
-   Arquivo: resultado/latest/bugs_<timestamp>.md
+   Arquivo: clients/<id>/resultado/latest/bugs_<timestamp>.md
 
-➡️  Próximo passo: /gerar-relatorio --cliente "<nome>" --formato pdf
+➡️  Próximo passo: /gerar-relatorio --cliente <id> --nome-cliente "<nome>" --formato pdf
 ```
 
 ## Encadeia para
 `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/latest/bugs_<timestamp>.md`
+- `clients/<id>/resultado/latest/bugs_<timestamp>.md`

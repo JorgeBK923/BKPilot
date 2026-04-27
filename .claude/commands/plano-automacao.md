@@ -19,11 +19,12 @@ A skill mapeia o sistema, identifica o core de negócio, avalia a automatizabili
 ## Uso
 
 ```
-/plano-automacao <URL> [--login <email>] [--horas-base <n>] [--time-size <n>] [--modulo-core "<nome>"] [--dominio "<descricao>"]
+/plano-automacao --cliente <id> <URL> [--login <email>] [--horas-base <n>] [--time-size <n>] [--modulo-core "<nome>"] [--dominio "<descricao>"]
 ```
 
 ## Parametros
 
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<URL>` — URL base do sistema a avaliar (obrigatório)
 - `--login <email>` — email de autenticacao. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--horas-base <n>` — valor hora do profissional de automação em reais (default: 150). Usado para calcular custo financeiro
@@ -38,47 +39,14 @@ A skill mapeia o sistema, identifica o core de negócio, avalia a automatizabili
 Se `--login` contiver `:` (senha inline), PARAR e exibir:
 > ❌ ERRO DE SEGURANCA: Use apenas --login <email>. Configure QA_PASSWORD em clients/<id>/.env.
 
-### 1.1 Pergunta Interativa Obrigatória (pré-Fase 4)
-
-Antes de iniciar a Fase 4 (Estimativa de Horas e Custos), o agente **DEVE** confirmar com o usuário:
-
-> 💬 **"Qual o valor hora (em R$) do profissional de automação? (default: 150)"**
-> 💬 **"Quantos QAs estarão na equipe de automação? (default: 1)"**
-
-**Regras:**
-- Se `--horas-base` foi passado explicitamente: usar esse valor, mas ainda confirmar com o usuário se ele deseja manter ou ajustar.
-- Se `--horas-base` NÃO foi passado: perguntar obrigatoriamente. NÃO usar 150 silenciosamente sem confirmar.
-- Se `--time-size` foi passado explicitamente: usar esse valor, mas confirmar.
-- Se `--time-size` NÃO foi passado: perguntar obrigatoriamente.
-- Se o usuário não souber o valor (responder "não sei", "não temos definição", etc.): usar R$ 150 como **ilustrativo** e adicionar a nota `(valor ilustrativo — ajuste conforme realidade da equipe)` em todos os relatórios financeiros.
-- Registrar o valor confirmado em `dados_brutos/config_execucao.json` para permitir refazer os relatórios posteriormente.
-
-```json
-{
-  "timestamp": "2026-04-24_2228",
-  "horas_base": 150,
-  "time_size": 1,
-  "horas_base_confirmado_pelo_usuario": true,
-  "url": "...",
-  "login": "..."
-}
-```
-
 ### 2. Preparação
-> **REGRA DE LOCALIZAÇÃO OBRIGATÓRIA:** TODOS os artefatos desta skill devem ser criados **DENTRO** da pasta do cliente (`clients/<id>/`). **NUNCA** criar pastas `resultado/`, `estado/` ou `entregaveis/` na raiz do projeto.
-
-- Identificar `<id>` do cliente a partir do contexto (ex: `gni`).
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
 - Criar pasta `clients/<id>/resultado/<timestamp>/`
 - Criar subpastas:
   - `clients/<id>/resultado/<timestamp>/screenshots/` — evidências visuais do mapeamento
   - `clients/<id>/resultado/<timestamp>/videos/` — gravacao da sessão de análise
   - `clients/<id>/resultado/<timestamp>/dados_brutos/` — JSONs de análise intermediária
-- Criar pasta `clients/<id>/estado/` (se não existir)
-- Criar pasta `clients/<id>/entregaveis/automacao/<stack>/` (se não existir)
 - Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/` (em Windows, se symlink falhar por falta de permissao, gerar `clients/<id>/resultado/latest.txt` contendo o timestamp atual como fallback)
-
-**Screenshots NUNCA devem ser salvos soltos na raiz de `clients/<id>/` — sempre dentro de `clients/<id>/resultado/<timestamp>/screenshots/`**
 
 ### 2.1 Configuração de gravacao de video
 Ao iniciar o browser via Playwright MCP, ativar gravacao com `recordVideo` (camelCase) — snake_case (`record_video`) é silenciosamente ignorado no Node.js:
@@ -199,7 +167,7 @@ Para **cada módulo/página** mapeado, avaliar os seguintes critérios técnicos
 | 3 | **Loading state visível** | Ao carregar a página, existe spinner/skeleton com seletor estável? | Observação visual + screenshot |
 | 4 | **Modais consistentes** | Modais/toasts usam a mesma estrutura HTML (mesmas classes, mesmo padrão) ou são ad-hoc? | Observação visual em 2-3 interações |
 | 5 | **Re-renderizações** | A página pisca, elementos somem e reaparecem sem ação do usuário? | Observação visual ao navegar |
-| 6 | **Massa de dados via API** | Existe endpoint de API para criar/excluir registros? (de `clients/<id>/estado/api_endpoints.json` ou interceptação de rede) | Checar `clients/<id>/estado/api_endpoints.json` ou `clients/<id>/resultado/<timestamp>/network_log.json` |
+| 6 | **Massa de dados via API** | Existe endpoint de API para criar/excluir registros? (de `clients/<id>/estado/api_endpoints.json` ou interceptação de rede) | Checar `api_endpoints.json` ou `network_log.json` |
 | 7 | **Ambiente estável** | A sessão permaneceu ativa? Quantos erros 5xx/timeouts em `network_log.json`? | Dados de `network_log.json` + contagem de re-autenticações |
 | 8 | **Performance de carga** | Tempo médio de carregamento das páginas do módulo | `performance.timing` via `browser_evaluate` |
 
@@ -676,12 +644,12 @@ Todo `.md` destinado ao cliente deve ser copiado para `clients/<id>/entregaveis/
    
    Bloqueadores críticos: <n>
    
-    Artefatos:
-      clients/<id>/resultado/latest/automacao_plano_<timestamp>.md
-      clients/<id>/resultado/latest/automacao_estimativa_<timestamp>.xlsx (ou .md)
-      clients/<id>/resultado/latest/automacao_viabilidade_<timestamp>.md
-      clients/<id>/resultado/latest/screenshots/
-      clients/<id>/resultado/latest/videos/
+   Artefatos:
+     clients/<id>/resultado/latest/automacao_plano_<timestamp>.md
+     clients/<id>/resultado/latest/automacao_estimativa_<timestamp>.xlsx (ou .md)
+     clients/<id>/resultado/latest/automacao_viabilidade_<timestamp>.md
+     clients/<id>/resultado/latest/screenshots/
+     clients/<id>/resultado/latest/videos/
 
 ➡️ Próximo passo (se Viável ou Parcialmente Viável):
      1. Apresentar plano para stakeholders
@@ -696,60 +664,15 @@ Todo `.md` destinado ao cliente deve ser copiado para `clients/<id>/entregaveis/
 
 ---
 
-## Refazer Relatórios (Recalcular com Nova Hora-Base)
-
-Se o usuário precisar atualizar apenas os valores financeiros (custo, payback, ROI) sem re-executar toda a exploração do browser, use o script de refazer relatórios:
-
-### Quando usar
-- O usuário recebeu um orçamento com R$ 150/hora mas quer ver como fica com R$ 200/hora
-- O time de automação mudou de 1 para 2 QAs e o prazo precisa ser recalculado
-- O cliente pediu versões do plano com diferentes cenários de custo
-
-### Como usar
-
-1. **Localize o `config_execucao.json`** do run anterior:
-   ```
-   clients/<id>/resultado/<timestamp>/dados_brutos/config_execucao.json
-   ```
-
-2. **Execute o script de refazer:**
-   ```bash
-   node scripts/refazer-relatorios.js --cliente <id> --timestamp <timestamp> --horas-base <novo_valor> [--time-size <n>]
-   ```
-
-3. **O script irá:**
-   - Ler `clients/<id>/resultado/<timestamp>/dados_brutos/scores_automatizabilidade.json` e `config_execucao.json`
-   - Recalcular todos os custos, prazos e ROI com os novos valores
-   - Regenerar os 3 arquivos `.md` (plano, estimativa, viabilidade)
-   - Regenerar os 3 arquivos `.pdf` correspondentes
-   - Salvar na mesma pasta `clients/<id>/resultado/<timestamp>/` com sufixo `_recalc_<novo_valor>` ou sobrescrever (conforme flag `--sobrescrever`)
-   - Atualizar `clients/<id>/entregaveis/automacao/<stack>/`
-
-### Restrições
-- NÃO é possível refazer relatórios se `dados_brutos/scores_automatizabilidade.json` não existir
-- NÃO é possível mudar o score de automatizabilidade (isso exige re-exploração)
-- NÃO é possível adicionar/remover módulos (isso exige re-exploração)
-- APENAS valores financeiros e prazos são recalculados
-
-### Parâmetros do script
-- `--timestamp <YYYY-MM-DD_HHMM>` — obrigatório, timestamp do run original
-- `--horas-base <n>` — obrigatório, novo valor hora em reais
-- `--time-size <n>` — opcional, novo tamanho da equipe (default: mantém do original)
-- `--sobrescrever` — opcional, se presente sobrescreve os arquivos originais em vez de criar cópia
-
----
-
 ## Encadeia para
 
 **Se Viável ou Parcialmente Viável:**
 - `/explorar` — para mapeamento profundo do primeiro Quick Win
 - `/gerar-cenarios` — para gerar cenários do Quick Win
 - `/executar-planilha` — para começar a automatizar
-- `/refazer-relatorios` — para recalcular custos/prazos com novo valor hora ou tamanho de equipe, sem re-explorar o sistema
 
 **Se Não Viável:**
 - Nenhuma skill de execução. O output é um plano de acao para o time de dev.
-- `/refazer-relatorios` — ainda pode ser usado para gerar versões do plano com diferentes cenários de custo (ex: comparar R$ 150 vs R$ 200/hora) para apresentar ao time de dev/gestão
 
 ## Artefatos Gerados
 

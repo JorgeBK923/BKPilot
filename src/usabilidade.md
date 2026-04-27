@@ -17,6 +17,9 @@ inject_blocks:
   - network_monitoring
 scripts: []
 inputs:
+  - name: cliente
+    required: true
+    description: "Identificador do cliente em clients/<id> usado para isolar estado, resultados, entregaveis e credenciais"
   - name: url
     required: true
     description: "URL do sistema a avaliar"
@@ -41,7 +44,7 @@ targets:
 
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
@@ -55,14 +58,15 @@ Avaliação completa de usabilidade baseada nas 10 heurísticas de Nielsen, aná
 
 ## Uso
 ```
-/usabilidade <URL> [--login <email>] [--modulo <nome>] [--fluxos "<fluxo1>;<fluxo2>"]
+/usabilidade --cliente <id> <URL> [--login <email>] [--modulo <nome>] [--fluxos "<fluxo1>;<fluxo2>"]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<URL>` — URL do sistema a avaliar (obrigatório)
 - `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
-- `--modulo <nome>` — avaliar apenas páginas do módulo especificado. Requer `estado/mapa.md` (opcional)
-- `--fluxos "<fluxo1>;<fluxo2>"` — fluxos específicos para medir eficiência (opcional). Ex: `"login → dashboard;cadastro → confirmação"`. Se omitido, os fluxos são inferidos de `estado/fluxos.md` (se disponível) ou identificados durante a navegação
+- `--modulo <nome>` — avaliar apenas páginas do módulo especificado. Requer `clients/<id>/estado/mapa.md` (opcional)
+- `--fluxos "<fluxo1>;<fluxo2>"` — fluxos específicos para medir eficiência (opcional). Ex: `"login → dashboard;cadastro → confirmação"`. Se omitido, os fluxos são inferidos de `clients/<id>/estado/fluxos.md` (se disponível) ou identificados durante a navegação
 
 ## Instruções de Execução
 
@@ -72,36 +76,34 @@ Se `--login` contiver `:` (senha inline), PARAR e exibir:
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/`
-- Criar subpasta `resultado/<timestamp>/videos/` para os vídeos MP4
-- Criar subpasta `resultado/<timestamp>/screenshots/` para capturas de violações
-- Criar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/`
+- Criar subpasta `clients/<id>/resultado/<timestamp>/videos/` para os vídeos MP4
+- Criar subpasta `clients/<id>/resultado/<timestamp>/screenshots/` para capturas de violações
+- Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 
 ### 2.1 Configuração de gravação de vídeo
 Ao iniciar o browser via Playwright MCP, ativar gravação de vídeo:
 ```
-video: 'on'
-videoDir: 'resultado/<timestamp>/videos/_raw/'
-videoSize: { width: 1280, height: 720 }
+recordVideo: { dir: 'clients/<id>/resultado/<timestamp>/videos/_raw/', size: { width: 1280, height: 720 } }
 ```
 Um único vídeo contínuo cobre toda a sessão de avaliação.
 
 ### 2.2 Monitoramento de console do browser
 Ativar captura de mensagens do console (conforme BLOCK-B do CLAUDE.md):
 - Interceptar eventos `console.error` e `console.warning`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 
 ### 2.3 Monitoramento de requisições de rede
 Ativar interceptação de rede (conforme BLOCK-C do CLAUDE.md):
 - Registrar requisições com status >= 400 e requisições lentas (>3s)
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 
 ### 3. Autenticação e escopo
 - Se `--login` foi passado: autenticar antes de iniciar a avaliação
-- Se `--modulo` foi passado: ler `estado/mapa.md` e filtrar URLs do módulo
+- Se `--modulo` foi passado: ler `clients/<id>/estado/mapa.md` e filtrar URLs do módulo
 - Se nem `--modulo` nem URL específica de página: avaliar URL base e navegar por links internos até profundidade 2
-- Ler `estado/fluxos.md` se disponível para contexto sobre fluxos do sistema
-- Ler `estado/elementos.json` se disponível para contexto sobre formulários e elementos
+- Ler `clients/<id>/estado/fluxos.md` se disponível para contexto sobre fluxos do sistema
+- Ler `clients/<id>/estado/elementos.json` se disponível para contexto sobre formulários e elementos
 
 ### 4. Avaliação heurística — As 10 Heurísticas de Nielsen
 
@@ -244,9 +246,9 @@ Para cada página no escopo:
 ### 7. Conversão do vídeo para MP4
 Após fechar o browser:
 ```bash
-ffmpeg -i resultado/<timestamp>/videos/_raw/<arquivo>.webm \
+ffmpeg -i clients/<id>/resultado/<timestamp>/videos/_raw/<arquivo>.webm \
        -c:v libx264 -crf 23 -preset fast \
-       resultado/<timestamp>/videos/usabilidade_<timestamp>.mp4
+       clients/<id>/resultado/<timestamp>/videos/usabilidade_<timestamp>.mp4
 ```
 Se ffmpeg não disponível: manter `.webm`, exibir aviso (conforme BLOCK-A do CLAUDE.md)
 
@@ -282,7 +284,7 @@ Classificação:
 - **0-29:** Crítico — experiência severamente comprometida
 
 ### 9. Geração do relatório
-Salvar `resultado/latest/usabilidade_<timestamp>.md`:
+Salvar `clients/<id>/resultado/latest/usabilidade_<timestamp>.md`:
 
 ```markdown
 # Resultado — Avaliação de Usabilidade
@@ -415,20 +417,20 @@ Fluxos medidos: <n>
    Heurística mais fraca: H<n> — <nome> (<n>/10)
    Heurística mais forte: H<n> — <nome> (<n>/10)
    Quick wins identificados: <n>
-   Vídeo: resultado/latest/videos/usabilidade_<timestamp>.mp4
-   Screenshots: resultado/latest/screenshots/
-   Resultado: resultado/latest/usabilidade_<timestamp>.md
+   Vídeo: clients/<id>/resultado/latest/videos/usabilidade_<timestamp>.mp4
+   Screenshots: clients/<id>/resultado/latest/screenshots/
+   Resultado: clients/<id>/resultado/latest/usabilidade_<timestamp>.md
 
-➡️  Próximo passo: /reportar-bug --fonte resultado/latest/
+➡️  Próximo passo: /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
 ```
 
 ## Encadeia para
 `/reportar-bug`, `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/<timestamp>/usabilidade_<timestamp>.md`
-- `resultado/<timestamp>/videos/usabilidade_<timestamp>.mp4`
-- `resultado/<timestamp>/screenshots/ux_*.png`
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/usabilidade_<timestamp>.md`
+- `clients/<id>/resultado/<timestamp>/videos/usabilidade_<timestamp>.mp4`
+- `clients/<id>/resultado/<timestamp>/screenshots/ux_*.png`
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`

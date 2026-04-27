@@ -1,23 +1,24 @@
-# /performance — Análise de Performance e Core Web Vitals
-
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
 > Aplica-se a **TODAS as ICLs** (Claude, GLM, Minimax, Kimi, MiMo, Qwen, GPT, Codex). Ver §7.1 do CLAUDE.md.
 
 
+# /performance — Análise de Performance e Core Web Vitals
+
 ## Descrição
 Mede Core Web Vitals (LCP, FCP, CLS, TTFB, INP), analisa recursos pesados, gera waterfall de rede e atribui score de performance por página. Suporta throttle de rede (3G, 4G, WiFi) para simular condições reais de uso.
 
 ## Uso
 ```
-/performance <URL> [--login <email>] [--paginas <URLs>] [--throttle <3g|4g|wifi>]
+/performance --cliente <id> <URL> [--login <email>] [--paginas <URLs>] [--throttle <3g|4g|wifi>]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<URL>` — URL base do sistema a analisar (obrigatório)
 - `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--paginas <URLs>` — lista de URLs específicas separadas por vírgula para analisar (opcional). Se omitido, analisa a URL base e páginas linkadas até profundidade 1
@@ -31,19 +32,19 @@ Se `--login` contiver `:` (senha inline), PARAR e exibir:
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/`
-- Criar subpasta `resultado/<timestamp>/screenshots/` para capturas
-- Criar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/`
+- Criar subpasta `clients/<id>/resultado/<timestamp>/screenshots/` para capturas
+- Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 
 ### 2.1 Monitoramento de console do browser
 Ativar captura de mensagens do console (conforme BLOCK-B do CLAUDE.md):
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 
 ### 2.2 Monitoramento de requisições de rede
 Ativar interceptação de rede (conforme BLOCK-C do CLAUDE.md):
 - Registrar **todas** as requisições (não apenas erros) para análise de waterfall
 - Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, type, cached }`
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 
 ### 3. Configuração de throttle
 Configurar condição de rede antes de iniciar as medições:
@@ -59,7 +60,7 @@ Configurar condição de rede antes de iniciar as medições:
 - Definir lista de páginas a medir:
   - Se `--paginas` informado: usar lista fornecida
   - Se não: usar URL base + links internos até profundidade 1
-  - Se `estado/mapa.md` disponível: usar como referência para páginas críticas
+  - Se `clients/<id>/estado/mapa.md` disponível: usar como referência para páginas críticas
 
 ### 5. Medição de Core Web Vitals
 Para cada página na lista, executar 3 medições e calcular a mediana:
@@ -138,7 +139,7 @@ Classificação:
 - **0-49:** Ruim
 
 ### 9. Geração do relatório
-Salvar `resultado/latest/performance_<timestamp>.md`:
+Salvar `clients/<id>/resultado/latest/performance_<timestamp>.md`:
 
 ```markdown
 # Resultado — Análise de Performance
@@ -208,17 +209,40 @@ Score: <n>/100
    Recursos pesados encontrados: <n>
    Requisições bloqueantes: <n>
    Console errors: <n>
-   Resultado: resultado/latest/performance_<timestamp>.md
+   Resultado: clients/<id>/resultado/latest/performance_<timestamp>.md
 
-➡️  Próximo passo: /reportar-bug --fonte resultado/latest/
+➡️  Próximo passo: /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
 ```
 
 ## Encadeia para
 `/reportar-bug`, `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/<timestamp>/performance_<timestamp>.md`
-- `resultado/<timestamp>/screenshots/perf_*.png`
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/performance_<timestamp>.md`
+- `clients/<id>/resultado/<timestamp>/screenshots/perf_*.png`
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`
+
+---
+
+### Monitoramento de console do browser (BLOCK-B)
+Ao iniciar o browser, ativar captura de mensagens do console:
+- Interceptar eventos `console.error` e `console.warning`
+- Registrar: `{ timestamp, level, text, url, lineNumber }`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
+- No resultado final, incluir seção "Console Errors" listando erros críticos
+- Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
+
+
+### Monitoramento de requisições de rede (BLOCK-C)
+Ao iniciar o browser, ativar interceptação de rede:
+- Registrar requisições com status >= 400 (erros HTTP)
+- Registrar requisições que levaram mais de 3000ms (lentas)
+- Registrar requisições que falharam (timeout, DNS, conexão recusada)
+- Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
+- No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
+- Muitos erros 5xx consecutivos devem gerar alerta no resumo
+
+

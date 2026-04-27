@@ -7,12 +7,13 @@ Executa em **6 fases com portões obrigatórios**. Você não pode encerrar sem 
 
 ## Uso
 ```
-/gerar-cenarios --formato gherkin [--modulo <nome>]
-/gerar-cenarios --formato gherkin --requisitos docs/requisitos-checkout.pdf
-/gerar-cenarios --formato gherkin --requisitos docs/historias-jira.md --modulo "Checkout"
+/gerar-cenarios --cliente <id> --formato gherkin [--modulo <nome>]
+/gerar-cenarios --cliente <id> --formato gherkin --requisitos docs/requisitos-checkout.pdf
+/gerar-cenarios --cliente <id> --formato gherkin --requisitos docs/historias-jira.md --modulo "Checkout"
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `--formato gherkin` — formato de saída (obrigatório, único suportado)
 - `--modulo <nome>` — gera cenários apenas para o módulo especificado (opcional)
 - `--requisitos <caminho>` — caminho para documento de requisitos (PDF, DOCX, Markdown, TXT). Ativa **modo requirements-driven**: gera cenários a partir dos requisitos em vez de (ou além de) artefatos de exploração. Formatos suportados: `.pdf`, `.docx`, `.md`, `.txt`
@@ -23,12 +24,12 @@ A skill opera em **dois modos**, determinados pela presença do parâmetro `--re
 
 ### Modo 1: Map-driven (padrão, sem `--requisitos`)
 Gera cenários a partir dos artefatos produzidos pelo `/explorar`:
-- `estado/mapa.md` → estrutura do sistema
-- `estado/fluxos.md` → sequências de navegação
-- `estado/elementos.json` → formulários, modais, wizards
-- `estado/api_endpoints.json` → endpoints detectados
-- `resultado/latest/console_log.json` → erros JS
-- `resultado/latest/network_log.json` → erros de rede
+- `clients/<id>/estado/mapa.md` → estrutura do sistema
+- `clients/<id>/estado/fluxos.md` → sequências de navegação
+- `clients/<id>/estado/elementos.json` → formulários, modais, wizards
+- `clients/<id>/estado/api_endpoints.json` → endpoints detectados
+- `clients/<id>/resultado/latest/console_log.json` → erros JS
+- `clients/<id>/resultado/latest/network_log.json` → erros de rede
 
 Este é o modo atual da skill — todo o conteúdo existente se aplica.
 
@@ -67,10 +68,10 @@ Gera cenários a partir de documentos de requisitos **antes ou independentemente
    - Gerar seção "Gaps de Implementação" no relatório
 
 ### Modo Combinado: Requirements + Mapa (recomendado)
-Quando `--requisitos` é usado e `estado/mapa.md` existe:
+Quando `--requisitos` é usado e `clients/<id>/estado/mapa.md` existe:
 
 ```
-/gerar-cenarios --formato gherkin --requisitos docs/requisitos.pdf
+/gerar-cenarios --cliente <id> --formato gherkin --requisitos docs/requisitos.pdf
 ```
 
 A skill:
@@ -127,8 +128,8 @@ A skill:
 Você **NÃO PODE** encerrar a skill nem imprimir o resumo final enquanto qualquer item abaixo estiver falso:
 
 - [ ] `cenarios/perfil_risco.md` foi gerado na Fase 1 e declara explicitamente quais eixos de risco se aplicam
-- [ ] Cada bug/anomalia em `resultado/latest/console_log.json` e `network_log.json` gerou uma **família** de ≥3 cenários (reprodução + variação + regressão), OU foi marcado como "ignorado, motivo: …"
-- [ ] Cada verbo POST/PUT/DELETE em `estado/api_endpoints.json` gerou ≥4 cenários de autorização (auth bypass, IDOR, mass assignment, rate limiting), OU marcado como "N/A com justificativa"
+- [ ] Cada bug/anomalia em `clients/<id>/resultado/latest/console_log.json` e `network_log.json` gerou uma **família** de ≥3 cenários (reprodução + variação + regressão), OU foi marcado como "ignorado, motivo: …"
+- [ ] Cada verbo POST/PUT/DELETE em `clients/<id>/estado/api_endpoints.json` gerou ≥4 cenários de autorização (auth bypass, IDOR, mass assignment, rate limiting), OU marcado como "N/A com justificativa"
 - [ ] O **módulo central** do sistema (identificado na Fase 1) tem ≥15 cenários
 - [ ] Cada módulo secundário tem ≥3 cenários
 - [ ] Cada eixo de risco aplicável (Fase 1) tem a contagem mínima definida na tabela da §5.13, ou justificativa de N/A
@@ -153,7 +154,7 @@ O prompt **não pode ser o nome do fluxo reciclado** (ex: `"Consulta de dados po
 
 Motivo: o executor `cenarios/_executar_planilha.js` (função `extrairPergunta`, linhas 56-62) lê a coluna `Massa de Dados` como primeira estratégia e `Passos` com regex `pergunta: "..."` como fallback. Sem esse padrão em nenhuma das duas colunas, cai no fallback que envia o nome do fluxo como prompt — produzindo falsos positivos porque a IA responde "qualquer coisa" a um prompt vago, e o executor valida só por "houve resposta textual". **Isso invalida o ciclo inteiro como regressão funcional.**
 
-Referência de incidente: Ciclo II `cenarios_ia_regressao_ciclo2_2026-04-14_1229.xlsx` — 71/74 passaram como falso positivo por essa falha. Registro em `resultado/2026-04-14_2059/_SMOKE_TEST_ROBUSTEZ.md`.
+Referência de incidente: Ciclo II `cenarios_ia_regressao_ciclo2_2026-04-14_1229.xlsx` — 71/74 passaram como falso positivo por essa falha. Registro em `clients/<id>/resultado/2026-04-14_2059/_SMOKE_TEST_ROBUSTEZ.md`.
 
 ---
 
@@ -190,10 +191,10 @@ Com base nas respostas, classifique:
 
 Antes de sair da Fase 1, leia também:
 
-- `resultado/latest/console_log.json` → listar cada erro e classificar (auth, 4xx, 5xx, CORS, JS runtime). Cada grupo vira uma família de cenários na Fase 3.
-- `resultado/latest/network_log.json` → mesmo tratamento.
-- `estado/api_endpoints.json` → separar endpoints mutativos (POST/PUT/DELETE) dos de leitura. Cada mutativo gera família na §5.4.
-- `resultado/latest/cleanup_log.json` (se existir) → itens com `status: pendente` são **bugs conhecidos** e precisam de cenários de regressão.
+- `clients/<id>/resultado/latest/console_log.json` → listar cada erro e classificar (auth, 4xx, 5xx, CORS, JS runtime). Cada grupo vira uma família de cenários na Fase 3.
+- `clients/<id>/resultado/latest/network_log.json` → mesmo tratamento.
+- `clients/<id>/estado/api_endpoints.json` → separar endpoints mutativos (POST/PUT/DELETE) dos de leitura. Cada mutativo gera família na §5.4.
+- `clients/<id>/resultado/latest/cleanup_log.json` (se existir) → itens com `status: pendente` são **bugs conhecidos** e precisam de cenários de regressão.
 
 Salve um resumo desses sinais na seção "Sinais da exploração" do `perfil_risco.md`.
 
@@ -221,13 +222,13 @@ Salve um resumo desses sinais na seção "Sinais da exploração" do `perfil_ris
    - `.md` / `.txt` → ler diretamente com `fs.read_file`
    - `.pdf` → `pdftotext <arquivo> -` (output para stdout, capturar via shell)
    - `.docx` → `pandoc <arquivo> -t plain` (output para stdout, capturar via shell)
-4. **Se `estado/mapa.md` também existe:** ler os artefatos de exploração para cross-referência (modo combinado)
-5. **Se `estado/mapa.md` NÃO existe:** gerar cenários apenas dos requisitos, sem validação de cobertura no mapa
+4. **Se `clients/<id>/estado/mapa.md` também existe:** ler os artefatos de exploração para cross-referência (modo combinado)
+5. **Se `clients/<id>/estado/mapa.md` NÃO existe:** gerar cenários apenas dos requisitos, sem validação de cobertura no mapa
 
 ### Se modo map-driven (padrão, sem `--requisitos`):
-- Se `estado/mapa.md`, `estado/fluxos.md` ou `estado/elementos.json` não existirem: **PARAR** com a mensagem:
-  > ❌ Artefatos de exploração não encontrados. Execute primeiro: /explorar <URL>
-- `estado/api_endpoints.json`, `resultado/latest/console_log.json`, `resultado/latest/network_log.json` são **obrigatórios** — se ausentes, PARAR com a mesma mensagem (a skill depende deles pra ter substância).
+- Se `clients/<id>/estado/mapa.md`, `clients/<id>/estado/fluxos.md` ou `clients/<id>/estado/elementos.json` não existirem: **PARAR** com a mensagem:
+  > ❌ Artefatos de exploração não encontrados. Execute primeiro: /explorar --cliente <id> <URL>
+- `clients/<id>/estado/api_endpoints.json`, `clients/<id>/resultado/latest/console_log.json`, `clients/<id>/resultado/latest/network_log.json` são **obrigatórios** — se ausentes, PARAR com a mesma mensagem (a skill depende deles pra ter substância).
 
 Ler todos os artefatos disponíveis. Se `--modulo` foi passado, filtrar apenas páginas/fluxos do módulo informado (mas ainda assim ler os logs completos — segurança é transversal).
 
@@ -238,13 +239,13 @@ Ler todos os artefatos disponíveis. Se `--modulo` foi passado, filtrar apenas p
 **Não gere por módulo, gere por eixo de risco.** A ordem abaixo é a ordem de geração. Cada eixo tem sua receita própria.
 
 ### 5.1 Fluxos funcionais (eixo: Funcional)
-Para cada fluxo em `estado/fluxos.md`:
+Para cada fluxo em `clients/<id>/estado/fluxos.md`:
 - 1 cenário positivo (caminho feliz)
 - 2-4 cenários negativos, escolhendo por relevância: dados inválidos, fluxo incompleto, sem permissão, recurso inexistente, estado inválido (ex: editar item já deletado)
 - 1 cenário de borda se o fluxo tem volume, timing ou condição especial
 
 ### 5.2 Formulários (eixo: Funcional + Injeção) — data-driven
-Para cada formulário em `estado/elementos.json`:
+Para cada formulário em `clients/<id>/estado/elementos.json`:
 - 1 cenário "submissão com dados válidos"
 - 1 cenário **parametrizado** "campo obrigatório vazio" com tabela de todos os campos obrigatórios
 - 1 cenário **parametrizado** "formato inválido" com tabela de valores por campo (email: 8 variações; CPF: 6; número: 5)
@@ -375,7 +376,7 @@ Para cada breakpoint crítico (320px, 375px, 768px, 1024px):
 - Modais: ocupam tela útil, não cortam conteúdo
 
 ### 5.13 Interface e UX — testes de força bruta (eixo: Funcional)
-**Obrigatório para cada página mapeada em `estado/mapa.md`.** Esta seção cobre testes de interface que não são funcionais nem de segurança — são testes de robustez da UI.
+**Obrigatório para cada página mapeada em `clients/<id>/estado/mapa.md`.** Esta seção cobre testes de interface que não são funcionais nem de segurança — são testes de robustez da UI.
 
 Para **cada página** do sistema, gerar cenários de:
 
@@ -499,8 +500,8 @@ Criar `cenarios/cenarios_<timestamp>.xlsx` no **formato padrão QA BugKillers** 
 | **Status QA Ciclo I** | `NT` (Não Testado) — preencher durante execução | `NT` | ✅ |
 | **Status QA Ciclo II** | Vazio (para reteste) | `` | |
 | **Observações** | Notas adicionais, origem do cenário, referências, prioridade (Alta/Média/Baixa) | `Req seção 3.1 | Prioridade: Alta` | |
-| **Screenshot** | Caminho do screenshot — preenchido pelo executor | `resultado/latest/screenshots/1_final.png` | (executor) |
-| **Vídeo** | Caminho do vídeo — preenchido pelo executor | `resultado/latest/videos/1_2026-04-16_1500.mp4` | (executor) |
+| **Screenshot** | Caminho do screenshot — preenchido pelo executor | `clients/<id>/resultado/latest/screenshots/1_final.png` | (executor) |
+| **Vídeo** | Caminho do vídeo — preenchido pelo executor | `clients/<id>/resultado/latest/videos/1_2026-04-16_1500.mp4` | (executor) |
 | **Status** | `Passou` / `Falhou` / `Pulou` — preenchido pelo executor | `Passou` | (executor) |
 
 **Última linha (legenda):** `Legenda Status: | NT = Não Testado | Passed | Failed | | | | | | |`

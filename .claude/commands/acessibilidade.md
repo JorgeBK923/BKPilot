@@ -1,27 +1,28 @@
-# /acessibilidade — Auditoria de Acessibilidade WCAG
-
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo cenário/passo/assertion executado no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
 > Aplica-se a **TODAS as ICLs** (Claude, GLM, Minimax, Kimi, MiMo, Qwen, GPT, Codex). Ver §7.1 do CLAUDE.md.
 
 
+# /acessibilidade — Auditoria de Acessibilidade WCAG
+
 ## Descrição
 Auditoria completa de acessibilidade baseada nas diretrizes WCAG 2.1 (níveis A, AA e AAA). Analisa contraste de cores, atributos ARIA, navegação por teclado, textos alternativos, labels de formulário, hierarquia de headings e compatibilidade com screen readers. Gera relatório detalhado com violações classificadas por severidade e sugestões de correção.
 
 ## Uso
 ```
-/acessibilidade <URL> [--login <email>] [--nivel <A|AA|AAA>] [--modulo <nome>]
+/acessibilidade --cliente <id> <URL> [--login <email>] [--nivel <A|AA|AAA>] [--modulo <nome>]
 ```
 
 ## Parâmetros
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<URL>` — URL da página ou sistema a auditar (obrigatório)
 - `--login <email>` — email de autenticação. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--nivel <A|AA|AAA>` — nível WCAG a verificar (padrão: AA)
-- `--modulo <nome>` — auditar apenas páginas do módulo especificado. Requer `estado/mapa.md` (opcional)
+- `--modulo <nome>` — auditar apenas páginas do módulo especificado. Requer `clients/<id>/estado/mapa.md` (opcional)
 
 ## Instruções de Execução
 
@@ -31,23 +32,23 @@ Se `--login` contiver `:` (senha inline), PARAR e exibir:
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/`
-- Criar subpasta `resultado/<timestamp>/screenshots/` para capturas de violações
-- Criar symlink `resultado/latest → resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/`
+- Criar subpasta `clients/<id>/resultado/<timestamp>/screenshots/` para capturas de violações
+- Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/`
 
 ### 2.1 Monitoramento de console do browser
 Ativar captura de mensagens do console (conforme BLOCK-B do CLAUDE.md):
 - Interceptar eventos `console.error` e `console.warning`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 
 ### 2.2 Monitoramento de requisições de rede
 Ativar interceptação de rede (conforme BLOCK-C do CLAUDE.md):
 - Registrar requisições com status >= 400 e requisições lentas (>3s)
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 
 ### 3. Autenticação e navegação
 - Se `--login` foi passado: autenticar antes de acessar a URL
-- Se `--modulo` foi passado: ler `estado/mapa.md` e filtrar URLs do módulo
+- Se `--modulo` foi passado: ler `clients/<id>/estado/mapa.md` e filtrar URLs do módulo
 - Navegar até a URL informada (ou primeira URL do módulo)
 
 ### 4. Definição do escopo
@@ -125,7 +126,7 @@ Para cada violação encontrada, classificar:
 | **Baixo** | Melhoria recomendada, não bloqueante | Skip link ausente, lang não definido, alt genérico em decorativas |
 
 ### 7. Geração do relatório
-Salvar `resultado/latest/acessibilidade_<timestamp>.md`:
+Salvar `clients/<id>/resultado/latest/acessibilidade_<timestamp>.md`:
 
 ```markdown
 # Resultado — Auditoria de Acessibilidade
@@ -199,18 +200,41 @@ Para cada violação Crítica e Alta, sugerir a correção específica:
    Score: <n>/100
    Violações: Crítico <n> | Alto <n> | Médio <n> | Baixo <n>
    Categorias com mais problemas: <lista>
-   Screenshots: resultado/latest/screenshots/
-   Resultado: resultado/latest/acessibilidade_<timestamp>.md
+   Screenshots: clients/<id>/resultado/latest/screenshots/
+   Resultado: clients/<id>/resultado/latest/acessibilidade_<timestamp>.md
 
-➡️  Próximo passo: /reportar-bug --fonte resultado/latest/
+➡️  Próximo passo: /reportar-bug --cliente <id> --fonte clients/<id>/resultado/latest/
 ```
 
 ## Encadeia para
 `/reportar-bug`, `/gerar-relatorio`
 
 ## Artefatos gerados
-- `resultado/<timestamp>/acessibilidade_<timestamp>.md`
-- `resultado/<timestamp>/screenshots/a11y_*.png`
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/acessibilidade_<timestamp>.md`
+- `clients/<id>/resultado/<timestamp>/screenshots/a11y_*.png`
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`
+
+---
+
+### Monitoramento de console do browser (BLOCK-B)
+Ao iniciar o browser, ativar captura de mensagens do console:
+- Interceptar eventos `console.error` e `console.warning`
+- Registrar: `{ timestamp, level, text, url, lineNumber }`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
+- No resultado final, incluir seção "Console Errors" listando erros críticos
+- Uncaught exceptions e unhandled promise rejections são sempre severidade ALTA
+
+
+### Monitoramento de requisições de rede (BLOCK-C)
+Ao iniciar o browser, ativar interceptação de rede:
+- Registrar requisições com status >= 400 (erros HTTP)
+- Registrar requisições que levaram mais de 3000ms (lentas)
+- Registrar requisições que falharam (timeout, DNS, conexão recusada)
+- Formato: `{ timestamp, method, url, status, duration_ms, size_bytes, error }`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
+- No resultado final, incluir seção "Network Issues" com erros 5xx e requisições lentas
+- Muitos erros 5xx consecutivos devem gerar alerta no resumo
+
+

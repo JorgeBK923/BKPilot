@@ -24,6 +24,9 @@ inject_blocks:
   - session_reauth
 scripts: []
 inputs:
+  - name: cliente
+    required: true
+    description: "Identificador do cliente em clients/<id> usado para isolar estado, resultados, entregaveis e credenciais"
   - name: url
     required: true
     description: "URL base do sistema a avaliar"
@@ -58,7 +61,7 @@ targets:
 
 > 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
 >
-> Todo mapeamento e análise executada no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `resultado/<timestamp>/screenshots/` ou `resultado/<timestamp>/videos/`.
+> Todo mapeamento e análise executada no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
 >
 > **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
 >
@@ -75,11 +78,12 @@ A skill mapeia o sistema, identifica o core de negócio, avalia a automatizabili
 ## Uso
 
 ```
-/plano-automacao <URL> [--login <email>] [--horas-base <n>] [--time-size <n>] [--modulo-core "<nome>"] [--dominio "<descricao>"]
+/plano-automacao --cliente <id> <URL> [--login <email>] [--horas-base <n>] [--time-size <n>] [--modulo-core "<nome>"] [--dominio "<descricao>"]
 ```
 
 ## Parametros
 
+- `--cliente <id>` — identificador da pasta do cliente em `clients/<id>/` (obrigatório para isolar estado, resultados, entregáveis e credenciais)
 - `<URL>` — URL base do sistema a avaliar (obrigatório)
 - `--login <email>` — email de autenticacao. A senha é lida de `QA_PASSWORD` em `clients/<id>/.env`
 - `--horas-base <n>` — valor hora do profissional de automação em reais (default: 150). Usado para calcular custo financeiro
@@ -96,19 +100,19 @@ Se `--login` contiver `:` (senha inline), PARAR e exibir:
 
 ### 2. Preparação
 - Registrar timestamp: `YYYY-MM-DD_HHMM`
-- Criar pasta `resultado/<timestamp>/`
+- Criar pasta `clients/<id>/resultado/<timestamp>/`
 - Criar subpastas:
-  - `resultado/<timestamp>/screenshots/` — evidências visuais do mapeamento
-  - `resultado/<timestamp>/videos/` — gravacao da sessão de análise
-  - `resultado/<timestamp>/dados_brutos/` — JSONs de análise intermediária
-- Criar symlink `resultado/latest → resultado/<timestamp>/` (em Windows, se symlink falhar por falta de permissao, gerar `resultado/latest.txt` contendo o timestamp atual como fallback)
+  - `clients/<id>/resultado/<timestamp>/screenshots/` — evidências visuais do mapeamento
+  - `clients/<id>/resultado/<timestamp>/videos/` — gravacao da sessão de análise
+  - `clients/<id>/resultado/<timestamp>/dados_brutos/` — JSONs de análise intermediária
+- Criar symlink `clients/<id>/resultado/latest → clients/<id>/resultado/<timestamp>/` (em Windows, se symlink falhar por falta de permissao, gerar `clients/<id>/resultado/latest.txt` contendo o timestamp atual como fallback)
 
 ### 2.1 Configuração de gravacao de video
 Ao iniciar o browser via Playwright MCP, ativar gravacao com `recordVideo` (camelCase) — snake_case (`record_video`) é silenciosamente ignorado no Node.js:
 ```javascript
 browser.newContext({
   recordVideo: {
-    dir: 'resultado/<timestamp>/videos/_raw/',
+    dir: 'clients/<id>/resultado/<timestamp>/videos/_raw/',
     size: { width: 1280, height: 720 }
   }
 });
@@ -122,12 +126,12 @@ Um unico video contínuo cobre toda a sessão de avaliação.
 ### 2.2 Monitoramento de console do browser
 Ativar captura de mensagens do console (conforme BLOCK-B do CLAUDE.md):
 - Interceptar eventos `console.error` e `console.warning`
-- Salvar em `resultado/<timestamp>/console_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/console_log.json`
 
 ### 2.3 Monitoramento de requisições de rede
 Ativar interceptação de rede (conforme BLOCK-C do CLAUDE.md):
 - Registrar requisições com status >= 400 e requisições lentas (>3s)
-- Salvar em `resultado/<timestamp>/network_log.json`
+- Salvar em `clients/<id>/resultado/<timestamp>/network_log.json`
 
 ### 2.4 Re-autenticacao de sessão (BLOCK-D)
 A skill é de longa duracao e pode expirar sessão durante o scan de varios módulos:
@@ -155,15 +159,15 @@ Esta skill **não cria dados** no sistema por padrão — apenas lê e inspecion
 
 Voce **NÃO PODE** encerrar a skill nem imprimir o resumo final enquanto qualquer item abaixo estiver falso:
 
-- [ ] O arquivo `resultado/<timestamp>/dados_brutos/scores_automatizabilidade.json` existe e contém uma entrada para cada módulo listado em `estado/mapa.md` (ou identificado na mini-exploração). Verificar no disco com Read/Glob antes de marcar como verde
+- [ ] O arquivo `clients/<id>/resultado/<timestamp>/dados_brutos/scores_automatizabilidade.json` existe e contém uma entrada para cada módulo listado em `clients/<id>/estado/mapa.md` (ou identificado na mini-exploração). Verificar no disco com Read/Glob antes de marcar como verde
 - [ ] O módulo central (core) foi identificado e documentado com evidência
 - [ ] Todos os módulos mapeados tem score de automatizabilidade calculado (0-100)
 - [ ] A matriz de prioridade (Valor de Negocio x Fácilidade) está preenchida para todos os módulos
 - [ ] Estimativas de horas foram calculadas para pelo menos os 3 primeiros módulos do plano
 - [ ] O veredito de viabilidade técnica foi emitido (Viável / Parcialmente Viável / Não Viável)
 - [ ] Bloqueadores técnicos foram listados com severidade e acao sugerida
-- [ ] `resultado/<timestamp>/automacao_plano_<timestamp>.md` foi gerado com todas as seções
-- [ ] `resultado/<timestamp>/automacao_estimativa_<timestamp>.xlsx` (ou `.md` se Excel não disponível) foi gerado
+- [ ] `clients/<id>/resultado/<timestamp>/automacao_plano_<timestamp>.md` foi gerado com todas as seções
+- [ ] `clients/<id>/resultado/<timestamp>/automacao_estimativa_<timestamp>.xlsx` (ou `.md` se Excel não disponível) foi gerado
 
 **Regra de honestidade:** se um sistema não tem IDs estáveis, se os seletores são todos XPath frágeis, ou se o ambiente cai a cada 5 minutos, o veredito deve ser **"Não Viável"** ou **"Parcialmente Viável"** com bloqueadores claros. Não vender automação impossível.
 
@@ -172,7 +176,7 @@ Voce **NÃO PODE** encerrar a skill nem imprimir o resumo final enquanto qualque
 ## Fase 1 — Mapeamento do Sistema e Identificação do Core
 
 ### 1.1 Reaproveitar ou executar exploração
-Se `estado/mapa.md`, `estado/elementos.json` e `estado/fluxos.md` já existirem (de um `/explorar` anterior):
+Se `clients/<id>/estado/mapa.md`, `clients/<id>/estado/elementos.json` e `clients/<id>/estado/fluxos.md` já existirem (de um `/explorar` anterior):
 - Ler os artefatos existentes
 - Validar se estao completos (minimo: 5 páginas mapeadas, 3 fluxos identificados)
 - Se incompletos: executar uma mini-exploração para completar
@@ -222,7 +226,7 @@ Para **cada módulo/página** mapeado, avaliar os seguintes critérios técnicos
 | 3 | **Loading state visível** | Ao carregar a página, existe spinner/skeleton com seletor estável? | Observação visual + screenshot |
 | 4 | **Modais consistentes** | Modais/toasts usam a mesma estrutura HTML (mesmas classes, mesmo padrão) ou são ad-hoc? | Observação visual em 2-3 interações |
 | 5 | **Re-renderizações** | A página pisca, elementos somem e reaparecem sem ação do usuário? | Observação visual ao navegar |
-| 6 | **Massa de dados via API** | Existe endpoint de API para criar/excluir registros? (de `estado/api_endpoints.json` ou interceptação de rede) | Checar `api_endpoints.json` ou `network_log.json` |
+| 6 | **Massa de dados via API** | Existe endpoint de API para criar/excluir registros? (de `clients/<id>/estado/api_endpoints.json` ou interceptação de rede) | Checar `api_endpoints.json` ou `network_log.json` |
 | 7 | **Ambiente estável** | A sessão permaneceu ativa? Quantos erros 5xx/timeouts em `network_log.json`? | Dados de `network_log.json` + contagem de re-autenticações |
 | 8 | **Performance de carga** | Tempo médio de carregamento das páginas do módulo | `performance.timing` via `browser_evaluate` |
 
@@ -677,7 +681,7 @@ Documento técnico focado no time de desenvolvimento:
 - Sugestões de melhorias para fácilitar automação (ex: "Adicionar data-testid nos botões de acao")
 
 ### 7.4 Entrega ao Cliente
-Todo `.md` destinado ao cliente deve ser copiado para `entregaveis/<cliente>/automacao/<stack>/` com `.pdf` correspondente, conforme convenção do AGENTS.md. Nunca enviar `resultado/<timestamp>/governanca/`, `.env`, tokens, `geracao_id`, identidade de modelo/agente/executor ou logs internos ao cliente.
+Todo `.md` destinado ao cliente deve ser copiado para `clients/<id>/entregaveis/automacao/<stack>/` com `.pdf` correspondente, conforme convenção do AGENTS.md. Nunca enviar `clients/<id>/resultado/<timestamp>/governanca/`, `.env`, tokens, `geracao_id`, identidade de modelo/agente/executor ou logs internos ao cliente.
 
 ---
 
@@ -700,11 +704,11 @@ Todo `.md` destinado ao cliente deve ser copiado para `entregaveis/<cliente>/aut
    Bloqueadores críticos: <n>
    
    Artefatos:
-     resultado/latest/automacao_plano_<timestamp>.md
-     resultado/latest/automacao_estimativa_<timestamp>.xlsx (ou .md)
-     resultado/latest/automacao_viabilidade_<timestamp>.md
-     resultado/latest/screenshots/
-     resultado/latest/videos/
+     clients/<id>/resultado/latest/automacao_plano_<timestamp>.md
+     clients/<id>/resultado/latest/automacao_estimativa_<timestamp>.xlsx (ou .md)
+     clients/<id>/resultado/latest/automacao_viabilidade_<timestamp>.md
+     clients/<id>/resultado/latest/screenshots/
+     clients/<id>/resultado/latest/videos/
 
 ➡️ Próximo passo (se Viável ou Parcialmente Viável):
      1. Apresentar plano para stakeholders
@@ -731,15 +735,15 @@ Todo `.md` destinado ao cliente deve ser copiado para `entregaveis/<cliente>/aut
 
 ## Artefatos Gerados
 
-- `resultado/<timestamp>/automacao_plano_<timestamp>.md` — Plano estratégico completo
-- `resultado/<timestamp>/automacao_estimativa_<timestamp>.xlsx` (ou `.md`) — Estimativa detalhada
-- `resultado/<timestamp>/automacao_viabilidade_<timestamp>.md` — Ficha técnica de viabilidade
-- `resultado/<timestamp>/dados_brutos/` — JSONs de análise intermediária
-- `resultado/<timestamp>/screenshots/` — Evidências visuais
-- `resultado/<timestamp>/videos/` — Gravacao da sessão
-- `resultado/<timestamp>/console_log.json`
-- `resultado/<timestamp>/network_log.json`
-- `resultado/latest/` → symlink para `resultado/<timestamp>/`
+- `clients/<id>/resultado/<timestamp>/automacao_plano_<timestamp>.md` — Plano estratégico completo
+- `clients/<id>/resultado/<timestamp>/automacao_estimativa_<timestamp>.xlsx` (ou `.md`) — Estimativa detalhada
+- `clients/<id>/resultado/<timestamp>/automacao_viabilidade_<timestamp>.md` — Ficha técnica de viabilidade
+- `clients/<id>/resultado/<timestamp>/dados_brutos/` — JSONs de análise intermediária
+- `clients/<id>/resultado/<timestamp>/screenshots/` — Evidências visuais
+- `clients/<id>/resultado/<timestamp>/videos/` — Gravacao da sessão
+- `clients/<id>/resultado/<timestamp>/console_log.json`
+- `clients/<id>/resultado/<timestamp>/network_log.json`
+- `clients/<id>/resultado/latest/` → symlink para `clients/<id>/resultado/<timestamp>/`
 
 ---
 
