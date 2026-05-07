@@ -9,7 +9,14 @@ claude
 ## Framework
 Claude Code + **Playwright MCP** via `.claude/settings.json` (npx, not npm install)
 
-## Security (BLOCK-B/C/D/E)
+## Arquitetura Core/Comercial/Producao
+- Este repositorio e o futuro **BKPilot-Producao**; a pasta ainda pode estar chamada `BKPilot`.
+- Codigo compartilhado entre Comercial e Producao vive no pacote externo `@bugkillers/bkpilot-core`, hoje fixado em `github:JorgeBK923/BKPilot-Core#v0.1.0`.
+- Os arquivos `core/browser.js`, `core/client.js`, `core/env.js`, `core/evidence.js`, `core/logger.js` e `core/paths.js` sao apenas wrappers de compatibilidade. Nao coloque logica nova neles.
+- Para alterar comportamento compartilhado, edite o repositorio `BKPilot-Core`, publique nova tag e depois atualize a dependencia neste projeto.
+- Frontend comercial, API da demo, relatorio comercial, fluxo `demo_mvp` e skill `/demo-comercial` nao pertencem ao Producao.
+- Producao deve implementar apenas rotinas, skills e regras operacionais. Nao copiar codigo comercial para ca sem decisao arquitetural explicita.
+- Este repositorio nao tem suite `npm test` configurada; ao trocar versao do Core, rode `npm install` e smoke tests de importacao dos wrappers.`n`n## Security (BLOCK-B/C/D/E)
 - **NEVER** pass password inline (`--login email:senha`). Stop immediately.
 - Password from `QA_PASSWORD` in `clients/<id>/.env` only (multi-tenant — each client has its own isolated env)
 - Jira/GitHub tokens from root `.env` only — **NEVER** pass tokens inline as parameters
