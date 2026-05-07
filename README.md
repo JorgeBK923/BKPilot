@@ -4,6 +4,19 @@ Sistema de automação de QA baseado em Claude Code + Playwright MCP.
 19 comandos slash que cobrem o pipeline completo: exploração → cenários → execução → bugs → relatório, planejamento/geração/auditoria de automação e auditorias avulsas de acessibilidade, performance, API e usabilidade.
 
 ---
+## Arquitetura Producao e Core
+
+Este projeto BKPilot passa a ser tratado como o futuro BKPilot-Producao.
+
+O primeiro corte tecnico do Core ja foi aplicado localmente:
+
+- BKPilot-Core concentra os modulos compartilhados iniciais;
+- package.json consome @bugkillers/bkpilot-core via github:JorgeBK923/BKPilot-Core#v0.1.0;
+- core/*.js foi mantido como wrapper de compatibilidade;
+- o Comercial e o Producao seguem separados, sem trazer front/back/demo comercial para este projeto.
+
+Documento detalhado: docs/Arquitetura Producao Core.md
+---
 
 ## Pré-requisitos
 
