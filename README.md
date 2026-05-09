@@ -1,7 +1,7 @@
 # BugKillers QA Agent
 
-Sistema de automação de QA baseado em Claude Code + Playwright MCP.
-19 comandos slash que cobrem o pipeline completo: exploração → cenários → execução → bugs → relatório, planejamento/geração/auditoria de automação e auditorias avulsas de acessibilidade, performance, API e usabilidade.
+Sistema de automação de QA baseado em Claude Code + Playwright MCP, com skills mobile planejadas para Appium/MCP.
+27 comandos slash que cobrem o pipeline completo: exploração → cenários → execução → bugs → relatório, planejamento/geração/auditoria de automação, auditorias avulsas de acessibilidade, performance, API e usabilidade, e fluxos mobile web/APK via Appium.
 
 ---
 ## Arquitetura Producao e Core
@@ -82,11 +82,13 @@ cp .env.example .env
 claude
 ```
 
-O Claude Code reconhece automaticamente os comandos na pasta `.claude/commands/`.
+O Claude Code reconhece automaticamente os comandos na pasta `.claude/commands/`. A fonte canonica das skills fica em `src/`; use `node converter/render.js --build-all` para gerar `dist/claude/`, `dist/codex/` e `dist/opencode/`.
+
+Para mobile, o MCP Appium MVP fica em `scripts/mobile-mcp-server.js` e esta registrado como servidor `mobile` em `.claude/settings.json`. Veja `docs/arquitetura/Mobile-Appium-MCP-Setup.md`.
 
 ---
 
-## Os 19 Comandos
+## Os 27 Comandos
 
 ### Pipeline completo (ordem recomendada)
 
@@ -176,9 +178,13 @@ Não envie ao cliente a pasta `clients/<id>/resultado/<timestamp>/governanca/`, 
 ```
 bugkillers-qa-agent/
 ├─ .claude/
-│  ├─ commands/          ← os 19 arquivos .md das skills
+│  ├─ commands/          ← os 27 arquivos .md das skills
 │  ├─ settings.json      ← configuração do Playwright MCP (--headless)
 │  └─ settings.local.json  ← permissões granulares (gitignored)
+├─ dist/
+│  ├─ claude/            ← versoes distribuiveis para Claude
+│  ├─ codex/             ← versoes distribuiveis para Codex
+│  └─ opencode/          ← versoes distribuiveis para OpenCode
 ├─ core/                 ← utilitários compartilhados entre scripts
 │  ├─ browser.js         ← launchBrowser com captura de console/rede embutida
 │  ├─ client.js          ← suporte multi-tenant (loadClient, loadFlow)

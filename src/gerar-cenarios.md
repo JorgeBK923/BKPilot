@@ -1,5 +1,6 @@
 ---
 id: gerar-cenarios
+description: "Gera cenarios BDD/Gherkin a partir da exploracao, mapa do sistema, riscos, bugs, endpoints e logs coletados."
 name: "Geração de Cenários BDD/Gherkin"
 type: pure_llm
 language: pt-BR

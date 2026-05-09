@@ -3,11 +3,11 @@
 ## Quick Start
 ```bash
 claude
-# Slash commands in .claude/commands/ (19 total, incluindo /plano-automacao)
+# Slash commands in .claude/commands/ and dist/{claude,codex,opencode}/ (27 total, incluindo /plano-automacao e skills mobile Appium)
 ```
 
 ## Framework
-Claude Code + **Playwright MCP** via `.claude/settings.json` (npx, not npm install)
+Claude Code + **Playwright MCP** via `.claude/settings.json` para web atual, e arquitetura **Appium/MCP** para skills mobile.
 
 ## Arquitetura Core/Comercial/Producao
 - Este repositorio e o futuro **BKPilot-Producao**; a pasta ainda pode estar chamada `BKPilot`.
@@ -23,7 +23,8 @@ Claude Code + **Playwright MCP** via `.claude/settings.json` (npx, not npm insta
 - All `.env` files (root and `clients/*/.env`) are gitignored
 
 ## Browser Automation
-- Playwright MCP only — no Selenium, Cypress
+- Web atual: Playwright MCP only — no Selenium, Cypress
+- Mobile web e APK: Appium/MCP only — no Playwright, Selenium, Cypress
 - Use `networkidle` wait for SPA pages
 - Log `console.error/warning` → `clients/<id>/resultado/<timestamp>/console_log.json`
 - Log network failures (≥400, >3000ms) → `clients/<id>/resultado/<timestamp>/network_log.json`

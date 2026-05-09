@@ -1,5 +1,6 @@
 ---
 id: reportar-bug
+description: "Transforma falhas encontradas em bug cards completos, com reproducao, severidade, ambiente, evidencias e deduplicacao."
 name: "Geração de Bug Cards"
 type: pure_llm
 language: pt-BR

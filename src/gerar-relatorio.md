@@ -1,5 +1,6 @@
 ---
 id: gerar-relatorio
+description: "Consolida resultados do pipeline de QA em relatorio final para o cliente, incluindo metricas, bugs, evidencias, cobertura e parecer tecnico."
 name: "Relatório Final para o Cliente"
 type: pure_llm
 language: pt-BR

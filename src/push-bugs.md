@@ -1,5 +1,6 @@
 ---
 id: push-bugs
+description: "Envia bug cards para Jira, GitHub Issues ou CSV de importacao, lendo tokens apenas do .env e preservando seguranca."
 name: "Enviar Bugs para Issue Tracker"
 type: pure_llm
 language: pt-BR

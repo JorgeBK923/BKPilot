@@ -1,5 +1,6 @@
 ---
 id: plano-automacao
+description: "Analisa o sistema e gera um plano estrategico de automacao com escopo, prioridades, riscos, estimativas e recomendacao de stack."
 name: "Plano Estrategico de Automacao de Testes"
 type: interactive
 language: pt-BR
@@ -59,11 +60,7 @@ targets:
 
 # /plano-automacao — Plano Estratégico de Automação de Testes
 
-> 🚨 **REGRA EXPRESSA — EVIDÊNCIA VISUAL OBRIGATÓRIA**
->
-> Todo mapeamento e análise executada no browser **DEVE** gerar screenshot (PNG) ou vídeo (MP4) salvo em `clients/<id>/resultado/<timestamp>/screenshots/` ou `clients/<id>/resultado/<timestamp>/videos/`.
->
-> **NUNCA** finalize a skill sem verificar que cada item tem seu arquivo de evidência em disco. Se a captura falhar, registre o motivo no relatório — silêncio não é aceitável.
+> Seguir a regra global de evidência visual obrigatória definida nas instruções do projeto.
 >
 > Aplica-se a **TODAS as ICLs** (Claude, GLM, Minimax, Kimi, MiMo, Qwen, GPT, Codex). Ver §7.1 do CLAUDE.md.
 

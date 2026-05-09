@@ -1,5 +1,6 @@
 ---
 id: gerar-automacao-cliente
+description: "Gera pacote de automacao entregavel ao cliente a partir dos artefatos do pipeline BugKillers e do stack escolhido."
 name: "Geracao de Codigo de Automacao para Entrega ao Cliente"
 type: script
 language: pt-BR

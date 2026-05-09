@@ -1,5 +1,6 @@
 ---
 id: relatorio-parcial
+description: "Gera relatorio parcial de acompanhamento para o cliente com progresso, bugs criticos, riscos, evidencias e proximos passos."
 name: "Relatório Parcial de Acompanhamento"
 type: pure_llm
 language: pt-BR

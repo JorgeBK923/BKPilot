@@ -1,5 +1,6 @@
 ---
 id: api-check
+description: "Testa endpoints de API, validando status code, autenticacao, payloads invalidos, tempo de resposta, seguranca e rate limiting."
 name: "Testes de API"
 type: script
 language: pt-BR

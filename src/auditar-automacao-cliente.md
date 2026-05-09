@@ -1,5 +1,6 @@
 ---
 id: auditar-automacao-cliente
+description: "Audita de forma independente o pacote de automacao gerado para o cliente, verificando sintaxe, imports, arquitetura, rastreabilidade e cobertura."
 name: "Auditoria Independente de Codigo de Automacao do Cliente"
 type: script
 language: pt-BR

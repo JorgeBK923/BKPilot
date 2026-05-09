@@ -1,5 +1,6 @@
 ---
 id: regressao
+description: "Retesta bugs corrigidos via Playwright MCP, validando correcao, persistencia, regressao, evidencia visual por bug e comportamento flaky."
 name: "Teste de Regressão"
 type: hybrid
 language: pt-BR

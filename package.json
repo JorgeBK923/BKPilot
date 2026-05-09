@@ -1,9 +1,13 @@
 {
   "name": "bugkillers-qa-agent",
   "version": "1.0.0",
-  "description": "Sistema de automação de QA baseado em Claude Code + Playwright MCP. 19 comandos slash que cobrem o pipeline completo: exploração → cenários → execução → bugs → relatório, planejamento/geração/auditoria de automação e auditorias avulsas de acessibilidade, performance, API e usabilidade.",
+  "description": "Sistema de automação de QA baseado em Claude Code + Playwright MCP, com skills mobile planejadas para Appium/MCP. 27 comandos slash cobrem o pipeline completo web e mobile.",
   "main": "index.js",
   "scripts": {
+    "mobile:mcp": "node scripts/mobile-mcp-server.js",
+    "mobile:smoke": "node scripts/mobile-smoke.js",
+    "skills:build": "node converter/render.js --build-all",
+    "skills:lint": "node converter/render.js --lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

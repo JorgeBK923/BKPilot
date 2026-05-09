@@ -71,3 +71,48 @@ http.request:
   claude:   { type: implicit }
   opencode: { type: xml, template: '<use_tool><name>http_request</name><method>{{ method }}</method><url>{{ url }}</url></use_tool>' }
   codex:    { type: json, template: '{"tool":"http_request","args":{"method":"{{ method }}","url":"{{ url }}"}}' }
+
+mobile.startSession:
+  claude:   { type: mcp, tool: "mcp__mobile__startSession" }
+  opencode: { type: xml, template: '<use_tool><name>mobile.startSession</name><capabilities>{{ capabilities }}</capabilities></use_tool>' }
+  codex:    { type: json, template: '{"tool":"mobile.startSession","args":{"capabilities":"{{ capabilities }}"}}' }
+
+mobile.getState:
+  claude:   { type: mcp, tool: "mcp__mobile__getState" }
+  opencode: { type: xml, template: '<use_tool><name>mobile.getState</name></use_tool>' }
+  codex:    { type: json, template: '{"tool":"mobile.getState","args":{}}' }
+
+mobile.tap:
+  claude:   { type: mcp, tool: "mcp__mobile__tap" }
+  opencode: { type: xml, template: '<use_tool><name>mobile.tap</name><selector>{{ selector }}</selector></use_tool>' }
+  codex:    { type: json, template: '{"tool":"mobile.tap","args":{"selector":"{{ selector }}"}}' }
+
+mobile.type:
+  claude:   { type: mcp, tool: "mcp__mobile__type" }
+  opencode: { type: xml, template: '<use_tool><name>mobile.type</name><selector>{{ selector }}</selector><text>{{ text }}</text></use_tool>' }
+  codex:    { type: json, template: '{"tool":"mobile.type","args":{"selector":"{{ selector }}","text":"{{ text }}"}}' }
+
+mobile.swipe:
+  claude:   { type: mcp, tool: "mcp__mobile__swipe" }
+  opencode: { type: xml, template: '<use_tool><name>mobile.swipe</name><direction>{{ direction }}</direction></use_tool>' }
+  codex:    { type: json, template: '{"tool":"mobile.swipe","args":{"direction":"{{ direction }}"}}' }
+
+mobile.back:
+  claude:   { type: mcp, tool: "mcp__mobile__back" }
+  opencode: { type: xml, template: '<use_tool><name>mobile.back</name></use_tool>' }
+  codex:    { type: json, template: '{"tool":"mobile.back","args":{}}' }
+
+mobile.waitFor:
+  claude:   { type: mcp, tool: "mcp__mobile__waitFor" }
+  opencode: { type: xml, template: '<use_tool><name>mobile.waitFor</name><selector>{{ selector }}</selector></use_tool>' }
+  codex:    { type: json, template: '{"tool":"mobile.waitFor","args":{"selector":"{{ selector }}"}}' }
+
+mobile.captureEvidence:
+  claude:   { type: mcp, tool: "mcp__mobile__captureEvidence" }
+  opencode: { type: xml, template: '<use_tool><name>mobile.captureEvidence</name><name>{{ name }}</name></use_tool>' }
+  codex:    { type: json, template: '{"tool":"mobile.captureEvidence","args":{"name":"{{ name }}"}}' }
+
+mobile.endSession:
+  claude:   { type: mcp, tool: "mcp__mobile__endSession" }
+  opencode: { type: xml, template: '<use_tool><name>mobile.endSession</name></use_tool>' }
+  codex:    { type: json, template: '{"tool":"mobile.endSession","args":{}}' }
