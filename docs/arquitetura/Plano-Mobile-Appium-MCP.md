@@ -871,7 +871,7 @@ scripts/mobile-mcp-server.js
 
 3. Sincronizar skills mobile de `BKPilot-Skills`. Status: feito.
 4. Registrar MCP mobile no `.claude/settings.json`, se o Comercial for executar as skills. Status: feito.
-5. Criar `mobile-demo` dentro do Comercial, se houver necessidade comercial.
+5. Criar `mobile-demo` dentro do Comercial, se houver necessidade comercial. Esta tarefa fica como ultima prioridade, depois de sync, smoke real e hardening.
 
 Regra:
 
@@ -1006,6 +1006,21 @@ node scripts/mobile-smoke.js --cliente mobile-demo --target web
 - Avaliar `startRecordingScreen` para video local best-effort.
 - Consolidar relatorio final cliente com artefatos mobile.
 - Documentar suporte iOS como fase separada.
+
+### Ultima prioridade - mobile-demo comercial
+
+Criar `mobile-demo` apenas depois que os itens anteriores estiverem estabilizados:
+
+1. sync formal de skills funcionando;
+2. Comercial e Producao reproduzindo as skills a partir do `BKPilot-Skills`;
+3. smoke real Appium aprovado;
+4. hardening minimo do Core concluido.
+
+Regra:
+
+- `mobile-demo` pertence ao `BKPilot-Comercial`;
+- nao mover demo, dados fake, UI/API comercial ou narrativa de venda para Core ou Producao;
+- demo deve consumir Core e Skills como dependencia, sem copiar runtime.
 
 ## Observacao sobre a skill PDF
 
