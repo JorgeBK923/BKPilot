@@ -6,6 +6,7 @@
   "scripts": {
     "mobile:mcp": "node scripts/mobile-mcp-server.js",
     "mobile:smoke": "node scripts/mobile-smoke.js",
+    "skills:sync:mobile": "node scripts/sync-shared-skills.js mobile",
     "skills:build": "node converter/render.js --build-all",
     "skills:lint": "node converter/render.js --lint",
     "test": "echo \"Error: no test specified\" && exit 1"

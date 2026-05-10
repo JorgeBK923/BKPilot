@@ -571,6 +571,7 @@ Scripts:
 ```text
 scripts/mobile-mcp-server.js
 scripts/mobile-smoke.js
+scripts/sync-shared-skills.js
 scripts/lib/mobile-appium-client.js
 scripts/lib/mobile-device-manager.js
 ```
@@ -811,9 +812,10 @@ Resultado:
 - commit publicado: `d7db9f0 Criar pacote de skills mobile compartilhadas`.
 - remote: `https://github.com/JorgeBK923/BKPilot-Skills.git`.
 
-Pendente:
+Status adicional:
 
-- criar mecanismo formal de sync entre consumidores e `BKPilot-Skills`.
+- mecanismo formal de sync entre consumidores e `BKPilot-Skills` criado em Producao;
+- comando padrao: `npm.cmd run skills:sync:mobile`.
 
 Decisao recomendada:
 
@@ -826,13 +828,13 @@ Objetivo: fazer o Producao consumir skills compartilhadas sem virar fonte duplic
 
 Tarefas:
 
-1. Criar script de sincronizacao no Producao, por exemplo:
+1. Criar script de sincronizacao no Producao. Status: feito.
 
 ```bash
-node scripts/sync-shared-skills.js mobile
+npm.cmd run skills:sync:mobile
 ```
 
-2. Sincronizar skills mobile de `BKPilot-Skills` para:
+2. Sincronizar skills mobile de `BKPilot-Skills` para. Status: feito.
 
 ```text
 src/
@@ -843,11 +845,25 @@ dist/opencode/
 ```
 
 3. Documentar que edicoes de skill mobile compartilhada devem acontecer no `BKPilot-Skills`.
-4. Rodar:
+4. Rodar. Status: feito.
 
 ```bash
 npm.cmd run skills:lint
 ```
+
+Validacoes executadas no Producao:
+
+```bash
+node --check scripts/sync-shared-skills.js
+npm.cmd run skills:sync:mobile
+npm.cmd run skills:lint
+```
+
+Resultado:
+
+- 41 arquivos sincronizados a partir de `BKPilot-Skills`;
+- lint de skills aprovado;
+- aviso esperado mantido para script opcional por cliente `clients/<client>/scripts/limpar-chats.js`.
 
 ### Fase 4 - Sincronizar Comercial
 
@@ -871,7 +887,8 @@ scripts/mobile-mcp-server.js
 
 3. Sincronizar skills mobile de `BKPilot-Skills`. Status: feito.
 4. Registrar MCP mobile no `.claude/settings.json`, se o Comercial for executar as skills. Status: feito.
-5. Criar `mobile-demo` dentro do Comercial, se houver necessidade comercial. Esta tarefa fica como ultima prioridade, depois de sync, smoke real e hardening.
+5. Criar comando formal de sync no Comercial, equivalente ao Producao. Status: proxima execucao.
+6. Criar `mobile-demo` dentro do Comercial, se houver necessidade comercial. Esta tarefa fica como ultima prioridade, depois de sync, smoke real e hardening.
 
 Regra:
 
