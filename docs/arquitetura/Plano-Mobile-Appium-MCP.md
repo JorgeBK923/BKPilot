@@ -887,7 +887,7 @@ scripts/mobile-mcp-server.js
 
 3. Sincronizar skills mobile de `BKPilot-Skills`. Status: feito.
 4. Registrar MCP mobile no `.claude/settings.json`, se o Comercial for executar as skills. Status: feito.
-5. Criar comando formal de sync no Comercial, equivalente ao Producao. Status: proxima execucao.
+5. Criar comando formal de sync no Comercial, equivalente ao Producao. Status: feito.
 6. Criar `mobile-demo` dentro do Comercial, se houver necessidade comercial. Esta tarefa fica como ultima prioridade, depois de sync, smoke real e hardening.
 
 Regra:
@@ -898,11 +898,14 @@ Commit publicado no Comercial:
 
 ```text
 5e715ba Alinhar Comercial ao mobile compartilhado
+46ad115 Adicionar sync de skills mobile compartilhadas
 ```
 
 Validacoes executadas no Comercial:
 
 ```bash
+node --check scripts/sync-shared-skills.js
+npm.cmd run skills:sync:mobile
 node -e "const c=require('@bugkillers/bkpilot-core'); console.log(Boolean(c.mobileAppium.MobileAppiumClient && c.mobileDeviceManager.validateLocalAndroidDevice && c.mobileMcp.runMobileMcpServer))"
 node --check scripts/mobile-mcp-server.js
 node --check scripts/mobile-smoke.js
@@ -913,6 +916,7 @@ npm.cmd test
 Resultado:
 
 - import mobile: ok;
+- sync formal: 41 arquivos sincronizados a partir de `BKPilot-Skills`;
 - lint de 28 skills: ok, com aviso esperado do script opcional `clients/<client>/scripts/limpar-chats.js`;
 - testes comerciais: 72 passaram, 1 skip, 0 falhas;
 - `npm install` reportou 1 vulnerabilidade alta ja existente/fora do escopo desta migracao.
