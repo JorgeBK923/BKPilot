@@ -85,7 +85,7 @@ claude
 
 O Claude Code reconhece automaticamente os comandos na pasta `.claude/commands/`. A fonte canonica das skills fica em `src/`; use `node converter/render.js --build-all` para gerar `dist/claude/`, `dist/codex/` e `dist/opencode/`.
 
-Para mobile, o MCP Appium MVP fica em `scripts/mobile-mcp-server.js` e esta registrado como servidor `mobile` em `.claude/settings.json`. Veja `docs/arquitetura/Mobile-Appium-MCP-Setup.md`.
+Para mobile, o MCP Appium MVP fica em `scripts/mobile-mcp-server.js` e esta registrado como servidor `mobile` em `.claude/settings.json`. O plano consolidado fica em `docs/arquitetura/Plano-Mobile-Appium-MCP.md`.
 
 ---
 

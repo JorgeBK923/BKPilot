@@ -1,4 +1,4 @@
-# Resumo da sessao - BKPilot Mobile Appium MCP
+# Plano Mobile Appium MCP - BKPilot
 
 ## Objetivo da sessao
 
@@ -44,7 +44,7 @@ Foi decidido que:
 
 As skills mobile devem estar disponiveis no BKPilot Comercial e no BKPilot Producao.
 
-A logica reutilizavel deve ir futuramente para `@bugkillers/bkpilot-core`.
+A logica reutilizavel deve viver em `@bugkillers/bkpilot-core`. Em 2026-05-10, o runtime mobile foi extraido para o Core e publicado na tag `v0.2.0`.
 
 Este repositorio fica com:
 
@@ -563,7 +563,7 @@ Documentos:
 ```text
 docs/arquitetura/BKPilot-Mobile-Appium-MCP.md
 docs/arquitetura/Mobile-Appium-MCP-Setup.md
-docs/arquitetura/Resumo-Sessao-Mobile-Appium-MCP.md
+docs/arquitetura/Plano-Mobile-Appium-MCP.md
 ```
 
 Scripts:
@@ -625,6 +625,78 @@ tools/list
 
 O MCP listou as tools mobile corretamente.
 
+## Atualizacao arquitetural - Core v0.2.0
+
+Em 2026-05-10 foi corrigido o desvio arquitetural inicial: o runtime mobile tinha sido criado dentro do Producao, mas deveria ser compartilhado entre Comercial e Producao.
+
+### Decisao
+
+- O `BKPilot-Core` e dono da logica JS compartilhada.
+- O Producao e o Comercial devem manter apenas wrappers finos e skills especificas.
+- As skills Markdown continuam fora do Core por enquanto, porque o Core e biblioteca CommonJS.
+- Se as skills precisarem ser compartilhadas como artefato canonico, criar um pacote/repositorio dedicado, por exemplo `BKPilot-Skills`.
+
+### Publicado no BKPilot-Core
+
+Commit publicado:
+
+```text
+df5e549 Adicionar runtime mobile compartilhado
+```
+
+Tag publicada:
+
+```text
+v0.2.0
+```
+
+Modulos adicionados ao Core:
+
+```text
+mobile-appium-client.js
+mobile-device-manager.js
+mobile-mcp.js
+```
+
+Exports adicionados em `index.js`:
+
+```js
+mobileAppium
+mobileDeviceManager
+mobileMcp
+```
+
+### Ajustes feitos no runtime mobile
+
+- `mobile-smoke` agora consulta `/status` usando o provider resolvido, evitando testar Appium local quando o cliente usa farm remoto.
+- `buildCapabilities()` remove campos internos de politica/governanca antes de enviar capabilities ao Appium.
+- `startSession()` retorna capabilities com redaction.
+- `ROOT` do runtime mobile usa `process.cwd()` ou `BKPILOT_ROOT`, para salvar artefatos no consumidor, nao dentro do Core.
+
+### Ajustes feitos no Producao
+
+Commit publicado:
+
+```text
+25ff504 Usar runtime mobile compartilhado do Core
+```
+
+O Producao agora consome:
+
+```json
+"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0"
+```
+
+Wrappers finos mantidos no Producao:
+
+```text
+scripts/lib/mobile-appium-client.js
+scripts/lib/mobile-device-manager.js
+scripts/mobile-mcp-server.js
+```
+
+Esses arquivos nao devem receber logica nova; devem apenas chamar o Core.
+
 ## O que ficou pronto
 
 Pronto nesta sessao:
@@ -644,7 +716,9 @@ Pronto nesta sessao:
 - documentacao de setup;
 - matriz de compatibilidade;
 - criterios de aceite;
-- decisao de upload automatico de APK na Release 0.1.
+- decisao de upload automatico de APK na Release 0.1;
+- runtime mobile compartilhado publicado no `BKPilot-Core#v0.2.0`;
+- Producao migrado para wrappers finos que chamam o Core.
 
 ## O que ficou de fora
 
@@ -657,7 +731,7 @@ Ainda nao foi implementado:
 - gravacao local de video via Appium `startRecordingScreen`;
 - mascaramento visual de dados sensiveis em screenshot;
 - parser XML robusto com biblioteca dedicada;
-- extracao completa para `@bugkillers/bkpilot-core`;
+- extracao das skills Markdown para pacote compartilhado dedicado, se for decidido criar `BKPilot-Skills`;
 - execucao real das planilhas mobile ponta a ponta;
 - relatorio final cliente com artefatos mobile consolidados;
 - suporte iOS;
@@ -665,11 +739,49 @@ Ainda nao foi implementado:
 - Appium Grid proprio;
 - testes automatizados unitarios para o MCP.
 
-## Proximo passo recomendado
+## Proximas atividades
 
-1. Escolher o primeiro provider real.
+### Prioridade 1 - Alinhar Comercial ao Core mobile
+
+1. Atualizar `BKPilot-Comercial` para consumir:
+
+```json
+"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0"
+```
+
+2. Criar no Comercial os wrappers finos equivalentes:
+
+```text
+scripts/lib/mobile-appium-client.js
+scripts/lib/mobile-device-manager.js
+scripts/mobile-mcp-server.js
+```
+
+3. Registrar o MCP mobile no `.claude/settings.json` do Comercial, se o Comercial precisar executar as mesmas skills.
+4. Rodar smoke de importacao no Comercial:
+
+```bash
+node -e "const c=require('@bugkillers/bkpilot-core'); console.log(Boolean(c.mobileAppium.MobileAppiumClient && c.mobileMcp.runMobileMcpServer))"
+```
+
+### Prioridade 2 - Decidir onde ficam as skills compartilhadas
+
+Hoje as skills mobile canonicas estao no Producao em `src/*-mobile-*.md`.
+
+Decisao pendente:
+
+- manter copia controlada no Comercial e no Producao; ou
+- criar um repositorio/pacote dedicado, por exemplo `BKPilot-Skills`, para distribuir skills entre Comercial, Producao, Claude, Codex e OpenCode.
+
+Recomendacao: nao colocar as skills Markdown dentro do `BKPilot-Core` neste momento. O Core deve continuar sendo biblioteca JS compartilhada.
+
+### Prioridade 3 - Primeiro smoke real
+
+1. Escolher o primeiro alvo real:
+   - Android USB local; ou
+   - provider cloud Appium/WebDriver.
 2. Criar `clients/mobile-demo/config.json`.
-3. Configurar credenciais:
+3. Configurar credenciais se for farm remoto:
 
 ```bash
 set MOBILE_FARM_USERNAME=...
@@ -682,9 +794,23 @@ set MOBILE_FARM_ACCESS_KEY=...
 node scripts/mobile-smoke.js --cliente mobile-demo --target web
 ```
 
-5. Implementar o primeiro adaptador real do Mobile Farm Upload Manager.
-6. Rodar smoke APK com upload automatico.
-7. So depois rodar `/explorar-mobile-web` ou `/explorar-mobile-apk`.
+5. Registrar resultado neste documento.
+
+### Prioridade 4 - APK e device farm
+
+1. Escolher provider para APK.
+2. Implementar o primeiro adaptador real do Mobile Farm Upload Manager.
+3. Rodar smoke APK com upload automatico.
+4. Baixar videos/logs do provider quando disponivel.
+
+### Prioridade 5 - Hardening tecnico
+
+- Adicionar testes unitarios para `buildCapabilities()`, `redact()`, `resolveProviderConfig()` e policies de seguranca.
+- Trocar parser XML regex por biblioteca dedicada.
+- Implementar mascaramento visual de dados sensiveis em screenshots.
+- Avaliar `startRecordingScreen` para video local best-effort.
+- Consolidar relatorio final cliente com artefatos mobile.
+- Documentar suporte iOS como fase separada.
 
 ## Observacao sobre a skill PDF
 

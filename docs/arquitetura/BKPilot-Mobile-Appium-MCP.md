@@ -6,7 +6,7 @@ Registrar a tese inicial para criar uma camada mobile do BKPilot usando Appium, 
 
 Este documento descreve uma proposta arquitetural. Ainda nao representa uma implementacao pronta.
 
-Implementacao MVP local iniciada em `scripts/mobile-mcp-server.js`. Setup operacional em `docs/arquitetura/Mobile-Appium-MCP-Setup.md`.
+Implementacao MVP local iniciada em `scripts/mobile-mcp-server.js`. Plano consolidado, historico de decisoes e proximas atividades ficam em `docs/arquitetura/Plano-Mobile-Appium-MCP.md`.
 
 ## Escopo entre Comercial e Producao
 
