@@ -761,8 +761,8 @@ Status:
 
 - Producao ja aponta para `BKPilot-Core#v0.2.0`.
 - Core ja publicou o runtime mobile compartilhado.
-- `BKPilot-Skills` foi criado localmente com as 8 skills mobile e conversor multi-target.
-- Pendente: publicar `BKPilot-Skills` no GitHub e alinhar Comercial.
+- `BKPilot-Skills` foi criado e publicado no GitHub com as 8 skills mobile e conversor multi-target.
+- Pendente: alinhar Comercial.
 
 ### Fase 2 - Criar BKPilot-Skills
 
@@ -770,7 +770,7 @@ Objetivo: criar uma fonte canonica para skills compartilhadas entre Comercial e 
 
 Tarefas:
 
-1. Criar repositorio/pasta `BKPilot-Skills`. Status: feito localmente.
+1. Criar repositorio/pasta `BKPilot-Skills`. Status: feito e publicado.
 2. Definir `AGENTS.md` especifico do repo, deixando claro que ali vivem apenas skills compartilhadas. Status: feito.
 3. Levar para la as skills mobile canonicas. Status: feito.
 
@@ -807,13 +807,11 @@ Resultado:
 - 8 skills validadas.
 - 24 arquivos renderizados em `dist/`.
 - 0 vulnerabilidades reportadas pelo npm.
-- commit local inicial: `d7db9f0 Criar pacote de skills mobile compartilhadas`.
+- commit publicado: `d7db9f0 Criar pacote de skills mobile compartilhadas`.
+- remote: `https://github.com/JorgeBK923/BKPilot-Skills.git`.
 
 Pendente:
 
-- criar repositorio GitHub `BKPilot-Skills`;
-- adicionar remote `origin`;
-- publicar `main`;
 - definir primeira tag, por exemplo `v0.1.0`.
 
 Decisao recomendada:
