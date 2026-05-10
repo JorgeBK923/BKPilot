@@ -16,7 +16,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0",
+    "@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.1",
     "canvas": "^3.2.3",
     "chokidar": "^3.6.0",
     "docx": "^9.6.1",

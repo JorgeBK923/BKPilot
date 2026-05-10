@@ -11,6 +11,7 @@ clients/*/bugs/
 
 # Pacotes de automação gerados para o cliente (entregáveis por stack)
 clients/*/entregaveis/
+clients/*/resultado/
 
 # Artefatos gerados (grandes demais para o repositório)
 estado/screenshots/

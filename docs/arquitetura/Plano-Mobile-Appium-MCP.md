@@ -725,7 +725,6 @@ Pronto nesta sessao:
 
 Ainda nao foi implementado:
 
-- smoke real contra Sauce Labs, BrowserStack, LambdaTest ou outro farm;
 - smoke real contra celular Android USB;
 - adaptador real de upload de APK para provider especifico;
 - download de videos/logs do provider;
@@ -739,6 +738,10 @@ Ainda nao foi implementado:
 - suporte a multiplos devices em lote;
 - Appium Grid proprio;
 - testes automatizados unitarios para o MCP.
+
+Implementado apos a lista inicial:
+
+- smoke real contra Sauce Labs US West 1 aprovado em 2026-05-09 com alocacao dinamica Android + Chrome.
 
 ## Proximas atividades
 
@@ -939,6 +942,23 @@ node scripts/mobile-smoke.js --cliente mobile-demo --target web
 ```
 
 5. Registrar resultado neste documento.
+
+Status:
+
+- Sauce Labs US West 1 validado com sucesso usando `clients/sauce-mobile-smoke/config.json`.
+- Comando executado:
+
+```bash
+npm.cmd run mobile:smoke -- --cliente sauce-mobile-smoke --target web
+```
+
+- Resultado:
+
+```text
+Smoke passed: clients\sauce-mobile-smoke\resultado\2026-05-09_2321\mobile\reports\mobile_smoke_report.json
+```
+
+- Observacao: a alocacao estatica por device falhou com matching error; a alocacao dinamica Android + Chrome passou.
 
 ### Fase 6 - Hardening
 

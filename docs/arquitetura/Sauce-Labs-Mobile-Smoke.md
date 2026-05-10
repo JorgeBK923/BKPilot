@@ -49,8 +49,7 @@ Default atual:
 - target: `web`
 - browser: `Chrome`
 - platform: `Android`
-- device: `Google Pixel 7 Pro`
-- platformVersion: `14`
+- device: alocacao dinamica pela Sauce Labs
 - Appium: `latest`
 - baseUrl: `https://example.com`
 
@@ -70,6 +69,28 @@ clients/sauce-mobile-smoke/resultado/<timestamp>/mobile/screenshots/
 clients/sauce-mobile-smoke/resultado/<timestamp>/mobile/sources/
 clients/sauce-mobile-smoke/resultado/<timestamp>/mobile/states/
 ```
+
+## Primeiro resultado real
+
+Em 2026-05-09, o smoke real passou na Sauce Labs US West 1 usando alocacao dinamica de device Android:
+
+```powershell
+npm.cmd run mobile:smoke -- --cliente sauce-mobile-smoke --target web
+```
+
+Resultado:
+
+```text
+Smoke passed: clients\sauce-mobile-smoke\resultado\2026-05-09_2321\mobile\reports\mobile_smoke_report.json
+Screenshot: clients\sauce-mobile-smoke\resultado\2026-05-09_2321\screenshots\mobile_smoke_1778379743065.png
+```
+
+Tentativas antes do sucesso:
+
+- `Google Pixel 7 Pro` + Android 14: Sauce retornou device matching failure.
+- `Google_Pixel_7_Pro_14_real_sjc1` com `platformVersion`: Sauce retornou device matching failure.
+- `Google_Pixel_7_Pro_14_real_sjc1` sem `platformVersion`: Sauce retornou device matching failure.
+- alocacao dinamica apenas com Android + Chrome: aprovado.
 
 ## Referencias oficiais
 

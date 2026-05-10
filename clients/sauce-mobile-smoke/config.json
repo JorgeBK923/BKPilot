@@ -12,15 +12,13 @@
   "mobile": {
     "provider": "saucelabs",
     "target": "web",
-    "appiumUrl": "https://ondemand.us-west-1.saucelabs.com/wd/hub",
+    "appiumUrl": "https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
     "username": "env:MOBILE_FARM_USERNAME",
     "accessKey": "env:MOBILE_FARM_ACCESS_KEY",
     "baseUrl": "https://example.com",
     "platformName": "Android",
     "browserName": "Chrome",
     "automationName": "UiAutomator2",
-    "platformVersion": "14",
-    "deviceName": "Google Pixel 7 Pro",
     "mode": "observe",
     "allowedUrls": [
       "https://example.com"
