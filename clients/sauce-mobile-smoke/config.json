@@ -1,0 +1,36 @@
+{
+  "id": "sauce-mobile-smoke",
+  "nome": "Sauce Labs Mobile Smoke",
+  "baseUrl": "https://example.com",
+  "timeout_ms": 60000,
+  "max_paginas": 1,
+  "envPassword": "QA_PASSWORD",
+  "postLoginSelector": "",
+  "loginMaxAttempts": 1,
+  "defaultFlow": "",
+  "defaultRetesteFlow": "",
+  "mobile": {
+    "provider": "saucelabs",
+    "target": "web",
+    "appiumUrl": "https://ondemand.us-west-1.saucelabs.com/wd/hub",
+    "username": "env:MOBILE_FARM_USERNAME",
+    "accessKey": "env:MOBILE_FARM_ACCESS_KEY",
+    "baseUrl": "https://example.com",
+    "platformName": "Android",
+    "browserName": "Chrome",
+    "automationName": "UiAutomator2",
+    "platformVersion": "14",
+    "deviceName": "Google Pixel 7 Pro",
+    "mode": "observe",
+    "allowedUrls": [
+      "https://example.com"
+    ],
+    "options": {
+      "sauce:options": {
+        "name": "BKPilot mobile web smoke",
+        "build": "bkpilot-mobile-smoke",
+        "appiumVersion": "latest"
+      }
+    }
+  }
+}
