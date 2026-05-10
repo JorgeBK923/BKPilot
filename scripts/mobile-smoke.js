@@ -116,7 +116,7 @@ async function main() {
     }
 
     try {
-      const status = await client.status();
+      const status = await client.status(provider);
       addCheck(checks, 'appium_status', true, status?.build || status);
     } catch (err) {
       addCheck(checks, 'appium_status', false, err.message);

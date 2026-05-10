@@ -21,7 +21,7 @@ Em 2026-05-07 foi criado o repositorio GitHub:`n`n```text`nhttps://github.com/Jo
 O `package.json` do projeto agora consome:
 
 ```json
-"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.1.0"
+"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0"
 ```
 
 Os modulos compartilhados iniciais foram movidos para esse pacote GitHub:
@@ -32,6 +32,14 @@ Os modulos compartilhados iniciais foram movidos para esse pacote GitHub:
 - `evidence`;
 - `logger`;
 - `paths`.
+
+Na versao `v0.2.0`, o Core tambem passa a concentrar o runtime mobile compartilhado:
+
+- `mobile-appium-client`;
+- `mobile-device-manager`;
+- `mobile-mcp`.
+
+Os consumidores Producao e Comercial devem manter apenas wrappers finos para esses modulos e suas skills operacionais/comerciais.
 
 Os arquivos antigos em `core/*.js` foram mantidos como wrappers de compatibilidade. Assim, imports antigos continuam funcionando, mas a implementacao comum passa a morar no pacote `@bugkillers/bkpilot-core`.
 
@@ -74,7 +82,7 @@ Tambem foi validado que `require('./core/client')` continua funcionando via wrap
 4. Trocar a dependencia local:
 
 ```json
-"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.1.0"
+"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0"
 ```
 
 por:

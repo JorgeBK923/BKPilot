@@ -11,9 +11,10 @@ Claude Code + **Playwright MCP** via `.claude/settings.json` para web atual, e a
 
 ## Arquitetura Core/Comercial/Producao
 - Este repositorio e o futuro **BKPilot-Producao**; a pasta ainda pode estar chamada `BKPilot`.
-- Codigo compartilhado entre Comercial e Producao vive no pacote externo `@bugkillers/bkpilot-core`, hoje fixado em `github:JorgeBK923/BKPilot-Core#v0.1.0`.
+- Codigo compartilhado entre Comercial e Producao vive no pacote externo `@bugkillers/bkpilot-core`, hoje fixado em `github:JorgeBK923/BKPilot-Core#v0.2.0`.
 - Os arquivos `core/browser.js`, `core/client.js`, `core/env.js`, `core/evidence.js`, `core/logger.js` e `core/paths.js` sao apenas wrappers de compatibilidade. Nao coloque logica nova neles.
 - Para alterar comportamento compartilhado, edite o repositorio `BKPilot-Core`, publique nova tag e depois atualize a dependencia neste projeto.
+- O runtime mobile compartilhado (Appium client, device manager e MCP mobile) pertence ao `BKPilot-Core`; neste repositorio devem ficar apenas wrappers finos e skills operacionais.
 - Frontend comercial, API da demo, relatorio comercial, fluxo `demo_mvp` e skill `/demo-comercial` nao pertencem ao Producao.
 - Producao deve implementar apenas rotinas, skills e regras operacionais. Nao copiar codigo comercial para ca sem decisao arquitetural explicita.
 - Este repositorio nao tem suite `npm test` configurada; ao trocar versao do Core, rode `npm install` e smoke tests de importacao dos wrappers.`n`n## Security (BLOCK-B/C/D/E)

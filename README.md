@@ -11,8 +11,9 @@ Este projeto BKPilot passa a ser tratado como o futuro BKPilot-Producao.
 O primeiro corte tecnico do Core ja foi aplicado localmente:
 
 - BKPilot-Core concentra os modulos compartilhados iniciais;
-- package.json consome @bugkillers/bkpilot-core via github:JorgeBK923/BKPilot-Core#v0.1.0;
+- package.json consome @bugkillers/bkpilot-core via github:JorgeBK923/BKPilot-Core#v0.2.0;
 - core/*.js foi mantido como wrapper de compatibilidade;
+- o runtime mobile compartilhado (Appium client, device manager e MCP mobile) fica no BKPilot-Core; este repositorio mantem apenas wrappers e skills operacionais;
 - o Comercial e o Producao seguem separados, sem trazer front/back/demo comercial para este projeto.
 
 Documento detalhado: docs/Arquitetura Producao Core.md
