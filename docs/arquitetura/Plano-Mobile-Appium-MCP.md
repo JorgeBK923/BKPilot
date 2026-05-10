@@ -762,7 +762,8 @@ Status:
 - Producao ja aponta para `BKPilot-Core#v0.2.0`.
 - Core ja publicou o runtime mobile compartilhado.
 - `BKPilot-Skills` foi criado e publicado no GitHub com as 8 skills mobile e conversor multi-target.
-- Pendente: alinhar Comercial.
+- `BKPilot-Skills` foi tagueado como `v0.1.0`.
+- Comercial foi alinhado ao Core mobile e recebeu as skills mobile compartilhadas.
 
 ### Fase 2 - Criar BKPilot-Skills
 
@@ -812,7 +813,7 @@ Resultado:
 
 Pendente:
 
-- definir primeira tag, por exemplo `v0.1.0`.
+- criar mecanismo formal de sync entre consumidores e `BKPilot-Skills`.
 
 Decisao recomendada:
 
@@ -854,13 +855,13 @@ Objetivo: permitir que o Comercial use a mesma base mobile sem copiar runtime.
 
 Tarefas:
 
-1. Atualizar `BKPilot-Comercial` para consumir:
+1. Atualizar `BKPilot-Comercial` para consumir. Status: feito.
 
 ```json
 "@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0"
 ```
 
-2. Criar wrappers finos no Comercial:
+2. Criar wrappers finos no Comercial. Status: feito.
 
 ```text
 scripts/lib/mobile-appium-client.js
@@ -868,13 +869,36 @@ scripts/lib/mobile-device-manager.js
 scripts/mobile-mcp-server.js
 ```
 
-3. Sincronizar skills mobile de `BKPilot-Skills`.
-4. Registrar MCP mobile no `.claude/settings.json`, se o Comercial for executar as skills.
+3. Sincronizar skills mobile de `BKPilot-Skills`. Status: feito.
+4. Registrar MCP mobile no `.claude/settings.json`, se o Comercial for executar as skills. Status: feito.
 5. Criar `mobile-demo` dentro do Comercial, se houver necessidade comercial.
 
 Regra:
 
 - `mobile-demo` e fluxo especifico de venda/demo. Portanto pertence ao `BKPilot-Comercial`.
+
+Commit publicado no Comercial:
+
+```text
+5e715ba Alinhar Comercial ao mobile compartilhado
+```
+
+Validacoes executadas no Comercial:
+
+```bash
+node -e "const c=require('@bugkillers/bkpilot-core'); console.log(Boolean(c.mobileAppium.MobileAppiumClient && c.mobileDeviceManager.validateLocalAndroidDevice && c.mobileMcp.runMobileMcpServer))"
+node --check scripts/mobile-mcp-server.js
+node --check scripts/mobile-smoke.js
+npm.cmd run skills:lint
+npm.cmd test
+```
+
+Resultado:
+
+- import mobile: ok;
+- lint de 28 skills: ok, com aviso esperado do script opcional `clients/<client>/scripts/limpar-chats.js`;
+- testes comerciais: 72 passaram, 1 skip, 0 falhas;
+- `npm install` reportou 1 vulnerabilidade alta ja existente/fora do escopo desta migracao.
 
 ### Fase 5 - Validacao real
 
