@@ -741,6 +741,179 @@ Ainda nao foi implementado:
 
 ## Proximas atividades
 
+## Plano de trabalho por fases
+
+### Fase 1 - Consolidar arquitetura
+
+Objetivo: deixar as responsabilidades claras para evitar nova duplicacao entre Comercial, Producao e Core.
+
+Tarefas:
+
+1. Manter este documento como fonte consolidada do plano mobile.
+2. Atualizar `AGENTS.md` dos repositorios envolvidos com a regra:
+   - `BKPilot-Core`: runtime JS compartilhado.
+   - `BKPilot-Skills`: skills/templates reutilizaveis.
+   - `BKPilot-Producao`: execucao operacional real.
+   - `BKPilot-Comercial`: demos, venda, experiencias comerciais e `mobile-demo`.
+3. Registrar explicitamente que qualquer `mobile-demo` pertence ao Comercial, nao ao Core nem ao Producao.
+
+Status:
+
+- Producao ja aponta para `BKPilot-Core#v0.2.0`.
+- Core ja publicou o runtime mobile compartilhado.
+- `BKPilot-Skills` foi criado localmente com as 8 skills mobile e conversor multi-target.
+- Pendente: publicar `BKPilot-Skills` no GitHub e alinhar Comercial.
+
+### Fase 2 - Criar BKPilot-Skills
+
+Objetivo: criar uma fonte canonica para skills compartilhadas entre Comercial e Producao.
+
+Tarefas:
+
+1. Criar repositorio/pasta `BKPilot-Skills`. Status: feito localmente.
+2. Definir `AGENTS.md` especifico do repo, deixando claro que ali vivem apenas skills compartilhadas. Status: feito.
+3. Levar para la as skills mobile canonicas. Status: feito.
+
+```text
+src/explorar-mobile-web.md
+src/explorar-mobile-apk.md
+src/gerar-cenarios-mobile-web.md
+src/gerar-cenarios-mobile-apk.md
+src/testar-modulo-mobile-web.md
+src/testar-modulo-mobile-apk.md
+src/executar-planilha-mobile-web.md
+src/executar-planilha-mobile-apk.md
+```
+
+4. Definir se o conversor completo fica no `BKPilot-Skills` ou se apenas templates de skills sao compartilhados. Decisao inicial: conversor completo fica no `BKPilot-Skills`.
+5. Gerar distribuicoes. Status: feito.
+
+```text
+dist/claude/
+dist/codex/
+dist/opencode/
+```
+
+Validacoes executadas no `BKPilot-Skills`:
+
+```bash
+npm.cmd install
+npm.cmd run skills:lint
+npm.cmd run skills:build
+```
+
+Resultado:
+
+- 8 skills validadas.
+- 24 arquivos renderizados em `dist/`.
+- 0 vulnerabilidades reportadas pelo npm.
+- commit local inicial: `d7db9f0 Criar pacote de skills mobile compartilhadas`.
+
+Pendente:
+
+- criar repositorio GitHub `BKPilot-Skills`;
+- adicionar remote `origin`;
+- publicar `main`;
+- definir primeira tag, por exemplo `v0.1.0`.
+
+Decisao recomendada:
+
+- `BKPilot-Skills` deve conter `src/`, `converter/`, `dist/` e scripts de build/lint de skills.
+- Consumidores nao devem editar skills mobile compartilhadas diretamente.
+
+### Fase 3 - Sincronizar Producao
+
+Objetivo: fazer o Producao consumir skills compartilhadas sem virar fonte duplicada.
+
+Tarefas:
+
+1. Criar script de sincronizacao no Producao, por exemplo:
+
+```bash
+node scripts/sync-shared-skills.js mobile
+```
+
+2. Sincronizar skills mobile de `BKPilot-Skills` para:
+
+```text
+src/
+dist/claude/
+dist/codex/
+dist/opencode/
+.claude/commands/
+```
+
+3. Documentar que edicoes de skill mobile compartilhada devem acontecer no `BKPilot-Skills`.
+4. Rodar:
+
+```bash
+npm.cmd run skills:lint
+```
+
+### Fase 4 - Sincronizar Comercial
+
+Objetivo: permitir que o Comercial use a mesma base mobile sem copiar runtime.
+
+Tarefas:
+
+1. Atualizar `BKPilot-Comercial` para consumir:
+
+```json
+"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0"
+```
+
+2. Criar wrappers finos no Comercial:
+
+```text
+scripts/lib/mobile-appium-client.js
+scripts/lib/mobile-device-manager.js
+scripts/mobile-mcp-server.js
+```
+
+3. Sincronizar skills mobile de `BKPilot-Skills`.
+4. Registrar MCP mobile no `.claude/settings.json`, se o Comercial for executar as skills.
+5. Criar `mobile-demo` dentro do Comercial, se houver necessidade comercial.
+
+Regra:
+
+- `mobile-demo` e fluxo especifico de venda/demo. Portanto pertence ao `BKPilot-Comercial`.
+
+### Fase 5 - Validacao real
+
+Objetivo: sair da validacao estrutural e executar em device/farm real.
+
+Tarefas:
+
+1. Escolher primeiro alvo real:
+   - Android USB local; ou
+   - provider cloud Appium/WebDriver.
+2. Criar `clients/mobile-demo/config.json` no repositorio adequado.
+3. Rodar smoke de importacao em Comercial e Producao.
+4. Rodar smoke Appium real:
+
+```bash
+node scripts/mobile-smoke.js --cliente mobile-demo --target web
+```
+
+5. Registrar resultado neste documento.
+
+### Fase 6 - Hardening
+
+Objetivo: reduzir risco antes de usar em cliente real.
+
+Tarefas:
+
+1. Criar testes unitarios no Core para:
+   - `buildCapabilities()`;
+   - `resolveProviderConfig()`;
+   - `redact()`;
+   - policies `allowedUrls` e `allowedAppPackages`.
+2. Trocar parser XML regex por biblioteca dedicada.
+3. Implementar mascaramento visual de dados sensiveis em screenshots.
+4. Avaliar `startRecordingScreen` para video local best-effort.
+5. Planejar upload automatico de APK para o primeiro provider escolhido.
+6. Consolidar relatorio final cliente com artefatos mobile.
+
 ### Prioridade 1 - Alinhar Comercial ao Core mobile
 
 1. Atualizar `BKPilot-Comercial` para consumir:
