@@ -22,16 +22,23 @@ fi
 
 NOME=""
 URL=""
+TARGET="web"
 while [ $# -gt 0 ]; do
   case "$1" in
     --nome) NOME="$2"; shift 2;;
     --url)  URL="$2";  shift 2;;
+    --target) TARGET="$2"; shift 2;;
     *) echo "⚠️  flag desconhecida: $1"; shift;;
   esac
 done
 
 [ -z "$NOME" ] && NOME="$ID"
 [ -z "$URL" ]  && URL="https://app.exemplo.com.br"
+
+if [[ "$TARGET" != "web" && "$TARGET" != "apk" ]]; then
+  echo "âŒ target invÃ¡lido: '$TARGET'. Use web ou apk."
+  exit 1
+fi
 
 DIR="clients/$ID"
 
@@ -43,6 +50,7 @@ echo ""
 echo "  id:     $ID"
 echo "  nome:   $NOME"
 echo "  url:    $URL"
+echo "  target: $TARGET"
 echo "  pasta:  $DIR"
 echo ""
 
@@ -73,6 +81,25 @@ fi
 cp clients/.env.example "$DIR/.env"
 echo "  ✅ $DIR/.env criado (preencha QA_PASSWORD antes de usar)"
 
+if [ "$TARGET" = "apk" ]; then
+  printf "Substitua este placeholder pelo APK real do cliente.\n" > "$DIR/fixtures/app-placeholder.apk"
+fi
+
+APK_BLOCK=""
+if [ "$TARGET" = "apk" ]; then
+  APK_BLOCK='
+    "apk": {
+      "app": "clients/'"$ID"'/fixtures/app-placeholder.apk",
+      "appPackage": "com.cliente.app",
+      "appActivity": ".MainActivity",
+      "uploadStrategy": "auto",
+      "storageFilename": "",
+      "version": "v1",
+      "noReset": true,
+      "fullReset": false
+    },'
+fi
+
 # ── 3. config.json skeleton ───────────────────────────────────────
 
 cat > "$DIR/config.json" <<EOF
@@ -86,7 +113,61 @@ cat > "$DIR/config.json" <<EOF
   "postLoginSelector": "",
   "loginMaxAttempts": 3,
   "defaultFlow": "",
-  "defaultRetesteFlow": ""
+  "defaultRetesteFlow": "",
+  "requiresVpn": false,
+  "vpnHosts": [],
+  "vpnRouteHints": [],
+  "vpnAdapterKeywords": [],
+  "strictVpn": false,
+  "proxy": "",
+  "preflight": {
+    "timeoutMs": 10000
+  },
+  "mobile": {
+    "provider": "local",
+    "target": "$TARGET",
+    "appiumUrl": "env:APPIUM_URL",
+    "username": "env:MOBILE_FARM_USERNAME",
+    "accessKey": "env:MOBILE_FARM_ACCESS_KEY",
+    "baseUrl": "$URL",
+    "capabilities": {},
+    "allowedUrls": [
+      "$URL"
+    ],
+    "allowedAppPackages": [],$APK_BLOCK
+    "timeouts": {
+      "session": 60000,
+      "pageLoad": 30000,
+      "findElement": 10000,
+      "command": 30000,
+      "uploadApk": 300000,
+      "downloadArtifact": 60000
+    },
+    "retry": {
+      "maxAttempts": 2,
+      "backoffMs": 2000,
+      "retryableErrors": [
+        "ECONNRESET",
+        "ETIMEDOUT",
+        "5xx"
+      ]
+    },
+    "limits": {
+      "maxConcurrentSessions": 2,
+      "maxMinutesPerRun": 30,
+      "maxScenariosPerRun": 50
+    },
+    "evidence": {
+      "videoEnabled": true,
+      "screenshotOnFail": true,
+      "retentionDays": 90
+    },
+    "redaction": {
+      "enabled": true,
+      "screenshotFields": [],
+      "xmlFields": []
+    }
+  }
 }
 EOF
 echo "  ✅ $DIR/config.json"
@@ -152,7 +233,8 @@ echo "║                                           ║"
 echo "║  1. Edite $DIR/.env e preencha QA_PASSWORD"
 echo "║  2. Ajuste $DIR/config.json (postLoginSelector)"
 echo "║  3. Ajuste $DIR/login.js (seletores reais)"
-echo "║  4. /explorar $URL --login qa@exemplo.com"
+echo "║  4. Rode: npm run preflight:vpn -- --client $ID"
+echo "║  5. /explorar $URL --login qa@exemplo.com"
 echo "║                                           ║"
 echo "╚══════════════════════════════════════════╝"
 echo ""

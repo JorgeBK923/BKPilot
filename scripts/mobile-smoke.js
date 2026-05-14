@@ -11,7 +11,8 @@ const {
   buildCapabilities,
   loadClientMobileConfig,
   resolveProviderConfig,
-  redact
+  redact,
+  timestamp
 } = require('./lib/mobile-appium-client');
 const { validateLocalAndroidDevice } = require('./lib/mobile-device-manager');
 const {
@@ -26,6 +27,14 @@ const {
   stopRecording,
   videoOutputPath
 } = require('@bugkillers/bkpilot-core/mobile-recording');
+const {
+  buildApkCapabilities,
+  downloadApkFromUrl,
+  resolveApkSource,
+  uploadApkToSauce,
+  validateAllowedAppPackage,
+  validateApkFile
+} = require('@bugkillers/bkpilot-core/mobile-apk');
 
 function parseArgs(argv) {
   const args = {};
@@ -84,6 +93,101 @@ function durationSeconds(startedAt) {
 
 function addCheck(checks, name, passed, details) {
   checks.push({ name, status: passed ? 'passed' : 'failed', details: details || null });
+}
+
+function apkFilename(clientId, apkConfig) {
+  const version = String(apkConfig.version || apkConfig.versionName || 'v0').replace(/[^\w.-]+/g, '_');
+  const ts = timestamp().replace(/[^\w.-]+/g, '_');
+  return `${clientId}_${version}_${ts}.apk`;
+}
+
+async function prepareApkExecution({ args, loaded, providerConfig, warnings, checks }) {
+  const target = args.target || loaded.target;
+  if (target !== 'apk') return null;
+  const mobile = loaded.mobile || {};
+  const apk = mobile.apk || {};
+  const appPackage = args.appPackage || apk.appPackage || mobile.appPackage;
+  const appActivity = args.appActivity || apk.appActivity || mobile.appActivity;
+  const whitelist = validateAllowedAppPackage(appPackage, mobile.allowedAppPackages, { clientId: loaded.clientId });
+  if (whitelist.warning) warnings.push(whitelist.warning);
+  addCheck(checks, 'apk_allowed_package', true, whitelist.warning || appPackage);
+
+  let apkSource = resolveApkSource({ ...apk, app: args.app || apk.app || mobile.app });
+  let sizeBytes = null;
+  let uploadedAt = null;
+  let storageFilename = apkSource.type === 'storage' ? apkSource.filename : null;
+  const resultCacheDir = path.join(ROOT, 'clients', loaded.clientId, 'resultado', '.apk-cache');
+
+  if (apkSource.type === 'url') {
+    const downloadedPath = await downloadApkFromUrl(apkSource.url, resultCacheDir, {
+      timeoutMs: mobile.timeouts?.uploadApk || 300000
+    });
+    apkSource = { type: 'local', path: downloadedPath, originalUrl: apkSource.url };
+  }
+  if (apkSource.type === 'local') {
+    const validation = validateApkFile(apkSource.path);
+    sizeBytes = validation.sizeBytes;
+    if (validation.warning) warnings.push(validation.warning);
+  }
+
+  const provider = providerConfig.provider;
+  const isSauce = provider === 'saucelabs' || provider === 'sauce' || provider === 'cloud';
+  const uploadStrategy = apk.uploadStrategy || 'auto';
+  if (isSauce && uploadStrategy === 'preuploaded') {
+    if (!storageFilename) throw new Error('APK_STORAGE_FILENAME_REQUIRED: mobile.apk.storageFilename is required for preuploaded APK');
+    apkSource = { type: 'storage', filename: storageFilename };
+  } else if (isSauce) {
+    if (apkSource.type === 'storage') {
+      storageFilename = apkSource.filename;
+    } else {
+      storageFilename = apkFilename(loaded.clientId, apk);
+      const upload = await uploadApkToSauce({
+        apkPath: apkSource.path,
+        username: providerConfig.auth?.username,
+        accessKey: providerConfig.auth?.accessKey,
+        filename: storageFilename,
+        timeoutMs: mobile.timeouts?.uploadApk || 300000
+      });
+      storageFilename = upload.storageFilename;
+      uploadedAt = upload.uploadedAt;
+      sizeBytes = upload.sizeBytes;
+      apkSource = { type: 'storage', filename: storageFilename };
+    }
+  } else if (apkSource.type === 'storage') {
+    throw new Error('APK_STORAGE_LOCAL_UNSUPPORTED: storage:filename is only valid for Sauce/cloud provider');
+  }
+
+  const apkCaps = buildApkCapabilities({
+    provider,
+    apkSource,
+    appPackage,
+    appActivity,
+    noReset: apk.noReset !== undefined ? apk.noReset : true,
+    fullReset: apk.fullReset === true
+  });
+  args.app = apkCaps['appium:app'];
+  args.appPackage = appPackage;
+  args.appActivity = appActivity;
+  args.capabilities = {
+    ...(args.capabilities || {}),
+    app: apkCaps['appium:app'],
+    appPackage,
+    appActivity,
+    noReset: apkCaps['appium:noReset'],
+    ...(apkCaps['appium:fullReset'] ? { fullReset: true } : {})
+  };
+  addCheck(checks, 'apk_source_resolved', true, apkSource.type);
+  return {
+    source: apkSource.type,
+    appPackage,
+    appActivity,
+    sizeBytes,
+    uploadedAt,
+    storageFilename,
+    uploadStrategy,
+    noReset: apkCaps['appium:noReset'],
+    fullReset: apkCaps['appium:fullReset'] === true
+  };
 }
 
 function enforceRunLimit(startedAt, mobile) {
@@ -204,7 +308,6 @@ async function main() {
 
   const loaded = loadClientMobileConfig(args);
   const provider = resolveProviderConfig({ ...args, clientId: loaded.clientId });
-  const capabilities = buildCapabilities({ ...args, clientId: loaded.clientId, target: args.target || loaded.target });
 
   console.log('Mobile smoke starting');
   console.log(`Client: ${loaded.clientId}`);
@@ -212,15 +315,20 @@ async function main() {
   console.log(`Provider: ${provider.provider}`);
   console.log(`Appium URL: ${provider.appiumUrl.replace(/\/\/[^/@]+@/, '//[redacted]@')}`);
   console.log(`Client env: ${clientEnvPath || 'not found'}`);
-  console.log(`Capabilities: ${JSON.stringify(redact(capabilities), null, 2)}`);
 
   const client = new MobileAppiumClient();
   const startedAt = new Date().toISOString();
   const checks = [];
   const warnings = [];
   const errors = [];
+  let apkReport = null;
+  let capabilities = {};
   let report;
   try {
+    apkReport = await prepareApkExecution({ args, loaded, providerConfig: provider, warnings, checks });
+    capabilities = buildCapabilities({ ...args, clientId: loaded.clientId, target: args.target || loaded.target });
+    console.log(`Capabilities: ${JSON.stringify(redact(capabilities), null, 2)}`);
+
     if (provider.provider === 'local') {
       const deviceValidation = validateLocalAndroidDevice({
         udid: args.udid || args.device || loaded.mobile.udid || loaded.mobile.device,
@@ -298,6 +406,7 @@ async function main() {
       logs: videoState.logs,
       videoErrors: videoState.errors,
       videoWarnings: videoState.warnings,
+      apk: apkReport,
       checks,
       warnings,
       errors,
@@ -326,6 +435,7 @@ async function main() {
       warnings,
       errors,
       error: err.message,
+      apk: apkReport,
       capabilities: redact(capabilities)
     };
     const reportPath = writeReport(resultDir, report);
@@ -336,4 +446,3 @@ async function main() {
 }
 
 main();
-

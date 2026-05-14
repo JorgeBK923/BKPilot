@@ -1,0 +1,77 @@
+{
+  "id": "sauce-apk-smoke",
+  "nome": "Sauce Labs APK Smoke",
+  "baseUrl": "https://example.com",
+  "timeout_ms": 60000,
+  "max_paginas": 1,
+  "envPassword": "QA_PASSWORD",
+  "postLoginSelector": "",
+  "loginMaxAttempts": 1,
+  "defaultFlow": "",
+  "defaultRetesteFlow": "",
+  "mobile": {
+    "provider": "saucelabs",
+    "target": "apk",
+    "appiumUrl": "https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
+    "username": "env:MOBILE_FARM_USERNAME",
+    "accessKey": "env:MOBILE_FARM_ACCESS_KEY",
+    "baseUrl": "https://example.com",
+    "capabilities": {},
+    "allowedUrls": [
+      "https://example.com"
+    ],
+    "allowedAppPackages": [],
+    "apk": {
+      "app": "clients/sauce-apk-smoke/fixtures/demo.apk",
+      "appPackage": "com.example.demo",
+      "appActivity": ".MainActivity",
+      "uploadStrategy": "auto",
+      "storageFilename": "",
+      "version": "smoke",
+      "noReset": true,
+      "fullReset": false
+    },
+    "timeouts": {
+      "session": 60000,
+      "pageLoad": 30000,
+      "findElement": 10000,
+      "command": 30000,
+      "uploadApk": 300000,
+      "downloadArtifact": 60000
+    },
+    "retry": {
+      "maxAttempts": 2,
+      "backoffMs": 2000,
+      "retryableErrors": [
+        "ECONNRESET",
+        "ETIMEDOUT",
+        "5xx"
+      ]
+    },
+    "limits": {
+      "maxConcurrentSessions": 2,
+      "maxMinutesPerRun": 30,
+      "maxScenariosPerRun": 50
+    },
+    "evidence": {
+      "videoEnabled": true,
+      "screenshotOnFail": true,
+      "retentionDays": 90
+    },
+    "redaction": {
+      "enabled": true,
+      "screenshotFields": [],
+      "xmlFields": []
+    },
+    "platformName": "Android",
+    "automationName": "UiAutomator2",
+    "mode": "observe",
+    "options": {
+      "sauce:options": {
+        "name": "BKPilot APK smoke",
+        "build": "bkpilot-apk-smoke",
+        "appiumVersion": "latest"
+      }
+    }
+  }
+}
