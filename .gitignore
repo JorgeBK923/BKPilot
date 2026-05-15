@@ -40,3 +40,5 @@ _*.txt
 # IDE
 .vscode/
 .idea/
+BKPilot-Core/
+graphify-out/
