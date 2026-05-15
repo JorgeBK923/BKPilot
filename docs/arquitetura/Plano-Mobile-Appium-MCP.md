@@ -44,7 +44,7 @@ Foi decidido que:
 
 As skills mobile devem estar disponiveis no BKPilot Comercial e no BKPilot Producao.
 
-A logica reutilizavel deve viver em `@bugkillers/bkpilot-core`. Em 2026-05-10, o runtime mobile foi extraido para o Core e publicado na tag `v0.2.0`.
+A logica reutilizavel deve viver em `@bugkillers/bkpilot-core`. Em 2026-05-10, o runtime mobile foi extraido para o Core e publicado na tag `v0.2.0`. Em seguida, a montagem de capabilities para cloud foi corrigida e publicada na tag `v0.2.1`.
 
 Este repositorio fica com:
 
@@ -626,9 +626,9 @@ tools/list
 
 O MCP listou as tools mobile corretamente.
 
-## Atualizacao arquitetural - Core v0.2.0
+## Atualizacao arquitetural - Core v0.2.1
 
-Em 2026-05-10 foi corrigido o desvio arquitetural inicial: o runtime mobile tinha sido criado dentro do Producao, mas deveria ser compartilhado entre Comercial e Producao.
+Em 2026-05-10 foi corrigido o desvio arquitetural inicial: o runtime mobile tinha sido criado dentro do Producao, mas deveria ser compartilhado entre Comercial e Producao. Na mesma janela, o Core recebeu uma correcao de cloud para nao inferir `udid` automaticamente em farms remotas e foi publicado como `v0.2.1`.
 
 ### Decisao
 
@@ -648,7 +648,7 @@ df5e549 Adicionar runtime mobile compartilhado
 Tag publicada:
 
 ```text
-v0.2.0
+v0.2.1
 ```
 
 Modulos adicionados ao Core:
@@ -673,6 +673,7 @@ mobileMcp
 - `buildCapabilities()` remove campos internos de politica/governanca antes de enviar capabilities ao Appium.
 - `startSession()` retorna capabilities com redaction.
 - `ROOT` do runtime mobile usa `process.cwd()` ou `BKPILOT_ROOT`, para salvar artefatos no consumidor, nao dentro do Core.
+- para provider cloud, `buildCapabilities()` so infere `udid` automaticamente quando o provider e local.
 
 ### Ajustes feitos no Producao
 
@@ -685,7 +686,7 @@ Commit publicado:
 O Producao agora consome:
 
 ```json
-"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0"
+"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.1"
 ```
 
 Wrappers finos mantidos no Producao:
@@ -719,6 +720,7 @@ Pronto nesta sessao:
 - criterios de aceite;
 - decisao de upload automatico de APK na Release 0.1;
 - runtime mobile compartilhado publicado no `BKPilot-Core#v0.2.0`;
+- correcao cloud publicada no `BKPilot-Core#v0.2.1`;
 - Producao migrado para wrappers finos que chamam o Core.
 
 ## O que ficou de fora
@@ -742,6 +744,7 @@ Ainda nao foi implementado:
 Implementado apos a lista inicial:
 
 - smoke real contra Sauce Labs US West 1 aprovado em 2026-05-09 com alocacao dinamica Android + Chrome.
+- o smoke carrega `.env` local automaticamente para `MOBILE_FARM_USERNAME`, `MOBILE_FARM_ACCESS_KEY` e `APPIUM_URL`.
 
 ## Proximas atividades
 
@@ -763,7 +766,7 @@ Tarefas:
 
 Status:
 
-- Producao ja aponta para `BKPilot-Core#v0.2.0`.
+- Producao ja aponta para `BKPilot-Core#v0.2.1`.
 - Core ja publicou o runtime mobile compartilhado.
 - `BKPilot-Skills` foi criado e publicado no GitHub com as 8 skills mobile e conversor multi-target.
 - `BKPilot-Skills` foi tagueado como `v0.1.0`.
@@ -877,7 +880,7 @@ Tarefas:
 1. Atualizar `BKPilot-Comercial` para consumir. Status: feito.
 
 ```json
-"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0"
+"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.1"
 ```
 
 2. Criar wrappers finos no Comercial. Status: feito.
@@ -982,7 +985,7 @@ Tarefas:
 1. Atualizar `BKPilot-Comercial` para consumir:
 
 ```json
-"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.0"
+"@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.1"
 ```
 
 2. Criar no Comercial os wrappers finos equivalentes:
