@@ -1,0 +1,63 @@
+{
+  "id": "local-usb-smoke",
+  "nome": "Local USB Android Smoke",
+  "baseUrl": "https://example.com",
+  "timeout_ms": 60000,
+  "max_paginas": 1,
+  "envPassword": "QA_PASSWORD",
+  "postLoginSelector": "",
+  "loginMaxAttempts": 1,
+  "defaultFlow": "",
+  "defaultRetesteFlow": "",
+  "mobile": {
+    "provider": "local",
+    "target": "web",
+    "appiumUrl": "env:APPIUM_URL",
+    "username": "env:MOBILE_FARM_USERNAME",
+    "accessKey": "env:MOBILE_FARM_ACCESS_KEY",
+    "baseUrl": "https://example.com",
+    "capabilities": {},
+    "allowedAppiumHosts": [],
+    "allowedAppPackages": [],
+    "timeouts": {
+      "session": 60000,
+      "pageLoad": 30000,
+      "findElement": 10000,
+      "command": 30000,
+      "uploadApk": 300000,
+      "downloadArtifact": 60000
+    },
+    "retry": {
+      "maxAttempts": 2,
+      "backoffMs": 2000,
+      "retryableErrors": [
+        "ECONNRESET",
+        "ETIMEDOUT",
+        "5xx"
+      ]
+    },
+    "limits": {
+      "maxConcurrentSessions": 2,
+      "maxMinutesPerRun": 30,
+      "maxScenariosPerRun": 50
+    },
+    "evidence": {
+      "videoEnabled": true,
+      "screenshotOnFail": true,
+      "retentionDays": 90
+    },
+    "redaction": {
+      "enabled": true,
+      "allowEmptyScreenshotFields": true,
+      "screenshotFields": [],
+      "xmlFields": []
+    },
+    "platformName": "Android",
+    "browserName": "Chrome",
+    "automationName": "UiAutomator2",
+    "mode": "observe",
+    "allowedUrls": [
+      "https://example.com"
+    ]
+  }
+}

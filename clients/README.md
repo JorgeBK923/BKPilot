@@ -36,9 +36,35 @@ As pastas opcionais são criadas sob demanda — um cliente novo pode começar s
   "postLoginSelector": "...",
   "loginMaxAttempts": 3,
   "defaultFlow": "<nome-do-flow-principal>",
-  "defaultRetesteFlow": "<opcional, se tiver reteste de bugs>"
+  "defaultRetesteFlow": "<opcional, se tiver reteste de bugs>",
+  "requiresVpn": true,
+  "vpnHosts": ["app.interno.cliente.local", "api.interno.cliente.local"],
+  "vpnRouteHints": ["10.20.", "172.18."],
+  "vpnAdapterKeywords": ["forticlient", "globalprotect"],
+  "strictVpn": false,
+  "proxy": "http://proxy.cliente:8080",
+  "preflight": {
+    "timeoutMs": 10000
+  }
 }
 ```
+
+Campos de rede/VPN:
+
+- `requiresVpn`: marca que o cliente depende de VPN para acesso confiavel.
+- `vpnHosts`: hosts que precisam resolver/conectar antes de qualquer teste. Inclua `baseUrl` e APIs internas quando existirem.
+- `vpnRouteHints`: trechos de rota esperados no `route print -4` para split tunnel, como `10.20.` ou `172.18.`.
+- `vpnAdapterKeywords`: nomes extras do adaptador VPN corporativo quando nao contem `vpn`, `tap`, `tun`, `forticlient`, etc.
+- `strictVpn`: quando `true`, falha se nenhum adaptador VPN ativo for detectado.
+- `proxy`: proxy corporativo usado pelo Playwright (`http://host:porta`). Nao coloque usuario/senha inline.
+
+Antes de rodar `/explorar`, `/testar-modulo`, `/demo-comercial` ou qualquer skill com browser:
+
+```bash
+npm run preflight:vpn -- --client <id>
+```
+
+Se falhar, corrija VPN/proxy/firewall antes de executar o teste. O BKPilot usa Node + Chromium; acessar no Chrome manual nao garante que o processo automatizado tem a mesma rota.
 
 ## Contrato do `login.js`
 
@@ -97,6 +123,7 @@ cp clients/tega/config.json clients/novo/
 # escrever flows/<defaultFlow>.js
 cp clients/.env.example clients/novo/.env
 # editar clients/novo/.env com a senha do ambiente do cliente
+npm run preflight:vpn -- --client novo
 ```
 
 ## Referência arquitetural
