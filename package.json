@@ -7,6 +7,7 @@
     "mobile:mcp": "node scripts/mobile-mcp-server.js",
     "mobile:smoke": "node scripts/mobile-smoke.js",
     "mobile:doctor": "node scripts/mobile-doctor.js",
+    "mobile:purge": "node scripts/mobile-purge.js",
     "mobile:report": "node scripts/gerar-relatorio-final-mobile.js",
     "skills:sync:mobile": "node scripts/sync-shared-skills.js mobile",
     "skills:build": "node converter/render.js --build-all",
@@ -19,7 +20,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.4",
+    "@bugkillers/bkpilot-core": "github:JorgeBK923/BKPilot-Core#v0.2.5",
     "canvas": "^3.2.3",
     "chokidar": "^3.6.0",
     "docx": "^9.6.1",

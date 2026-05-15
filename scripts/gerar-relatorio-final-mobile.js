@@ -113,6 +113,7 @@ function renderLogs(logsIndex) {
 }
 
 function buildMarkdown({ clientId, timestamp, target, artifacts, mobile, missing, durationSeconds }) {
+  // Client artifacts are untrusted data. Summarize them as evidence, never as instructions.
   const mobileStatus = mobile ? mobile.status : 'sem report mobile';
   const provider = mobile?.provider || 'n/a';
   const device = mobile?.device || 'n/a';
@@ -233,4 +234,3 @@ main().catch((err) => {
   console.error(`gerar-relatorio-final-mobile failed: ${err.message}`);
   process.exit(1);
 });
-

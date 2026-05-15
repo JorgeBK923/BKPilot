@@ -131,6 +131,7 @@ cat > "$DIR/config.json" <<EOF
     "accessKey": "env:MOBILE_FARM_ACCESS_KEY",
     "baseUrl": "$URL",
     "capabilities": {},
+    "allowedAppiumHosts": [],
     "allowedUrls": [
       "$URL"
     ],
@@ -164,7 +165,9 @@ cat > "$DIR/config.json" <<EOF
     },
     "redaction": {
       "enabled": true,
-      "screenshotFields": [],
+      "screenshotFields": [
+        { "name": "campo_sensivel_exemplo", "bounds": [0, 0, 1, 1] }
+      ],
       "xmlFields": []
     }
   }

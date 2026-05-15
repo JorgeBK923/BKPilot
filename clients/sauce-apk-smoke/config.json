@@ -17,6 +17,7 @@
     "accessKey": "env:MOBILE_FARM_ACCESS_KEY",
     "baseUrl": "https://example.com",
     "capabilities": {},
+    "allowedAppiumHosts": [],
     "allowedUrls": [
       "https://example.com"
     ],
@@ -60,6 +61,7 @@
     },
     "redaction": {
       "enabled": true,
+      "allowEmptyScreenshotFields": true,
       "screenshotFields": [],
       "xmlFields": []
     },

@@ -35,6 +35,7 @@ const {
   validateAllowedAppPackage,
   validateApkFile
 } = require('@bugkillers/bkpilot-core/mobile-apk');
+const { purgeOldArtifacts } = require('@bugkillers/bkpilot-core/mobile-retention');
 
 function parseArgs(argv) {
   const args = {};
@@ -80,6 +81,7 @@ function loadClientEnv(clientId) {
 }
 
 function writeReport(resultDir, report) {
+  // Runtime evidence can contain client-controlled text; persist as data only.
   const reportsDir = path.join(resultDir, 'mobile', 'reports');
   fs.mkdirSync(reportsDir, { recursive: true });
   const filePath = path.join(reportsDir, 'mobile_smoke_report.json');
@@ -291,6 +293,14 @@ function persistRecordingIndexes(session, videoState) {
   writeIndex(resultDir, 'logs_index.json', buildLogsIndex(videoState.logs));
 }
 
+function maybePurgeArtifacts(args, loaded, warnings) {
+  if (args.purge !== true) return null;
+  const retentionDays = Number(args.retentionDays || loaded.mobile?.evidence?.retentionDays || 90);
+  const result = purgeOldArtifacts(loaded.clientId, retentionDays, false);
+  warnings.push(`RETENTION_PURGE_REMOVED_${result.removed.length}`);
+  return result;
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help || args.h) {
@@ -376,6 +386,7 @@ async function main() {
 
     await finishRecording(client, session, provider, loaded, videoState);
     await captureLogs(client, session, videoState);
+    const retention = maybePurgeArtifacts(args, loaded, warnings);
     await client.endSession();
     addCheck(checks, 'session_ended', true, session.sessionId);
     persistRecordingIndexes(session, videoState);
@@ -407,6 +418,7 @@ async function main() {
       videoErrors: videoState.errors,
       videoWarnings: videoState.warnings,
       apk: apkReport,
+      retention,
       checks,
       warnings,
       errors,

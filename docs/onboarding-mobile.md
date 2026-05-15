@@ -55,8 +55,19 @@ Campos obrigatorios em `clients/<id>/config.json`:
 - `mobile.limits`
 - `mobile.evidence`
 - `mobile.redaction`
+- `mobile.allowedAppiumHosts`
 
 Para web mobile, mantenha `allowedUrls` com a URL base do cliente. Para APK, preencha `allowedAppPackages`.
+
+## Seguranca, Redaction e Retencao
+
+- Clientes reais devem configurar `mobile.redaction.screenshotFields` com bounding boxes das areas sensiveis. Sem isso, a sessao aborta com `SCREENSHOT_REDACTION_NOT_CONFIGURED`.
+- `mobile.redaction.allowEmptyScreenshotFields: true` e excecao auditavel. Use apenas quando nao houver PII visual na tela validada.
+- Clientes smoke podem usar bypass auditavel com `SMOKE_REDACTION_BYPASS`.
+- `appiumUrl` remoto deve usar HTTPS. HTTP e permitido somente em loopback (`localhost`, `127.0.0.1`, `::1`).
+- Credenciais em URL (`user:pass@host`) sao bloqueadas; use `.env` e `env:MOBILE_FARM_USERNAME` / `env:MOBILE_FARM_ACCESS_KEY`.
+- Use `mobile.allowedAppiumHosts` para liberar farms internas ou grids privados fora dos hosts padrao.
+- Retencao de evidencias: `mobile.evidence.retentionDays` e executado por `npm run mobile:purge -- --cliente <id>` ou opcionalmente por `npm run mobile:smoke -- --cliente <id> --purge`.
 
 ## 3.1. APK Android
 

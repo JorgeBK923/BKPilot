@@ -12,6 +12,7 @@ const {
   buildCapabilities,
   loadClientMobileConfig,
   resolveProviderConfig,
+  validateScreenshotRedactionPolicy,
   validateMobileConfig
 } = require('./lib/mobile-appium-client');
 const { validateLocalAndroidDevice } = require('./lib/mobile-device-manager');
@@ -140,9 +141,27 @@ async function main() {
   const loaded = loadClientMobileConfig(args);
   const validation = validateMobileConfig(loaded.mobile);
   add(checks, 'mobile_config_schema', validation.ok, validation.ok ? 'ok' : validation.errors);
+  try {
+    const redactionPolicy = validateScreenshotRedactionPolicy(loaded.mobile, loaded.clientId);
+    add(checks, 'screenshot_redaction_policy', true, redactionPolicy.warning || 'ok');
+  } catch (err) {
+    add(checks, 'screenshot_redaction_policy', false, err.message);
+  }
 
-  const provider = resolveProviderConfig({ ...args, clientId: loaded.clientId });
-  const capabilities = buildCapabilities({ ...args, clientId: loaded.clientId, target: args.target || loaded.target });
+  let provider;
+  let capabilities = {};
+  try {
+    provider = resolveProviderConfig({ ...args, clientId: loaded.clientId });
+    add(checks, 'appium_endpoint_policy', true, (provider.warnings || []).join(', ') || 'ok');
+  } catch (err) {
+    add(checks, 'appium_endpoint_policy', false, err.message);
+    provider = { provider: loaded.mobile.provider || 'local', appiumUrl: loaded.mobile.appiumUrl || 'http://127.0.0.1:4723', auth: null };
+  }
+  try {
+    capabilities = buildCapabilities({ ...args, clientId: loaded.clientId, target: args.target || loaded.target });
+  } catch (err) {
+    add(checks, 'capabilities_build', false, err.message);
+  }
   const target = args.target || loaded.target;
   const apkMinimum = target === 'apk' && Boolean(loaded.mobile.apk?.appPackage || loaded.mobile.appPackage);
   add(checks, 'client_env', Boolean(clientEnvPath), clientEnvPath || 'clients/<id>/.env not found');
