@@ -74,17 +74,16 @@ npm run tv:doctor -- --cliente <id>
 
 `tv:doctor` exige `clients/<id>/config.json` com `mobile.target: "tv"`. Sem um cliente configurado, o preflight nao roda completo. Para validar apenas emulador + Appium + navegacao D-pad antes de ter o cliente real, criar um cliente de smoke minimo.
 
-## 7. Observacao importante — alteracao no Core
+## 7. Suporte a target tv no Core
 
-O schema que aceita `mobile.target: "tv"` foi alterado em `BKPilot-Core` (`mobile-config.js` e `mobile-appium-client.js`). O `BKPilot-Core` e um pacote separado, referenciado em `package.json` como `github:JorgeBK923/BKPilot-Core#v0.2.6`.
+O schema que aceita `mobile.target: "tv"` esta no pacote `@bugkillers/bkpilot-core`, repositorio separado `github:JorgeBK923/BKPilot-Core`.
 
-A alteracao local funciona nesta maquina, mas para valer em qualquer clone novo / producao, a mudanca precisa ser:
+O suporte ja esta publicado:
 
-1. Commitada no repositorio `BKPilot-Core`.
-2. Publicada como nova versao (ex: `v0.2.7`).
-3. Atualizada a dependencia em `package.json` do BKPilot.
+- `v0.2.7` — adiciona `tv` ao schema, `normalizeTarget` e resolucao de APK.
+- `v0.2.8` — estende a allowlist de `appPackage` ao target `tv`.
 
-Enquanto isso nao acontecer, um `npm install` limpo em outra maquina reinstala o Core sem o suporte a `tv`.
+O `package.json` do BKPilot referencia `#v0.2.8`. Um `npm install` limpo em qualquer maquina ja traz o Core com suporte completo a `tv` — nenhuma acao manual necessaria.
 
 ## 8. Proximos passos
 
